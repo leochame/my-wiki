@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "8688369c35871545",
+    "type": "split",
+    "children": [
+      {
+        "id": "534c97336dccfb35",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "48048d7fe90d02fa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "task/by-task/T-001-draft-llm-prompt-pattern-article.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "T-001-draft-llm-prompt-pattern-article"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "138e7b5cf1dab7c2",
+    "type": "split",
+    "children": [
+      {
+        "id": "42d08ebf2ceb36cc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3fcaa5f0e568e2e2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "c24f3232b87a678b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "015cf1207be447a0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7c9a6606ad50cf81",
+    "type": "split",
+    "children": [
+      {
+        "id": "763b442011bdc773",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc4d14f786fd3f00",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "cdacd50cc1910078",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "171d0c5dd33153bb",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "d0dc353c59b4e701",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "30d7790b5169e484",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "tech-article/未命名 1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "未命名 1 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "48048d7fe90d02fa",
+  "lastOpenFiles": [
+    "task/TASKS.md",
+    "task/TODO.md",
+    "CLAUDE.md",
+    "未命名.base",
+    "task/today.md",
+    "tech-article/INDEX.md",
+    "write/life-article/in-progress",
+    "write/life-article/completed",
+    "write/pre-ai-tech",
+    "write/life-article",
+    "write/ai-theory",
+    "write/ai-practice",
+    "write/ai-frontier-papers",
+    "write/INDEX.md",
+    "write",
+    "task/by-task/T-006-consult-russian-teacher-about-makeup-exam.md",
+    "task/by-task/T-005-complete-graduation-project.md",
+    "task/by-task/T-004-finish-jvm-section-translation.md",
+    "task/by-task/T-003-translate-yuque-articles-into-english.md",
+    "task/by-task/T-002-read-one-ai-paper-from-tech-progress-list.md",
+    "task/by-task/T-001-draft-llm-prompt-pattern-article.md",
+    "task/by-task",
+    "task/by-id/T-006-consult-russian-teacher-about-makeup-exam.md",
+    "task/by-id/T-005-complete-graduation-project.md",
+    "task/by-id/T-004-finish-jvm-section-translation.md",
+    "task/by-id/T-003-translate-yuque-articles-into-english.md",
+    "task/by-id/T-002-read-one-ai-paper-from-tech-progress-list.md",
+    "task/by-id/T-001-draft-llm-prompt-pattern-article.md",
+    "worth-read-article/by-category/Tech-Progress.md",
+    "worth-read-article/by-category/Pre-AI-Tech.md",
+    "worth-read-article/by-category/Life-Experience-Reading.md",
+    "worth-read-article/by-category/AI-Theory.md",
+    "worth-read-article/by-category/AI-Practice.md",
+    "worth-read-article/by-category/AI-Frontier-Papers.md",
+    "tech-article/life-article/INDEX.md",
+    "life-article/INDEX.md"
+  ]
+}
