@@ -4,21 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "534c97336dccfb35",
+        "id": "5e64f10a3defa197",
         "type": "tabs",
         "children": [
           {
-            "id": "48048d7fe90d02fa",
+            "id": "670e5384444e7741",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "task/by-task/T-001-draft-llm-prompt-pattern-article.md",
+                "file": "write/works/ai-practice/Memory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "T-001-draft-llm-prompt-pattern-article"
+              "title": "Memory"
+            }
+          },
+          {
+            "id": "bfde522b6b45eb8e",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
         ]
@@ -41,7 +51,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -78,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 380.5
   },
   "right": {
     "id": "7c9a6606ad50cf81",
@@ -181,43 +191,55 @@
       "bases:新建数据库": false
     }
   },
-  "active": "48048d7fe90d02fa",
+  "active": "670e5384444e7741",
   "lastOpenFiles": [
-    "task/TASKS.md",
-    "task/TODO.md",
+    "Pasted image 20260305203851.png",
+    "Pasted image 20260305201943.png",
+    "write/works/pre-ai-tech/System-design-.md",
+    "write/works/ai-practice/Memory.md",
+    "write/works/ai-practice/GPT 模型基础知识.md",
+    "write/works/ai-practice/how-build-a-agent?.md",
+    "write/works/ai-practice/system-design-llm-interface.md",
+    "write/works/ai-practice/how-build-a-agent？",
+    "task/by-task/T-015-review-google-agent-survey.md",
+    "task/by-task/T-014-review-claude-code-design-philosophy.md",
     "CLAUDE.md",
-    "未命名.base",
-    "task/today.md",
-    "tech-article/INDEX.md",
-    "write/life-article/in-progress",
-    "write/life-article/completed",
-    "write/pre-ai-tech",
-    "write/life-article",
-    "write/ai-theory",
-    "write/ai-practice",
-    "write/ai-frontier-papers",
-    "write/INDEX.md",
-    "write",
+    "write/works/pre-ai-tech/request-flow-frontend-to-backend.md",
+    "未命名.canvas",
+    "write/works/ai-practice/manus-context-management-share-zh.md",
+    "task/by-task/T-013-read-agent-projects-dexter-nanochat-opencode.md",
+    "write/works/ai-practice/manus-context-management-share.md",
+    "task/by-task/T-011-interview-bytedance-2026-03-09-11-00.md",
+    "task/by-task/T-012-interview-moonshot-agent-engineer-2026-03-10-16-00.md",
+    "task/by-task/T-010-watch-llm-interface-system-design-video.md",
+    "task/by-task/T-009-understand-software-operation-full-chain.md",
+    "task/by-task/T-007-watch-cursor-context-retrieval-demo.md",
     "task/by-task/T-006-consult-russian-teacher-about-makeup-exam.md",
     "task/by-task/T-005-complete-graduation-project.md",
     "task/by-task/T-004-finish-jvm-section-translation.md",
     "task/by-task/T-003-translate-yuque-articles-into-english.md",
     "task/by-task/T-002-read-one-ai-paper-from-tech-progress-list.md",
     "task/by-task/T-001-draft-llm-prompt-pattern-article.md",
-    "task/by-task",
-    "task/by-id/T-006-consult-russian-teacher-about-makeup-exam.md",
-    "task/by-id/T-005-complete-graduation-project.md",
-    "task/by-id/T-004-finish-jvm-section-translation.md",
-    "task/by-id/T-003-translate-yuque-articles-into-english.md",
-    "task/by-id/T-002-read-one-ai-paper-from-tech-progress-list.md",
-    "task/by-id/T-001-draft-llm-prompt-pattern-article.md",
-    "worth-read-article/by-category/Tech-Progress.md",
-    "worth-read-article/by-category/Pre-AI-Tech.md",
-    "worth-read-article/by-category/Life-Experience-Reading.md",
-    "worth-read-article/by-category/AI-Theory.md",
-    "worth-read-article/by-category/AI-Practice.md",
-    "worth-read-article/by-category/AI-Frontier-Papers.md",
-    "tech-article/life-article/INDEX.md",
-    "life-article/INDEX.md"
+    "task/by-task/T-008-run-5km-tomorrow.md",
+    "task/today.md",
+    "未命名.base",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304151812.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304151812 1.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304150709.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304150709 1.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304110246.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304110246 1.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304110136.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304110136 1.png",
+    "write/works/pre-ai-tech/tcp-pic/Pasted image 20260304110127.png",
+    "write/works/pre-ai-tech/tcp-pic",
+    "未命名 1.canvas",
+    "write/works/system-design",
+    "write/works/pre-ai-tech",
+    "write/works/life-article/in-progress",
+    "write/works/life-article/completed",
+    "write/works/life-article",
+    "write/works/ai-theory",
+    "write/works/ai-practice/manus-context-management-share-assets"
   ]
 }

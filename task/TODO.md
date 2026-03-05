@@ -24,5 +24,6 @@ Columns:
 | NT-001 | Example: Refactor personal notes folder structure | Personal | Todo | Medium | Plan new hierarchy before moving files |
 | NT-002 | Example: Try a new note-taking template for one week | Personal | Todo | Low | Can do any time this month |
 | NT-003 | Import ~90 Andrej Karpathy RSS blog feeds into my computer | Reading | Todo | Medium | Collect all RSS feed URLs and bulk import into chosen RSS reader |
+| NT-004 | 尝试将常关注的博主使用自定义search命令来抓取最新消息 | Reading | Todo | Medium | 先整理博主清单与来源（RSS/站点/平台），再定义输出字段与去重策略 |
 
 

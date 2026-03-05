@@ -3,16 +3,6 @@
 This workspace is for **tasks**, **writing**, and **reading notes**.  
 All filenames and structure are in English.
 
-## Custom Commands
-
-### /today
-When I use the `/today` command, you should execute my custom daily summary script.  
-Please follow these steps:
-1. Run the command (using the repo-local virtualenv): `.venv/bin/python task/script/generate_today.py --date YYYY-MM-DD`
-2. Wait for the script to finish and ensure it completes successfully.
-3. Read the generated `task/today.md` file in this workspace and provide a concise summary or prioritization of the tasks.
-
-
 ## Collaboration Rules (root-level)
 
 - **Plan briefly before big changes**: for multi-step tasks, write a short outline (goal + key steps) before editing many files.
@@ -23,6 +13,7 @@ Please follow these steps:
 
 - **Tasks**: `task/`
   - Main file: `task/TASKS.md`
+  - Non-deadline list: `task/TODO.md`
   - Per-task notes: `task/by-task/*.md`
 - **Writing (technical + life articles)**: `write/`
   - Index: `write/INDEX.md`

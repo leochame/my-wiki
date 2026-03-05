@@ -1,7 +1,7 @@
 ---
 id: T-003
 title: Translate my Yuque articles into English and save locally
-status: in-progress
+status: done
 due: 2026-03-01
 priority: high
 ---

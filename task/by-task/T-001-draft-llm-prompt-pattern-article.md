@@ -1,7 +1,7 @@
 ---
 id: T-001
 title: Draft article on LLM prompt patterns
-status: todo            # todo | in-progress | waiting | done | cancelled
+status: done            # todo | in-progress | waiting | done | cancelled
 due: 2026-02-28
 priority: high          # low | medium | high | urgent
 ---

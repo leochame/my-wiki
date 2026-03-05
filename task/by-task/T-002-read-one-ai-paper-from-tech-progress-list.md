@@ -1,7 +1,7 @@
 ---
 id: T-002
 title: Read 1 AI paper from tech-progress list
-status: todo
+status: done
 due: 2026-02-25
 priority: medium
 ---

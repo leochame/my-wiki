@@ -1,7 +1,7 @@
 ---
 id: T-005
 title: Complete my graduation project (毕设)
-status: in-progress
+status: done
 due: 2026-03-02
 priority: high
 ---

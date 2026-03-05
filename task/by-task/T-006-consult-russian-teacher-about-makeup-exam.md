@@ -1,7 +1,7 @@
 ---
 id: T-006
 title: Consult Russian-side teacher about makeup exam (农历十五当天)
-status: todo
+status: done
 due: 2026-03-03
 priority: high
 ---

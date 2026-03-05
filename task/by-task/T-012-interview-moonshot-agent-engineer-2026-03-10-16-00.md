@@ -1,0 +1,29 @@
+---
+id: T-012
+title: 月之暗面 Agent Engineer / Agent 工程师 视频面试（2026-03-10 16:00，北京时间）
+status: todo            # todo | in-progress | waiting | done | cancelled
+due: 2026-03-10
+priority: high          # low | medium | high | urgent
+---
+
+## Description
+
+【面试信息】
+
+- **公司 / 岗位**：月之暗面（Moonshot AI）· Agent Engineer / Agent 工程师
+- **面试形式**：视频面试（飞书）
+- **面试时间**：2026-03-10 16:00 (GMT+08:00) China Standard Time - Beijing
+- **面试时长**：1 小时（可能缩短或延长，预留缓冲时间）
+- **会议链接**：https://vc.feishu.cn/j/963804493
+- **会议号**：963804493
+
+## Next Actions
+
+- [ ] 将面试时间加入日历，并预留 30–60 分钟缓冲
+- [ ] 提前测试飞书会议：摄像头 / 麦克风 / 共享屏幕 / 网络
+- [ ] 提前 10 分钟打开会议链接，确认可正常入会
+- [ ] 准备 1 分钟自我介绍 + 2–3 个 Agent 相关项目 / 经验案例（问题、方案、权衡、结果）
+- [ ] 复盘常见考点：LLM 应用架构、工具调用、RAG、评测与监控、提示工程、可靠性与安全
+- [ ] 准备 3 个反问问题（团队方向、Agent 评测体系、线上可靠性、迭代节奏等）
+
+
