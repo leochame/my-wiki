@@ -41,4 +41,59 @@
 
 （读完后可以写下：回答中哪个比喻或解释最打通了你的卡点。）
 
+---
+
+### 《The Bitter Lesson / 苦涩教训》（Rich Sutton）
+
+Sutton 的经典短文，核心观点是：长期来看，能充分利用计算与数据的通用方法往往胜过依赖人类先验的手工设计；对做 Agent / RAG / 训练路线的取舍很有启发。
+
+- 链接：`http://www.incompleteideas.net/IncIdeas/BitterLesson.html`
+- 状态：Unread
+- 优先级：High
+- 来源：个人博客（Rich Sutton）
+
+---
+
+### Chain-of-thought prompting elicits reasoning in large language models
+
+CoT 的代表性论文之一：展示在合适的提示与示例下，LLM 能显著提升多步推理能力，是理解 “显式推理轨迹” 的重要起点。
+
+- 链接：`https://arxiv.org/abs/2201.11903`
+- 状态：Unread
+- 优先级：High
+- 来源：arXiv
+
+---
+
+### Large language models are zero-shot reasoners
+
+“Let’s think step by step” 等 zero-shot reasoning 工作的代表论文之一，展示零样本条件下触发推理能力的提示方法与适用边界。
+
+- 链接：`https://arxiv.org/abs/2205.11916`
+- 状态：Unread
+- 优先级：High
+- 来源：arXiv
+
+---
+
+### Self-Consistency Improves Chain of Thought Reasoning in Language Models
+
+Self-consistency：对同一问题采样多条推理链并投票/聚合，从而提升正确率；是 CoT 时代很实用的推理增强基线方法。
+
+- 链接：`https://arxiv.org/abs/2203.11171`
+- 状态：Unread
+- 优先级：High
+- 来源：arXiv
+
+---
+
+### Markovian thinker：算力成本下降、马尔科夫链（待补全）
+
+你记录的一个概念/材料入口（可能在讨论“算力成本下降”背景下的推理/搜索/马尔科夫过程直觉），先占位，后续补全原文链接与要点。
+
+- 链接：`TBD`
+- 状态：Unread
+- 优先级：Medium
+- 来源：待补全
+
 

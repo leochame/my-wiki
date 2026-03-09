@@ -41,4 +41,26 @@
 
 （后续可以在这里补充对 eBPF 生态和实际应用场景的笔记。）
 
+---
+
+### Google Pro Tip：Use Back-of-the-Envelope Calculations to Choose the Best Design（待补全链接）
+
+工程方法论：用数量级估算（back-of-the-envelope）快速比较方案与瓶颈，帮助在设计早期就做出更靠谱的取舍。
+
+- 链接：`TBD`
+- 状态：Unread
+- 优先级：High
+- 来源：Google（待补全）
+
+---
+
+### Java 中的反射 Reflection in Java（B 站视频）
+
+Java 反射机制的学习入口，适合做一次系统复习（概念、使用方式、性能与安全等）。
+
+- 链接：`https://www.bilibili.com/video/BV1K4421w7zP?buvid=XUFF2ECFE2B6A7A27F986B327AA2A85146D8B&from_spmid=united.player-video-detail.relatedvideo.0&is_story_h5=false&mid=qvGersijU3VkhZ4tS8ZJUn8FTQ%2FSZMtL1rElX6M3iMo%3D&plat_id=116&share_from=ugc&share_medium=android&share_plat=android&share_session_id=b14b4027-26bb-4cdf-9878-bb45aa864acc&share_source=WEIXIN&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1748071722&unique_k=M6j5o5v&up_id=19260126&share_source=weixin`
+- 状态：Unread
+- 优先级：Low
+- 来源：哔哩哔哩
+
 

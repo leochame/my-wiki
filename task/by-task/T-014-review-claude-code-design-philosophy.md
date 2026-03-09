@@ -1,9 +1,9 @@
 ---
 id: T-014
 title: 查看 Claude Code 的设计哲学
-status: todo            # todo | in-progress | waiting | done | cancelled
+status:
 due: 2026-03-04
-priority: medium        # low | medium | high | urgent
+priority: medium
 ---
 
 ## Description
