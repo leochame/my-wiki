@@ -1,7 +1,7 @@
 ---
 id: T-011
 title: 参加字节跳动视频面试（2026-03-09 11:00，北京时间）
-status: todo            # todo | in-progress | waiting | done | cancelled
+status: done            # todo | in-progress | waiting | done | cancelled
 due: 2026-03-09
 priority: high          # low | medium | high | urgent
 ---

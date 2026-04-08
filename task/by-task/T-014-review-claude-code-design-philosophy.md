@@ -1,7 +1,7 @@
 ---
 id: T-014
 title: 查看 Claude Code 的设计哲学
-status:
+status: done
 due: 2026-03-04
 priority: medium
 ---

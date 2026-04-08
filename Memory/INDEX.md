@@ -1,10 +1,14 @@
-## Memory
+# Memory Index
 
-用于记录一些**琐碎但不想忘记的记忆**，不要求结构严谨，只要自己以后能看懂即可。
+This area stores useful but less-structured material that should be kept without forcing it into a heavy taxonomy.
 
-- **使用建议**
-  - 每条记忆尽量简短，可以只是一两句话。
-  - 不需要按时间强行排序，想到什么就写什么。
-  - 当某一类记忆变多时，可以单独拆成一个文件。
+## Subfolders
 
+- `tool-and-resource-notes/` for tool references, portals, and saved resources
+- `project-research/` for long-tail project background and exploratory notes
+- `personal-snippets/` for fragments, small records, and irregular notes
 
+## Placement Rules
+
+- If something is not a task, not an article, and not a reading queue item, `memory/` is often the right home.
+- If a note becomes structured and purpose-driven later, it can be promoted into another top-level section.

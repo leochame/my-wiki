@@ -1,7 +1,7 @@
 ---
 id: T-009
 title: 能够说出任意软件的任意操作的全链路过程(典型的例子是浏览器访问一个网页的全过程)(这是一个不可能全文背诵的八股，从而也就不是八股)
-status: todo
+status: done
 due: 2026-02-28
 priority: medium
 ---
@@ -16,4 +16,5 @@ priority: medium
 - [ ] 理解 DNS 解析、TCP 连接、HTTP 请求、响应处理等各个环节
 - [ ] 扩展到其他软件操作的全链路分析
 - [ ] 建立系统性的理解框架，而非死记硬背
+- [ ] 加上 prefill 和 decode
 
