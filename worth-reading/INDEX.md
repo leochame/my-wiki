@@ -4,7 +4,7 @@ This area tracks articles, papers, and resources that are worth reading later.
 
 ## Subfolders
 
-- `by-topic/` for reading queues grouped by topic
+- [[worth-reading/by-topic/INDEX|Reading topics]] for reading queues grouped by topic
 - `reading-notes/` for notes created after reading
 - `finished/` for curated finished-reading summaries if needed later
 

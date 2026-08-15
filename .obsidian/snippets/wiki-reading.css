@@ -1,0 +1,259 @@
+/* A quiet, content-first reading layer for this vault. */
+body {
+  --font-interface: Inter, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-text: "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", system-ui, sans-serif;
+  --font-monospace: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --file-line-width: 780px;
+  --line-height-normal: 1.75;
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+  --accent-h: 174;
+  --accent-s: 68%;
+  --accent-l: 30%;
+  letter-spacing: 0;
+}
+
+.theme-light {
+  --background-primary: #fcfcfb;
+  --background-secondary: #f4f6f5;
+  --background-secondary-alt: #eaeeec;
+  --text-normal: #202624;
+  --text-muted: #66706c;
+  --text-faint: #68716d;
+  --divider-color: #dce2df;
+  --code-background: #f1f4f2;
+}
+
+.theme-dark {
+  --background-primary: #191d1c;
+  --background-secondary: #222725;
+  --background-secondary-alt: #2a302e;
+  --text-normal: #e4e8e6;
+  --text-muted: #abb5b1;
+  --text-faint: #7e8a85;
+  --divider-color: #343c39;
+  --code-background: #242a28;
+  --accent-l: 55%;
+}
+
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-content {
+  font-size: 1rem;
+  line-height: var(--line-height-normal);
+}
+
+.markdown-rendered p,
+.markdown-rendered ul,
+.markdown-rendered ol {
+  margin-block: 0.75em;
+}
+
+.inline-title,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.HyperMD-header {
+  font-family: var(--font-interface);
+  letter-spacing: 0;
+}
+
+.inline-title,
+.markdown-rendered h1,
+.HyperMD-header-1 {
+  font-size: 2rem;
+  line-height: 1.25;
+  font-weight: 720;
+}
+
+.markdown-rendered h1 {
+  margin-block: 0.5em 1em;
+}
+
+.markdown-rendered h2,
+.HyperMD-header-2 {
+  font-size: 1.45rem;
+  line-height: 1.35;
+  font-weight: 680;
+}
+
+.markdown-rendered h2 {
+  margin-block: 2em 0.75em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.markdown-rendered h3,
+.HyperMD-header-3 {
+  font-size: 1.18rem;
+  line-height: 1.45;
+  font-weight: 660;
+}
+
+.markdown-rendered h3 {
+  margin-block: 1.5em 0.5em;
+}
+
+.markdown-rendered h4,
+.HyperMD-header-4 {
+  font-size: 1rem;
+  font-weight: 680;
+}
+
+.markdown-rendered a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.markdown-rendered a:hover {
+  text-decoration: underline;
+}
+
+.markdown-rendered strong {
+  color: var(--text-normal);
+}
+
+.markdown-rendered li {
+  margin-block: 0.2em;
+  padding-inline-start: 0.15em;
+}
+
+.markdown-rendered blockquote {
+  margin-inline: 0;
+  padding: 0.2em 1em;
+  border-inline-start: 3px solid var(--interactive-accent);
+  color: var(--text-muted);
+  background: var(--background-secondary);
+}
+
+.callout {
+  border: 1px solid rgba(var(--callout-color), 0.28);
+  border-radius: var(--radius-m);
+  box-shadow: none;
+}
+
+.markdown-rendered code,
+.cm-s-obsidian span.cm-inline-code {
+  padding: 0.12em 0.35em;
+  border: 1px solid var(--divider-color);
+  border-radius: var(--radius-s);
+  color: var(--text-normal);
+  font-size: 0.88em;
+}
+
+.markdown-rendered pre {
+  padding: 1em 1.1em;
+  border: 1px solid var(--divider-color);
+  border-radius: var(--radius-m);
+  box-shadow: none;
+}
+
+.markdown-rendered pre code {
+  padding: 0;
+  border: 0;
+  font-size: 0.9em;
+  line-height: 1.65;
+}
+
+.markdown-rendered table {
+  width: 100%;
+  margin-block: 1.25em;
+  border-collapse: collapse;
+  font-family: var(--font-interface);
+  font-size: 0.92rem;
+}
+
+.markdown-rendered th {
+  background: var(--background-secondary);
+  font-weight: 650;
+  text-align: start;
+}
+
+.markdown-rendered th,
+.markdown-rendered td {
+  padding: 0.65em 0.75em;
+  border-color: var(--divider-color);
+  vertical-align: top;
+}
+
+.markdown-rendered img {
+  display: block;
+  max-height: 75vh;
+  margin: 1.5em auto;
+  border: 1px solid var(--divider-color);
+  border-radius: var(--radius-m);
+}
+
+.markdown-rendered hr {
+  margin-block: 2.5em;
+  border-color: var(--divider-color);
+}
+
+.nav-file-title,
+.nav-folder-title,
+.tree-item-self {
+  min-height: 28px;
+  border-radius: var(--radius-s);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.nav-folder-title {
+  font-weight: 600;
+}
+
+.workspace-tab-header-container,
+.view-header {
+  border-color: var(--divider-color);
+}
+
+.status-bar {
+  border-top: 1px solid var(--divider-color);
+  box-shadow: none;
+}
+
+.wiki-home .inline-title {
+  display: none;
+}
+
+.wiki-home.markdown-rendered h1 {
+  margin-bottom: 0.6em;
+}
+
+.wiki-home .callout[data-callout="summary"] {
+  margin-block: 0 2em;
+  --callout-color: var(--interactive-accent-rgb);
+}
+
+@media (max-width: 720px) {
+  body {
+    --file-line-width: 100%;
+  }
+
+  .markdown-rendered,
+  .markdown-source-view.mod-cm6 .cm-content {
+    font-size: 0.98rem;
+  }
+
+  .inline-title,
+  .markdown-rendered h1,
+  .HyperMD-header-1 {
+    font-size: 1.7rem;
+  }
+
+  .markdown-rendered h2,
+  .HyperMD-header-2 {
+    font-size: 1.3rem;
+  }
+
+  .markdown-rendered table {
+    min-width: 560px;
+  }
+
+  .markdown-rendered .table-wrapper,
+  .markdown-rendered .el-table {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

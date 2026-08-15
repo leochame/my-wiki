@@ -4,6 +4,7 @@ AI writing is split by the kind of article being written.
 
 ## Subfolders
 
+- `ai-infra/` for GPU programming, kernel optimization, LLM training and inference infrastructure
 - `engineering-practice/` for hands-on implementation, workflows, evals, and agent-building articles
 - `theory-and-foundations/` for conceptual explanations and fundamentals
 - `frontier-papers/` for paper notes, reviews, and article-style interpretations of recent research

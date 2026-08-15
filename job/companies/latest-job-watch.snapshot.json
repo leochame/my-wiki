@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-04-09T08:54:38",
+  "companies": {
+    "Amazon": [
+      "2dc50da4-96d8-4819-9c7d-49a077b83e80",
+      "199b0fbb-2b6e-4192-b067-c3d14222f51e",
+      "adb1d596-2170-4461-bae5-2cfbe924e9ac",
+      "78ea29c8-068b-464b-82f3-d880a0a93c79",
+      "472f59df-4ab3-4ffc-b7eb-fff81e58c899"
+    ],
+    "Apple": [
+      "200656063-3956"
+    ],
+    "Microsoft": []
+  }
+}

@@ -11,6 +11,11 @@ This area is for blockchain-related technical writing that is meant to grow into
 - scaling, rollups, and modular architecture
 - token models and onchain economics
 
+## Current Articles
+
+- `BTC.md`
+- `The Protocol + Execution Layer.md`
+
 ## Placement Rules
 
 - Put article drafts directly in this folder unless a subtopic becomes large enough to deserve its own subfolder.

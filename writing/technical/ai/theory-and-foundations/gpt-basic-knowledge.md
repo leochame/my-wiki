@@ -15,6 +15,7 @@
 大模型（LLM）推理主要分为 **Prefill（预填充）** 和 **Decoding（解码）** 两个阶段。
 
 - Prefill 阶段（计算密集型）：处理用户输入的 Prompt，一次性计算所有输入 Token 的计算并生成初始的 KV Cache。属于**计算密集型**。由于输入是并行的，可以充分利用 GPU 的算力，吞吐量高。
+
 - Decoding 阶段（访存密集型）：逐个生成输出 Token。每生成一个新 Token，都需要读取之前的 KV Cache。属于**访存密集型**。每次只处理一个 Token，GPU 算力利用率低，瓶颈在于从显存读取 KV Cache 的带宽速度（Memory Bound）。
 
 ##### 2. 推理 OOM 的原因及排查
@@ -39,7 +40,9 @@
 传统的 KV Cache 是连续存储的，为了应对变长输出，必须预分配最大长度的空间，导致严重的**显存碎片**（约 60%-80% 的浪费）。
 
 借鉴操作系统内核的虚拟内存管理，将 KV Cache 划分为固定大小的 **Blocks（块）**。
+
 物理上非连续存储，这些块可以分布在显存的任何地方；逻辑上，通过一个 **Block Table** 进行索引，将其映射为连续的序列。
+
 动态按需分配，只有在产生新 Token 时才分配新的块，彻底解决了预留空间导致的浪费。
 Copy-on-Write：支持多请求共享 Prompt（如并行采样），极大提升了高并发下的吞吐。
 
@@ -70,9 +73,33 @@ Copy-on-Write：支持多请求共享 Prompt（如并行采样），极大提升
 4. 输出投影 (Output Projection)，最后将连接后的向量 (b,s,h) 通过 WO​ 矩阵 (h,h) 进行映射。
 	- 计算量：$2×(b⋅s)×h×h=2bsh^2$
 
-# GPT 模型的处理过程
+
+### PD 分离
+
+Prefill 和 Decode 阶段对硬件资源的需求存在本质差异。
+
+PD 分离后，可以分别优化这两个节点。
+
+1. **Decode 侧优化：** 引入 **CUDA Graphs**。CUDA Graph 可以减少 CPU 的开销，GPU 执行的任务都是 CPU 派发过去的。由于 Decode 阶段每次仅处理一个 Token，GPU 会处理的很快，会等CPU 把任务发过来。CUDA Graphs 通过“caputure”工作流并“replay”计算图，最小化了 CPU-GPU 的通信频率，显著压低了 TPOT。
+
+2. **Chunked Prefill：** 为防止超长 Prompt 的 Prefill 任务长时间霸占 GPU 导致 Decode 节点“断流”，将长 Prompt 切片处理，通过抢占式调度平衡 TTFT 与系统整体响应。
+
+PD 分离后，需要传输，而传输主要依赖于 KV Cache，量化、分页、去重
+
+量化：。。。
+分页：
+	Flash Attention 主要是减少 SRAM 和 HBM 之间的内存访问，Page Attention 主要是减少存储时候的 KV 碎片。
+	vLLM 会只会传输 PageTable 和 活跃的 block，不活跃的 page 可以去延迟拉距。
+prefix sharding： 多次请求的前缀相同，kv 可以只传一次
+compression：
+
+传输速度提升：IB，ROCEV2
+
+streaming pipeline
 
 
+**并行化**
 
-# Function Call
-Function Calling没有引入任何新推理机制，完全基于next token prediction，模型只是学会在特定场景下将输出切换为JSON格式。这是理解整个机制的核心！ 二、双阶段训练体系 1. 监督微调(SFT)阶段： - 通过完整对话链训练（系统提示→用户查询→工具调用→API响应→自然语言回复） - 模型掌握三要素： • 何时切换输出模式（概率性边界，非硬编码） • 如何生成标准JSON格式（通过海量样本内化） • 如何处理API返回结果（融入自然语言回复） 2. 强化学习(RL)阶段： - 评估四项关键指标： • 工具选择准确性 • 参数填充精确度 • 应调必调的及时性 • 不该调时的克制力 - 通过奖励机制优化，使调用质量显著提升 - 厂商能力差异主要源于这两阶段的数据质量与优化策略 三、运行时工作机制 1. Token级动态决策： - 词表含特殊标记<to call>（训练时扩展的新to...
+- **张量并行（Tensor Parallelism, TP）：** 将矩阵拆分到多个 GPU 上协同计算，每层内需进行两次全规约（All-Reduce）通信。在 NVLink 环境下，这种短消息通信效率较高。
+- **专家并行（Expert Parallelism, EP）：** 针对混合专家模型（MoE，如 DeepSeek）。将不同的专家分布在不同 GPU 上。需注意“热门专家”导致的负载不均衡，通常通过训练时的平衡项或推理时的动态路由解决，推理阶段需要部署下动态路由，或者是冗余专家。
+- **上下文并行（Context Parallelism, CP）：** 针对超长上下文（如 128K 甚至更多）。结合 **Ring Attention** 和 **Flash Attention**，将长序列分布到多个 GPU 上并行处理，降低 Prefill 阶段的延迟。

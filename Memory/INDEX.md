@@ -1,14 +1,15 @@
 # Memory Index
 
-This area stores useful but less-structured material that should be kept without forcing it into a heavy taxonomy.
+​
+
+零碎记忆点 — 常用工具资源、好书、个人片段记录。不属于任务、不属于文章、不属于待读清单的零散内容放这里。
 
 ## Subfolders
 
-- `tool-and-resource-notes/` for tool references, portals, and saved resources
-- `project-research/` for long-tail project background and exploratory notes
-- `personal-snippets/` for fragments, small records, and irregular notes
+* [[memory/01-工具与资源/tool-and-resource-notes/common-tools-and-resource-hub|工具与资源]] — 常用工具、门户网站、保存的资源
+* [[memory/personal-snippets/technical-english-glossary|个人片段]] — 技术英语词汇表等个人记录
 
 ## Placement Rules
 
-- If something is not a task, not an article, and not a reading queue item, `memory/` is often the right home.
-- If a note becomes structured and purpose-driven later, it can be promoted into another top-level section.
+* 不是 task、不是 article、不是 reading queue → `memory/`
+* 如果某条记忆后来变得结构化、有明确目的，可以升级到其他顶层区域

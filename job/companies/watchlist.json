@@ -1,0 +1,19 @@
+{
+  "targets": [
+    {
+      "company": "Amazon",
+      "adapter": "amazon",
+      "keyword": "software"
+    },
+    {
+      "company": "Apple",
+      "adapter": "apple",
+      "keyword": "software"
+    },
+    {
+      "company": "Microsoft",
+      "adapter": "microsoft",
+      "keyword": "software"
+    }
+  ]
+}

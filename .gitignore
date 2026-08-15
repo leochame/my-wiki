@@ -1,0 +1,3 @@
+task/script/gmail_accounts.json
+task/script/gmail_credentials*.json
+task/script/gmail_token*.json

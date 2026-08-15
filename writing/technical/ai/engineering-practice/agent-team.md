@@ -4,7 +4,7 @@
 
 agent team = 1 个 leader + 0 到多个 teammates + 一套共享状态和消息协议
 
-对 team 的定义不是“临时多开几个 agent”，而是“多个成员共享任务、可以互相通信、可以长期协作”。
+对 team 的定义不是“临时多开几个 agent”，而是“多个成员共享任务、可以互相通信、可以长期协作”。围绕共享 task list 和自动消息投递来协作.
 
 
 ## 2. Agnet Team 怎么工作的
@@ -60,6 +60,17 @@ mailbox 优先处理也在同一个文件的 waitForNextPromptOrShutdown(...) 
 - 还有一层是当前会话里的 AppState.teamContext。这层不是长期存档，它更像当前进程手边正在用的 team 视图。当前会话要不要轮询 inbox、按谁的名字收消息、自己是不是 leader，很多判断都靠它。
 	- leader 更常拿它做整体 team 管理，比如 isTeamLead(teamContext)、维护 teammates、处理 inbox 控制流
 	- 普通 teammate 也会有这份本地投影，但更多是为了让当前会话知道“我属于哪个 team、我是谁、lead 是谁”，这样 swarm 功能才能接起来
+
+
+#### 2.2.2 怎么解决并发冲突的
+
+执行上下文隔离，这样并发跑时不会因为全局变量互相污染（concurrent teammate execution without global state conflicts）。
+
+同时实行任务系统的并发，防止两个 agent 抢同一个 Task。
+
+项目本身支持 same-dir 和 worktree 两种模式；same-dir 是共用当前目录，worktree 是每个 session 一个独立 git worktree。：让多个 agent 先在不同工作副本里改，再由 leader 做 Git 级合并。
+
+
 
 
 ### 2.3 Agent Team 关闭

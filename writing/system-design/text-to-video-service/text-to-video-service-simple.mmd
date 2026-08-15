@@ -1,0 +1,19 @@
+---
+config:
+  theme: base
+---
+block-beta
+  columns 5
+  client["Client"] gateway["LB / API Gateway"] backend["Backend Server"] db["DB"] quota["Rate Limiter / Check Quota"]
+  space space queue["Job Queue"] worker["GPU Worker"] space
+  space result["Client downloads result"] cdn["CDN"] storage["Object Storage"] space
+
+  client --> gateway
+  gateway --> backend
+  backend --> db
+  gateway --> quota
+  backend --> queue
+  queue --> worker
+  worker --> storage
+  storage --> cdn
+  cdn --> result

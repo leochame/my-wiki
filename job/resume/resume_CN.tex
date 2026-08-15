@@ -1,0 +1,158 @@
+\documentclass[a4paper,13pt]{article}
+
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+\geometry{left=0.78in,top=0.44in,right=0.78in,bottom=0.5in}
+
+\newcommand{\namefontsize}{\fontsize{22}{26}\selectfont}
+\newcommand{\sectiontitlefontsize}{\fontsize{16}{19}\selectfont}
+\newcommand{\entrytitlefontsize}{\fontsize{14}{19}\selectfont}
+\newcommand{\largeentrytitlefontsize}{\fontsize{15}{19}\selectfont}
+\newcommand{\smallentrytitlefontsize}{\fontsize{12}{16}\selectfont}
+\newcommand{\entrydetailsfontsize}{\fontsize{11.5}{14}\selectfont}
+\newcommand{\contactfontsize}{\fontsize{11}{14}\selectfont}
+\newcommand{\linkfontsize}{\fontsize{11.8}{14.6}\selectfont}
+\newcommand{\descfontsize}{\fontsize{11}{14.6}\selectfont}
+\newcommand{\itemfontsize}{\fontsize{11}{14.6}\selectfont}
+
+\definecolor{applegray}{RGB}{99,99,102}
+\definecolor{textgray}{RGB}{85,85,85}
+\definecolor{sectiongray}{RGB}{110,110,115}
+\definecolor{appledark}{RGB}{0,0,0}
+\definecolor{appleblue}{RGB}{0,0,139}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\titleformat{\section}
+    {\sectiontitlefontsize\bfseries\color{sectiongray}}
+    {}{0em}
+    {}[\vspace{-14pt}{\color{applegray}\rule{\textwidth}{0.8pt}}]
+\titlespacing{\section}{0pt}{8pt}{3pt}
+\newcommand{\sectionbodyspace}{\vspace{-3pt}}
+\newcommand{\sectiongap}{\vspace{-7pt}}
+\newcommand{\entrygap}{\vspace{1pt}}
+\newcommand{\projectgap}{\vspace{3pt}}
+
+\newcommand{\resumeSubheading}[4]{
+    \vspace{0pt}
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+        \textbf{\entrytitlefontsize\color{appledark}#1} \textit{\entrydetailsfontsize\color{textgray} · #3#4} & {\entrydetailsfontsize\color{applegray}#2} \\
+    \end{tabular*}
+    \vspace{-2pt}
+}
+
+\newcommand{\resumeItemListStart}{
+    \begin{itemize}[
+        leftmargin=1.5em,
+        labelsep=0.5em,
+        label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
+        itemsep=3pt,
+        parsep=0pt,
+        topsep=2pt
+    ]
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{1pt}}
+\newcommand{\skillItemListStart}{
+    \begin{itemize}[
+        leftmargin=1.5em,
+        labelsep=0.5em,
+        label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
+        itemsep=1pt,
+        parsep=0pt,
+        topsep=1pt
+    ]
+}
+
+\newcommand{\headerLinkItem}[2]{
+    \textcolor{textgray}{\linkfontsize#1}~\textcolor{appleblue}{\linkfontsize#2}
+}
+
+\newcommand{\resumeItem}[1]{\item\itemfontsize{#1}}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[t]{0.64\textwidth}
+\vspace{0pt}
+{\namefontsize\bfseries\color{appledark}刘龙昌}\par\vspace{4pt}
+{\entrytitlefontsize\bfseries\color{textgray}软件开发工程师}\par\vspace{5pt}
+{\contactfontsize\textcolor{textgray}{\faPhone}~\textcolor{textgray}{18357571400}\quad \textcolor{textgray}{\faEnvelope}~\textcolor{textgray}{liulch.cn@gmail.com}}\par
+\end{minipage}\hfill
+\begin{minipage}[t]{0.30\textwidth}
+\vspace{0pt}
+\raggedright
+\vspace{6pt}
+{\headerLinkItem{\faGithub}{\href{https://github.com/leochame}{github.com/leochame}}}\par\vspace{3pt}
+{\headerLinkItem{\faLinkedin}{\href{https://www.linkedin.com/in/longchang-liu-770211387/}{LinkedIn / Longchang Liu}}}\par\vspace{3pt}
+{\headerLinkItem{\faGlobe}{\href{https://leochame.github.io}{leochame.github.io}}}\par
+\end{minipage}
+\par\vspace{2pt}
+
+\section{教育经历}
+\sectionbodyspace
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{\entrytitlefontsize\color{appledark}杭州电子科技大学} & {\entrydetailsfontsize\color{applegray}2022年08月 - 2026年06月} \\
+\end{tabular*}
+{\entrydetailsfontsize\color{textgray}计算机科学与技术 · 本科}\par
+\sectiongap
+
+\section{工作经历}
+\sectionbodyspace
+\resumeSubheading
+{阿里巴巴}{2025年10月 - 2026年01月}{高德地图}{ · 实习 / Intern}
+\entrygap
+\resumeSubheading
+{腾讯}{2025年04月 - 2025年09月}{广告营销服务线}{ · 实习 / Intern}
+\sectiongap
+
+\section{开源经历}
+\sectionbodyspace
+{\entrydetailsfontsize\color{textgray}\textbf{\color{appledark}LangChain4j}（12k+ Star）贡献者，Java 生态 AI 开发框架，参与社区问题修复与能力完善。}\par
+\sectiongap
+
+\section{项目经验}
+\sectionbodyspace
+
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{\smallentrytitlefontsize\color{appledark}阿里巴巴 - 高德地图 \entrydetailsfontsize\color{textgray} · } & {\entrydetailsfontsize\color{applegray}2025年10月 - 2026年01月} \\
+\end{tabular*}
+{\descfontsize\color{textgray} 负责“订单分析助手”与“AI 打车”的大模型工程化落地，提升复杂任务处理能力并完成统一 AI 能力接入。}\vspace{2pt}
+\resumeItemListStart
+\resumeItem{在订单分析助手项目中，设计并落地 Deep Research 功能，提升复杂任务拆解效果与长上下文场景下的处理表现。}
+\resumeItem{参与 AI 打车服务冷启动，建设统一、稳定的 AI 调用接口，保障核心链路稳定接入。}
+\resumeItemListEnd
+\projectgap
+
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{\smallentrytitlefontsize\color{appledark}腾讯 - 广告 ChatBI 系统 \entrydetailsfontsize\color{textgray} · } & {\entrydetailsfontsize\color{applegray}2025年04月 - 2025年09月} \\
+\end{tabular*}
+{\descfontsize\color{textgray} 参与腾讯广告 ChatBI 的 NL2Chart 核心链路建设，支撑自然语言请求到图表生成的转化。}\vspace{2pt}
+\resumeItemListStart
+    \resumeItem{为了保证源头语料库的质量，设计并实现语料自动化评审系统，推动核心链路召回正确率从 50\% 提升至 80\%。同时引入状态机，增强服务稳定性，并提供宕机恢复能力。}
+\resumeItemListEnd
+\sectiongap
+
+\section{专业技能}
+\vspace{0pt}
+\skillItemListStart
+    \resumeItem{\textbf{AI}：理解 Transformer 架构，了解 KV Cache、渐进式披露等基本原理与设计思想，熟悉 Agent 上下文管理以及常见的 Multi-Agent 协作范式，并辅以开源项目进行实践，具备实际落地经验}
+    \resumeItem{\textbf{实践能力}：掌握 SQL 语句优化，MySQL 性能调优，线上故障排查、JVM 性能监控的基本方法}
+    \resumeItem{\textbf{计算机基础}：具备扎实的操作系统与网络基础，深入理解内存管理（页表）、System Call、线程调度机制，以及 TCP/UDP 协议、拥塞控制等核心网络原理。}
+    \resumeItem{\textbf{Java}：深入浅出 JVM 底层原理，熟悉类加载机制、内存模型以及主流垃圾收集器（G1/ZGC）}
+    \resumeItem{\textbf{并发编程}：深入理解 Synchronized、Volatile、AQS 与线程池的实现原理}
+\resumeItemListEnd
+
+\end{document}

@@ -4,14 +4,12 @@ Technical writing is grouped by durable subject area rather than by "AI vs non-A
 
 ## Topics
 
-- `ai/` for AI engineering, AI theory, and frontier paper writing
-- `blockchain/` for blockchain protocols, cryptoeconomics, and Web3 infrastructure topics
-- `java/` for JVM, Java, and Java-adjacent engineering topics
-- `operating-systems/` for process, kernel, memory, scheduling, and IO topics
-- `networking/` for HTTP, TCP, UDP, and communication protocols
-- `system-design/` for architecture and design-oriented articles
-- `distributed-systems-and-architecture/` for backend patterns and large-system mechanics
-- `general-software-engineering/` for topics that cut across categories
+- [[writing/technical/ai/INDEX|AI]] — AI engineering, AI theory, and frontier paper writing
+- [[writing/technical/blockchain/INDEX|Blockchain]] — protocols, cryptoeconomics, and Web3 infrastructure
+- [[writing/technical/java/INDEX|Java]] — JVM, Java, and Java-adjacent engineering topics
+- [[writing/technical/operating-systems/INDEX|Operating systems]] — OS internals, I/O, CPU, GPU, and systems programming
+- [[writing/system-design/INDEX|System design]] — architecture and design-oriented articles
+- [[writing/technical/cpp/cpp-crash-course-for-trading-systems|C++]] — systems programming and performance-critical engineering
 
 ## Placement Rules
 

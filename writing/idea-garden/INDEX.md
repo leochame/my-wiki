@@ -12,3 +12,7 @@ Use this area for raw article ideas, outlines, fragments, and possible future to
 ## Placement Rule
 
 When an idea becomes a real draft, move it into the appropriate folder under `writing/`.
+
+## Ideas
+
+- [跨领域类比创新法](cross-domain-analogy-innovation.md) — 从无关领域汲取灵感的思考框架与实例

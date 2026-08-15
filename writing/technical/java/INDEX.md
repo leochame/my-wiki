@@ -4,4 +4,5 @@ This section is for Java, JVM, concurrency, collections, and Java-adjacent engin
 
 ## Articles
 
-- `thread-pool-executor-thread-safety.md` for a source-level walkthrough of how `ThreadPoolExecutor` achieves thread safety
+- `thread-pool-executor-thread-safety.md` — source-level walkthrough of how `ThreadPoolExecutor` achieves thread safety
+- `volatile 与 MESI.md` — volatile 关键字与 MESI 缓存一致性协议
