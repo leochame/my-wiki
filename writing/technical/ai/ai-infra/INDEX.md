@@ -8,6 +8,7 @@ This folder records the path from low-level GPU programming to LLM training and 
 - [[writing/technical/ai/ai-infra/gpu|GPU 执行与性能]]
 - [[writing/technical/ai/ai-infra/triton-kernel|Triton Kernel]]
 - [[writing/technical/ai/ai-infra/ai-infra-llm-interface|LLM 推理接口与系统设计]]
+- [[writing/technical/ai/ai-infra/ai-infra-glossary|AI Infra 术语]]
 
 ## Learning Principles
 
