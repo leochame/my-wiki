@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineering Archive | Longchang Liu</title>
+  <meta name="description" content="Longchang Liu's engineering archive: AI agents, backend systems, JVM internals, databases, and infrastructure.">
+  <meta name="theme-color" content="#151b23">
+  <link rel="icon" href="images/avatar.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="wrap nav-row" aria-label="Primary navigation">
+      <a class="brand" href="index.html">
+        <span>Longchang Liu</span>
+        <span class="brand-mark" aria-hidden="true"></span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="tech.html" aria-current="page">Archive</a>
+        <a class="nav-link resume-link" href="resources/resume/Software%20Development%20Engineer%20-%20LiuLongchang.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="nav-icon" href="https://github.com/leochame" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>
+        </a>
+        <a class="nav-icon" href="https://x.com/LongchangL70053" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" title="X / Twitter">
+          <i class="bi bi-twitter-x" aria-hidden="true"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="wrap">
+        <p class="eyebrow">Notes · Projects · System records</p>
+        <h1 id="page-title">Engineering archive.</h1>
+        <p class="page-description">A searchable index of work across AI agents, JVM internals, databases, operating systems, and infrastructure.</p>
+      </div>
+    </section>
+
+    <section class="archive-tools" aria-label="Archive controls">
+      <div class="wrap tool-row">
+        <label class="search-field" for="searchInput">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <span class="sr-only">Search the archive</span>
+          <input id="searchInput" type="search" placeholder="Search titles, summaries, and topics" autocomplete="off">
+        </label>
+        <div class="filter-list" id="category-filters" role="group" aria-label="Filter by topic"></div>
+      </div>
+    </section>
+
+    <section class="archive-main">
+      <div class="wrap">
+        <div class="archive-summary" aria-live="polite">
+          <span id="result-label">0 records</span>
+          <span><span id="article-count">0</span> visible</span>
+        </div>
+        <div class="feed" id="feed-container"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="seriesOverlay" role="dialog" aria-modal="true" aria-labelledby="seriesTitle" hidden>
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <h2 id="seriesTitle">Series</h2>
+        <button class="icon-button" id="closeSeries" type="button" aria-label="Close series"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+      </div>
+      <div class="step-list" id="seriesList"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="projectOverlay" role="dialog" aria-modal="true" aria-labelledby="projectTitle" hidden>
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <h2 id="projectTitle">Project</h2>
+        <button class="icon-button" id="closeProject" type="button" aria-label="Close project"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+      </div>
+      <div class="dialog-meta" id="projectMeta"></div>
+      <p class="entry-summary" id="projectSummary"></p>
+      <div class="dialog-video" id="projectVideo" hidden></div>
+      <div class="dialog-links" id="projectLinks"></div>
+      <section id="projectFeatures" hidden>
+        <h3 class="dialog-section-title">Core features</h3>
+        <ul class="feature-list" id="featuresList"></ul>
+      </section>
+      <section id="techStack" hidden>
+        <h3 class="dialog-section-title">Technology stack</h3>
+        <div class="dialog-tech" id="techTags"></div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <span>© 2026 Longchang Liu</span>
+      <div class="footer-links">
+        <a href="https://github.com/leochame" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/LongchangL70053" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/articles.js"></script>
+  <script src="js/archive.js"></script>
+</body>
+</html>

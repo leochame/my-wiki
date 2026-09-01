@@ -1,0 +1,121 @@
+/**
+ * ====================================================================
+ * Data Layer - System Archive (Refined Version)
+ * ====================================================================
+ */
+const articlesData = [
+    {
+        id: 302,
+        title: "Lavis - macOS System-level Multimodal AI Agent",
+        summary: "A macOS desktop AI agent that perceives your screen, controls mouse & keyboard, and supports voice interaction. Built with Spring Boot, React, and Electron. Features include visual perception, autonomous actions, reflection loop, system integration, and voice interaction.",
+        link: "https://github.com/leochame/lavis",
+        platform: "GitHub",
+        date: "2025-01-15",
+        mainCategory: "AI",
+        subCategory: "AI Agent",
+        isSeries: false,
+        hasVideo: true,
+        videoId: "yzBsI8MrM4Q",
+        videoUrl: "https://www.youtube.com/watch?v=yzBsI8MrM4Q",
+        poster: "images/lavis-project.jpg",
+        githubUrl: "https://github.com/leochame/lavis",
+        features: [
+            "Visual Perception: Real-time screenshot analysis with Retina support",
+            "Autonomous Actions: Mouse, keyboard, and system shortcut control",
+            "Reflection Loop: Closed loop for self-correction",
+            "Voice Interaction: Wake word, ASR, TTS",
+            "Context Engineering: Intelligent compression, reducing visual tokens by 95%+"
+        ],
+        techStack: ["Spring Boot", "React", "Electron", "Java", "TypeScript"]
+    },
+    {
+        id: 301,
+        title: "AI Paper Cuts",
+        summary: "This series systematically analyzes cutting-edge research papers in the field of Artificial Intelligence, translating their core contributions, methodologies, and potential impacts into concise and accessible summaries.",
+        link: "#",
+        platform: "Dev.to",
+        date: "2026-01-07",
+        mainCategory: "AI",
+        subCategory: "AI",
+        isSeries: true,
+        children: [
+            { title: "260107-mHC [Paper Cuts]", link: "https://dev.to/leochame/mhc-paper-quick-reading-4p1" },
+            { title: "251024-DeepSeek OCR [Paper Cuts - CN]", link: "https://mp.weixin.qq.com/s/DZiS26gMiqKxgLXarBLp5Q" }
+
+        ]
+    },
+    {
+        id: 300,
+        title: "MySQL Architecture & Performance Engineering",
+        summary: "A comprehensive deep dive into MySQL internals. Topics cover MVCC, Indexing strategies (B+Tree), Buffer Pool management, and Locking mechanisms.",
+        link: "#",
+        platform: "Yuque",
+        date: "2025-02-20",
+        mainCategory: "Database",
+        subCategory: "MySQL Series",
+        isSeries: true,
+        children: [
+            { title: "MySQL - Storage Engines & System Architecture", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lau566/yxqxpt0858ngqpe9" },
+            { title: "MySQL - Deep Dive into B+Tree Indexing", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lau566/ttq528fb1bza7o34" },
+            { title: "MySQL - Buffer Pool & Cache Optimization", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lau566/yxqxpt0858ngqpe9" },
+            { title: "MySQL - Understanding MVCC Mechanisms", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lau566/egmggw9ld3fmoiin" },
+            { title: "MySQL - Locking Strategies & Deadlock Prevention", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lau566/frd4zmhhvz6mzmqz" },
+            { title: "MySQL - Logging: Redo, Undo, and Binlog Internals", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lau566/xbdexw8q18ugtll8" },
+            { title: "MySQL - Query Execution & Optimizer Logic", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lau566/cwcgubokz1hblvw5" }
+        ]
+    },
+    {
+        id: 25,
+        title: "GC Deep Dive: Implementing Zero-STW Relocation",
+        summary: "A JVM internals series unpacking ZGC's concurrent relocation design, colored pointers, and the engineering tradeoffs behind near-zero stop-the-world pauses.",
+        link: "#",
+        platform: "WeChat",
+        date: "2025-07-30",
+        mainCategory: "Java",
+        subCategory: "JVM Internals",
+        isSeries: true,
+        children: [
+            { title: "GC Deep Dive (I): Implementing Zero-STW Relocation", link: "https://mp.weixin.qq.com/s/iOdbzOu9aKdR62LPtROEkg" },
+            { title: "GC Deep Dive (II): Implementing Zero-STW Relocation", link: "https://mp.weixin.qq.com/s/hHZseg7QYVk4iNeuvkbOhg" },
+
+        ]
+    },
+    {
+        id: 23,
+        title: "Prompt Caching: Architecting Low-Latency AI Agents",
+        summary: "Analysis of core mechanisms to reduce inference costs by 90% and boost speed by 85% in Agentic workflows.",
+        link: "https://mp.weixin.qq.com/s/xfidMN73XnurT0O-OrpWPg",
+        platform: "WeChat",
+        date: "2025-07-30",
+        mainCategory: "AI",
+        subCategory: "Agentic Systems",
+        isSeries: false
+    },
+    {
+        id: 100,
+        title: "The Three Musketeers: GFS Protocol Analysis",
+        summary: "Analyzing Master-Chunkserver interactions, lease-based consistency, and data replication for fault tolerance.",
+        link: "#",
+        platform: "Yuque",
+        date: "2025-05-05",
+        mainCategory: "Infrastructure",
+        subCategory: "Distributed Systems",
+        isSeries: true,
+        children: [
+            { title: "GFS (Part I) - Architecture Overview", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lagatg/gx2szi2mss9pkbps" },
+            { title: "GFS (Part II) - Write Pipeline & Control Flow", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lagatg/ggru1bz14yr7vzw6" },
+            { title: "GFS (Part III) - Consistency & Fault Tolerance", link: "https://www.yuque.com/yuqueyonghu6p3x1u/lagatg/cg6disr86tugih9p" }
+        ]
+    },
+    {
+        id: 14,
+        title: "OS Internals: The Mechanics of PageTables",
+        summary: "Exploration of address translation, hardware-level isolation, and dedicated process spaces in xv6.",
+        link: "https://juejin.cn/post/7477228933638373391",
+        platform: "Juejin",
+        date: "2025-03-03",
+        mainCategory: "Operation System",
+        subCategory: "MIT6.1810",
+        isSeries: false
+    }
+];
