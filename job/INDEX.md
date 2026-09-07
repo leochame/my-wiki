@@ -4,7 +4,9 @@
 
 ## Subfolders
 
-- [[job/resume/resume_CN.pdf|Resume]] — current resume and supporting material
+- [[job/resume/resume_EN.pdf|English resume]]
+- [[job/resume/resume_CN.pdf|中文简历]]
+- [[job/resume/resume_CN&&EN.pdf|中英双语简历]]
 - [[job/companies/latest-job-watch|Companies]] — company research and the latest job watch
 - [[job/notes/interview-preparation/INDEX|Interview preparation]] — answer material and topic notes
 
