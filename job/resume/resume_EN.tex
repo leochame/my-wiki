@@ -41,7 +41,7 @@
 \titlespacing{\section}{0pt}{8pt}{3pt}
 \newcommand{\sectionbodyspace}{\vspace{-3pt}}
 \newcommand{\sectiongap}{\vspace{-7pt}}
-\newcommand{\entrygap}{\vspace{1pt}}
+\newcommand{\entrygap}{\vspace{5pt}}
 \newcommand{\projectgap}{\vspace{3pt}}
 
 \newcommand{\resumeSubheading}[4]{
@@ -65,9 +65,9 @@
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{1pt}}
 \newcommand{\skillItemListStart}{
     \begin{itemize}[
-        leftmargin=1.5em,
-        labelsep=0.5em,
-        label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
+        leftmargin=0pt,
+        labelsep=0pt,
+        label={},
         itemsep=1pt,
         parsep=0pt,
         topsep=1pt
@@ -83,42 +83,51 @@
 \begin{document}
 
 \noindent
-\begin{minipage}[t]{0.64\textwidth}
+\begin{minipage}[t]{0.46\textwidth}
 \vspace{0pt}
-{\namefontsize\bfseries\color{appledark}Longchang Liu}\par\vspace{4pt}
-{\entrytitlefontsize\bfseries\color{textgray}Software Engineer}\par\vspace{5pt}
-{\contactfontsize\textcolor{textgray}{\faPhone}~\textcolor{textgray}{redacted}\quad \textcolor{textgray}{\faEnvelope}~\textcolor{textgray}{liulch.cn@gmail.com}}\par
+{\namefontsize\bfseries\color{appledark}Jun Wang}\par\vspace{6pt}
+{\entrytitlefontsize\bfseries\color{textgray}Software Engineer}\par\vspace{7pt}
+{\contactfontsize\textcolor{textgray}{\faMapMarker}~Los Angeles, CA}\par
 \end{minipage}\hfill
-\begin{minipage}[t]{0.30\textwidth}
+\begin{minipage}[t]{0.48\textwidth}
 \vspace{0pt}
-\raggedright
 \vspace{6pt}
-{\headerLinkItem{\faGithub}{\href{https://github.com/leochame}{github.com/leochame}}}\par\vspace{3pt}
-{\headerLinkItem{\faLinkedin}{\href{https://www.linkedin.com/in/longchang-liu-770211387/}{LinkedIn / Longchang Liu}}}\par\vspace{3pt}
-{\headerLinkItem{\faGlobe}{\href{https://leochame.github.io}{leochame.github.io}}}\par
+\makebox[\linewidth][r]{%
+\begin{tabular}{@{}r@{\hspace{0.35em}}l@{}}
+    \textcolor{textgray}{\linkfontsize\faGithub} &
+    \textcolor{appleblue}{\linkfontsize\href{https://github.com/a6learner}{github.com/a6learner}} \\[3pt]
+    \textcolor{textgray}{\linkfontsize\faLinkedin} &
+    \textcolor{appleblue}{\linkfontsize\href{https://www.linkedin.com/in/jun-wang-jony}{linkedin.com/in/jun-wang-jony}} \\[3pt]
+    \textcolor{textgray}{\contactfontsize\faPhone} &
+    \textcolor{textgray}{\contactfontsize +1 (213) 636-6289} \\[3pt]
+    \textcolor{textgray}{\contactfontsize\faEnvelope} &
+    \textcolor{textgray}{\contactfontsize jwang753@usc.edu}
+\end{tabular}}
 \end{minipage}
 \par\vspace{2pt}
 
 \section{Education}
 \sectionbodyspace
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{\entrytitlefontsize\color{appledark}University of Southern California} & {\entrydetailsfontsize\color{applegray}Aug 2026 - May 2028} \\
+\end{tabular*}
+{\entrydetailsfontsize\color{textgray}M.S. in Computer Science}\par
+\vspace{2pt}
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\entrytitlefontsize\color{appledark}Hangzhou Dianzi University} & {\entrydetailsfontsize\color{applegray}Aug 2022 - Jun 2026} \\
 \end{tabular*}
-{\entrydetailsfontsize\color{textgray}B.S. in Computer Science and Technology}\par
+{\entrydetailsfontsize\color{textgray}B.S. in Computer Science and Technology · National CS Rank: No. 24}\par
 \sectiongap
 
 \section{Experience}
 \sectionbodyspace
 \resumeSubheading
 {Alibaba}{Oct 2025 - Jan 2026}{Amap}{ · Intern}
+{\descfontsize\color{textgray}Among China's top 3 internet companies; No. 60 globally by market capitalization.}\par
 \entrygap
 \resumeSubheading
 {Tencent}{Apr 2025 - Sep 2025}{Ads Marketing Services}{ · Intern}
-\sectiongap
-
-\section{Open Source}
-\sectionbodyspace
-{\entrydetailsfontsize\color{textgray}\textbf{\color{appledark}LangChain4j} (12k+ stars) contributor, contributing community fixes and capability improvements for the Java AI ecosystem.}\par
+{\descfontsize\color{textgray}Among China's top 3 internet companies; No. 27 globally by market capitalization.}\par
 \sectiongap
 
 \section{Project Experience}
@@ -130,7 +139,6 @@
 {\descfontsize\color{textgray} Responsible for productionizing the Order Analysis Assistant and AI Ride-Hailing LLM projects, improving complex task handling and integrating shared AI capabilities.}\vspace{2pt}
 \resumeItemListStart
 \resumeItem{Designed and launched the Deep Research capability for the Order Analysis Assistant, improving complex task decomposition and performance in long-context scenarios.}
-\resumeItem{Participated in the cold start of AI Ride-Hailing by building unified and stable AI invocation interfaces to support reliable integration on the core path.}
 \resumeItemListEnd
 \projectgap
 
@@ -146,11 +154,11 @@
 \section{Technical Skills}
 \vspace{0pt}
 \skillItemListStart
-    \resumeItem{\textbf{AI}: Understanding of Transformer architecture, KV Cache, progressive disclosure, Agent context management, and common multi-agent collaboration patterns, with hands-on open-source practice.}
-    \resumeItem{\textbf{Engineering}: SQL optimization, MySQL tuning, production troubleshooting, and JVM performance monitoring.}
-    \resumeItem{\textbf{Computer Science}: Solid OS and networking fundamentals, including page tables, system calls, thread scheduling, TCP/UDP, and congestion control.}
-    \resumeItem{\textbf{Java}: Strong understanding of JVM internals, class loading, memory model, and mainstream garbage collectors such as G1 and ZGC.}
-    \resumeItem{\textbf{Concurrency}: Strong understanding of Synchronized, Volatile, AQS, and thread-pool implementation principles.}
+    \resumeItem{\textbf{Systems \& Programming}: Java, Golang, Python, Asynchronous Programming, Concurrency, Multithreading, Multiprocessing, Distributed Systems.}
+    \resumeItem{\textbf{Full Stack}: Web Frontend, React, TypeScript, HTML/CSS; Backend, Spring Boot, FastAPI.}
+    \resumeItem{\textbf{Databases \& Messaging}: SQL, MySQL, PostgreSQL, Redis; RabbitMQ, Kafka.}
+    \resumeItem{\textbf{Cloud \& DevOps}: AWS (Lambda, API Gateway, ECR, Amplify), Docker, Kubernetes, \mbox{CI/CD Pipelines}, Linux Sysadmin.}
+    \resumeItem{\textbf{ML / AI Agent}: Machine Learning, Retrieval-Augmented Generation (RAG), Harness, LangChain, Multi-Agent Systems, Context Compression, OpenAI API, PyTorch, NumPy, Hugging Face.}
 \resumeItemListEnd
 
 \end{document}
