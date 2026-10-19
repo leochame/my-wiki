@@ -2,3 +2,14 @@ task/
 task/script/gmail_accounts.json
 task/script/gmail_credentials*.json
 task/script/gmail_token*.json
+.claude/settings.local.json
+
+# Local development environments and generated artifacts
+**/.venv/
+**/.hw1-venv/
+**/.hw2-python/
+**/__pycache__/
+**/.hypothesis/
+**/*.py[cod]
+**/*.so
+**/*.egg-info/

@@ -1,0 +1,220 @@
+\subsection{L1: Autonomy over Improvement Execution}
+\label{sec:l1-improvement-execution}
+
+At L1, \AISystem{} executes a human-defined improvement procedure whose accepted
+results are retained and reused in later tasks or improvement rounds. Humans specify the objective, update procedure, and acceptance criteria, while AI carries out the prescribed improvement steps. Unlike B0, the loop changes persistent state within the specified AI system rather than only refining the current task output. For example, a coding agent may follow a human-defined procedure to revise code based on test feedback, save validated fixes as reusable rules, and automatically apply them to subsequent independent tasks. This pattern is already visible in production infrastructure. Meta's Capacity Efficiency system encodes engineers' debugging expertise into reusable repair skills and applies these skills through predefined procedures to diagnose performance regressions and perform remediation tasks. Meta reports that this workflow compresses hours of manual regression investigation into minutes, and the resulting pull requests undergo standard review and integration, creating persistent improvements in the production system~\cite{meta_capacity_efficiency_2026}.
+
+The characteristic loop at this level can be summarized as follows:
+
+\begin{center}
+\fcolorbox{black!25}{gray!4}{%
+\begin{minipage}{0.92\linewidth}
+\centering
+\vspace{6pt}
+
+\LoneStep{receive improvement objective}
+\(\;\longrightarrow\;\)
+\LoneStep{execute prescribed procedure}
+\(\;\longrightarrow\;\)
+\LoneStep{produce improvement}
+
+\vspace{7pt}
+
+\(\longrightarrow\;\)
+\LoneStep{update system state}
+\(\;\longrightarrow\;\)
+\LoneStep{process the next task}
+\(\;\longrightarrow\;\)
+\LoneStep{repeat}
+
+\vspace{6pt}
+\end{minipage}%
+}
+\end{center}
+
+Despite its simple structure, executing this loop reliably presents several core challenges. First, the prescribed procedure must cover the situations that arise during execution. When the task encounters a condition that is not addressed by the predefined procedure, the agent lacks an applicable next step and cannot independently modify the procedure to resolve it. Second, execution must remain reliable across multi-step workflows, since an incorrect diagnosis, transformation, or intermediate decision can influence all subsequent actions. Third, because the resulting improvement is written back into the system state and reused in later tasks, its validity must be checked before retention; otherwise, execution errors can persist and affect subsequent development cycles. These challenges recur across the AI development pipeline, but their concrete form depends on the stage in which the improvement procedure is executed.
+
+Specifically, large-scale AI development in real scenarios is typically organized into several distinct levels: (1) the data level governs the construction and curation of training corpora; (2) the training-method level determines how models learn; (3) the training-platform level manages the execution of large-scale training; (4) the evaluation-and-safety level assesses model capabilities and safety; (5) the deployment-optimization level enables efficient model serving; and (6) the application-system level integrates foundation-model capabilities into downstream products and application systems. The following sections examine how the \AISystem{} autonomously executes predefined improvement procedures within each level and how the resulting artifacts feed into downstream stages of the development workflow. Table~\ref{tab:l1-industrial-cases} summarizes the representative systems discussed across these levels.
+
+\begin{table*}[t]
+\centering
+\caption{Representative L1 systems organized by AI development pipeline levels. L1 systems execute human-defined improvement procedures and produce persistent artifacts that enter subsequent workflows.}
+\label{tab:l1-industrial-cases}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Method} & \textbf{Type} &
+\textbf{Key Mechanism} & \textbf{Level Limitation}\\
+\midrule
+
+\multicolumn{4}{@{}l}{\textbf{Data Level}}\\
+
+Google High-Fidelity Label Curation~\cite{google_high_fidelity_labels}
+& Data curation
+& LLM labeling + boundary selection
+& Human-defined labeling rules\\
+
+Phi-4-reasoning~\cite{phi4_reasoning}
+& Training data selection
+& LLM evaluation + boundary filtering
+& Human-defined selection criteria\\
+
+FineWeb-Edu~\cite{penedo2024fineweb}
+& Data filtering
+& LLM scoring + classifier filtering
+& Human-defined quality criteria\\
+
+NVIDIA NeMo Curator~\cite{nemo_curator}
+& Data curation
+& Configurable filtering pipeline
+& Human-configured processing rules\\
+
+Data-Juicer~\cite{data_juicer}
+& Data processing
+& Composable processing operators
+& Human-defined processing recipe\\
+
+Microsoft SynthLLM~\cite{synthllm}
+& Synthetic data generation
+& Reference-guided data synthesis
+& Human-defined generation procedure\\
+
+SynthAgent~\cite{wang-etal-2026-synthagent}
+& Supervision generation
+& Task + trajectory synthesis
+& Human-defined generation workflow\\
+
+NVIDIA Nemotron-4~\cite{nemotron4_340b}
+& Synthetic supervision
+& Candidate generation + reward filtering
+& Human-defined quality dimensions\\
+
+\midrule
+
+\multicolumn{4}{@{}l}{\textbf{Training-Method Level}}\\
+
+EDIT~\cite{wu2026edit}
+& Training signal refinement
+& Diagnosed step revision
+& Human-defined diagnostic criteria\\
+
+REPO~\cite{zeng-etal-2026-teaching}
+& Post-training procedure
+& SOP-guided interaction + reward evaluation
+& Human-defined behavioral procedure\\
+
+\midrule
+
+\multicolumn{4}{@{}l}{\textbf{Training-Platform Level}}\\
+
+Agent-Agnostic C/C++ Optimization~\cite{lu2026agentagnostic}
+& Training execution optimization
+& Procedural performance optimization loop
+& Human-defined optimization workflow\\
+
+Meta NCCL Agentic Debugging~\cite{meta_nccl_agentic_debugging}
+& Failure diagnosis and recovery
+& Runbook-guided distributed debugging
+& Human-defined debugging procedure\\
+
+\midrule
+
+\multicolumn{4}{@{}l}{\textbf{Evaluation-and-Safety Level}}\\
+
+OpenAI HealthBench~\cite{healthbench}
+& Model evaluation
+& Expert-rubric-based automated scoring
+& Human-defined evaluation rubrics\\
+
+\midrule
+
+\multicolumn{4}{@{}l}{\textbf{Deployment-Optimization Level}}\\
+
+AIPC~\cite{su2026aipc}
+& Model deployment
+& Skill-guided deployment adaptation
+& Human-defined deployment procedure\\
+
+\midrule
+
+\multicolumn{4}{@{}l}{\textbf{Application-System Level}}\\
+
+Agent Toolkit for AWS~\cite{aws_agent_toolkit}
+& Model-application integration
+& Bedrock skill-guided integration
+& Human-defined integration procedures\\
+
+LinkedIn CAPT~\cite{linkedin_capt}
+& Product engineering
+& Step-by-step engineering playbooks
+& Human-authored implementation procedures\\
+
+OpenAI Harness Engineering~\cite{openai_harness_engineering}
+& Product development
+& Constraint-guided implementation
+& Human-defined architecture and delivery rules\\
+
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+\subsubsection{Data Level}
+At the data level, AI increasingly takes over the execution of large-scale data production and curation procedures that were previously carried out through substantial manual effort. Existing approaches mainly fall into two classes. The first focuses on \emph{data cleaning and quality filtering}, and the second focuses on \emph{synthetic data and supervision generation}, where humans define the target task, desired data characteristics, and validation procedures.
+
+\noindent$\bullet$ \underline{(1) {Data cleaning and quality filtering.}} A primary challenge at the data level is scale: the volume of training corpora and candidate samples far exceeds the capacity for manual review at the sample level. Data curation is therefore shifting from sample-by-sample human judgment toward a paradigm in which humans define quality criteria and processing procedures, while AI executes them at scale. In Google's high-fidelity label curation pipeline, developers first define the target task and its decision criteria, such as what constitutes clickbait. An LLM then applies these criteria to assign preliminary labels to candidate data, after which a predefined clustering and boundary-sample selection procedure identifies a small subset of informative samples for expert annotation~\cite{google_high_fidelity_labels}. A similar division of labor appears in the construction of training data for Phi-4-reasoning: researchers specify the desired difficulty and reasoning characteristics together with their evaluation procedures, while LLM-based evaluation pipelines apply these criteria to select samples near the model's capability boundary~\cite{phi4_reasoning}. FineWeb-Edu extends this pattern to large-scale web filtering: researchers define educational-quality criteria, use an LLM to generate quality labels, and train a classifier to apply these criteria at scale~\cite{penedo2024fineweb}. As these data-processing operations become standardized, they can also be incorporated into reusable pipelines. NVIDIA NeMo Curator organizes quality filtering, classification, and deduplication into configurable modules that execute according to developer-specified rules and parameters~\cite{nemo_curator}. Data-Juicer follows a similar approach but abstracts data-processing operations into composable operators, allowing predefined processing recipes to be executed over large-scale corpora~\cite{data_juicer}.
+
+\noindent$\bullet$ \underline{(2) {Synthetic data and supervision signal generation.}} Training data can be expanded through synthetic generation. High-quality demonstrations for complex tasks are often costly to construct manually, motivating the use of repeatable data-generation procedures that models can execute at scale. Microsoft SynthLLM follows this approach by starting from high-quality web content, organizing reference concepts through a predefined multi-stage procedure, and using LLMs to generate diverse prompts and corresponding responses as synthetic training examples~\cite{synthllm}. Similar procedures can also produce richer forms of supervision. SynthAgent organizes the construction of tasks and interaction trajectories into a predefined pipeline, in which models perform web exploration, task generation, and trajectory refinement to produce supervision data for training web agents~\cite{wang-etal-2026-synthagent}. Synthetic generation can be combined with predefined quality evaluation to construct higher-quality supervision data. NVIDIA Nemotron-4 uses an instruction model to generate candidate responses and a reward model to score and filter them according to predefined quality dimensions, with the resulting synthetic samples used for subsequent model training~\cite{nemotron4_340b}.
+
+\subsubsection{Training-Method Level}
+%\noindent\textbf{Executing Predefined Learning and Training Procedures.}
+At the training-method level, AI increasingly takes over the execution of structured learning and post-training procedures that were previously orchestrated manually by researchers and engineers. Existing approaches mainly encode diagnostic, revision, evaluation, and optimization steps into predefined workflows, where humans specify the learning objectives, feedback signals, and update rules, while AI systems execute these procedures to generate improved training signals and support subsequent model optimization.
+
+Established training practices can be encoded into explicit improvement procedures and executed by AI systems during post-training, improving how models receive training signals and thereby enhancing learning outcomes. EDIT organizes this process as a two-stage training procedure. Researchers first specify the diagnostic signals and revision criteria, after which the system identifies problematic reasoning steps and an LLM revises only the affected parts according to a rubric checklist. The revised outputs are then used for further reinforcement-learning calibration~\cite{wu2026edit}. REPO similarly incorporates a multi-stage standard operating procedure and behavioral constraints into the training process. The model follows the prescribed steps during multi-turn interactions, while an LLM-based judge evaluates procedural compliance according to predefined criteria and converts the resulting assessments into reward signals for subsequent policy optimization~\cite{zeng-etal-2026-teaching}.
+
+\subsubsection{Training-Platform Level}
+%\noindent\textbf{Executing Training Infrastructure Optimization and Recovery Procedures.}
+At the training-platform level, AI increasingly takes over the execution of infrastructure engineering procedures required to keep large-scale training efficient and reliable. Existing approaches mainly fall into two classes. The first focuses on \emph{training execution and performance optimization}, where agents analyze workloads and apply predefined optimization procedures, and the second focuses on \emph{failure diagnosis and recovery}, where agents execute structured debugging and remediation workflows distilled from engineering knowledge and operational experience.
+
+\noindent$\bullet$ \underline{(1) {Training execution and optimization.}} 
+Performance-engineering practices can be encoded into explicit optimization procedures that AI agents execute on concrete workloads. Agent-Agnostic End-to-End C/C++ Application Performance Optimization follows this pattern by storing the complete optimization control loop in procedural memory. The agent performs runtime analysis, identifies performance hotspots, generates candidate code modifications, and validates both correctness and performance according to the predefined workflow, with unsuccessful changes rolled back before further optimization~\cite{lu2026agentagnostic}.
+
+\noindent$\bullet$ \underline{(2) {Training failure diagnosis and recovery.}} 
+Distributed-training failures can similarly be handled through structured debugging procedures derived from accumulated engineering experience. Meta and the PyTorch community categorized the major root causes of NCCL watchdog timeouts and distilled these findings into a practical decision tree and debugging runbook. An AI agent then executes this structured workflow on concrete failures by aligning evidence across ranks, tracing collective sequences, and connecting runtime traces to the corresponding code paths in order to locate the earliest actionable divergence~\cite{meta_nccl_agentic_debugging}.
+
+\subsubsection{Evaluation-and-Safety Level}
+%\noindent\textbf{Executing Model Evaluation and Release Validation.}
+At the evaluation-and-safety level, AI increasingly takes over the execution of model assessment procedures that translate expert-defined requirements into scalable and repeatable evaluations. Existing approaches use AI systems to apply predefined rubrics, test protocols, and risk criteria across large numbers of model outputs, while humans remain responsible for defining the evaluation objectives, criteria, and acceptance thresholds.
+
+Model evaluation transforms expert judgment into repeatable testing and scoring procedures. OpenAI HealthBench asks medical experts to define detailed evaluation criteria for specific healthcare conversations, specifying what an ideal response should include or avoid and the relative importance of each criterion. GPT-4.1 then applies these predefined criteria to score candidate model responses and compute the final evaluation result~\cite{healthbench}. Similar evaluation procedures can also be applied to robustness, safety, and risk evaluation, providing standardized feedback for subsequent model improvement and release decisions.
+
+\subsubsection{Deployment-Optimization Level}
+%\noindent\textbf{Executing Runtime Optimization and Deployment Adaptation.}
+At the deployment-optimization level, AI increasingly takes over the execution of procedures for adapting trained models to concrete hardware and runtime environments. Existing approaches encode deployment expertise into standardized workflows for model conversion, compatibility resolution, quantization, runtime configuration, and validation, where humans specify the target platform and deployment constraints, while AI systems execute the corresponding adaptation and verification steps.
+
+Deploying trained models to target hardware often requires specialized procedures for model conversion and runtime adaptation. AIPC encodes this deployment expertise into standardized, verifiable stages supported by Agent Skills and stage-wise validation. Given a trained model and a target Qualcomm AI Runtime environment, the AI agent executes the predefined deployment procedure to convert the model, handle deployment incompatibilities, perform quantization calibration, and validate the resulting implementation. The process produces runnable deployment artifacts for downstream inference~\cite{su2026aipc}.
+
+\subsubsection{Application-System Level}
+%\noindent\textbf{Executing Foundation-Model Integration and Product Implementation.}
+At the application-system level, AI increasingly takes over the execution of software-engineering procedures required to integrate foundation models into operational products and services. Existing approaches encode development knowledge into reusable skills, playbooks, and engineering workflows, allowing AI systems to perform tasks such as service integration, interface implementation, code modification, testing, and validation, while humans continue to specify product requirements, system architecture, and the governing development constraints.
+
+Transforming foundation-model capabilities into practical products requires model services and interfaces to be integrated into application systems through repeatable engineering procedures. Agent Toolkit for AWS encodes generative AI development practices into reusable Agent Skills. Its Amazon Bedrock skill provides predefined procedures for integrating model capabilities into applications. AI coding agents can execute these procedures to connect foundation-model services with downstream product interfaces and application components~\cite{aws_agent_toolkit}. LinkedIn's Contextual Agent Playbooks \& Tools (CAPT) similarly encodes accumulated organizational knowledge into step-by-step playbooks, enabling AI coding agents to carry out concrete engineering tasks in real codebases (e.g., service creation, interface extension, and code maintenance)~\cite{linkedin_capt}. OpenAI Harness Engineering extends this pattern to end-to-end software product development. Engineers define product intent, system architecture, and the rules governing continuous integration, code merging, and rollback, while Codex performs implementation and validation within these predefined constraints and continuously produces code artifacts that enter subsequent development workflows~\cite{openai_harness_engineering}.
+
+\subsubsection{Evaluating L1 Execution Autonomy}
+%\noindent\textbf{Persistence Accelerates Improvement Execution but Amplifies Error Propagation.}
+Across these levels, L1 systems share the same fundamental capability boundary: AI can execute increasingly long and consequential improvement procedures, and the resulting artifacts may persist into subsequent stages, but the procedures governing improvement remain externally specified. Evaluation of L1 should therefore consider two coupled properties: \emph{execution reliability}, namely whether AI can correctly carry out the prescribed procedure under varying conditions; and \emph{persistence safety}, namely whether errors introduced during execution are detected before their outputs propagate into subsequent improvement rounds.
+
+The reliability of predefined improvement procedures is central to evaluating execution autonomy at this level. L1 systems can complete extended sequences of actions with limited human intervention, but their execution remains bounded by procedures specified in advance. When task conditions fall outside the scope covered by these procedures, or when assumptions embedded in the workflow no longer hold, the system cannot independently revise the improvement procedure and is therefore prone to execution failure.
+
+Persistence further amplifies the consequences of such failures. Outputs produced during execution can be retained and reused in subsequent development stages, allowing errors to propagate beyond the task in which they were introduced and affect later iterations. Evaluation should therefore examine not only whether predefined procedures are executed correctly, but also whether the resulting artifacts remain valid before entering downstream workflows.
+
+\begin{center}
+\fbox{
+\parbox{0.92\linewidth}{
+\textbf{Finding: L1 executes human-defined improvement procedures at scale.}
+Humans first encode established engineering experience into explicit improvement steps and validation rules, while AI systems execute these predefined procedures on concrete tasks. The resulting artifacts are retained and incorporated into later development workflows, allowing the same improvement procedures to be repeatedly applied across independent tasks and development stages.
+}}
+\end{center}

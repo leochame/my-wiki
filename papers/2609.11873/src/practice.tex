@@ -1,0 +1,251 @@
+\section{Industry Landscape and Preliminary Practices}
+
+\input{src/theseus}
+
+\subsection{Lark: Building the Data Foundation for Reliable Enterprise-Level RSI}
+
+
+Figure~\ref{fig:bt_lark} summarizes Lark's data-foundation loop. Lark approaches RSI from a prerequisite that is often overlooked: before an agent can improve itself, it needs a continuously evolving data substrate on which improvement can be grounded. In enterprise collaboration, documents, messages, meetings, and tasks continuously generate new information, while agents consume these data and produce new interaction traces. Lark therefore treats data production, quality evaluation, and failure attribution as the foundation of its RSI pipeline. The key objective is not merely to accumulate more data, but to ensure that each iteration has fresh experience to learn from, a reliable criterion for judging progress, and sufficiently fine-grained diagnostics to determine what should be changed.
+
+\textbf{Enterprise Knowledge Graph.} A representative example is the construction and continual refinement of an enterprise knowledge graph. Information scattered across documents, messages, and meeting records is linked into entities, events, people, and temporal relations so that agents can answer questions requiring cross-source reasoning. Because graph errors directly propagate into downstream answers, graph construction is itself treated as an iterative data-quality problem. Lark addresses scalability through batched graph construction and delegated authorization checks, while continuously evaluating whether graph-based retrieval improves downstream question answering. In internal evaluations, it reports that human-rated task usability increased from 52\% to 65\%, while automated-evaluation usability increased from 47\% to 56\% when using its graph-based pipeline compared with the RAG-based baseline.
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Lark.pdf}
+    \caption{Lark’s data-foundation loop for RSI, where collaboration data are continuously structured, evaluated, and refined into high-quality knowledge and training signals, while real-world agent usage feeds new evidence back into subsequent improvement cycles.}
+    \label{fig:bt_lark}
+\end{figure*}
+
+\textbf{Automated Data-Quality Evaluation.} Another example is an automated data-quality evaluation system that serves as the measurement layer for subsequent improvement. Rather than relying entirely on expensive and inconsistent manual review, Lark first applies absolute judgments to identify clearly unusable outputs and then uses comparative GSB evaluation to determine whether a new system variant should be promoted. Importantly, evaluation is coupled with explicit failure attribution. Bad cases are categorized into issues (e.g., temporal inconsistency, distorted queries, or poor source quality), so that each failure maps to a concrete improvement direction. For example, time-sensitive questions are constrained by query-time filtering to avoid using future information, and low-quality synthetic queries are rewritten before re-entering the evaluation pipeline. The initial automated evaluator achieved approximately 84\% agreement with human judgments, where most disagreements arose because the automated evaluator was stricter than human reviewers, providing a concrete signal for subsequent calibration.
+
+From an RSI perspective, the significance of these trials lies in the feedback structure they create for future agent improvement. Enterprise activity continuously produces new graph data and interaction traces, automated evaluation determines which outputs and data are reliable, error attribution identifies where the pipeline failed, and corrected data and evaluation standards then become inputs to later iterations. The resulting cycle turns production data from a passive resource into an evolving improvement substrate. At the same time, Lark's current practice remains deliberately human-gated: agents perform much of the repetitive data processing and evaluation, while humans retain responsibility for defining standards, reviewing critical samples, and approving important changes.
+
+%The case of Lark illustrates a complementary industrial RSI principle to systems that directly self-modify prompts, tools, or source code: reliable self-improvement depends on first establishing a trustworthy data-and-evaluation foundation. Without these, an autonomous update loop may simply amplify noisy supervision or incorrect feedback. Lark's practice suggests that, particularly in enterprise settings, building this foundation can be a necessary intermediate step toward broader Agent RSI rather than an auxiliary data-engineering task.
+
+\subsection{Xiaohongshu: Dual-Timescale RSI for Recommendation}
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/xiaohongshu.pdf}
+    \caption{Xiaohongshu’s dual-timescale RSI loop for recommendation. The Intent-Memory Agent (IMA) uses online behavioral feedback to update structured user memory and guide subsequent recommendations. At a slower timescale, hard cases undergo automated judging, human spot checks, and data reconstruction, supporting post-training updates that consolidate validated experience into agent parameters before redeployment.}
+    \label{fig:bt_xiaohongshu}
+\end{figure*}
+
+% Table
+\begin{table}[t]
+    \centering
+    \caption{Performance comparison between the online baseline
+    and the RSI model at Xiaohongshu.}
+    \label{tab:xiaohongshu_rsi}
+
+    \small
+    \setlength{\tabcolsep}{7pt}
+    \renewcommand{\arraystretch}{1.2}
+
+    \begin{tabular}{@{}llccc@{}}
+        \toprule
+        Module
+        & Metric
+        & \makecell{A: Online baseline}
+        & \makecell{B: RSI model}
+        & Improvement \\
+        \midrule
+
+        Discovery Feed
+        & \texttt{score\_mean@16}
+        & 2.211
+        & 2.366
+        & $+7.0\%$ \\
+
+        Discovery Feed
+        & \texttt{score\_median@16}
+        & 1.587
+        & 1.663
+        & $+4.8\%$ \\
+
+        \addlinespace[3pt]
+
+        In-video Feed
+        & \texttt{score\_mean@16}
+        & \makecell{1.537 ($n=470$)}
+        & \makecell{1.739 ($n=447$)}
+        & $\approx +13.1\%$\textsuperscript{*} \\
+
+        \bottomrule
+
+    \end{tabular}
+\end{table}
+
+Xiaohongshu’s commercialization recommendation system explores feedback-driven self-improvement through an Intent-Memory Agent (IMA). Rather than treating user understanding as a one-off inference from historical behavior, IMA connects feedback interpretation, memory updating, experience retrieval, need reasoning, and recommendation into a continuous cycle. Subsequent clicks, dwell time, saves, searches, conversions, and negative feedback serve not only as new behavioral inputs, but also as observations against which earlier estimates of user state and intent are checked. These observations guide the addition, reinforcement, replacement, or decay of memory, as well as decisions to ignore uninformative evidence. The persistent improvement target is therefore the user representation that informs future recommendations, rather than only the current recommendation output.
+
+\textbf{Structured Memory and Experience Reuse.} IMA organizes its intermediate state into three semantic layers: Content, describing the content topic; Who, representing the user’s state; and Need, specifying the inferred requirement. These layers also structure knowledge-base storage and retrieval, allowing historical experience to be recalled through content similarity, user-state similarity, or need similarity. This decomposition is intended to reduce retrieval errors caused by mixing distinct semantic factors in a single caption representation. It also enables subsequent feedback to correct particular state variables rather than indiscriminately rewriting the entire user profile.
+
+\textbf{Fast Adaptation and Slower Capability Consolidation.} The system combines two complementary improvement cycles. At the user level, real-time feedback updates memory to accommodate changing interests and temporary needs. At the system level, high-value hard cases collected from online interactions undergo automated judging, human spot checks, rule correction, and training-data reconstruction. The resulting examples support post-training updates to IMA, and the updated agent returns to the recommendation pipeline. Long-tail experience can thus become immediately available through the knowledge base, while repeatedly validated patterns are gradually consolidated into model parameters. This dual-timescale design connects rapid, non-parametric adaptation with more persistent model-level learning.
+
+\textbf{Reported Observations.} In the company-provided comparison, Discovery Feed’s score\_mean@16 increases from 2.211 to 2.366, a reported 7.0\% improvement, while score\_median@16 increases from 1.587 to 1.663, or 4.8\%. For the in-video feed, score\_mean@16 increases from 1.537 to 1.739, approximately 13.1\%. The latter result comes from a small offline evaluation with 470 baseline samples and 447 RSI-model samples. These findings should be interpreted as preliminary, company-reported ranking-score improvements; the supplied material does not establish corresponding gains in click-through or conversion rates.
+
+The case illustrates an industrial RSI pattern in which recommendation outcomes become evidence for revising the system that produces subsequent recommendations. Online feedback corrects persistent user memory, while reviewed hard cases improve later agent versions through post-training. Its practical contribution is the coupling of immediate state correction, structured experience reuse, and longer-term capability consolidation, with human inspection retained in the training-data refinement process.
+
+
+
+
+\subsection{Humanlaya: Delivery-Driven RSI for Data Quality Assurance}
+\label{subsec:humanlaya}
+
+
+Humanlaya provides training and evaluation data for foundation-model developers, with its production workflow centered on complex multi-file task packages consisting of task descriptions, input attachments, reference answers, scoring rubrics, and executable or procedural verification requirements. In such settings, quality failures are often subtle, where an individual artifact may appear correct in isolation while remaining inconsistent with the task specification, scoring logic, or downstream evaluation protocol. As task types and customer requirements evolve, repeatedly repairing individual defective samples is insufficient, and the quality-control system itself must learn from recurring failures. Humanlaya therefore treats its data-quality agents and their associated rules, prompts, few-shot examples, and skills as persistent improvement targets, including an inner loop and an outer loop, as shown in Figure~\ref{fig:bt_humanlaya}. % The production workflow contains two nested feedback loops.
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Humanlaya.pdf}
+    \caption{Humanlaya's delivery-driven RSI loop for data-quality assurance.}
+    \label{fig:bt_humanlaya}
+\end{figure*}
+
+\textbf{The Data-Centric Inner Loop.} The inner loop operates within the current delivery batch and focuses on repairing the data being produced. Each task package first passes through a Quality Checker that inspects content quality and cross-component consistency, followed by a Refiner that repairs confirmed defects, and finally a Delivery Checker that verifies formatting, structure, and delivery constraints. Failed checks trigger repeated localization, revision, and re-verification before delivery. For example, if several independently gradable results are incorrectly merged into a single coarse rubric item, the checker may identify the rubric as insufficiently atomic and request restructuring before the package is accepted. This loop improves the current artifact, but by itself does not constitute persistent system improvement.
+
+\textbf{The Improvement-Centric Outer Loop.} The outer loop operates across delivery batches and is the central RSI mechanism. After delivery, the system aggregates evidence like internal review, customer feedback, and downstream usage.  An agent analyzes these cases for recurrent causes and proposes versioned modifications to the quality-control system, including components like Refiner instructions, prompts, few-shot examples, and reusable skills. Candidate updates are evaluated on task packages that are not involved in producing the modification and are additionally reviewed by humans before promotion. Once approved, the new quality-system version replaces the previous one and is used for subsequent production batches. New tasks then generate new evidence, which again enters the next improvement cycle.
+
+A representative case involved a three-page scanned PDF that the extraction tool failed to parse, causing the Quality Checker to mark the attachment as unusable. Manual review shows that the scan itself is clear, while the error comes from conflating extraction failure with poor document quality. The system therefore generates a new decision rule and few-shot examples to distinguish the two cases. After held-out validation and human review, the update is incorporated into the next system version and reused on future tasks.
+The inner loop repairs the current task package, whereas the outer loop updates the method used to inspect and repair future packages. Humanlaya therefore represents a practical form of scaffold-level RSI driven by production feedback.
+
+\textbf{Measured Improvement.} Humanlaya reports an internal comparison between V0 and V4 after four feedback-driven updates. Using the same base model, tools, and processing budget, both versions were evaluated on 600 task packages excluded from the update process. The rate of packages containing key defects after automated repair decreased from 9.0\% to 3.7\%, while average human handling time fell from 48 to 27 minutes per task. 
+
+At the current stage, when model capabilities are still advancing rapidly, some tasks cannot yet be completed fully autonomously by agents. Humanlaya therefore provides a practical example of combining RSI with human oversight, where agents perform most of the self-improvement process, while humans provide partial ground truth, review, and final approval at critical stages, rather than allowing an unconstrained self-improvement loop.
+
+
+\subsection{ModelBest: Zero-Human Industrial AI Engineering}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/ModelBest.pdf}
+    \caption{
+    ModelBest: Forge Engineering as a two-level RSI loop.}
+    \label{fig:bt_modelbest}
+\end{figure*}
+
+ModelBest aims to advance RSI by automating AI engineering, based on the premise that \textit{AI engineering is likely to become autonomous earlier than open-ended AI research}. Engineering tasks (e.g., implementing training frameworks, optimizing kernels, configuring parallelism, running benchmarks) require substantial human effort but offer comparatively inexpensive, objective feedback through execution. To this end, to produce a production-ready implementation without human intervention, ModelBest proposes \textit{{Forge Engineering}}, an end-to-end paradigm in which an AI system takes a target model, hardware platform, and parallelization requirements as inputs, then builds, tests, and refines an implementation from an initially empty codebase. Figure~\ref{fig:bt_modelbest} shows how its within-project optimization and cross-project experience reuse form a two-level loop. %The goal is  within the engineering loop.
+
+\textbf{The Industrial RSI Loop.} Within a target scenario, the system combines constrained architecture design with autonomous low-level optimization. Humans and AI maintain a knowledge base containing specifications, evaluation criteria, and accumulated engineering experience. The agent first uses this knowledge to establish a reasonable high-level architecture and constrain the search space. An AutoResearch loop then repeatedly generates implementations, measures correctness and performance, diagnoses failures, and repairs bottlenecks. Successful optimizations, including kernels such as GEMM and FlashAttention, are progressively integrated into the main execution path. This design keeps global architectural constraints stable while allowing aggressive autonomous optimization at the implementation level.
+
+Across scenarios, successful and failed engineering experience is written back into the shared knowledge base. Performance measurements, effective optimization strategies, reference implementations, and failure rules from one project become starting knowledge for subsequent projects. The same engineering procedure can therefore be reused across different models, hardware platforms, and workloads. ModelBest reports applying the paradigm across pre-training frameworks, operator libraries, reinforcement-learning infrastructure, inference engines, fine-tuning, compression, quantization, and edge deployment on several hardware ecosystems.
+
+
+\textbf{Measured Improvement.} Starting from an empty directory together with reference scripts and model specifications, ForgeTrain~\cite{forgetrain2026} generated a pre-training framework that matched Megatron-LM v0.15 on H100 within roughly 8 hours and reportedly surpassed it within 1.5–2.5 days, compared with an estimated 3–5 engineers working for 6–12 months for comparable manual development. Reported model FLOPs utilization increased from 40.1\% to 44.1\% for MiniCPM4-0.5B and from 47.0\% to 50.9\% for the 8B model. ForgeStencil~\cite{forgestencil} extends the same approach to scientific-computing kernels, with the company reporting 1.15–1.9× speedups over public state-of-the-art implementations and a median 1.41× end-to-end speedup.
+
+%The case of ModelBest illustrates a distinct industrial RSI pattern to maximize autonomy where feedback is cheap, executable, and reversible, while retain explicit constraints at the architectural and evaluation boundaries. More importantly, the persistent improvement is not merely the optimized code produced in one run. Cross-project engineering experience, like successful strategies, failure modes, and reference implementations, is accumulated and reused to improve subsequent engineering loops. In this sense, Forge Engineering moves from autonomous code generation toward an engineering system whose accumulated experience increasingly shapes how future AI infrastructure is built.
+
+
+\subsection{Tencent Hunyuan: Experience-Driven Self-Improvement}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Hy.pdf}
+    \caption{Experience-driven self-improvement in Tencent Hunyuan Hyra. A Context Agent organizes prior experience to guide parallel solution proposals, which are executed in isolated environments and evaluated. The resulting code, execution logs, and evaluation feedback are retained in an Experience Bank to inform subsequent exploration and support evaluator refinement when needed.}
+    \label{fig:bt_hunyuan}
+\end{figure*}
+
+
+Tencent Hunyuan's Hyra (Hunyuan Research Agent) explores RSI in performance-oriented research and engineering tasks. Figure~\ref{fig:bt_hunyuan} outlines its experience-driven search loop. Its design follows a deliberately lightweight philosophy: rather than encoding increasingly elaborate human-designed workflows, Hyra gives agents a broad solution space and repeatedly uses experimental evidence to guide subsequent search. Given a task, the system continues exploring until it decides to terminate or exhausts its resource budget, returning the best solution discovered during the process.
+
+A central component is the Experience Bank, which retains substantially richer state (e.g., previous solution code, generated artifacts, execution logs, scores, and evaluator feedback) than a conventional textual memory. A Context Agent recombines this evidence into diverse inspiration contexts, while multiple Proposal Agents asynchronously consume these contexts, construct new solutions, and execute them in fresh isolated sandboxes. The resulting artifacts and evaluation outcomes are written back into the Experience Bank, allowing later proposals to directly reuse, combine, or avoid patterns discovered in earlier attempts.
+
+Hyra further extends this idea to evaluation itself. For open-ended tasks where the initial evaluator is incomplete or becomes exploitable, accumulated search experience can be used to revise the evaluation mechanism—for example, by increasing its granularity, strengthening comparison baselines, or closing reward-hacking loopholes—before subsequent search continues under the improved criterion. This is particularly relevant to RSI because the persistent update is no longer limited to a better solution: the mechanism that determines which future solutions are considered improvements can also change.
+
+
+\begin{table}[t]
+    \centering
+    \caption{Comparison of Recursive and hyra-1.0 on AI R\&D benchmarks.}
+    \label{tab:hyra_benchmarks}
+    \small
+    \setlength{\tabcolsep}{5pt}
+    \renewcommand{\arraystretch}{1.1}
+    \renewcommand{\tabularxcolumn}[1]{m{#1}}
+
+    \begin{tabularx}{\linewidth}{
+        @{}
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+        c
+        c
+        @{}
+    }
+        \toprule
+        \textbf{Benchmark}
+        & \textbf{Task}
+        & \textbf{Metric}
+        & \textbf{Recursive}
+        & \textbf{hyra-1.0} \\
+        \midrule
+
+        NanoChat Autoresearch~\cite{nanogpt_ar}
+        & Model training
+        & Validation BPB $\downarrow$
+        & 0.9109
+        & \textbf{0.9015} \\
+
+        \addlinespace
+        NanoGPT Speedrun~\cite{modded_nanogpt_2024}
+        & Model training acceleration
+        & Time to 3.28 loss $\downarrow$
+        & 77.5\,s
+        & \textbf{76.4\,s} \\
+
+        \addlinespace
+        SOL-ExecBench~\cite{lin2026solexecbench}
+        & GPU kernel optimization
+        & Mean SOL $\uparrow$
+        & 0.754
+        & \textbf{0.771}$^{\dagger}$ \\
+
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\textbf{Measured Improvement.} As shown in Table~\ref{tab:hyra_benchmarks}, the released companion artifacts report improvements across both AI-for-AI and AI-for-Science tasks. For example, Hyra reports validation BPB of 0.9015 on nanochat AutoResearch~\cite{nanogpt_ar} compared with a cited previous best of 0.9109, 76.4 s on nanoGPT Speedrun~\cite{modded_nanogpt_2024} compared with 77.5 s, and 0.771 on SOL-ExecBench~\cite{lin2026solexecbench} compared with 0.754. As an industrial RSI practice, Hyra highlights the value of retaining executable experience rather than only final answers. %The repository also contains results in mathematical optimization, packing, compact neural architectures, and molecular docking, together with reproducible artifacts for several tasks. These results should nevertheless be interpreted as company-released evidence rather than independent replication.
+
+
+
+%Its improvement process is built around persistent experimental evidence, parallel exploration, isolated execution, and adaptive evaluation. More broadly, the case suggests that practical RSI can emerge even without continual model-weight updates: substantial improvement may instead be accumulated in the research state and in the mechanisms used to generate and evaluate subsequent solutions.
+
+
+\subsection{Agent-Native Research Lab: Verifiable Research Infrastructure for RSI}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/ARA.pdf}
+    \caption{Agent-Native Research Lab's agent-native RSI loop for verifiable engineering discovery, integrating guided exploration, deterministic verification, knowledge inheritance, and next-generation learning to support persistent improvement across research cycles.}
+    \label{fig:bt_amber}
+\end{figure*}
+
+\input{src/amber}
+
+
+
+\subsection{Frontis.AI: Enterprise Agent Evolution and Cross-Task Meta-Improvement}
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/frontis.pdf}
+    \caption{Frontis Horizon’s ME–WE–MA architecture combines specialist-agent evolution and cross-task meta-improvement with shared evaluation and human-approved release.}
+    \label{fig:bt_frontis}
+\end{figure*}
+
+Frontis Horizon provides an enterprise-owned infrastructure for improving both specialist agents and the methods used to improve them. Its ME–WE–MA architecture separates human interaction, contextual memory, and release approval (ME); task execution by more than 300 heterogeneous specialist agents across finance, legal, engineering, and human resources (WE); and agent construction, evaluation, and continuous evolution (MA). The central objective is to make improvement experience reusable across tasks rather than allowing it to remain isolated within individual agents.
+
+\textbf{Business-Grounded Expert Evolution.} The platform’s Benchmark OS organizes enterprise tasks, reproducible environments, and verifiers into shared evaluation infrastructure. Programmatic checks are preferred, while semantic quality is assessed by model judges isolated from the evaluated agents. Given operational feedback, MA attributes failures to routing, execution mechanisms, or specialist capabilities, defines bounded improvement objectives and acceptance criteria, and obtains human confirmation before modifying prompts, skills, tools, or harnesses. Candidate versions are compared with their predecessors through three gates: regression safety, target achievement, and robustness in exceptional scenarios. Approved updates return to production with versioned test reports supporting audit and rollback.
+
+\textbf{Cross-Task Meta-Improvement.} Beyond improving individual specialists, the platform retains each improvement episode’s problem context, diagnostic rationale, candidate modifications, validation results, and applicability conditions. Agent-specific experience supports subsequent versions, while transferable lessons inform MA’s diagnosis and improvement strategies on new tasks. Transfer requires adaptation and revalidation: a lesson about prioritizing real-time evidence, for example, still requires identifying authoritative sources and their temporal validity in the receiving task. This distinguishes learning to perform a business task from learning how to improve agents more effectively.
+
+\textbf{Reported Outcomes.} Over two months, Frontis reports initiating 216 improvement tasks involving 117 specialist agents, of which 63 completed at least one full evolution cycle. Across 76 comparable tasks evaluated with the same evaluator, average scores increased from 5.25 to 5.87, with a median machine-processing time of 27.8 minutes per completed cycle. Separately, after accumulating meta-evolution experience from more than 100 tasks, the company reports approximately 20\% faster evolution on previously unseen internal test tasks relative to a process without cross-task experience. Its evaluation protocol distinguishes specialist performance from improvement efficiency by comparing identical initial agent versions and tracking iterations, time, token consumption, and regressions. These findings remain company-reported evidence rather than independent replication.
+
+\textbf{Learning Improvement in Model Weights.} Frontis-MA1 separately explores training improvement capabilities into a 35B model. The supplied report records an MLE-Bench Lite score increase from 39.39\% to 60.61\% under a fixed harness, reaching 71.21\% with additional search. These results concern machine-learning and deep-learning engineering; extending the approach to learn directly from the platform’s enterprise-agent evolution trajectories remains future work.
+
+The case illustrates a practical RSI pattern: retain not only improved agents, but also validated knowledge about how to improve them. Shared evaluation infrastructure, context-sensitive experience transfer, versioned updates, and human-controlled release provide the governance framework for this accumulation.
+
+
+
+

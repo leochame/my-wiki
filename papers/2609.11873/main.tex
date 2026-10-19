@@ -1,0 +1,220 @@
+\PassOptionsToPackage{normalem}{ulem}
+\documentclass[]{arxiv_template}
+\setcounter{tocdepth}{2}
+
+
+\usepackage{natbib}
+% \usepackage{cite}
+\setcitestyle{square, comma, numbers, sort&compress}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+% Preamble
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{amssymb}
+\usepackage{caption}
+% \usepackage[a4paper,landscape,margin=0.68cm]{geometry}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\usepackage{svg}
+\usepackage[table]{xcolor}
+\hypersetup{hidelinks}% \usepackage{microtype}
+\usepackage{fontawesome5}
+
+% ----- RSI table visual definitions -----
+\input{tables/rsi_table_style}
+\input{commands}
+
+\title{The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement}
+
+\makeatletter
+\gdef\authorlist{%
+  \begin{center}
+    % \authorfoInt
+    \sffamily\normalsize
+    Yi Duan$^{1,2*}$, Ying Liu$^{1,2*}$, Zirui Tang$^{1,2*}$, Haodong Chen$^{1,2*}$, Jun Zhou$^{1,2*}$, Yumou Liu$^{1,2}$, Bangrui Xu$^{1,2}$, Yukai Wu$^{1,2}$, Sidi Chen$^{1,2}$, Yuhan Zhou$^{1,2}$, Haoyu Wang$^{1,2}$, Xiaoyou Yu$^{1,2}$, Shaokun Han$^{1,2}$,  Xuzhou Zhu$^{1,2}$, Le Zhou$^{1,2}$, Bolin Lu$^{1,2}$, Wei Zhou$^{1,2}$, Jiachen Liu$^{9}$, Nuozhou Fang$^{2}$, Jiaxin Tian$^{2}$, 
+    Ruoyu Chen$^{4}$, 
+    Yuxuan Li$^{5}$, 
+    Kai Zuo$^{6}$, Kaiyan Zhang$^{10}$, 
+    Qianyu Yang$^{8}$, Zijie Wang$^{8}$,     
+    Jiantao Qiu$^{7}$, Conghui He$^{7}$, 
+    Guoliang Li$^{3}$, Bowen Zhou$^{7,3}$, Zhiyuan Liu$^{3}$,\\ Zhoufutu Wen$^{8}$, Jihua Kang$^{4}$, Xuanhe Zhou$^{1,2\dagger}$, Fan Wu$^{1,2}$ % , Binyuan Hui$^{5}$
+  \end{center}
+}
+\makeatother
+
+\makeatletter
+\gdef\affiliationlist{%
+  \begin{center}
+    \affiliationfont\sffamily
+    $^{1}$Shanghai Jiao Tong University
+    $^{2}$Theseus Labs
+    $^{3}$Tsinghua University\\    
+    $^{4}$ByteDance 
+    %$^{5}$Hunyuan Team, Tencent
+    $^{5}$ModelBest
+    $^{6}$Super Intelligence Team, Xiaohongshu Inc.
+    $^{7}$Shanghai AI Lab\\
+    $^{8}$Humanlaya
+    $^{9}$Agent-Native Research Lab
+    $^{10}$Frontis.AI
+  \end{center}
+}
+\makeatother
+
+\abstract{Recursive self-improvement (RSI) enables AI systems to turn experience and feedback into persistent changes that improve both their capabilities and the process of future improvement. We first use the Headroom-Closed Index (HCI) to reveal the problems of existing LLMs, then introduce the RSI concept and its development roadmap: from improvement-execution autonomy, improvement-strategy autonomy, experience-acquisition autonomy, and environment-adaptation autonomy, to recursive meta-improvement. 
+Next we examine RSI across scenarios (e.g., scientific discovery, embodied intelligence, software engineering), highlighting their distinct requirements and development speeds. Drawing on diverse industry practices and preliminary empirical evidence, we connect RSI research with practical systems and identify key challenges to achieving genuine RSI.}
+
+
+
+
+
+
+\titleformat*{\paragraph}{\bfseries}
+\checkdata[Project Page]{\url{https://theseus-labs-rsi.github.io/}}
+%\checkdata[HuggingFace]{\url{https://huggingface.co/datasets/xxx}}
+\checkdata[GitHub Repository]{\url{https://github.com/theseus-labs-rsi/awesome-rsi}}
+
+\begin{document}
+
+%  for Super-Intelligence
+
+% TODO: Replace with the final author list and affiliations.
+% \author{San~Zhang, Si~Li\\ Wu~Wang$^*$ \\
+
+% % \hspace{1em}\githubicon\hspace{0.1em}\textit{
+% %     \sf \textcolor{github_purple}{\textbf{Awesome Data Agents:}} \textcolor{blue}{\underline{\url{https://github.com/}}}
+% % }
+
+% % \thanks{$^*$Corresponding authors: Guoliang~Li (liguoliang@tsinghua.edu.cn) and Yuyu~Luo (yuyuluo@hkust-gz.edu.cn).}
+% % \thanks{Yizhang~Zhu, Liangwei~Wang, Chenyu~Yang, Xiaotian~Lin, Boyan~Li, Xinyu~Liu, Zhangyang~Peng, Tianqi~Luo, Nan~Tang, Fugee~Tsung and Yuyu~Luo are with The Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China.}
+% % \thanks{Wei~Zhou and Xuanhe~Zhou are with Shanghai Jiao Tong University, Shanghai, China. Yu~Li, Ju~Fan and Shaolei~Zhang are with Renmin University of China, Beijing, China. Chengliang~Chai is with Beijing Institute of Technology, Beijing, China. Shimin~Di is with Southeast University, Nanjing, China. Ji~Sun, Jiannan~Wang, Yong~Zhang and Guoliang~Li are with Tsinghua University, Beijing, China. Chong~Chen and Yanwei~Xu are with Huawei. Chenglin~Wu is with DeepWisdom.}
+% }
+
+% \textit{\small \sf \textcolor{blue}{{Awesome Data Agents}: \url{https://github.com/HKUSTDial/awesome-data-agents}}}
+
+% The paper headers
+% \markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2021}%
+% {Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
+
+
+% Set space for itemize and enumerate
+\setlist[itemize]{leftmargin=0.6cm, topsep=1pt, itemsep=0pt}
+\setlist[enumerate]{leftmargin=0.6cm, topsep=1pt, itemsep=0pt}
+
+\maketitle
+
+% \input{src/abstract}
+% \begin{IEEEkeywords}
+% Recursive self-improvement, AI agents, autonomy, meta-improvement, continual adaptation
+% \end{IEEEkeywords}
+
+
+
+
+{
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+  \footnotetext[1]{Equal Contribution} 
+  \footnotetext[2]{Corresponding author: Xuanhe Zhou}% 
+}
+
+
+\begin{center}
+\begin{tcolorbox}[
+    width=0.95\linewidth,
+    colback=black!3,
+    colframe=black!40,
+    boxrule=0.4pt,
+    arc=2pt,
+    left=2pt, right=2pt,
+    top=1pt, bottom=1pt,
+    before skip=2pt,
+    after skip=2pt
+]
+%\centering
+\bfit{TL;DR} \textit{Like human evolution, AI evolution will unfold through a vast and extraordinary history. Everything AI has achieved so far is but a drop in the ocean.} %\\[4pt]
+% \textit{``True self-improvement improves the process of improvement itself.''}
+
+
+\end{tcolorbox}
+\end{center}
+
+
+\begin{figure}[h]
+    \vspace{-1em}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/rsi-overview-v11.pdf}
+    \vspace{-.4em}
+    \captionsetup{justification=centering}
+    % \caption{An Overview of Recursive Self-Improvement.}
+    \caption{\textbf{Overview of the five RSI autonomy levels and representative systems.} Autonomy progressively expands from executing prescribed improvements (L1), to selecting improvement strategies (L2), acquiring future learning experience (L3), adapting through deployment and environmental feedback (L4), and ultimately improving mechanisms that govern subsequent improvement (L5). See system details in Appendix~\ref{app:industry-landscape}.}
+    \label{fig:rsi-stages}
+\end{figure}
+
+
+
+\clearpage
+\setcounter{tocdepth}{2}
+
+\tableofcontents
+\clearpage
+
+
+\input{src/intro}
+\input{src/foundations}
+
+% Part I: RSI Across Autonomy Levels
+
+\section{RSI Across  Autonomy Levels}
+
+
+\input{src/L0}
+\input{src/L1}
+\input{src/L2}
+\input{src/L3}
+\input{src/L4}
+\input{src/L5}
+\input{src/cross_level}
+
+% Part II: RSI Across Applications
+
+\input{src/app_S1}
+
+% Part III:Industry Landscape and Emerging Practices
+
+\input{src/practice}
+\input{src/future}
+\input{src/conclusion}
+
+% ==================================================
+% References
+% ==================================================
+\clearpage
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+
+
+% ==================================================
+% Appendix
+% ==================================================
+\clearpage
+\appendix
+
+% 一级目录：Appendix
+\phantomsection
+\addcontentsline{toc}{section}{Appendix}
+
+\input{src/appendix}
+\end{document}

@@ -47,6 +47,14 @@ _reduce_kernel: batch_size × output_tiles 个 CTA
 
 因此，profile 中的 **CTA 数量**、**CTA/SM** 和 **CTA underfill**，本质上是在分析线程块级别的并行度、资源占用以及工作是否足以填满 GPU。它们需要与 kernel 时长、active warps、register、shared memory 和内存吞吐等指标一起判断，不能单独作为性能结论。
 
+## Tile：把大计算拆成可复用的小数据块
+
+**Tile** 是将大矩阵或张量划分成的局部数据块，用于提高数据复用率。它是算法设计概念，不是 GPU 的硬件执行单位。
+
+在 CUDA 中，thread block 通常协作计算一个 tile，warp 则是 GPU 执行 thread 的单位。例如 Tiled GEMM 会将 A、B 的 tile 加载到 shared memory，再完成局部矩阵乘法。
+
+Tile size 会影响 shared memory、register、访存合并和并行度。常见大小有 `16 × 16`、`32 × 32`；处理不能整除 tile size 的矩阵时，需要对边界做 mask 或填零。
+
 ## MLA Decode 调优术语
 
 ### Chunk：单次处理多少个 KV Token

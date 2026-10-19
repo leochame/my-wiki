@@ -1,0 +1,84 @@
+
+
+We organize existing work on RSI into a hierarchy of autonomy levels, according to how much responsibility the AI system assumes for its own improvement. The hierarchy progresses from \emph{in-session refinement}, where improvement is confined to the current task, through increasingly persistent and autonomous forms of system adaptation, toward \emph{recursive improvement}, where the mechanisms for producing future improvements themselves become subject to improvement.
+
+At each level, we review representative approaches and systems while addressing three common questions: \emph{(1) where is the improvement loop closed, (2) what improvement is retained and carried into the next round, and (3) which critical decisions in the improvement process remain under human control?} %These questions provide a common basis for distinguishing adjacent levels and tracing how improvement responsibility progressively shifts from human-designed procedures to the AI system itself.
+
+Table~\ref{tab:rsi-technique-space} provides a cross-level map of representative implementation techniques.
+
+
+
+\iffalse
+We organize the hierarchy by how much responsibility AI assumes for its own improvement. At each level, we ask three questions: (1) Where is the improvement loop closed, (2) what carries over to the next round, and (3) which critical decisions remain under human control.
+
+% \dy{\section{An Autonomy-Centered Framework for RSI}
+We introduce the scope of AI-internalized improvement responsibility as the primary axis of the hierarchy. The framework evaluates three cross-level questions:
+\begin{itemize}
+  \item Where is the loop closed?
+  \item What enters the next round?
+  \item Which critical decisions remain under human control?
+\end{itemize}
+\fi
+
+
+\subsection{B0: In-Task AI Improvement}
+\label{sec:b0-output-iteration}
+
+At B0, improvement is confined to the current task: the AI system may iteratively revise, verify, or select among candidate outputs, but no resulting change is retained as persistent system state for future independent tasks. We therefore treat B0 as a non-RSI reference level that marks the boundary between \emph{improving an output} and \emph{improving the system that produces future outputs}. Put differently, the defining criterion of B0 is \emph{output change without persistent system change}.
+
+\input{tables/rsi_table}
+\clearpage
+
+For example, a coding agent may repeatedly revise its code using a human-provided test suite and a fixed limit of five attempts. It remains at B0 if the fixes and feedback are confined to the current task and do not change how the agent handles subsequent tasks. Similarly, a writing agent may revise an essay against a human-provided rubric without retaining the resulting experience for future writing. In both cases, humans specify the evaluation rules and revision procedure, while AI improves only the current output within those constraints.
+
+
+
+
+
+Under fixed rules, B0 can improve output in single sessions. For instance, Self-Refine improves outputs through a generate–feedback–refine loop within the same session~\cite{madaan2023self}; Reflexion writes verbal reflections on failed attempts into a context buffer for subsequent tries~\cite{shinn2023reflexionlanguageagentsverbal}; Tree of Thoughts organizes reasoning as a search over candidate thought branches~\cite{yao2023tree}. 
+
+However, B0 cannot accumulate knowledge across tasks. Iterative traces and correction signals exist only within the current session; after task termination they are discarded, and the system cannot consolidate fragmented experience into long-term capability. APEX-EM notes that LLM-based agents generally lack persistent procedural memory: even after solving an identical task, they must re-derive the solution from scratch~\cite{banerjee2026apexemnonparametriconlinelearning}. Specifically, there are four main limitations.
+
+
+
+
+\noindent$\bullet$ \bfit{Experience does not accumulate across tasks.} Intermediate results, critiques, and corrections remain in temporary task context rather than becoming updates to model parameters, reusable memory, or operating rules~\cite{zhao2024expel}. A system may therefore correct an error in one task and repeat it in the next. Increasing the number of iterations cannot resolve this lack of persistent learning.
+
+\noindent$\bullet$ \bfit{Improvement procedure remains human-defined.} AI can generate, verify, and revise outputs, but humans still determine how this process operates~\cite{madaan2023self}. For example, a coding agent may fix code that fails a test, but it does not persistently improve the testing procedure for future tasks. The loop closes around the current output; responsibility for upgrading the system's improvement mechanisms remains with humans. Tool use, simulation, and real-world feedback do not by themselves change this boundary.
+
+
+
+\noindent$\bullet$ \bfit{Self-generated feedback can reinforce errors.} When the same model generates and evaluates an answer, both stages may share the same knowledge gaps. Self-Correction Bench identifies verification, particularly locating the first incorrect reasoning step, as a key bottleneck~\cite{tsui2026selfcorrectionbenchuncoveringaddressing,tyen2024finderrors}. Without reliable external feedback, revision can even turn a correct answer into an incorrect one~\cite{huang2024cannotselfcorrect}. Repeated critique therefore does not guarantee successful correction.
+
+\noindent$\bullet$ \bfit{More iterations offer limited gains under fixed evaluation.}
+Revising an answer without new information may provide little additional benefit~\cite{li2026decomposing}; independent sampling or external verification can be more effective in some settings~\cite{olausson2024self,verma2026blindresampling}. A fixed verifier also leaves some errors undetected~\cite{liu2023evalplus}. For example, repeatedly revising code to pass an incomplete test suite may improve test performance while leaving untested failures unresolved.
+
+\iffalse
+same-source internal feedback tends to induce self-confirmation bias and performance degradation. The generator and evaluator share the same knowledge boundaries and cognitive blind spots, so the model may reinforce its prior judgment rather than correct it. Stechly et al. find that GPT-4 self-critique and iterative refinement cause significant performance collapse on reasoning tasks such as graph colouring and the 24-point game, whereas external verification brings clear gains. Tsui et al. point out that the bottleneck in self-correction lies in verification rather than revision---models struggle to locate the first erroneous step~\cite{tsui2026selfcorrectionbenchuncoveringaddressing}, and Liu et al. observe that without external ground truth self-correction can turn correct answers into wrong ones~\cite{liu2024intrinsicselfcorrection}.
+
+self-correction blind spots and static verification together impose a capability ceiling. Models are weaker at identifying errors in their own outputs than in externally supplied ones~\cite{tsui2026selfcorrectionbenchuncoveringaddressing}, and without external information self-conditioned revision yields little to no information gain, often near zero or negative~\cite{li2026decomposing}. Returns diminish with more iterations, and recent work recommends allocating compute to independent sampling or external verification rather than repeated self-iteration~\cite{olausson2024self,verma2026blindresampling}. Static verification also has limited coverage; over-reliance on a fixed verifier may encourage overfitting to the metric rather than genuine capability improvement.
+
+In summary, B0 can improve single-task performance but suffers from cognitive lock-in, correction blind spots, diminishing returns, and insufficient verification coverage. The root cause is the lack of persistent state updates and adaptive evaluation mechanisms, so it cannot achieve paradigm-level autonomous upgrading and remains only a non-RSI reference level in the RSI spectrum. B0 is characterised by fixed rules, bounded feedback, and non‑accumulable capability: the system can use fixed feedback to optimise the current output, but it cannot retain iterative experience, update its operating rules, or change its default behaviour in future tasks. The key to transcending B0 lies not in iteration count or feedback sophistication, but in whether an improvement is persisted and can affect later independent tasks---once this condition is met, the system crosses the B0 boundary; otherwise it remains strictly within it.
+\fi
+
+
+
+%B0 does not itself constitute recursive self-improvement (RSI). It serves as a non-RSI reference level in the RSI spectrum, marking the outer boundary before a system acquires autonomy over its own improvement. Its core limitation is not poor single-task performance, but its static nature: after task completion the system reverts to its initial state and undergoes no structural change. In other words, B0 can only optimise the current task output, but it cannot improve the AI system that produces that output.
+
+%Unlike a static model that yields only a single inference, a B0 system supports multiple rounds of generation, critique, verification, revision, or selection within one session. For example, 
+
+% Self-Refine improves outputs through a generate–feedback–refine loop within the same session~\cite{madaan2023self}; Reflexion writes verbal reflections on failed attempts into a context buffer for subsequent tries~\cite{shinn2023reflexionlanguageagentsverbal}; Tree of Thoughts organizes reasoning as a search over candidate thought branches~\cite{yao2023tree}. Yet all these iterations are confined to the current task lifecycle: the reasoning paradigm, search strategy, tool interface, verifier, and stopping criteria are all prespecified by humans. After the task ends, iterative traces and correction experience do not become persistent system state. B0 obeys the boundary of ``output change without system change''---it is task-level optimization, not system-level self-evolution.
+
+% The typical B0 loop is:
+% \begin{center}
+% \footnotesize
+% Task Initialization $\rightarrow$ Generation/Verification $\rightarrow$ Revision/Selection $\rightarrow$ Task Termination $\rightarrow$ Discard Episode State
+% \end{center}
+
+% This boundary matters because multi-round correction, tool use, simulation, and even real-world feedback do not by themselves imply system self-evolution. As long as optimisation serves only the current task output and cannot feed back into the system's own operating rules or persistent state, the system remains at the B0 level.
+
+% \subsubsection*{Intrinsic Limits and Failure Modes}
+
+
+
+
