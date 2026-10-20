@@ -1,6 +1,6 @@
 # Workspace Index
 
-This workspace is organized into five main areas. Open the section index first before scanning deeper.
+This workspace is organized into six main areas. Open the section index first before scanning deeper.
 
 ## Top-Level Areas
 
@@ -19,3 +19,6 @@ This workspace is organized into five main areas. Open the section index first b
 * `memory/`
   * Purpose: 零碎记忆点 — 常用工具和资源、好书、个人片段记录。NOT for actionable tasks.
   * Index: `memory/INDEX.md`
+* `investment/`
+  * Purpose: 投资相关 — 香港银行开户、账户使用、资金与投资记录
+  * Index: `investment/INDEX.md`
