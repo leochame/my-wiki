@@ -113,7 +113,7 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\smallentrytitlefontsize\color{appledark}Siorigin - Agentic Infra (Kernel-Gen Agent)} & {\entrydetailsfontsize\color{applegray}Jul 2026 - Present} \\
 \end{tabular*}
-{\descfontsize\color{textgray} An agentic infrastructure system for internal workloads: an agent autonomously generates, validates and tunes GPU kernels, and the system exposes a unified kernel generation and evaluation capability internally --- reaching [N.Nx] geometric-mean speedup on FlashInfer benchmarks, on par with the published state of the art.}\vspace{2pt}
+{\descfontsize\color{textgray} An agentic infrastructure system for internal workloads: an agent autonomously generates, validates and tunes GPU kernels, and the system exposes a unified kernel generation and evaluation capability internally --- reaching the published state of the art on FlashInfer benchmarks.}\vspace{2pt}
 \resumeItemListStart
 \resumeItem{\textbf{Generation}: led the end-to-end loop --- the agent reads a target operator, writes candidate kernels, and iterates until a version passes correctness and beats the baseline.}
 \resumeItem{\textbf{Evaluation}: each candidate is compiled, checked against a PyTorch reference and profiled on the target GPU, then scored on measured latency and achieved bandwidth; both gates must pass before delivery.}
