@@ -1,10 +1,10 @@
 \documentclass[a4paper,13pt]{article}
 
 \usepackage[UTF8,fontset=none,linespread=1.0]{ctex}
-% 仿宋没有粗体字重，加粗时就用同一款字，不做伪粗体
-\setCJKmainfont{FandolFang-Regular.otf}[BoldFont=FandolFang-Regular.otf]
-\setCJKsansfont{FandolFang-Regular.otf}[BoldFont=FandolFang-Regular.otf]
-\setCJKmonofont{FandolFang-Regular.otf}
+% 仿宋只有常规字重，加粗用伪粗体补齐
+\setCJKmainfont{FandolFang-Regular.otf}[AutoFakeBold=3.5]
+\setCJKsansfont{FandolFang-Regular.otf}[AutoFakeBold=3.5]
+\setCJKmonofont{FandolFang-Regular.otf}[AutoFakeBold=3.5]
 \usepackage{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -121,9 +121,8 @@
 \section{Education}
 \sectionbodyspace
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    \textbf{\entrytitlefontsize\color{appledark}Hangzhou Dianzi University} & {\entrydetailsfontsize\color{applegray}Aug 2022 - Jun 2026} \\
+    \textbf{\smallentrytitlefontsize\color{appledark}Hangzhou Dianzi University}\hspace{0.8em}{\descfontsize\color{textgray}B.S. in Computer Science and Technology} & {\descfontsize\color{applegray}Aug 2022 - Jun 2026} \\
 \end{tabular*}
-{\entrydetailsfontsize\color{textgray}B.S. in Computer Science and Technology}\par
 \sectiongap
 
 \section{Experience}
@@ -183,7 +182,7 @@
 \titlespacing*{\section}{0pt}{11pt}{0pt}
 \renewcommand{\sectionbodyspace}{\vspace{1.5pt}{\color{applegray}\hrule height 0.8pt}\vspace{4pt}}
 \renewcommand{\sectiongap}{\vspace{-3pt}}
-\renewcommand{\projectgap}{\vspace{6pt}}
+\renewcommand{\projectgap}{\vspace{11pt}}
 \renewcommand{\resumeItemListStart}{%
     \begin{itemize}[leftmargin=1.5em, labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
@@ -208,9 +207,9 @@
 \section{教育经历}
 \sectionbodyspace
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    \textbf{\entrytitlefontsize\color{appledark}杭州电子科技大学} & {\entrydetailsfontsize\color{applegray}2022年08月 - 2026年06月} \\
+    \textbf{\entrytitlefontsize\color{appledark}杭州电子科技大学}\hspace{1em}{\entrydetailsfontsize\color{textgray}计算机科学与技术 · 本科} & {\entrydetailsfontsize\color{applegray}2022年08月 - 2026年06月} \\
 \end{tabular*}
-{\entrydetailsfontsize\color{textgray}计算机科学与技术 · 本科}\par
+\vspace{-14pt}
 \sectiongap
 
 \section{工作经历}
