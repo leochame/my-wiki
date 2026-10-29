@@ -57,17 +57,17 @@
         leftmargin=1.5em,
         labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
-        itemsep=3pt,
+        itemsep=2pt,
         parsep=0pt,
-        topsep=2pt
+        topsep=1pt
     ]
 }
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{1pt}}
 \newcommand{\skillItemListStart}{
     \begin{itemize}[
-        leftmargin=0pt,
-        labelsep=0pt,
-        label={},
+        leftmargin=1.5em,
+        labelsep=0.5em,
+        label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
         itemsep=1pt,
         parsep=0pt,
         topsep=1pt
@@ -83,82 +83,75 @@
 \begin{document}
 
 \noindent
-\begin{minipage}[t]{0.46\textwidth}
+\begin{minipage}[t]{0.60\textwidth}
 \vspace{0pt}
-{\namefontsize\bfseries\color{appledark}Jun Wang}\par\vspace{6pt}
-{\entrytitlefontsize\bfseries\color{textgray}Software Engineer}\par\vspace{7pt}
-{\contactfontsize\textcolor{textgray}{\faMapMarker}~Los Angeles, CA}\par
+{\namefontsize\bfseries\color{appledark}Longchang Liu}\par\vspace{5pt}
+{\entrytitlefontsize\bfseries\color{textgray}Software Engineer}\par\vspace{6pt}
+{\contactfontsize\textcolor{textgray}{\faPhone}~\textcolor{textgray}{+86 183-5757-1400}\quad\textcolor{textgray}{\faEnvelope}~\textcolor{textgray}{liulch.cn@gmail.com}}\par
 \end{minipage}\hfill
-\begin{minipage}[t]{0.48\textwidth}
+\begin{minipage}[t]{0.36\textwidth}
 \vspace{0pt}
-\vspace{6pt}
-\makebox[\linewidth][r]{%
-\begin{tabular}{@{}r@{\hspace{0.35em}}l@{}}
-    \textcolor{textgray}{\linkfontsize\faGithub} &
-    \textcolor{appleblue}{\linkfontsize\href{https://github.com/a6learner}{github.com/a6learner}} \\[3pt]
-    \textcolor{textgray}{\linkfontsize\faLinkedin} &
-    \textcolor{appleblue}{\linkfontsize\href{https://www.linkedin.com/in/jun-wang-jony}{linkedin.com/in/jun-wang-jony}} \\[3pt]
-    \textcolor{textgray}{\contactfontsize\faPhone} &
-    \textcolor{textgray}{\contactfontsize +1 (213) 636-6289} \\[3pt]
-    \textcolor{textgray}{\contactfontsize\faEnvelope} &
-    \textcolor{textgray}{\contactfontsize jwang753@usc.edu}
-\end{tabular}}
+\raggedright
+\vspace{4pt}
+{\headerLinkItem{\faGithub}{\href{https://github.com/leochame}{github.com/leochame}}}\par\vspace{3pt}
+{\headerLinkItem{\faLinkedin}{\href{https://www.linkedin.com/in/longchang-liu-770211387/}{linkedin.com/in/longchang-liu}}}\par\vspace{3pt}
+{\headerLinkItem{\faGlobe}{\href{https://leochame.github.io}{leochame.github.io}}}\par
 \end{minipage}
 \par\vspace{2pt}
 
 \section{Education}
 \sectionbodyspace
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    \textbf{\entrytitlefontsize\color{appledark}University of Southern California} & {\entrydetailsfontsize\color{applegray}Aug 2026 - May 2028} \\
-\end{tabular*}
-{\entrydetailsfontsize\color{textgray}M.S. in Computer Science}\par
-\vspace{2pt}
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\entrytitlefontsize\color{appledark}Hangzhou Dianzi University} & {\entrydetailsfontsize\color{applegray}Aug 2022 - Jun 2026} \\
 \end{tabular*}
-{\entrydetailsfontsize\color{textgray}B.S. in Computer Science and Technology · National CS Rank: No. 24}\par
+{\entrydetailsfontsize\color{textgray}B.S. in Computer Science and Technology}\par
 \sectiongap
 
 \section{Experience}
 \sectionbodyspace
-\resumeSubheading
-{Alibaba}{Oct 2025 - Jan 2026}{Amap}{ · Intern}
-{\descfontsize\color{textgray}Among China's top 3 internet companies; No. 60 globally by market capitalization.}\par
-\entrygap
-\resumeSubheading
-{Tencent}{Apr 2025 - Sep 2025}{Ads Marketing Services}{ · Intern}
-{\descfontsize\color{textgray}Among China's top 3 internet companies; No. 27 globally by market capitalization.}\par
-\sectiongap
-
-\section{Project Experience}
-\sectionbodyspace
 
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    \textbf{\smallentrytitlefontsize\color{appledark}Alibaba - Amap \entrydetailsfontsize\color{textgray} · } & {\entrydetailsfontsize\color{applegray}Oct 2025 - Jan 2026} \\
+    \textbf{\smallentrytitlefontsize\color{appledark}Siorigin - Agentic Infra (Kernel-Gen Agent)} & {\entrydetailsfontsize\color{applegray}Jul 2026 - Present} \\
 \end{tabular*}
-{\descfontsize\color{textgray} Responsible for productionizing the Order Analysis Assistant and AI Ride-Hailing LLM projects, improving complex task handling and integrating shared AI capabilities.}\vspace{2pt}
+{\descfontsize\color{textgray} An agentic infrastructure system for internal workloads: an agent autonomously generates, validates and tunes GPU kernels, and the system exposes a unified kernel generation and evaluation capability internally --- reaching [N.Nx] geometric-mean speedup on FlashInfer benchmarks, on par with the published state of the art.}\vspace{2pt}
 \resumeItemListStart
-\resumeItem{Designed and launched the Deep Research capability for the Order Analysis Assistant, improving complex task decomposition and performance in long-context scenarios.}
+\resumeItem{\textbf{Generation}: led the end-to-end loop --- the agent reads a target operator, writes candidate kernels, and iterates until a version passes correctness and beats the baseline.}
+\resumeItem{\textbf{Evaluation}: each candidate is compiled, checked against a PyTorch reference and profiled on the target GPU, then scored on measured latency and achieved bandwidth; both gates must pass before delivery.}
+\resumeItem{\textbf{Search and feedback}: profiler output is attributed to memory- or compute-bound and fed back as the next prompt, keeping only useful evidence and failure reasons to bound context growth, with iteration caps and regression rejection holding the search monotonic.}
+\resumeItem{\textbf{Delivery}: internal users only supply the target operator and a reference implementation to get back a validated, benchmarked kernel, with no GPU programming or tuning on their side.}
 \resumeItemListEnd
 \projectgap
 
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    \textbf{\smallentrytitlefontsize\color{appledark}Tencent - Ads ChatBI System \entrydetailsfontsize\color{textgray} · } & {\entrydetailsfontsize\color{applegray}Apr 2025 - Sep 2025} \\
+    \textbf{\smallentrytitlefontsize\color{appledark}Alibaba - Amap (Intern)} & {\entrydetailsfontsize\color{applegray}Oct 2025 - Jan 2026} \\
+\end{tabular*}
+{\descfontsize\color{textgray} Responsible for productionizing the Order Analysis Assistant and AI Ride-Hailing LLM projects, improving complex task handling and integrating shared AI capabilities.}\vspace{2pt}
+\resumeItemListStart
+\resumeItem{On the Order Analysis Assistant, designed and launched Deep Research, improving complex task decomposition and handling stability in long-context scenarios.}
+\resumeItem{Participated in the cold start of AI Ride-Hailing, building unified and stable AI invocation interfaces to keep the core path reliably integrated.}
+\resumeItemListEnd
+\projectgap
+
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{\smallentrytitlefontsize\color{appledark}Tencent - Ads ChatBI System (Intern)} & {\entrydetailsfontsize\color{applegray}Apr 2025 - Sep 2025} \\
 \end{tabular*}
 {\descfontsize\color{textgray} Contributed to the NL2Chart core workflow of Tencent Ads ChatBI, enabling conversion from natural-language requests to charts.}\vspace{2pt}
 \resumeItemListStart
-    \resumeItem{Designed and implemented an automated corpus review system to improve source data quality, raising recall accuracy on the core workflow from 50\% to 80\%. Introduced a state machine to improve system stability and crash recovery.}
+    \resumeItem{To guarantee source corpus quality, designed and implemented an automated corpus review system, raising core-workflow recall accuracy from 50\% to 80\%; also introduced a state machine for stability and crash recovery.}
 \resumeItemListEnd
+\sectiongap
+
+\section{Open Source}
+\sectionbodyspace
+{\entrydetailsfontsize\color{textgray}\textbf{\color{appledark}LangChain4j} (12k+ stars) contributor --- Java ecosystem AI framework; community issue fixes and capability improvements.}\par
 \sectiongap
 
 \section{Technical Skills}
 \vspace{0pt}
 \skillItemListStart
-    \resumeItem{\textbf{Systems \& Programming}: Java, Golang, Python, Asynchronous Programming, Concurrency, Multithreading, Multiprocessing, Distributed Systems.}
-    \resumeItem{\textbf{Full Stack}: Web Frontend, React, TypeScript, HTML/CSS; Backend, Spring Boot, FastAPI.}
-    \resumeItem{\textbf{Databases \& Messaging}: SQL, MySQL, PostgreSQL, Redis; RabbitMQ, Kafka.}
-    \resumeItem{\textbf{Cloud \& DevOps}: AWS (Lambda, API Gateway, ECR, Amplify), Docker, Kubernetes, \mbox{CI/CD Pipelines}, Linux Sysadmin.}
-    \resumeItem{\textbf{ML / AI Agent}: Machine Learning, Retrieval-Augmented Generation (RAG), Harness, LangChain, Multi-Agent Systems, Context Compression, OpenAI API, PyTorch, NumPy, Hugging Face.}
+    \resumeItem{\textbf{AI Infra}: Transformer architecture and KV Cache; agent context management, multi-agent collaboration patterns, harness design and eval systems, with hands-on GPU kernel generation and tuning.}
+    \resumeItem{\textbf{CS Fundamentals}: Solid OS and networking fundamentals --- memory management (page tables), system calls, thread scheduling, TCP/UDP and congestion control.}
+    \resumeItem{\textbf{Java \& Engineering}: JVM class loading, memory model and G1/ZGC; Synchronized, Volatile, AQS and thread-pool internals; SQL optimization, MySQL tuning and production troubleshooting.}
 \resumeItemListEnd
 
 \end{document}
