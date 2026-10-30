@@ -26,9 +26,9 @@
 \newcommand{\descfontsize}{\fontsize{11}{14.6}\selectfont}
 \newcommand{\itemfontsize}{\fontsize{11}{14.6}\selectfont}
 
-\definecolor{applegray}{RGB}{99,99,102}
-\definecolor{textgray}{RGB}{85,85,85}
-\definecolor{sectiongray}{RGB}{110,110,115}
+\definecolor{applegray}{RGB}{78,78,81}
+\definecolor{textgray}{RGB}{45,45,45}
+\definecolor{sectiongray}{RGB}{60,60,65}
 \definecolor{appledark}{RGB}{0,0,0}
 \definecolor{appleblue}{RGB}{0,0,139}
 
@@ -44,11 +44,11 @@
 \titleformat{\section}
     {\sectiontitlefontsize\bfseries\color{sectiongray}}
     {}{0em}{}
-\titlespacing*{\section}{0pt}{11pt}{0pt}
+\titlespacing*{\section}{0pt}{14pt}{0pt}
 \newcommand{\sectionbodyspace}{\vspace{1.5pt}{\color{applegray}\hrule height 0.8pt}\vspace{4pt}}
 \newcommand{\sectiongap}{\vspace{-3pt}}
 \newcommand{\entrygap}{\vspace{1pt}}
-\newcommand{\projectgap}{\vspace{11pt}}
+\newcommand{\projectgap}{\vspace{15pt}}
 
 \newcommand{\resumeSubheading}[4]{
     \vspace{0pt}
@@ -63,7 +63,7 @@
         leftmargin=1.5em,
         labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
-        itemsep=4pt,
+        itemsep=6pt,
         parsep=0pt,
         topsep=1pt
     ]
@@ -74,7 +74,7 @@
         leftmargin=1.5em,
         labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
-        itemsep=1pt,
+        itemsep=3pt,
         parsep=0pt,
         topsep=1pt
     ]
@@ -118,12 +118,12 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\smallentrytitlefontsize\color{appledark}紫荆芯界 - Agentic Infra（Kernel-Gen Agent）} & {\entrydetailsfontsize\color{applegray}2026年07月 - 至今} \\
 \end{tabular*}
-{\descfontsize\color{textgray} 面向内部业务负载的 agentic infra 系统：由 agent 自主完成 GPU kernel 的生成、校验与调优，并向内部统一提供 kernel 生成与评测能力，在 FlashInfer benchmark 上达到业界 SOTA 水平。}\vspace{2pt}
+{\descfontsize\color{textgray} 面向内部业务负载的 kernel 生成 agent：把一次 kernel 优化展开成一条长搜索路径，由 agent 自主跑完；负责设计每轮的反馈信号、上下文取舍与终止条件，在 FlashInfer benchmark 上达到业界 SOTA 水平。}\vspace{2pt}
 \resumeItemListStart
-\resumeItem{\textbf{生成链路}：主导从生成到调优的完整闭环——agent 读取目标算子、生成候选 kernel 并持续迭代，直到通过正确性校验且性能超过基线。}
-\resumeItem{\textbf{评测体系}：候选 kernel 经编译、与 PyTorch 参考实现数值对拍、GPU profiling 后，按实测延迟与有效带宽打分，两道关卡都过才允许交付。}
-\resumeItem{\textbf{搜索与反馈}：把 profiling 结果按 memory-bound / compute-bound 归因后回灌为下一轮 prompt，只保留有效证据与失败原因以控制上下文膨胀，并配合迭代上限与性能回退拒绝，让长时间搜索保持单调。}
-\resumeItem{\textbf{内部交付}：业务侧只需给出目标算子与参考实现，即可拿到经过正确性校验与性能评估的 kernel，无需自行处理 GPU 编程与调优细节。}
+\resumeItem{\textbf{长路径}：一次优化不是一次生成，而是从基线到超过基线的多轮迭代。agent 每轮读取目标算子、产出候选、跑校验，再按本轮结果决定下一步，人只给起点和准入标准。}
+\resumeItem{\textbf{上下文取舍}：轮次一多，上下文最先撑爆。只把有效证据与失败原因带进下一轮，profiling 原始输出不进上下文；失败的尝试收敛成一句可复用的结论，避免同一方向反复重试。}
+\resumeItem{\textbf{反馈信号}：把 profiling 结果按 memory-bound / compute-bound 归因，转成下一轮的具体优化方向，而不是把日志原样丢回去。}
+\resumeItem{\textbf{终止条件}：数值对拍通过、性能超过基线，两道关卡都过才允许交付；再配迭代上限与性能回退拒绝，防止 agent 无限跑下去或越改越慢。}
 \resumeItemListEnd
 \projectgap
 
@@ -140,10 +140,7 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\smallentrytitlefontsize\color{appledark}腾讯 - 广告 ChatBI 系统（实习）} & {\entrydetailsfontsize\color{applegray}2025年04月 - 2025年09月} \\
 \end{tabular*}
-{\descfontsize\color{textgray} 参与腾讯广告 ChatBI 的 NL2Chart 核心链路建设，支撑自然语言请求到图表生成的转化。}\vspace{2pt}
-\resumeItemListStart
-    \resumeItem{为了保证源头语料库的质量，设计并实现语料自动化评审系统，推动核心链路召回正确率从 50\% 提升至 80\%。同时引入状态机，增强服务稳定性，并提供宕机恢复能力。}
-\resumeItemListEnd
+{\descfontsize\color{textgray} 服务内容业务人员的自然语言取数系统：以指标中台为知识源，经多轮澄清、多路召回（reranker 重排 + 热度加权）与 DSL 逐级填充生成模板化 DSL，抑制幻觉；并以 bad case 回流 + ICL 热修复持续迭代，状态机保障宕机恢复。}\par
 \sectiongap
 
 \section{开源经历}

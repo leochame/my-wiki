@@ -26,9 +26,9 @@
 \newcommand{\descfontsize}{\fontsize{11}{14.6}\selectfont}
 \newcommand{\itemfontsize}{\fontsize{11}{14.6}\selectfont}
 
-\definecolor{applegray}{RGB}{99,99,102}
-\definecolor{textgray}{RGB}{85,85,85}
-\definecolor{sectiongray}{RGB}{110,110,115}
+\definecolor{applegray}{RGB}{78,78,81}
+\definecolor{textgray}{RGB}{45,45,45}
+\definecolor{sectiongray}{RGB}{60,60,65}
 \definecolor{appledark}{RGB}{0,0,0}
 \definecolor{appleblue}{RGB}{0,0,139}
 
@@ -43,7 +43,7 @@
 \titleformat{\section}
     {\sectiontitlefontsize\bfseries\color{sectiongray}}
     {}{0em}{}
-\titlespacing*{\section}{0pt}{11pt}{0pt}
+\titlespacing*{\section}{0pt}{14pt}{0pt}
 \newcommand{\sectionbodyspace}{\vspace{1.5pt}{\color{applegray}\hrule height 0.8pt}\vspace{4pt}}
 \newcommand{\sectiongap}{\vspace{-3pt}}
 \newcommand{\entrygap}{\vspace{1pt}}
@@ -62,7 +62,7 @@
         leftmargin=1.5em,
         labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
-        itemsep=4pt,
+        itemsep=6pt,
         parsep=0pt,
         topsep=1pt
     ]
@@ -73,7 +73,7 @@
         leftmargin=1.5em,
         labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
-        itemsep=1pt,
+        itemsep=3pt,
         parsep=0pt,
         topsep=1pt
     ]
@@ -93,14 +93,14 @@
     {\sectiontitlefontsize\bfseries\color{sectiongray}}
     {}{0em}
     {}[\vspace{-14pt}{\color{applegray}\rule{\textwidth}{0.8pt}}]
-\titlespacing{\section}{0pt}{8pt}{3pt}
+\titlespacing{\section}{0pt}{9pt}{3pt}
 \renewcommand{\sectionbodyspace}{\vspace{-3pt}}
 \renewcommand{\sectiongap}{\vspace{-7pt}}
-\renewcommand{\projectgap}{\vspace{3pt}}
+\renewcommand{\projectgap}{\vspace{5pt}}
 \renewcommand{\resumeItemListStart}{%
     \begin{itemize}[leftmargin=1.5em, labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
-        itemsep=2pt, parsep=0pt, topsep=1pt]}
+        itemsep=3pt, parsep=0pt, topsep=1pt]}
 \noindent
 \begin{minipage}[t]{0.60\textwidth}
 \vspace{0pt}
@@ -131,12 +131,12 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\smallentrytitlefontsize\color{appledark}Siorigin - Agentic Infra (Kernel-Gen Agent)} & {\entrydetailsfontsize\color{applegray}Jul 2026 - Present} \\
 \end{tabular*}
-{\descfontsize\color{textgray} An agentic infrastructure system for internal workloads: an agent autonomously generates, validates and tunes GPU kernels, and the system exposes a unified kernel generation and evaluation capability internally --- reaching the published state of the art on FlashInfer benchmarks.}\vspace{2pt}
+{\descfontsize\color{textgray} Designed the task contract, verification flow and evaluation rubric for a kernel-generation agent that autonomously generates, validates and tunes operators for internal workloads; it reaches the published state of the art on FlashInfer benchmarks.}\vspace{2pt}
 \resumeItemListStart
-\resumeItem{\textbf{Generation}: led the end-to-end loop --- the agent reads a target operator, writes candidate kernels, and iterates until a version passes correctness and beats the baseline.}
-\resumeItem{\textbf{Evaluation}: each candidate is compiled, checked against a PyTorch reference and profiled on the target GPU, then scored on measured latency and achieved bandwidth; both gates must pass before delivery.}
-\resumeItem{\textbf{Search and feedback}: profiler output is attributed to memory- or compute-bound and fed back as the next prompt, keeping only useful evidence and failure reasons to bound context growth, with iteration caps and regression rejection holding the search monotonic.}
-\resumeItem{\textbf{Delivery}: internal users only supply the target operator and a reference implementation to get back a validated, benchmarked kernel, with no GPU programming or tuning on their side.}
+\resumeItem{\textbf{Task contract}: the target operator, constraints and promotion criteria are fixed as the agent's per-round input, so the objective does not drift over a long loop.}
+\resumeItem{\textbf{Verification}: after every change, numerical comparison against a PyTorch reference, then scoring on measured latency and achieved bandwidth --- both gates required before the next round.}
+\resumeItem{\textbf{Search and context}: candidates, profiling evidence and the promotion decision are recorded each round; failure reasons feed the next round and only useful evidence is kept, bounding context growth. Iteration caps and regression rejection keep the agent from repeating ineffective attempts.}
+\resumeItem{\textbf{Delivery}: internal users supply only an operator and a reference implementation, and get back a validated kernel.}
 \resumeItemListEnd
 \projectgap
 
@@ -153,10 +153,7 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\smallentrytitlefontsize\color{appledark}Tencent - Ads ChatBI System (Intern)} & {\entrydetailsfontsize\color{applegray}Apr 2025 - Sep 2025} \\
 \end{tabular*}
-{\descfontsize\color{textgray} Contributed to the NL2Chart core workflow of Tencent Ads ChatBI, enabling conversion from natural-language requests to charts.}\vspace{2pt}
-\resumeItemListStart
-    \resumeItem{To guarantee source corpus quality, designed and implemented an automated corpus review system, raising core-workflow recall accuracy from 50\% to 80\%; also introduced a state machine for stability and crash recovery.}
-\resumeItemListEnd
+{\descfontsize\color{textgray} Natural-language data query system for content business users. Grounded in a metrics platform as its knowledge source, it fills DSL templates step by step through multi-turn clarification and multi-path retrieval with reranker re-ranking and popularity weighting, suppressing hallucination; a bad-case to fine-tuning to ICL hot-fix loop drives continuous improvement, with a state machine providing crash recovery.}\par
 \sectiongap
 
 \section{Open Source}
@@ -179,14 +176,14 @@
 \titleformat{\section}
     {\sectiontitlefontsize\bfseries\color{sectiongray}}
     {}{0em}{}
-\titlespacing*{\section}{0pt}{11pt}{0pt}
+\titlespacing*{\section}{0pt}{14pt}{0pt}
 \renewcommand{\sectionbodyspace}{\vspace{1.5pt}{\color{applegray}\hrule height 0.8pt}\vspace{4pt}}
 \renewcommand{\sectiongap}{\vspace{-3pt}}
-\renewcommand{\projectgap}{\vspace{11pt}}
+\renewcommand{\projectgap}{\vspace{15pt}}
 \renewcommand{\resumeItemListStart}{%
     \begin{itemize}[leftmargin=1.5em, labelsep=0.5em,
         label={\color{applegray}\raisebox{0.12ex}{\scriptsize\faAngleRight}},
-        itemsep=4pt, parsep=0pt, topsep=1pt]}
+        itemsep=6pt, parsep=0pt, topsep=1pt]}
 \noindent
 \begin{minipage}[t]{0.60\textwidth}
 \vspace{0pt}
@@ -217,12 +214,12 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\smallentrytitlefontsize\color{appledark}紫荆芯界 - Agentic Infra（Kernel-Gen Agent）} & {\entrydetailsfontsize\color{applegray}2026年07月 - 至今} \\
 \end{tabular*}
-{\descfontsize\color{textgray} 面向内部业务负载的 agentic infra 系统：由 agent 自主完成 GPU kernel 的生成、校验与调优，并向内部统一提供 kernel 生成与评测能力，在 FlashInfer benchmark 上达到业界 SOTA 水平。}\vspace{2pt}
+{\descfontsize\color{textgray} 面向内部业务负载的 kernel 生成 agent：agent 自主完成算子生成、校验与调优，负责设计其任务契约、验证流程与评测口径，在 FlashInfer benchmark 上达到业界 SOTA 水平。}\vspace{2pt}
 \resumeItemListStart
-\resumeItem{\textbf{生成链路}：主导从生成到调优的完整闭环——agent 读取目标算子、生成候选 kernel 并持续迭代，直到通过正确性校验且性能超过基线。}
-\resumeItem{\textbf{评测体系}：候选 kernel 经编译、与 PyTorch 参考实现数值对拍、GPU profiling 后，按实测延迟与有效带宽打分，两道关卡都过才允许交付。}
-\resumeItem{\textbf{搜索与反馈}：把 profiling 结果按 memory-bound / compute-bound 归因后回灌为下一轮 prompt，只保留有效证据与失败原因以控制上下文膨胀，并配合迭代上限与性能回退拒绝，让长时间搜索保持单调。}
-\resumeItem{\textbf{内部交付}：业务侧只需给出目标算子与参考实现，即可拿到经过正确性校验与性能评估的 kernel，无需自行处理 GPU 编程与调优细节。}
+\resumeItem{\textbf{任务契约}：明确目标算子、约束与准入标准，作为 agent 每轮工作的固定输入，避免目标在长循环中漂移。}
+\resumeItem{\textbf{验证流程}：每轮改动后自动与 PyTorch 参考实现数值对拍，通过后再按实测延迟与有效带宽打分，两道关卡都过才进入下一轮。}
+\resumeItem{\textbf{搜索与上下文}：候选、profiling 证据与采纳结论逐轮落档，失败原因回灌为下一轮输入，只保留有效信息以控制上下文增长；配合迭代上限与性能回退拒绝，避免重复无效尝试。}
+\resumeItem{\textbf{内部交付}：业务侧只需提供算子与参考实现，即可拿到通过校验的 kernel。}
 \resumeItemListEnd
 \projectgap
 
@@ -239,10 +236,7 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\smallentrytitlefontsize\color{appledark}腾讯 - 广告 ChatBI 系统（实习）} & {\entrydetailsfontsize\color{applegray}2025年04月 - 2025年09月} \\
 \end{tabular*}
-{\descfontsize\color{textgray} 参与腾讯广告 ChatBI 的 NL2Chart 核心链路建设，支撑自然语言请求到图表生成的转化。}\vspace{2pt}
-\resumeItemListStart
-    \resumeItem{为了保证源头语料库的质量，设计并实现语料自动化评审系统，推动核心链路召回正确率从 50\% 提升至 80\%。同时引入状态机，增强服务稳定性，并提供宕机恢复能力。}
-\resumeItemListEnd
+{\descfontsize\color{textgray} 服务内容业务人员的自然语言取数系统：以指标中台为知识源，经多轮澄清、多路召回（reranker 重排 + 热度加权）与 DSL 逐级填充生成模板化 DSL，抑制幻觉；并以 bad case 回流 + ICL 热修复持续迭代，状态机保障宕机恢复。}\par
 \sectiongap
 
 \section{开源经历}
