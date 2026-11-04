@@ -1,12 +1,9 @@
 # Workspace Index
 
-This workspace is organized into five main areas. Open the section index first before scanning deeper.
+This workspace is organized into four main areas. Open the section index first before scanning deeper.
 
 ## Top-Level Areas
 
-* `job/`
-  * Purpose: 求职相关 — 简历、面试八股文、关注的公司、求职笔记
-  * Index: `job/INDEX.md`
 * `writing/`
   * Purpose: 原创写作 — 技术文章、随笔、想法、脚本、小说
   * Index: `writing/INDEX.md`

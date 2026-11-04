@@ -1,0 +1,96 @@
+{
+  "retrieved_at_utc": "2026-10-29T07:44:02.533625+00:00",
+  "as_of": "2026-10-28 US close",
+  "data": [
+    {
+      "symbol": "SPY",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY",
+      "query": {
+        "period1": 915148800,
+        "period2": 1793232000,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6998,
+      "first_date": "1999-01-04",
+      "last_date": "2026-10-28",
+      "last_close": 772.3099975585938,
+      "exchange_timezone": "America/New_York",
+      "raw_sha256": "8a0b88cba1916932a640222c76be11884e7db2a0e112d27f3276452da723a9a9"
+    },
+    {
+      "symbol": "QQQ",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ",
+      "query": {
+        "period1": 915148800,
+        "period2": 1793232000,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6953,
+      "first_date": "1999-03-10",
+      "last_date": "2026-10-28",
+      "last_close": 725.6099853515625,
+      "exchange_timezone": "America/New_York",
+      "raw_sha256": "121640596101e967d2f1c4e4efba1cbaa5f37400d2b88ab07cac14ab806cae5b"
+    },
+    {
+      "symbol": "BRK-B",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/BRK-B",
+      "query": {
+        "period1": 915148800,
+        "period2": 1793232000,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6998,
+      "first_date": "1999-01-04",
+      "last_date": "2026-10-28",
+      "last_close": 540.3400268554688,
+      "exchange_timezone": "America/New_York",
+      "raw_sha256": "a2f023e670abe9d98432a12793109723ea2e97f7229e3c0c4e7a566c6b6be168"
+    },
+    {
+      "symbol": "VOO",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/VOO",
+      "query": {
+        "period1": 915148800,
+        "period2": 1793232000,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 4059,
+      "first_date": "2010-09-09",
+      "last_date": "2026-10-28",
+      "last_close": 709.9000244140625,
+      "exchange_timezone": "America/New_York",
+      "raw_sha256": "c63bac6317fdb29df3deddd0d72f503d827fcf3380a486e5c2e7247a9c637016"
+    },
+    {
+      "symbol": "QQQM",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQM",
+      "query": {
+        "period1": 915148800,
+        "period2": 1793232000,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 1518,
+      "first_date": "2020-10-13",
+      "last_date": "2026-10-28",
+      "last_close": 298.7099914550781,
+      "exchange_timezone": "America/New_York",
+      "raw_sha256": "c9dde11fab6573fa961a749d686e680165e8340b55663491a332d91b5843cab7"
+    },
+    {
+      "symbol": "FED_USDCNY",
+      "url": "https://www.federalreserve.gov/releases/h10/hist/dat00_ch.htm",
+      "rows": 6723,
+      "first_date": "2000-01-03",
+      "last_date": "2026-10-23",
+      "last_close": 6.6702,
+      "raw_sha256": "6809fa54231a886d6f8e1b42e9ccc1cd1ca8337e50a9c9cb8ce3be38838ac312"
+    }
+  ],
+  "notes": "Adjusted closes are an approximate gross-dividend-reinvestment series; no personal taxes or transaction/FX costs. Historical data can be revised by the vendor. FX uses Federal Reserve H.10 noon reference rates, not bank execution quotes. Yahoo CNY=X and ECB downloads are NOT used in calculations."
+}
