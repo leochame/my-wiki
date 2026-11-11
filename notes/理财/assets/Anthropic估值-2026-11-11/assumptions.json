@@ -1,0 +1,48 @@
+{
+  "as_of": "2026-11-11",
+  "currency_unit": "USD billion",
+  "assumptions_status": "All projections, cash bridge allowances and discount rates are subjective scenarios, not company guidance or calibrated probabilities.",
+  "years": [2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+  "time_convention": "Annual approximation: 2027 cash flow at t=1, 2036 at t=10. No claim to sub-year timing precision.",
+  "current_run_rate": 81,
+  "user_run_rate_sensitivity": 100,
+  "pre_ipo_cash_bridge": 125,
+  "post_ipo_cash_bridge": 200,
+  "cash_bridge_note": "Rounded liquid-financial-assets less non-equity claims allowance. Pre: disclosed Sep-30 liquid assets 131.845 minus allowance. Post: conditional 74-dollar IPO/placement adjusted liquid assets 212.684 minus allowance, assuming remaining conversion notes treated as equity in dilution. Not an exact transaction debt reconciliation; cash bridge uncertainty +/-20. Issuance has not closed.",
+  "basic_shares_billion_at_74": 13.086672593,
+  "diluted_share_components_at_74": {
+    "class_A": 7.430143944,
+    "class_N": 7.804580273,
+    "options_treasury_method": 1.704567865,
+    "RSUs": 1.073701297
+  },
+  "share_note": "From prospectus printed p24; T/F carry no economic rights. Denominator excludes ungranted future plan reserves. Constant 74-dollar capitalization for comparison only: actual placement shares and treasury method change with IPO price.",
+  "cases": {
+    "bear": {
+      "revenue": [90, 110, 125, 140, 155, 170, 182, 192, 200, 207],
+      "fcff_margin": [-0.15, -0.10, -0.05, 0.00, 0.04, 0.07, 0.09, 0.10, 0.11, 0.12],
+      "discount_rate": 0.15,
+      "terminal_growth": 0.025,
+      "serviceable_2030_lab_market": 500,
+      "A_share_2030": 0.28
+    },
+    "base": {
+      "revenue": [120, 170, 225, 280, 330, 370, 405, 435, 460, 480],
+      "fcff_margin": [-0.05, 0.02, 0.08, 0.14, 0.18, 0.21, 0.23, 0.24, 0.25, 0.25],
+      "discount_rate": 0.13,
+      "terminal_growth": 0.03,
+      "serviceable_2030_lab_market": 800,
+      "A_share_2030": 0.35
+    },
+    "bull": {
+      "revenue": [145, 230, 330, 450, 550, 650, 750, 830, 900, 960],
+      "fcff_margin": [0.00, 0.08, 0.15, 0.20, 0.24, 0.27, 0.29, 0.30, 0.30, 0.30],
+      "discount_rate": 0.11,
+      "terminal_growth": 0.035,
+      "serviceable_2030_lab_market": 1200,
+      "A_share_2030": 0.375
+    }
+  },
+  "margin_note": "Economic unlevered after-tax free cash flow, after inference, ongoing training/R&D, distribution, normal talent/replacement compensation including economic cost of future awards, capex/leases and working capital. Not GAAP or adjusted operating margin. Existing granted awards included in current dilution; no separate arbitrary future dilution haircut. Procurement commitments must be absorbed in these cost paths; do not subtract their entire undiscounted face amount again.",
+  "market_note": "Scenario market means revenue pool potentially captured by model labs and their own apps (enterprise plus consumer), not all AI capex, chips, cloud revenue or the sum of all downstream app and upstream API sales. Its 2030 size and shares are assumptions, not Menlo estimates. No new AGI/robotics option value is added separately."
+}

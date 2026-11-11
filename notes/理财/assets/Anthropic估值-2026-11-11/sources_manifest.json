@@ -1,0 +1,57 @@
+[
+  {
+    "name": "anthropic_S1A2.pdf",
+    "url": "https://cdn2.etrade.net/1/20261009.0/aempros/content/dam/etrade/new-issues-center/en_US/document/pdf/initial/2026/November/ant-ipo-ered.pdf",
+    "status": 200,
+    "sha256": "253ac8a76c109a372ffe03c45c1d52d2ffb0ba12ef74ea4f07779bbe7372bbcd"
+  },
+  {
+    "name": "menlo_2026.html",
+    "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
+    "status": 403
+  },
+  {
+    "name": "menlo_2025.html",
+    "url": "https://menlovc.com/perspective/2025-the-state-of-generative-AI-in-the-enterprise/",
+    "status": 403
+  },
+  {
+    "name": "ramp_oct_2026.html",
+    "url": "https://ramp.com/data/ai-index-oct-2026",
+    "status": 200,
+    "sha256": "40091f144a54570cf6744681a45b4916911e8ea981a5fb9a33f507a1abab6b07"
+  },
+  {
+    "name": "meta_Q3_2026.html",
+    "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+    "status": 403
+  },
+  {
+    "name": "edgar_submissions.json",
+    "url": "https://data.sec.gov/submissions/CIK0002130357.json",
+    "status": 200,
+    "sha256": "d51e22963c760ace86a19f3bbd55d4fe03a412499f8fd2986e3d6714e07dad5d"
+  },
+  {
+    "name": "anthropic_factsheet.pdf",
+    "url": "https://ipo.anthropic.com/documents/us/factsheet.pdf",
+    "status": 200,
+    "archived": false,
+    "validation": "HTTP 200 returned a placeholder PDF rather than the issuer document. Response omitted; source contents verified using the browser. The full prospectus is archived as anthropic_S1A2.pdf from E*TRADE.",
+    "downloaded_response_sha256": "5e06905c19b7265bb0bede408b169a3bfe923f7a6663dd9467887f1a03f1b1da"
+  },
+  {
+    "name": "anthropic_official_prospectus.pdf",
+    "url": "https://ipo.anthropic.com/documents/us/prospectus.pdf",
+    "status": 200,
+    "archived": false,
+    "validation": "HTTP 200 returned a placeholder PDF rather than the issuer document. Response omitted; source contents verified using the browser. The full prospectus is archived as anthropic_S1A2.pdf from E*TRADE.",
+    "downloaded_response_sha256": "5e06905c19b7265bb0bede408b169a3bfe923f7a6663dd9467887f1a03f1b1da"
+  },
+  {
+    "name": "softbank_Q2FY26.pdf",
+    "url": "https://group.softbank/media/Project/sbg/sbg/pdf/ir/presentations/2026/earnings-presentation_q2fy2026_01_en.pdf",
+    "status": 200,
+    "sha256": "ec90cfa4a47af965c3bf07f831fba2091f067739b4b63d1d274d6d9d5cca04ae"
+  }
+]

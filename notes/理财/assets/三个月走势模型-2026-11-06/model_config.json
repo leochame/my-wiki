@@ -1,0 +1,20 @@
+{
+  "as_of": "2026-11-05",
+  "target": "2027-02-05",
+  "sessions": 62,
+  "assets": [
+    "GSPC",
+    "NDX",
+    "KO",
+    "GOOGL"
+  ],
+  "seed": 20261106,
+  "samples": 20000,
+  "block_sessions": 5,
+  "bootstrap_history_sessions": 1260,
+  "backtest_min_history_sessions": 504,
+  "trend_shrinkage": 0.25,
+  "backtest": "Non-overlapping 62-session targets; origins spaced backwards from latest fully observed target. All parameters use past data only; no news backtest.",
+  "risk_model": "max(realized 21/63/252-session vols, market-factor VIX floor plus idiosyncratic realized vol). VIX is 30-day implied SP500 vol and is held constant over horizon as a regime assumption, not a three-month options forecast.",
+  "scope": "Price-only USD nominal returns; no dividends, personal taxes, fees or FX. Daily quantiles are marginal, not a simultaneous path envelope. News scenarios are subjective, unweighted."
+}

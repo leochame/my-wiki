@@ -1,0 +1,2681 @@
+PDF PAGE 1
+SoftBank Group Corp.
+November 10, 2026
+Q2 FY2026
+Earnings Results
+Ver. 1.1
+
+PDF PAGE 2
+2
+Disclaimers
+This presentation provides relevant information about SoftBank Group Corp. (“SBG”) and its subsidiaries (together with SBG, the “Company”) and its affiliates (together with the Company, the “Group”) and does not constitute or form any solicitation of investment
+including any offer to buy or subscribe for any securities in any jurisdiction. Any offers, solicitations of offers to buy, or any sales of securities will be made in accordance with the registration requirements of the Securities Act of 1933, as amended ("Securities
+Act"). The information on this slide is being presented in accordance with Rule 135 under the Securities Act.
+This presentation contains forward-looking statements, beliefs or opinions regarding the Group, such as statements about the Group’s future business, future position and results of operations, including estimates, forecasts, targets and plans for the Group.
+Without limitation, forward-looking statements often include the words such as “targets”, “plans”, “believes”, “hopes”, “continues”, “expects”, “aims”, “intends”, “will”, “may”, “should”, “would”, “could”, “anticipates”, “estimates”, “projects” or words or terms of similar
+substance or the negative thereof. Any forward-looking statements in this presentation are based on the current assumptions and beliefs of the Group in light of the information currently available to it as of the date hereof. Such forward-looking statements do not
+represent any guarantee by any member of the Group or its management of future performance and involve known and unknown risks, uncertainties and other factors, including but not limited to: the success of the Group’s business model; the Group’s ability to
+procure funding and the effect of its funding arrangements; key person risks relating to the management team of SBG; risks relating to and affecting the Group’s investment activities; risks relating to SB Fund (defined as below), its investments, investors and
+investees; risks relating to SoftBank Corp. and the success of its business; risks relating to Arm and the success of its business; risks relating to law, regulation and regulatory regimes; risks relating to intellectual property; litigation; and other factors, any of which
+may cause the Group’s actual results, performance, achievements or financial position to be materially different from any future results, performance, achievements or financial position expressed or implied by such forward-looking statements. For more
+information on these and other factors which may affect the Group’s results, performance, achievements, or financial position, see “Risk Factors” on SBG’s website at https://group.softbank/en/ir/investors/management_policy/risk_factor. None of the Group nor its
+management gives any assurances that the expectations expressed in these forward-looking statements will turn out to be correct, and actual results, performance, achievements or financial position could materially differ from expectations. Persons viewing this
+presentation should not place undue reliance on forward-looking statements. The Company undertakes no obligation to update any of the forward-looking statements contained in this presentation or any other forward-looking statements the Company may make.
+Past performance is not an indicator of future results and the results of the Group in this presentation may not be indicative of, and are not an estimate, forecast or projection of the Group’s future results.
+The Company does not guarantee the accuracy or completeness of information in this presentation regarding companies (including, but not limited to, those in which SB Funds have invested) other than the Group which has been quoted from public and other
+sources.
+Regarding Trademarks
+Names of companies, products and services that appear in this presentation are trademarks or registered trademarks of their respective companies.
+Important Notice – Trading of SBG Common Stock, Disclaimer Regarding Unsponsored American Depositary Receipts
+SBG encourages anyone interested in buying or selling its common stock to do so on the Tokyo Stock Exchange, which is where its common stock is listed and primarily trades. SBG’s disclosures are not intended to facilitate trades in, and should not be relied on
+for decisions to trade, unsponsored American Depositary Receipts (“ADRs”).
+SBG has not and does not participate in, support, encourage, or otherwise consent to the creation of any unsponsored ADR programs or the issuance or trading of any ADRs issued thereunder in respect of its common stock. SBG does not represent to any ADR
+holder, bank or depositary institution, nor should any such person or entity form the belief, that (i) SBG has any reporting obligations within the meaning of the U.S. Securities Exchange Act of 1934 (“Exchange Act”) or (ii) SBG’s website will contain on an ongoing
+basis all information necessary for SBG to maintain an exemption from registering its common stock under the Exchange Act pursuant to Rule 12g3-2(b) thereunder.
+To the maximum extent permitted by applicable law, SBG and the Group disclaim any responsibility or liability to ADR holders, banks, depositary institutions, or any other entities or individuals in connection with any unsponsored ADRs representing its common
+stock.
+The above disclaimers apply with equal force to the securities of any of the Group which are or may in the future be the subject of unsponsored ADR programs, such as SoftBank Corp. or LY Corporation.
+Notice regarding Fund Information contained in this Presentation
+This presentation is furnished to you for informational purposes and is not, and may not be relied on in any manner as, legal, tax, investment, accounting or other advice or as an offer to sell or a solicitation of an offer to buy limited partnership or comparable 
+limited liability equity interests in any fund managed by a subsidiary of SBG, including SB Global Advisers Limited (“SBGA”), SB Investment Advisers (UK) Limited (“SBIA”), and any of their respective affiliates thereof (collectively, the “SB Fund Managers” and 
+each an “SB Fund Manager”) (such funds together with, as the context may require, any parallel fund, feeder fund, co-investment vehicle or alternative investment vehicle collectively, the “SB Funds” and each an “SB Fund”). For the avoidance of doubt, the SB 
+Funds include, among other funds, SoftBank Vision Fund L.P. (together with, as the context may require, any parallel fund, feeder fund, co-investment vehicle or alternative investment vehicle, the “Vision Fund I”), which are managed by SBIA and its affiliates; 
+SoftBank Vision Fund II-2 L.P. (together with, as the context may require, any parallel fund, feeder fund, co-investment vehicle or alternative investment vehicle, the “Vision Fund II”), which are managed by SBGA and its affiliates; and SBLA Latin America Fund 
+LLC (together with, as the context may require, any parallel fund, feeder fund, co-investment vehicle or alternative investment vehicle, the “SoftBank Latin America Fund”), which are managed by SBGA and its affiliates.
+None of the SB Funds (including the Vision Fund I, Vision Fund II and SoftBank Latin America Fund), the SB Fund Managers any successor or future fund managed by an SB Fund Manager, SBG or their respective affiliates makes any representation or 
+warranty, express or implied, as to the accuracy or completeness of the information contained herein and nothing contained herein should be relied upon as a promise or representation as to past or future performance of the SB Funds or any other entity 
+referenced in this presentation, or future performance of any successor or the future fund managed by an SB Fund Manager.
+Information relating to the performance of the SB Funds or any other entity referenced in this presentation has been included for background purposes only and should not be considered an indication of the future performance of the relevant SB Fund, any other 
+entity referenced in this presentation or any future fund managed by an SB Fund Manager. References to any specific investments of an SB Fund, to the extent included therein, are presented to illustrate the relevant SB Fund Manager’s investment process and
+operating philosophy only and should not be construed as a recommendation of any particular investment or security. The performance of individual investments of an SB Fund may vary and the performance of the selected transactions is not necessarily 
+indicative of the performance of all of the applicable prior investments. The specific investments identified and described in this presentation do not represent all of the investments made by the relevant SB Fund Manager, and no assumption should be made that 
+investments identified and discussed therein were or will be profitable.
+The performance of an SB Fund in this presentation is based on unrealized valuations of portfolio investments. Valuations of unrealized investments are based on assumptions and factors (including, for example, as of the date of the valuation, average multiples 
+of comparable companies, and other considerations) that the relevant SB Fund Manager believes are reasonable under the circumstances relating to each particular investment. However, there can be no assurance that unrealized investments will be realized at 
+the valuations indicated in this presentation or used to calculate the returns contained therein, and transaction costs connected with such realizations remain unknown and, therefore, are not factored into such calculations. Estimates of unrealized value are 
+subject to numerous variables that change over time. The actual realized returns on the relevant SB Fund’s unrealized investments will depend on, among other factors, future operating results, the value of the assets and market conditions at the time of
+disposition, any related transaction costs and the timing and manner of sale, all of which may differ from the assumptions and circumstances on which the relevant SB Fund Manager’s valuations are based.
+Past performance is not necessarily indicative of future results. The performance of an SB Fund or any future fund managed by an SB Fund Manager may be materially lower than the performance information presented in this presentation. There can be no 
+assurance that each SB Fund or any future fund managed by the relevant SB Fund Manager will achieve comparable results as those presented therein.
+Third-party logos and vendor information included in this presentation are provided for illustrative purposes only. Inclusion of such logos does not imply affiliation with or endorsement by such firms or businesses. There is no guarantee that an SB Fund Manager, 
+an SB Fund’s portfolio companies, any future portfolio companies of a future fund managed by an SB Fund Manager or SBG will work with any of the firms or businesses whose logos are included in this presentation in the future.
+SBGA and SBIA manage separate and independent operations and processes from each other and those of SBG in the management of Vision Fund I, Vision Fund II and SoftBank Latin America Fund, respectively. Any SB Funds managed by SBGA or SBIA are 
+solely managed by SBGA or SBIA respectively.
+
+PDF PAGE 3
+33
+Headlines from Nikkei and The Asahi Shimbun have been translated from the original Japanese. 
+The Asahi Shimbun: Oct 12, 2026. Permission No. 26-2444.
+Wall Street Journal: Used with permission. ©2026 Dow Jones & Company, Inc.
+Financial Times: Courtesy of Financial Times Ltd., sourced from https://www.ft.com/content/0a86d4f5-6046-4c1c-89e9-90583cff33f9
+Concerns and Headwinds Surrounding AI
+Hyperscaler credit risk fuels fears of an AI bubble in 
+corporate bond markets                                                                            
+(Nikkei, Oct 1, 2026)
+Protests against AI-driven data center construction in 
+Virginia, home to the most data centers in the U.S. 
+                                    
+(Asahi Shimbun, Oct 12, 2026)
+Cyberattack by Rogue AI Swarm Stokes Fears of 
+Out-of-Control Agents
+(The Wall Street Journal, Sep 11, 2026)
+Students fear AI is about to ruin their future 
+(Financial Times, Sep 22, 2026)
+
+PDF PAGE 4
+4
+Profound Benefits of AI
+73% of engineers using ChatGPT at businesses report faster development
+140M people each week use ChatGPT to learn math and science
+75% of ChatGPT users at businesses can perform tasks they previously could not
+ChatGPT users save an average of 40–60 minutes per day at work
+300M+ people each week use ChatGPT for health-related advice
+Source: OpenAI blog posts dated Jul 23, 2026; Dec 8, 2025; and Mar 10, 2026.
+4
+
+PDF PAGE 5
+5
+Steadily Forward
+5
+
+PDF PAGE 6
+6
+Completed $30B 
+in follow-on investments
+Oct 1, 2026
+AI Model
+6
+
+PDF PAGE 7
+7
+Outlook provided at Arm’s earnings announcement on Nov 4, 2026 (U.S. time)
+Arm’s share among major hyperscalers
+To exceed 60% by the end of 2026
+*Share of Arm-based servers
+AI Chip
+7
+
+PDF PAGE 8
+8
+Signed a 20-year lease 
+agreement with OpenAI 
+for data centers with
+8 GW-IT capacity
+$3.1B acquisition 
+completed 
+Aug 17, 2026
+Sep 30, 2026
+AI Infrastructure
+8
+
+PDF PAGE 9
+9
+Aug 17, 2026
+Nov 5, 2026
+Physical AI
+Aug 13, 2026
+$200M investment
+in Swiss-based 
+Gravis Robotics
+Strategic supply 
+agreement with 
+Amazon
+Raised $1.5B at a 
+$21.5B valuation
+to build a nationwide 
+drone delivery 
+network in the U.S.
+Source: Gravis Robotics press release, “Reshaping the Physical World: Gravis Robotics Raises $200M for Construction Autonomy” (Aug 17, 2026), AutoStore press release, “AutoStore Holdings Ltd – Strategic supply agreement with Amazon” (Aug 13, 2026), and 
+Zipline press release “Zipline Raises $1.5 Billion to Build Nationwide Drone Delivery Network” (Nov 5, 2026). The $21.5B valuation refers to post-money valuation
+9
+
+PDF PAGE 10
+10
+This slide uses images for illustrative purposes. They do not represent actual products or indicate future realization.
+AI Chip
+AI Model
+AI Infrastructure
+Physical AI
+10
+
+PDF PAGE 11
+11
+H1 FY2026 Highlights
+Net loss: Net loss attributable to owners of the parent
+USD equivalents are translated at the following rates (JPY per USD): Investment gain and net loss: Q1 FY2026: 160.51; Q2 FY2026: 160.12 NAV: Mar 31, 2026: 159.88; Sep 30, 2026: 157.35.
+1
+3
+2
+NAV at  ¥59.8T ($380B) (as of Sep 30, 2026),
+up ~¥20T ($130B) from Mar 31, 2026
+4
+Raised a total of $56.5B in Q2
+Fully repaid $40B bridge facility ahead of schedule (Sep 2026)
+¥1.7T ($10.7B) investment gain (-¥2.2T YoY); 
+¥0.8T ($4.8B) net loss (-¥3.7T YoY)
+Completed $30B follow-on investments in OpenAI
+                                                                           (Oct 2026)
+
+PDF PAGE 12
+12
+Consolidated 
+Results
+Some figures are rounded and may not add up to the figures presented as the total.
+The translations of JPY amounts into USD amounts are included solely for the convenience of readers and have been made using the relevant quarterly average or period-end rate. Unless otherwise indicated, the following rates apply throughout this presentation (JPY per USD): 
+Financial results: Q1 FY2026: 160.51; Q2 FY2026: 160.12. NAV and Cash position: Mar 31, 2026: 159.88; Jun 30, 2026: 162.39; Sep 30, 2026: 157.35. Pro forma Q2 FY2026 NAV: 158.34. Such translations should not be construed as representations that the JPY amounts could be 
+converted into USD at those or any other rates.
+
+PDF PAGE 13
+13
+FY2025
+H1
+FY2026
+H1
+Change
+Net Sales
+3,736.8
+4,235.0
++498.2
+Gain/loss on 
+Investments
+3,926.7
+1,725.8
+-2,200.9
+Income Before 
+Income Tax
+3,686.4
+-438.7
+-4,125.1
+Net Income
+2,924.1
+-768.0
+-3,692.1
+Net income: Net income attributable to owners of the parent
+Consolidated Results
+(¥ B)
+($26.4B)
+($10.7B)
+(-$2.7B)
+(-$4.8B)
+
+PDF PAGE 14
+14
+Investment Gain/Loss
+486.9
+3,439.7
+293.7
+3,066.2
+1,859.4
+-133.6
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+OpenAI valuation gain:
+¥2,156.3B
+SVF1 investment gain:
+¥848.9B
+Intel valuation loss: -¥270.1B
+Intel valuation gain:
+¥1,332.9B
+SVF investment gain:
+¥460.1B
+FY2025
+FY2026
+(-$0.8B)
+(¥ B)
+
+PDF PAGE 15
+15
+Net income: Net income attributable to owners of the parent
+Net Income
+421.8
+2,502.2
+248.6
+1,829.6
+347.3
+-1,115.3
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+• Loss on power generation-related 
+equipment for AI data centers in the 
+U.S.: -¥597.2B (-$3.7B)
+• Raised $7.4B in Aug 2026 through 
+prepaid forward contracts backed by 
+Intel shares
+→ Recorded a ¥321.9B derivative loss 
+due to the increase in Intel share 
+price following the contract
+FY2025
+FY2026
+(-$7.0B)
+(¥ B)
+
+PDF PAGE 16
+16
+Advance payments: Amounts invested by Silver Bands 7 to acquire power generation-related assets in the U.S. included in “Purchase of property, plant and equipment, and intangible assets” in the consolidated statement of cash flows for the period from FY2025 through Q2 FY2026
+Made bridge investments in advance to secure power generation 
+equipment in anticipation of shortages. Expect to recoup the 
+investment through project financing
+Equipment for U.S. AI Data Center (1)
+FY2025
+FY2026
+Q1-2
+Total Amount
+3.9
+5.6
+9.5
+($ B)
+*Made by Silver Bands 7 (a subsidiary in which SBG and SVF2 have invested, and a separate 
+entity from SB Energy)
+Advance payments for power generation-related equipment*
+
+PDF PAGE 17
+17
+Rebates of up to $2.1 billion are subject to certain conditions.
+For details, see “REVISION OF PROCUREMENT PLANS FOR POWER GENERATION-RELATED EQUIPMENT FOR AI DATA CENTER PROJECTS IN THE U.S.” on page 4 of the Consolidated financial report for the six-month period ended September 30, 2026. 
+Following a review of the project portfolio, revised certain power-
+generation equipment procurement strategy, recognized a related 
+loss, and secured potential rebates on future qualifying purchases
+Equipment for U.S. AI Data Center (2)
+$3.7B Loss
+($2.9B already paid)
+• Recorded a loss related to 
+non-refundable advance 
+payments and modifications 
+to signed contracts
+• Entitled to rebates on future 
+equipment purchases
+Rebates of 
+up to $2.1B
+Q2 FY2026
+Realignment
+The $3.7B loss is completely unrelated to PORTS-Pike
+
+PDF PAGE 18
+18
+Advance payments: Amounts invested by Silver Bands 7 to acquire assets related to power generation in the U.S. included in “Purchase of property, plant and equipment, and intangible assets” in the consolidated statement of cash flows for the period from FY2025 through Q2 FY2026 
+Remaining equipment will be used for PORTS-Pike power 
+generation project and others
+Equipment for U.S. AI Data Center (3)
+Advance payments for power generation-related equipment *
+Total Amount
+Loss Recorded 
+in Q2 FY26
+Balance as of 
+Sep 30, 2026
+9.5
+-2.9
+6.6
+($ B)
+*Made by Silver Bands 7 (a subsidiary in which SBG and SVF2 have invested, and a 
+separate entity from SB Energy)
+
+PDF PAGE 19
+19
+For details on NAV and LTV, see the Appendices, “Definition and Calculation Method of NAV and LTV (as of Mar 31, 2026)”, “Definition and Calculation Method of NAV and LTV (as of Jun 30, 2026)”, and “Definition and Calculation Method of NAV and LTV (as of Sep 30, 2026).” 
+Cash position: Cash and cash equivalents + short-term investments recorded as current assets + bond investments + undrawn borrowing capacity. Excludes the outstanding balance of the prime brokerage loan by SB Northstar, collateralized primarily by a portion of bond investments 
+included in SBG stand-alone cash position at each period-end (¥801.9B as of Mar 31, 2026, ¥684.9B as of Jun 30, 2026, and ¥934.3B as of Sep 30, 2026).
+Key Indicators
+Mar 31, 2026
+Sep 30, 2026
+Jun 30, 2026
+NAV
+(Net Asset Value)
+LTV
+(Net debt / Equity value of holdings)
+Cash Position
+¥59.8 T
+¥5.0 T
+15.9 %
+¥40.1 T
+¥3.5 T
+17.0 %
+¥72.3 T
+¥2.3 T
+13.0 %
+($445B)
+($380B)
+($32B)
+($14B)
+($22B)
+($251B)
+
+PDF PAGE 20
+20
+NAV
+(¥ T)
+Arm
+SVF1/SVF2/LatAm
+SoftBank Corp.
+T-Mobile
+Other
+2.2
+2.1
+2.1
+2.0
+2.4
+2.9
+3.5
+3.8
+5.7
+4.3
+3.7
+2.2
+2.2
+2.6
+2.8
+1.8
+1.3
+0.7
+2.9
+2.7
+2.9
+2.6
+2.9
+2.8
+2.3
+2.4
+2.4
+2.9
+2.7
+8.5
+7.6
+8.3
+7.7
+8.8
+11.1
+14.3
+17.9
+20.8
+20.6
+19.7
+19.4
+14.4
+13.4
+10.6
+16.5
+15.2
+10.1
+15.9
+43.4
+32.1
+18.6
+35.3
+29.0
+29.3
+25.7
+32.4
+33.3
+30.9
+40.1
+72.3
+59.8
+44.7
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Apportioned based on the proportionated value of each equity holding at the end of each quarter
+For details on NAV, see Appendix “Definition and Calculation Method of NAV and LTV” in each quarter’s earnings presentation. 
+For details on NAV as of Q2 FY2026 and the related pro forma figures, see the Appendix, “Definition and Calculation Method of NAV and LTV.” 
+NAV trends are not indicative of future values and should not be construed as an indication of the value of any securities, including SBG’s common stock, or as investment advice.
+FY2024
+FY2026
+FY2025
+Q2 Pro Forma
+Stock prices and FX 
+rates as of Nov 9, 2026 
+applied
+($380B)
+($282B)
+($251B)
+
+PDF PAGE 21
+21
+Apportioned based on the proportionated value of each equity holding at the end of each quarter
+Before tax. Equity value of holdings and SBG’s net debt are both adjusted for asset-backed financing.
+For details on NAV as of Q2 FY2026 and the related pro forma figures, see the Appendix, “Definition and Calculation Method of NAV and LTV.”
+NAV trends are not indicative of future values and should not be construed as an indication of the value of any securities, including SBG’s common stock, or as investment advice.
+NAV Has Grown Significantly over the Long Term
+Despite Short-Term Fluctuations
+Q2
+FY2026
+Q4
+FY1998
+Alibaba
+Yahoo 
+Japan
+40.1 44.7
+Q2 Pro Forma
+Stock prices and FX 
+rates as of Nov 9, 2026 
+applied
+59.8
+Arm
+SVF1/SVF2/LatAm
+SoftBank Corp.
+T-Mobile
+Other
+(¥ T)
+($282B)
+($380B)
+($251B)
+
+PDF PAGE 22
+22
+15.9%
+18.7%
+21.6%
+20.4%
+14.5%
+15.0%
+18.2%
+11.0%
+8.0%
+10.6%
+11.5%
+8.4%
+7.8%
+12.5%
+12.9%
+18.0%
+17.0% 16.5%
+20.6%
+17.0%
+13.0%
+15.9%
+0%
+10%
+20%
+30%
+40%
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+35% (extraordinary circumstances)
+25% (normal circumstances)
+LTV
+As of the end of each quarter
+For details on LTV, see the Appendix, “Definition and Calculation Method of NAV and LTV” in each quarter’s earnings presentation.
+Net of asset-backed finance
+FY2024
+FY2023
+FY2025
+Conservative 
+financial 
+management
+FY2021
+FY2022
+FY2026
+
+PDF PAGE 23
+23
+5.0
+0.6
+1.0
+Q2
+Cash Position
+Cash position: Cash and cash equivalents + short-term investments recorded as current assets + bond investments + undrawn borrowing capacity. The undrawn borrowing capacity as of Sep 30, 2026 is ¥511.4B. Excludes ¥934.3B in outstanding prime brokerage borrowings of SB 
+Northstar, collateralized primarily by a portion of the bond investments included in SBG’s stand-alone cash position.
+Maintaining a cash position above 2 years’ worth of bond 
+redemptions
+(¥ T)
+After 1 year
+After 2 years
+Oct 2026 –
+Sep 2027
+Oct 2027 –
+Sep 2028
+FY2026
+Cash Position
+>
+($32B)
+Bond redemptions 
+over the next 2 years
+¥1.6T ($10B) 
+
+PDF PAGE 24
+24
+
+PDF PAGE 25
+25
+Revenue
+($ M)
+License and other revenue
+Royalty revenue
+Record Q2
+revenue
+620
+670
+515
+773
+(Source) Arm
+US-GAAP. License and other revenue refers to revenue excluding royalty revenue. See Arm Investor Relations website (https://investors.arm.com/) for details.
+Q2
+FY2025
+Q2
+FY2026
+27%
+Increase
+1,135
+1,443
+
+PDF PAGE 26
+26
+($)
+0.52
+0.39
+Fully Diluted Earnings per Share
+(Source) Arm
+Fully diluted earnings per share refers to Non-GAAP fully diluted earnings per share. Visit Arm Investor Relations website (https://investors.arm.com/) for details.
+Record Q2
+EPS
+Q2
+FY2025
+Q2
+FY2026
+33%
+Increase
+
+PDF PAGE 27
+27
+$1.54B
+$0.56
+Guidance
+(Source) Arm 
+Fully diluted Earnings per Share refers to Non-GAAP fully diluted earnings per share
+Visit Arm Investor Relations website (https://investors.arm.com/) for details.
+Analyst consensus was compiled by SBG based on FactSet data as of Arm’s earnings announcement on Nov 4, 2026 (U.S. time).
+Q3 FY2026
+Company Guidance
+(Midpoint)
+Analyst Consensus
+(As of Arm’s earnings 
+announcement)
++/- $50M
++/- $0.04
+(YoY)
+Revenue
+Fully diluted earnings 
+per share
+(YoY)
+(+24.0%)
+(+30.2%)
+>
+>
+$1.52B
+$0.55
+
+PDF PAGE 28
+28
+(Source) Arm. Cumulative shipments of Arm Neoverse cores. Licensees report shipments with a one-quarter lag. Figures for Jul through Sep 2026 are therefore estimates.
+Accelerating Adoption of Arm Technology in Data Centers
+Launch of data center 
+IP products
+Sep
+2026
+Sep
+2023
+Sep
+2022
+Sep
+2019
+Sep 
+2018
+Sep
+2021
+Sep
+2020
+Sep
+2025
+Sep
+2024
+Arm-based CPU Cores for Data Centers: 
+Cumulative Shipments
+>1.9B cores
+AI adoption drives 
+demand for data center 
+CPUs
+Adoption of energy-
+efficient Arm technology 
+accelerates
+
+PDF PAGE 29
+29
+(Source) Approximately 2× performance with the same power: Arm and Signal65 (Oct 2026). Comparison assumes the same power budget of 24 kW per rack. The arithmetic mean of performance ratios across seven AI agent-related CPU workloads is 1.99×. Estimates are based on 
+measured performance from early Arm AGI CPU systems and Arm’s server rated-power model. The x86-based CPU used for comparison is AMD EPYC 9755.
+Designed for agentic AI, delivering high power efficiency
+Arm AGI CPU to Boost Arm’s Data Center Share
+Arm AGI CPU
+~2x
+Performance with the 
+same power 
+(vs x86-based CPU)
+
+PDF PAGE 30
+30
+(Source) Arm
+Arm’s Expanding Share at Top Hyperscalers
+15%
+60%+
+2024
+2026 (Forecast)
+Arm-based Server Market Share at Top Hyperscalers
+AWS Graviton
+Microsoft Cobalt
+Google Axion
+NVIDIA Grace
+To reach 4x
+
+PDF PAGE 31
+31
+
+PDF PAGE 32
+32
+Cumulative Investment Amount in OpenAI
+The investment amount includes indirect investments and is presented net of disposals. Ownership as of Oct 1, 2026, following completion of the investment
+Cumulative investment of $64.6B and ~13% ownership
+($ B)
+1st tranche
+(Funded on Apr 1)
+2nd tranche
+(Funded on Jul 1) 
+3rd tranche
+(Funded on Oct 1)
+2.2 
+2.2 
+32.4 
+32.4 
+10.0 
+10.0 
+10.0 
+As of Mar 31, 2025
+As of Mar 31, 2026
+As of Oct 1, 2026
+2.2
+34.6
+64.6
+
+PDF PAGE 33
+33
+(Source) OpenAI blog (Jul 31, 2026)
+Three integrated layers evolve together, enhancing one 
+another’s value
+Three Layers Supporting OpenAI’s Growth
+Products and platforms
+ChatGPT, Codex, ChatGPT Work
+AI models
+Astra, Sol, Terra, Luna, etc.
+Compute
+
+PDF PAGE 34
+34
+(Source) Artificial Analysis. Performance is measured using Intelligence Index v5.0. Cost represents the weighted average API cost per evaluation task in the index. 
+OpenAI’s models combine high performance with superior cost 
+efficiency
+Performance and Cost of AI Models
+5
+15
+25
+35
+45
+55
+$0
+$2
+$4
+$6
+$8
+$10
+$12
+$14
+GPT-6 Luna
+DeepSeek V4.1 Flash
+MiMo-V2.6 Pro
+Claude Haiku 5.5
+Muse Glimmer
+Kimi K3.1 Pro
+Gemini 4 Carbon
+Claude Sonnet 5.5
+Claude Opus 5.5
+Claude Fable 5.1
+GPT-6.1 Sol
+GPT-6.1 Terra
+GPT-6 Astra
+Performance
+Cost
+Performance vs. cost trend
+Models above the line offer higher 
+performance at the same cost
+
+PDF PAGE 35
+35
+(Source) 1.2B+ Weekly active users: OpenAI DevDay 2026, Sep 29, 2026
+Consumer: Building a Massive User Base
+(B)
+ChatGPT Weekly Active Users
+1.2B+ users 
+in < 4 years 
+after launch
+1.2B+
+Nov 2022
+Sep 2026
+Launch
+
+PDF PAGE 36
+36
+(Source) Sensor Tower database, “Time to Reach 1 Billion WAU Across Major Apps (Measured from Launch)”
+Fastest app in history to reach 1 billion users
+Rapidly Built a Massive User Base
+ChatGPT
+TikTok
+Instagram
+WhatsApp
+Facebook
+YouTube
+Google Maps
+3 years
+3 years 11 months
+8 years 3 months
+8 years 6 months
+8 years 9 months
+12 years 1 month
+14 years 7 months
+Time to Reach 1 Billion Weekly Active Users
+
+PDF PAGE 37
+37
+ARR: Annualized revenue run rate. $100M: OpenAI blog dated Mar 31, 2026. $1B: OpenAI blog dated Aug 31, 2026
+Consumer: Strong Ads Revenue Momentum
+$100M
+$1B
+2026/3/1
+2026/8/1
+ChatGPT Ads 
+Annualized Revenue Run Rate (ARR)
+10x
+in 5 months
+Mar 2026
+Aug 2026
+
+PDF PAGE 38
+38
+(Source) Interview with OpenAI CFO Sarah Friar on CNBC (Jan 21, 2026); LinkedIn post by OpenAI CFO Sarah Friar (Jun 4, 2026)
+Enterprise revenue now accounts for roughly half of total revenue
+Expanding the Enterprise Business
+Enterprise Share of Total Revenue
+Jan 2026
+Jun 2026
+Dec 2026
+(Original target)
+Enterprise
+Original target 
+achieved 6 months 
+ahead of schedule
+Enterprise
+~50%
+40%
+
+PDF PAGE 39
+39
+(Source) Sam Altman’s X post dated Feb 5, 2026, and Codex Engineering Lead, Thibault Sottiaux’s X posts dated May 31, Jul 22, Aug 31 and Oct 8, 2026.
+Figures of 1 million and 5 million represent Codex weekly active users. Figures of 10 million, 25 million, and 40 million represent combined weekly active users of Codex and ChatGPT Work.
+Integration with ChatGPT Work drives further growth in Codex 
+adoption
+Enterprise: Accelerating Codex Adoption
+5
+May 2026
+Jul 2026
+10
+40x
+in 8 months 
+1
+Feb 2026
+25
+Aug 2026
+Oct 2026
+40
+(M users)
+Weekly Active Users
+(Codex + ChatGPT Work)
+
+PDF PAGE 40
+40
+(Source) OpenAI blog dated Jan 18, 2026, and OpenAI CFO Sarah Friar’s LinkedIn post dated Oct 9, 2026.
+ARR: Annualized revenue run rate
+OpenAI ARR
+6
+As of 
+Dec 2024
+As of
+Dec 2025
+20
+25x 
+since 2023
+Sharp growth in 
+the latest quarter
+（$ B）
+2
+As of 
+Dec 2023
+~50
+As of
+Sep 2026
+Jul - Sep
+up 70%+
+
+PDF PAGE 41
+41
+AI Infrastructure
+
+PDF PAGE 42
+42
+(Source) Altman Solon forecast cited in SB Energy’s S-1 filing dated Aug 31, 2026
+Not guaranteed or indicative of future values
+Growing AI Usage Drives Data Center Demand
+82
+274
+2025
+2030
+(GW)
+Global Data Center Capacity
+(Based on an external research company’s forecast)
+Demand well above 
+installed capacity
+3.3x
+Installed
+Capacity
+Demand 
+Forecast
+
+PDF PAGE 43
+43
+As of Sep 30, 2026
+5.0 GW capacity shown for France refers to gross power capacity.
+The Group’s AI Data Center Portfolio
+Milam County 
+AI Data Center
+PORTS-Pike 
+Technology Campus
+AI Data Center 
+in France
+Under construction
+Offtaker:
+OpenAI (15-year contract)
+Preparing for construction
+Offtaker:
+OpenAI (20-year contract)
+Development and 
+permitting underway
+Offtaker:
+To be determined
+Milam County, Texas
+Pike County, Ohio
+753 MW-IT
+8.0 GW-IT
+5.0 GW
+Hauts-de-France and other regions
+
+PDF PAGE 44
+44
+Reflects the approach to the SoftBank Group’s data center portfolio as of Sep 30, 2026
+Advancing AI data center development while adhering to our 
+financial policy
+The Group’s Approach to AI Data Center Development
+Illustrative Financing Structure
+IT equipment to be provided by the offtaker
+IT equipment
+Data center buildings with 
+power infrastructure
+Expected to be funded through 
+project finance, non-recourse to SBG
+Illustrative Scope of Delivery
+The SoftBank Group
+Offtaker
+AI data 
+center
+SPC
+SBG
+Equity
+Financial 
+institutions/
+bond 
+investors
+
+PDF PAGE 45
+45
+(Source) SB Energy’s press release “NVIDIA Guarantees SB Energy’s PORTS-Pike Technology Campus in Ohio to Exclusively Host NVIDIA AI Compute” dated Aug 17, 2026 and SB Energy’s S-1 filing dated Aug 31, 2026.
+NVIDIA’s credit support covers the land, power and shell infrastructure for the initial 4.25 GW-IT of capacity. NVIDIA has an option to extend credit support to an additional 3.75 GW-IT.
+The $3.0B investment includes a $1.5B prepaid forward agreement and a $1.5B purchase of newly issued shares.
+PORTS-Pike Progress
+Full 8.0 GW-IT capacity
+20-year lease agreement signed
+(Aug 17, 2026)
+Credit Support
+AI Infrastructure Supply
+Equity Investment
+Credit support for OpenAI’s 
+leases covering at least
+4.25 GW-IT 
+Exclusive AI compute 
+infrastructure provider at 
+PORTS-Pike
+Commitment to invest 
+$3.0B in SB Energy
+($1.5B funded)
+
+PDF PAGE 46
+46
+Data center capacity refers to gross power capacity.
+Targeting 3.1 GW by 2031 of the planned 5 GW
+Progress on AI Data Centers in France
+French Government Fast-Track Designation
+(Securing power supply and accelerating grid connection)
+Designated
+Bosquel
+1.0 GW
+Newly designated
+Dunkirk
+1.3 GW
+
+PDF PAGE 47
+47
+(Source) SB Energy. MW: MWdc
+Advancing development together with local communities
+Working in Partnership with Local Communities
+Track record of developing 
+900 MW of power generation 
+capacity in Milam County
+Power
+Creating jobs through data 
+center construction and 
+operations
+Employment
+Minimize water use with 
+closed-loop, air-cooled 
+systems
+Water
+Supporting the local 
+economy by hiring and 
+sourcing locally
+Local Economy
+SB Energy community information session
+SB Energy engaging with local residents
+Initiatives in Texas
+
+PDF PAGE 48
+48
+For details, see the press release dated Nov 9, 2026, “SoftBank Group and Grab Sign Joint Development Agreements to Develop AI Infrastructure in Malaysia.”
+The planned investment is subject to final agreement on investment terms and governance, as well as receipt of the necessary internal approvals.
+The planned investment will be deployed in stages subject to projects achieving key development and customer contract milestones, and the necessary closing conditions.
+SBG and Grab, together with PETROS (the state-owned energy company of 
+Sarawak, Malaysia), announced plans to build AI infrastructure
+Advancing AI Infrastructure Development in Malaysia
+Planned initial investment 
+(deployed in stages)
+$1.85B
+Aiming to develop 5 GW or more of AI compute 
+capacity over the long term
+Thailand
+Indonesia
+Peninsular 
+Malaysia
+Sarawak
+Malaysia
+(Nov 9, 2026)
+SBG      : $1B
+Grab      : $750M
+PETROS : $100M
+
+PDF PAGE 49
+49
+DigitalBridge
+
+PDF PAGE 50
+50
+(Source) DigitalBridge’s website
+$3.1B: Includes consideration transferred and other related costs.
+Assets Under Management (“AUM”): Inclusive of portfolio companies in which DigitalBridge has invested from its balance sheet or for which a subsidiary of DigitalBridge Group, Inc. provides investment advisory services. AUM represents the total capital for which DigitalBridge provides 
+investment management services and general partner capital. AUM is generally composed of third party capital managed by DigitalBridge and its affiliates, including capital that is not yet fee earning, or not subject to fees and/or carried interest; and its general partner and general 
+partner affiliate capital committed to its funds. AUM is largely based upon invested capital as of the reporting date, including capital funded through third party financing; and committed capital for funds in their commitment stage. AUM is not based upon any definition that may be set 
+forth in the governing documents of its managed funds or other investment vehicles, and not calculated pursuant to any regulatory definition. Number of portfolio companies and digital infrastructure investment professionals are as of Sep 30, 2026.
+Acquisition of a global asset manager focused on digital 
+infrastructure completed for $3.1B
+Acquisition of DigitalBridge Completed
+$121B
+AUM
+(as of Jun 30, 2026)
+30 years
+of Experience
+45+
+Portfolio Companies
+100+
+Professionals
+Data centers
+Cell towers
+Edge infrastructure
+Small cells
+Fiber networks
+Key Investment Sectors
+(Sep 30, 2026)
+
+PDF PAGE 51
+51
+Owns and operates extensive fiber networks in the U.S. 
+and Western Europe
+Operates edge data centers 
+in Europe
+Cell towers
+Fiber networks
+Small cells
+Edge infrastructure
+(Source) DigitalBridge’s website
+Companies shown do not represent the entire DigitalBridge portfolio and are presented as examples.
+Investing across Key Digital Infrastructure Sectors
+Data centers
+Develops and operates hyperscale 
+data centers globally
+Operates enterprise data centers 
+in the U.S.
+Operates enterprise and edge data 
+centers in the U.S.
+Operates cell 
+towers in Germany 
+and Austria
+Operates cell towers 
+in the U.S.
+Owns and operates 
+shared cell towers 
+and in-building 
+wireless 
+infrastructure in 
+Japan
+Deploys wireless networks 
+at airports, stadiums, etc.
+
+PDF PAGE 52
+52
+SVF
+SVF: SoftBank Vision Funds Segment. Includes SVF1, SVF2, and LatAm.
+Some figures in this presentation are rounded and may not add up to the figures presented as the total.
+
+PDF PAGE 53
+53
+Gain/Loss on Investments (cumulative): Cumulative gain/loss on investments at SoftBank Vision Funds segment since Q1 FY2017. Includes derivative gains and losses. Before deducting third-party interests, tax, and expenses. Before translation into yen for the Company’s 
+consolidated financial statements. 
+The information contained herein is provided solely for illustrative purposes on an SBG basis and individual investors’ results may vary. Furthermore, past performance is not necessarily indicative of future results. Income before income tax reflects unrealized estimated amounts and 
+does not take into account fees or expenses at the time of exit, and should not be construed as indicative of actual or future performance and for the avoidance of doubt, should not be understood as the "track record" for SVF1, SVF2 and LatAm. There is no guarantee that historical 
+trends will continue throughout the life of SVF1, SVF2, and LatAm. There can be no assurance that unrealized investments will be sold for values equal to or in excess of the total values used in calculating the values portrayed herein. Actual returns on unrealized and partially realized 
+investments will depend on, among other factors, the value of the assets and market conditions at the time of disposition, any related transaction costs and the timing and manner of sale, all of which may differ from the assumption on which the valuations reported herein are based. 
+Accordingly, investments that are unrealized or partially realized may differ materially from the values indicated herein.
+Investment Gain/Loss (Cumulative)
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+9581,743 2,3733,088
+5,373
+8,242
+12,849
+16,398
+20,166
+11,403
+9,655
+-1,093
+1,876
+12,786
+26,353
+60,821
+66,375
+55,874
+56,825
+31,262
+8,526
+-1,414
+-6,588
+-8,365
+-7,208
+-7,061
+-2,975
+-3,364 -3,352
+698
+-1,634
+-475
+4,532
+23,578
+26,012
+45,700
+47,293 47,827
+($ M)
+SVF1:              +$26.6B
+SVF2:
++$21.8B
+LatAm+others:
+-$0.7B
+(FY)
+2026
+SVF Segment
+
+PDF PAGE 54
+54
+($ M)
+Breakdown of Gain/Loss on Investments (Q2 FY2026)
+Gain/Loss on investments (Q2 FY2026): Gain/loss on investments at SoftBank Vision Funds segment for Q2 FY2026. Includes derivative gains and losses. Before deducting third-party interests, tax, and expenses. Before translation into yen for the Company’s consolidated financial 
+statements. The main factors of the change in valuation in Q2 FY2026 of each portfolio company are indicated based on the classification determined as reasonable by SBGA and SBIA. Although SBGA and SBIA believe that such determinations are reasonable, they are inherently 
+subjective in nature. Market factors include changes in valuation due to changes in the valuation of public comparable companies, and changes in cost of capital, etc. Others include exited investments representing proceeds from investments exited in Q2 FY2026, net of the investment 
+cost, interest and dividend income from investments, and forex impact, etc. Public portfolio companies include those traded in the over-the-counter market but exclude crypto-currency tokens and any indirect interests in public securities held via entities that are wholly owned or 
+controlled by SBG and SVF2. 
+Recent transactions
+Performance
+Public
+SVF1
+-$24M
+SVF2 + LatAm + others
++$558M
+Public
+Performance
+Market factors 
+Others
+Primarily
+Coupang
+＋
+Total
++$534M
+＝
+273
+-1,924
+1,158
+-1,468
+246
+2,004
+SVF Segment
+Primarily
+Silver Bands 7 
+Primarily
+ByteDance
+
+PDF PAGE 55
+55
+0.3
+103.1
+129.3
+7.9
+7.1
+11.6
+7.7
+122.6
+144.4
+SVF1
+SVF2
+The information contained herein is provided solely for illustrative purposes on an SBG basis and individual investors' results may vary. Furthermore, past performance is 
+not necessarily indicative of future results. Income before income tax reflects unrealized estimated amounts and does not take into account fees or expenses at the time of 
+exit, and should not be construed as indicative of actual or future performance and for the avoidance of doubt, should not be understood as the "track record" for SVF1, 
+SVF2, and LatAm. There is no guarantee that historical trends will continue throughout the life of SVF1, SVF2, and LatAm. There can be no assurance that unrealized 
+investments will be sold for values equal to or in excess of the total values used in calculating the values portrayed herein. Actual returns on unrealized and partially realized 
+investments will depend on, among other factors, the value of the assets and market conditions at the time of disposition, any related transaction costs and the timing and 
+manner of sale, all of which may differ from the assumption on which the valuations reported herein are based. Accordingly, investments that are unrealized or partially 
+realized may differ materially from the values indicated herein.
+Cumulative Investment Return (As of Sep 30, 2026)
+Exited 
+Public Companies
+(investments before exit)
+Private Companies
+(investments before exit)
+Interest/Dividends
+Cumulative investment return: Before deducting third-party interests, taxes, and expenses.
+Exited: represents the exit price of investments, net of the investment cost.
+The classification of portfolio companies as public/private is based on their status as of Sep 30, 2026. 
+Public companies (investments before exit): Includes portfolio companies traded in the over-the-counter market. Excludes crypto-currency tokens and any 
+indirect interests in public securities held via entities that are wholly owned or controlled by SBG and SVF2.
+For a certain investment that was initially determined to be transferred from the Company to SVF1 but later canceled, any gains and losses incurred for the 
+period leading up to the decision to cancel the transfer are not included in cumulative investment return in the presentation. 
+Interest/Dividends: Interest and dividend income from investments
+The investment amount in OpenAI includes indirect investments and is presented net of disposals.  
+Cumulative 
+Investment Return
+(FV + Sale Price)
+Cumulative 
+Investment Cost
+Cumulative 
+Investment Return
+(FV + Sale Price)
+Cumulative 
+Investment Cost
+SVF Segment
+($ B)
+0.6
+19.8
+28.7
+18.5
+11.3
+48.9
+73.2
+87.2
+113.8
+Incl. 
+OpenAI 54.6
+Incl. 
+OpenAI 99.6
+
+PDF PAGE 56
+56
+Sales of investments: As reported under “Proceeds from sales of investments by SVF” in the Consolidated Statement of Cash Flows, excluding the additional $1.0 billion syndicated to co-investors in connection with the follow-on investment in OpenAI made in Apr 2025. 
+Successful Investment Monetization
+Steady progress in realizing returns from both public/private 
+investments
+FY2024
+FY2025
+FY2026
+($ M)
+Public Investments
+Private Investments
+Sales of Investments
+Key Past Divestments 
+of Public Investments
+(Fully exited)
+(Fully exited)
+4
+24
+189
+72
+256
+102
+539
+1,191
+999
+712
+713
+766
+843
+394
+1,265
+1,396
+1,277
+466
+441
+802
+717
+790
+1,032
+466
+1,522
+1,497
+1,816
+1,656
+1,440
+1,514
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+SVF Segment
+
+PDF PAGE 57
+57
+(Source) SBGA/SBIA analysis
+Total fair value of late-stage portfolio includes portfolio companies that have raised Series E onwards or equivalent late-stage rounds. OpenAI is included as a “late-stage” portfolio company based upon its significant fundraising history and most recent valuation. Filed for IPO portfolio companies include those that completed their 
+filings after Sep 30, 2026. Selected companies include largest private investments before exit by fair value that have raised a Series E or equivalent late-stage round as of Sep 30, 2026, or are likely to publicly list in the near-term based on SBIA Analysis. 
+Select investments presented herein are solely for illustrative purposes, have been selected in order to provide examples of investments made by SVF1, SVF2, and LatAm that have raised Series E or other equivalent late-stage rounds or have gone public, and do not purport to be a complete list of investments. References to 
+investments included herein should not be construed as a recommendation of any particular investment or security. It should not be assumed that investments made in the future will be comparable in quality or performance to the investments described herein. It is not guaranteed that “late-stage” portfolio companies will go public 
+soon or at any time in the future. Past performance is not indicative of future results. See visionfund.com/portfolio and latinamericafund.com/portfolio for a more complete list of portfolio companies.
+Listing Pipeline
+A robust pipeline for future public listings
+Late-Stage Portfolio
+Select portfolio companies
+Filed for IPO
+$147B
+(+$14B QoQ)
+(Sep 30, 2026)
+Total Fair Value:
+($99.6B)
+
+PDF PAGE 58
+58
+Physical AI
+
+PDF PAGE 59
+59
+Select robotics-related portfolio companies held by SBG, its major wholly owned subsidiaries, and SVF.
+Invested in 30+ companies
+Comprehensive Physical AI Portfolio
++others
++others
++others
+Autonomous Mobility
+Automation Infrastructure
+Robotics
+
+PDF PAGE 60
+60
+Source: Gravis Robotics press release dated Aug 17, 2026, “Reshaping the Physical World: Gravis Robotics Raises $200M for Construction Autonomy.”
+Invested $200M in Swiss-based Gravis Robotics
+Investment in Gravis Robotics
+• Retrofits existing construction 
+equipment with sensors and AI 
+control systems to enable 
+autonomous excavation and 
+loading
+• Helps address labor shortages 
+and improve productivity on 
+construction sites
+Investment held by Silver Bands 4 (a subsidiary funded by SBG and SVF2)
+
+PDF PAGE 61
+61
+Source: AutoStore press release dated Aug 13, 2026, “AutoStore Holdings Ltd – Strategic supply agreement with Amazon.”
+Entered into a strategic global supply agreement with Amazon
+AutoStore (Norwegian Developer of Warehouse Automation Systems)
+AI-powered robots 
+automatically pick items
+AI-powered robots automatically 
+transport storage bins
+AutoStore’s Solutions
+High-density storage in a compact 
+footprint
+(Aug 2026)
+Investment held by Silver Bands 4 (a subsidiary funded by SBG and SVF2)
+
+PDF PAGE 62
+62
+Source: Zipline press release dated Nov 5, 2026, “Zipline Raises $1.5 Billion to Build Nationwide Drone Delivery Network.” The $21.5B valuation refers to post-money valuation
+Raised $1.5B at a $21.5B valuation
+to build a U.S. nationwide drone delivery network
+Zipline (U.S. Autonomous Drone Delivery Service Provider)
+Investment held by SVF2
+• Funding U.S. capacity 
+expansion and hiring to meet 
+growing delivery demand
+• To launch 300 additional sites 
+through its partnership with 
+Walmart
+• Uber is targeting
+1M deliveries/day with Zipline 
+by 2029
+(Nov 2026)
+
+PDF PAGE 63
+63
+Video
+
+PDF PAGE 64
+64
+Financial
+Policy
+Some figures in this presentation are rounded and may not add up to the figures presented as the total.
+
+PDF PAGE 65
+65
+Financial policy remains unchanged
+Financial Policy
+Maintain LTV below 25% in normal circumstances
+(upper threshold of 35% even in extraordinary circumstances)
+Maintain at least 2 years’ worth of bond 
+redemptions in cash position
+
+PDF PAGE 66
+66
+Bridge facility repayment:
+$26.4B
+Bond redemption: $3.2B
+Follow-on investments in
+OpenAI: $20.0B*1
+Acquisition of DigitalBridge:
+$3.1B
+Borrowing: $21.9B
+Bond issuance: $18.0B
+Asset monetization: $16.6B
+*1 Includes the $10.0B investment made on Oct 1, 2026 in the third tranche of the follow-on investment in OpenAI.
+Converted at $1 = ¥157.35 and €1 = ¥178.34
+Record quarterly financing of $56.5B (~¥9T)
+Full repayment of bridge facility ($40B) before maturity
+Q2 FY26 Key Financing and Investment Activities
+Financing
+Investments
+Repayments / 
+Redemptions
+$56.5B
+$23.1B
+$29.6B
+
+PDF PAGE 67
+67
+0.8
+2.1
+1.9 
+0.3
+0.5
+6.5
+3.1
+5.4
+7.5
+1.1
+23.8
+10.0
+10.0
+10.0
+8.3
+3.2
+0.1
+10.3
+13.6
+Q1
+Q2
+Q3
+Q4
+Q1
+Q2
+Q3
+32.3
+DigitalBridge
+Investment Amount (Investment Securities Acquired by SBG and SVF)
+SBG investment amount: Investments made by SBG, its major wholly owned subsidiaries, and Robo Holdings, excluding intra-group transactions and investments in bonds. For Ampere and DigitalBridge, the amounts represent expenditures for the acquisitions of these companies, 
+including payments to Arm for the acquisition of Ampere. For other investments resulting in the acquisition of subsidiaries, the amounts are based on "Payments (net) for acquisition of control over subsidiaries" in the Consolidated Statement of Cash Flows.
+SVF investment amount: Corresponds to "Payments for acquisition of investments by SVF" in the Consolidated Statement of Cash Flows. For OpenAI, the investment amount is presented net of proceeds from sales.
+($ B)
+FY2025
+Other
+FY2026
+Ampere
+Completed on 
+Oct 1
+Committed
+Q3 onwards
+Committed / Invested
+
+PDF PAGE 68
+68
+40.0
+-3.6
+-26.4
+-10.0
+Bond Issuance ($12.4B): Comprises $2.4B and $10.0B of the proceeds from foreign bonds issued in Apr and Sep 2026, respectively.
+Repaid in full six months ahead of maturity using diversified 
+funding sources
+Bridge Facility Fully Repaid Ahead of Maturity
+（$ B）
+Facility
+agreement
+signed
+Q1
+Repayment
+Q2
+Repayment
+Q1-Q2 FY2026
+Mar 2027
+Maturity 
+Ahead of schedule
+$12.4B
+$12.4B
+$11.9B
+Funding sources 
+for repayment
+Mar 2026
+Facility 
+size
+Q2-end
+Undrawn 
+commitment 
+canceled
+Borrowings
+Asset 
+Monetization
+Bond 
+Issuance
+
+PDF PAGE 69
+69
+Loan using OpenAI shares: Guaranteed by SBG. OpenAI shares are not pledged as collateral. Treated as SBG debt in the LTV calculation
+Converted at $1 = ¥157.35 and €1 = ¥178.34
+Raised funds through diversified financing methods, 
+utilizing portfolio holdings and accessing domestic and int’l debt markets
+Q2 FY2026 Financing Highlights
+Asset 
+Monetization
+Debt Market 
+Financing
+$56.5B
+$5.0B
+$7.4B
+$11.1B
+$6.9B
+$11.9B
+$10.0B
+$4.2B
+Increase in margin loan backed by Arm shares
+Prepaid forward contracts backed by Intel shares
+Foreign bonds
+Domestic bonds
+Senior term loan
+Loan using OpenAI shares
+Asset-backed financing at SVF2
+Total funds raised
+
+PDF PAGE 70
+70
+0
+30
+60
+90
+120
+150
+Compiled by SBG based on FactSet data. As of Nov 9, 2026
+Financing Using Intel Shares
+($)
+Q2 FY26
+Aug 18, 2025
+Announced a $2B investment
+(Acquisition price: $23/share)
+Intel Share Price
+Aug 2026
+Raised $7.4B through
+prepaid forward 
+contracts
+Monetized at
+3.7x
+the acquisition cost
+Mar 31 
+2025
+Jun 30 
+2025
+Sep 30 
+2025
+Dec 31 
+2025
+Mar 31 
+2026
+Jun 30 
+2026
+Sep 30 
+2026
+
+PDF PAGE 71
+71
+Outlook: Negative → 
+Stable (Jul 16)
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+'03
+'04
+'05
+'06
+'07
+'08
+'09
+'10
+'11
+'12
+'13
+'14
+'15
+'16
+'17
+'18
+'19
+'20
+'21
+'22
+'23
+'24
+'25
+'26
+Historical Credit Ratings
+As of Nov 10, 2026
+Obtained a new issuer credit rating from Fitch
+(CY)
+A+
+A
+A-
+BBB+
+BBB
+BBB-
+BB+
+BB
+BB-
+B+
+BB+
+S&P
+Acquisition of 
+Japan Telecom
+Acquisition 
+of Vodafone KK
+Acquisition 
+of Sprint
+Acquisition 
+of Arm
+Listing of 
+SBKK
+Listing 
+of Arm
+Announced follow-on 
+investments in OpenAI
+A
+JCR
+Outlook: Negative
+Outlook: Stable
+BB+
+Fitch
+Newly 
+assigned
+Sep 11
+
+PDF PAGE 72
+72
+72
+
+PDF PAGE 73
+73
+Courtesy of The Asahi Shimbun
+At Blackstone “Inside Blackstone,” October 13, 2026
+This is the AI era starting. 
+History is going to be created.
+73
+
+PDF PAGE 74
+74
+74
+
+PDF PAGE 75
+75
+
+PDF PAGE 76
+76
+Appendix
+Some figures in this presentation are rounded and may not add up to the figures presented as the total.
+
+PDF PAGE 77
+77
+Equity Value of Holdings 
+Composition of equity value of holdings at each point in time
+For details of equity value of holdings, see appendix "Definition and Calculation Method of SBG’s NAV and LTV" in the presentation materials for each quarter’s earnings results briefing.
+SVF: Total of SVF1, SVF2, and LatAm
+OpenAI: The amount attributable to OpenAI was calculated by applying OpenAI’s portion of the aggregate fair value of SVF2’s portfolio to the equity value of holdings of SVF2 attributable to SBG.
+Sep 30, 2026
+60%
+17%
+12%
+3% 8%
+Jun 30, 2026
+SoftBank Corp.
+OpenAI
+Others
+Arm
+SVF
+(Excl. OpenAI) 
+54%
+21%
+14%
+5% 7%
+SoftBank Corp.
+OpenAI
+Others
+Arm
+SVF
+(Excl. OpenAI) 
+¥83.1T
+63%
+¥71.1T
+Listed share ratio 
+69%
+Net of asset-backed finance
+($452B)
+($512B)
+
+PDF PAGE 78
+78
+As of Sep 30, 2026. Converted to JPY at $1=¥157.35 and €1=¥178.34
+*1 Cash position = Cash and cash equivalents + short-term investments recorded as current assets + bond investments. SBG stand-alone basis
+*2 SBG stand-alone equity value of holdings. For details, see Q2 FY2026 Earnings Results Investor Briefing, Appendix of Finance, “LTV Calculation: SBG Stand-Alone Equity Value of Holdings.” SVF figures are calculated in USD.
+*3 SBG stand-alone interest-bearing debt (Includes loan using OpenAI shares and margin loans; however, excludes financial liabilities related to prepaid forward contracts and “Others” under subsidiaries’ debt) as of Sep 30, 2026. SB Northstar is calculated as USD.
+ For details, see Earnings Investor Briefing for Q2 FY2026, Finance, “SBG Stand-Alone Interest-bearing Debt.”
+*4 Excl. SB Northstar
+Breakdown by Currency (Q2 FY2026)
+Cash position*1: 
+¥5.4T
+Equity value of holdings*2: 
+¥71.1T
+Interest-bearing debt*3:
+¥22.5T
+Investments and Monetization
+Debt Composition
+USD
+JPY
+JPY
+Subsidiaries*4
+USD
+JPY
+USD
+EUR
+EUR, etc.
+95%
+5%
+72%
+10%
+9%
+9%
+(Primarily in USD)
+Net of asset-
+backed finance
+55%
+38%
+7%
+
+PDF PAGE 79
+79
+1.8
+1.6
+-1.6
+0.7
+-4.2
+-0.6
+-0.4
+-0.8
+4.5
+0.5
+2.1
+0.5
+5.8
+Jun 2026
+Sep 2026
+For changes in amounts, foreign currency-denominated bonds with contracted swaps are converted at the applicable swap rate; all others are converted using the average rate for Q2 FY2026 or the rate at execution.
+Cash and cash equivalents + short-term investments recorded as current assets + bond investments + undrawn borrowing capacity. For the prime brokerage loan (PB loan) at SB Northstar, collateralized primarily by a portion of bond investments, the outstanding loan balance is 
+deducted to avoid double-counting in cash position. The PB loan balance was ¥684.9B ($4.2B) as of Jun 2026 and ¥934.3B ($5.9B) as of Sep 2026. Undrawn borrowing capacity was ¥489.5B as of Jun 30, 2026 and ¥511.4B as of Sep 30, 2026 (commitment line).
+Monetization and Capital Allocation (Q2 FY2026)
+Bridge loan 
+drawdown
+Investment in 
+OpenAI
+Debt 
+financing/repayment
+(excl. bridge loan)
+1
+SVF distributions
+(incl. return of funds raised through 
+SVF2 asset-backed finance)
+Bridge loan 
+full repayment
+Investment
+(excl. OpenAI)
+Others
+Undrawn 
+borrowing 
+capacity
+2.3
+5.0
+Asset monetization
+2
+Breakdown
+Item
+Amount
+¥ T
+$ B
+5.8
+36.6
+Senior term loan
+1.8
+11.9
+Loan using OpenAI shares
+1.6
+10.0
+Foreign bond issuance
+1.8
+11.1
+Domestic bond issuance
+1.1
+6.8
+Bond redemption, etc.
+-0.5
+-3.1
+2.1
+12.4
+Prepaid forward contracts 
+backed by Intel shares
+1.2
+7.4
+Increase in margin loan
+backed by Arm shares
+0.8
+5.0
+-0.8
+-5.3
+Payments of interest, etc.
+-0.3
+-2.0
+Acquisition of SB Energy 
+stake from SBKK
+-0.2
+-1.5
+1 Debt financing/repayment
+(excl. bridge loan)
+2
+Asset monetization
+3
+Others
+Data center and 
+power generation-
+related expenditures
+Q1
+FY2026
+2026年度
+Q2
+Q2
+FY2026
+3
+(¥ T)
+
+PDF PAGE 80
+80
+(a)
+(b)
+(c) = (b) - (a)
+(d) = (b) / (a)
+Company
+Investment cost
+to SVF1
+Gross return
+to SVF1
+Gross gain (loss)
+to SVF1
+Gross MOIC
+Coupang
+2,729
+10,371
+7,642
+3.8x
+Doordash
+680
+7,944
+7,264
+11.7x
+NVIDIA
+2,878
+5,813
+2,936
+2.0x
+Guardant Health
+308
+2,665
+2,358
+8.7x
+Uber
+7,666
+9,215
+1,549
+1.2x
+Slack
+334
+1,018
+684
+3.0x
+Roivant
+919
+1,536
+617
+1.7x
+Ping An Good Doctor
+400
+828
+428
+2.1x
+PolicyBazaar
+199
+592
+394
+3.0x
+Opendoor
+450
+824
+374
+1.8x
+10x Genomics
+31
+338
+307
+10.9x
+Delhivery
+397
+667
+269
+1.7x
+Auto1
+741
+957
+216
+1.3x
+Full Truck Alliance
+1,700
+1,915
+215 
+1.1x
+Relay Therapeutics
+300
+512
+212 
+1.7x
+Vir Biotechnology
+199
+332
+133 
+1.7x
+Zomato
+309
+374
+65 
+1.2x
+BrainBees Solutions 
+(FirstCry)
+268
+308
+40 
+1.1x
+Includes investments that were publicly traded at the time of investment and investments that went private after investment. All information on fully exited investments reflects the status at the time of full exit.
+1. SBG basis refers to SoftBank Vision Funds Segment basis. Includes the impact from hedges on the public securities and the effect of consolidating inter-company transactions. For certain investments that were originally to be transferred from SBG to SVF1 but canceled afterwards, its unrealized gain (loss) incurred for the period 
+leading up to the decision to cancel the transfer are not included in the presentation. Cumulative investment performance is presented on a net basis.
+2. Investment cost is the sum of all external cash flows, including investment-related financing, directed towards the purchase of investments, plus net premiums paid for investment-related hedges.
+3. Gross return is the sum of all external cash flows generated by investments and their related hedges, gross of taxes, investment-related financing and other liabilities etc., plus the market value of any unrealized securities as of Sep 30, 2026.
+4. Multiple of Invested Capital ("MOIC") is Gross return divided by Investment cost. Net performance for individual investments cannot be calculated without making arbitrary assumptions about allocations of fees and expenses, and for that reason is not included herein.
+5. Roivant: Investment cost of public shares to SVF1 excludes $116M which was realized in Mar 2020, prior to Roivant’s public listing.
+6. BrainBees Solutions (FirstCry): Investment cost of public shares to SVF1 excludes $127M which was realized in Aug 2024, prior to BrainBees Solutions’ public listing.
+7. OneConnect: Delisted on Oct 30, 2025
+8. GoTo: Investment cost of public shares to SVF1 reflects SVF1’s investment in Tokopedia prior to its merger with Gojek and excludes $7M in cost that was realized by SVF1 prior to GoTo’s public listing. 
+9. WeWork: Investment cost of public shares to SVF1 ($3,468M) includes the investment cost to WeWork Asia Holding Company B.V. (“WeWork Asia”) ($400M). The shares of WeWork Asia were exchanged to WeWork preferred stock in Apr 2020 at a price of $11.60 per share.
+10. Public company total (Gross) includes DiDi, which is traded in the over-the-counter market.
+11. SVF1 private company, etc. includes Arm. Prior to Arm’s initial public offering in Aug 2023, a wholly owned subsidiary of the Company acquired substantially all of the ordinary shares of Arm held by SVF1.
+The total and the sum of the breakdown in the table may not match as the amount of each item is rounded to the nearest unit.
+SBG's Net Paid-in Capital of SVF1 is $27.7B, and the total value is $35.6B as of Sep 30, 2026. See “Earnings Investor Briefing for Q2 FY2026 SoftBank Vision Funds” for further details.
+Publicly quoted exchange rates may have moved either upwards or downwards, even materially, since the measurement dates indicated herein. The exchange rate for each company on this page and used for calculation of return was taken as of Sep 30, 2026.
+The selected investments presented herein were solely for illustrative purposes to show the public securities of SVF1 before or as at Sep 30, 2026 and do not purport to be a complete list of SVF1 investments. References to investments included herein should not be construed as a recommendation of any particular investment or 
+security. It should not be assumed that investments made in the future will be comparable in quality or performance to the investments described herein. Please refer to visionfund.com/portfolio for a more complete list of SVF1’s investments.
+Valuations reflect unrealized and partially realized estimated amounts and should not be construed as indicative of actual or future performance. Such values do not reflect fees and expenses that would reduce the value of returns experienced by SVF1 investors. There is no guarantee that historical trends will continue throughout 
+the life of SVF1. It should not be assumed that investments made in the future will be comparable in quality or performance to investments described herein. There can be no assurance that unrealized and partially realized investments will be sold for values equal to or in excess of the total values used in calculating the returns 
+portrayed herein. Actual returns on unrealized and partially realized investments will depend on, among other factors, future operating results, the value of the assets and market conditions at the time of disposition, any related transaction costs and the timing and manner of sale, all of which may differ from the assumptions on which 
+the valuations reported herein are based. Accordingly, the actual realized returns on investments that are partially realized or unrealized may differ materially from the values indicated herein.
+SVF1 performance metrics are based on final Valuation and Financial Risk Committee (“VFRC”) results. While SVF1 performance figures have been calculated based on assumptions that SBG believes are reasonable, the use of different assumptions could yield materially different results, and the VFRC may adjust any of these 
+values. As such, SVF1 performance figures are subject to change and not necessarily indicative of the performance of SVF1 and are included only for illustrative purposes.
+SVF1 Public Portfolio Companies (As of Sep 30, 2026)
+($ M)
+$1= ¥157.35 (Sep 30, 2026 TTM)
+(a)
+(b)
+(c) = (b) - (a)
+(d) = (b) / (a)
+Company
+Investment cost
+to SVF1
+Gross return
+to SVF1
+Gross gain (loss)
+to SVF1
+Gross MOIC
+Energy Vault
+60
+79
+19 
+1.3x
+Aurora Innovation
+333
+257
+(76)
+0.8x
+OneConnect
+100
+6
+(94)
+0.1x
+ZhongAn
+550
+400
+(150)
+0.7x
+Compass
+1,082
+879
+(203)
+0.8x
+Ginkgo Bioworks
+404
+8
+(396)
+0.0x
+Paytm
+1,600
+1,055
+(545)
+0.7x
+SenseTime
+1,429
+849
+(580)
+0.6x
+GoTo
+841
+253
+(588)
+0.3x
+Grab
+2,993
+2,227
+(766)
+0.7x
+View
+1,175
+0
+(1,175)
+0.0x
+WeWork
+3,468
+0
+(3,468)
+0.0x
+DiDi
+12,073
+3,516
+(8,557)
+0.3x
+(A)
+Public company total 
+(Gross)
+$46,617 
+$55,738 
+$9,121 
+1.2x
+(B)
+SVF1 private company, etc.
+$40,547 
+$58,061 
+$17,514 
+(A)+(B)
+Total (SBG basis)
+$87,164 
+$113,799 
+$26,634 
+Fully Exited
+*1
+*2
+*3
+*4
+*2
+*3
+*4
+Fully Exited
+Fully Exited
+Fully Exited
+Fully Exited
+Fully Exited
+Fully Exited
+Fully Exited
+Fully Exited
+*8
+*6
+*9
+*11
+Fully Exited
+Fully Exited
+Fully Exited
+Fully Exited
+*5
+Fully Exited
+Fully Exited
+*7
+Fully Exited
+Fully Exited
+*10
+
+PDF PAGE 81
+81
+(a)
+(b)
+(c) = (b) - (a)
+(d) = (b) / (a)
+Company
+Investment cost
+to SVF2
+Gross return
+to SVF2
+Gross gain (loss)
+to SVF2
+Gross MOIC
+Lenskart
+225
+1,506
+1,281 
+6.7x
+PayPay
+1,865
+3,027
+1,163 
+1.6x
+Beike
+1,350
+2,497
+1,147
+1.8x
+Meesho
+285
+927
+642
+3.3x
+Symbotic
+200
+841
+641
+4.2x
+Metsera
+36
+271
+235
+7.5x
+SHEIN
+245
+269
+23
+1.1x
+Globalstar
+5
+27
+22
+5.3x
+XtalPi
+35
+53
+18
+1.5x
+IonQ
+61
+74
+14
+1.2x
+Swiggy
+450
+451
+1 
+1.0x
+Qualtrics
+24
+15
+(9)
+0.6x
+eToro
+30
+20
+(10)
+0.7x
+Berkshire Grey
+115
+92
+(23)
+0.8x
+Capital One 
+110
+85
+(24)
+0.8x
+Ethos
+138
+107
+(31)
+0.8x
+Full Truck Alliance
+250
+215
+(35)
+0.9x
+Neumora Therapeutics
+60
+22
+(38)
+0.4x
+Includes investments that were publicly traded at the time of investment and investments that went private after investment. Investments that went private after the investment include an investment in which SBG acquired all shares. Excludes crypto-currency tokens and any indirect interests in public securities held via entities that 
+are wholly owned or controlled by SBG and SVF2. All information on fully exited investments reflects the status at the time of full exit.
+1. SBG basis refers to SoftBank Vision Funds Segment basis. Cumulative investment performance is presented on a net basis.
+2. Investment cost is the sum of all external cash flows, including investment-related financing, directed towards the purchase of investments, plus net premiums paid for investment-related hedges.
+3. Gross return is the sum of all external cash flows generated by investments and their related hedges, gross of taxes, investment-related financing and other liabilities etc., plus the market value of any unrealized securities as of Sep 30, 2026.
+4. Multiple of Invested Capital ("MOIC") is Gross return divided by Investment cost. Net performance for individual investments cannot be calculated without making arbitrary assumptions about allocations of fees and expenses, and for that reason is not included herein.
+5. Lenskart: Investment cost of public shares to SVF2 excludes $53M which was realized in Nov 2025, prior to Lenskart’s public listing.
+6. PayPay: Investment cost of public shares to SVF2 excludes $231M which was realized in Mar 2026, prior to PayPay’s public listing.
+7. SHEIN: Investment cost of public shares to SVF2 excludes $105M which was realized in Sep 2026, prior to SHEIN’s public listing.
+8. Globalstar: Investment cost of public shares to SVF2 excludes $5M which was realized in Aug 2023, prior to Globalstar’s public listing.
+9. XtalPi: Investment cost of public shares to SVF2 excludes $10M which was realized in Nov 2023, prior to XtalPi’s public listing.
+The total and the sum of the breakdown in the table may not match as the amount of each item is rounded to the nearest unit.
+SBG's Net Paid-in Capital of SVF2 is $124.1B, and the total value is $138.8B as of Sep 30, 2026. See “Earnings Investor Briefing for Q2 FY2026 SoftBank Vision Funds” for further details.
+Publicly quoted exchange rates may have moved either upwards or downwards, even materially, since the measurement dates indicated herein. The exchange rate for each company on this page and used for calculation of return was taken as of Sep 30, 2026.
+The selected investments presented herein were solely for illustrative purposes to show the public securities of SVF2 as at Sep 30, 2026 and do not purport to be a complete list of SVF2 investments. References to investments included herein should not be construed as a recommendation of any particular investment or security. It 
+should not be assumed that investments made in the future will be comparable in quality or performance to the investments described herein. Please refer to visionfund.com/portfolio for a more complete list of SVF2’s investments.
+Valuations reflect unrealized estimated amounts and should not be construed as indicative of actual or future performance. Such values do not reflect fees and expenses that would reduce the value of returns experienced by SVF2 investors. There is no guarantee that historical trends will continue throughout the life of SVF2. It 
+should not be assumed that investments made in the future will be comparable in quality or performance to investments described herein. There can be no assurance that unrealized investments will be sold for values equal to or in excess of the total values used in calculating the returns portrayed herein. Actual returns on 
+unrealized investments will depend on, among other factors, future operating results, the value of the assets and market conditions at the time of disposition, any related transaction costs and the timing and manner of sale, all of which may differ from the assumptions on which the valuations reported herein are based. Accordingly, 
+the actual realized returns on investments that are unrealized may differ materially from the values indicated herein.
+SVF2 performance metrics are based on final Valuation and Financial Risk Committee (“VFRC”) results. While SVF2 performance figures have been calculated based on assumptions that SBG believes are reasonable, the use of different assumptions could yield materially different results, and the VFRC may adjust any of these 
+values. As such, SVF2 performance figures are subject to change and not necessarily indicative of the performance of SVF2 and are included only for illustrative purposes.
+SVF2 Public Portfolio Companies (As of Sep 30, 2026)
+(a)
+(b)
+(c) = (b) - (a)
+(d) = (b) / (a)
+Company
+Investment cost
+to SVF2
+Gross return
+to SVF2
+Gross gain (loss)
+to SVF2
+Gross MOIC
+Pear Therapeutics
+46
+0
+(46)
+0.0x
+Beisen
+100
+17
+(83)
+0.2x
+Zhangmen
+105
+1
+(104)
+0.0x
+Alnnovation
+126
+18
+(108)
+0.1x
+Ola Electric Mobility
+556
+370
+(186)
+0.7x
+Keep
+200
+12
+(188)
+0.1x
+Seer
+205
+11
+(194)
+0.1x
+Chime
+350
+135
+(215)
+0.4x
+Recursion 
+Pharmaceuticals
+284
+64
+(221)
+0.2x
+DingDong Mai Cai
+325
+30
+(295)
+0.1x
+JD Logistics
+601
+176
+(425)
+0.3x
+Better
+497
+14
+(483)
+0.0x
+Klarna
+1,706
+191
+(1,515)
+0.1x
+WeWork
+3,033
+2
+(3,032)
+0.0x
+(A)
+Public company total 
+(Gross)
+$13,617 
+$11,538 
+($2,079)
+0.8x
+(B)
+SVF2 private company, etc.
+$108,970 
+$132,895 
+$23,925 
+(A)+(B)
+Total (SBG basis)
+$122,587 
+$144,433 
+$21,846 
+*1
+*2
+*3
+*4
+*2
+*3
+*4
+Fully Exited
+Fully Exited
+Fully Exited
+Fully Exited
+($ M)
+Fully Exited
+Fully Exited
+*6
+*9
+Fully Exited
+$1= ¥157.35 (Sep 30, 2026 TTM)
+Fully Exited
+Fully Exited
+*8
+*5
+*7
+
+PDF PAGE 82
+82
+Definition and Calculation Method of NAV and LTV (As of Sep 30, 2026)
+1. NAV (Net Asset Value)
+•
+NAV = Equity value of holdings - Net debt
+2. Equity value of holdings (after adjustment for asset-backed financing)
+•
+Arm: the number of Arm ADSs equivalent to the number of shares held by SBG x Arm ADS price - the equivalent amount of outstanding liabilities for margin loans backed by Arm shares. 
+•
+SVF1: SBG’s share of SVF1’s NAV + accrued performance fees, etc.
+•
+SVF2: SBG’s share of SVF2’s NAV, etc.
+•
+LatAm: SBG’s share of LatAm’s NAV + accrued performance fees, etc.
+•
+SoftBank Corp.: the number of shares held by SBG x SoftBank Corp. share price - the equivalent amount of outstanding liabilities for margin loans backed by SoftBank Corp. shares.
+•
+T-Mobile: the number of T-Mobile shares held by SBG x T-Mobile share price - the maturity settlement amount of the prepaid forward contracts (collar contracts) backed by T-Mobile shares (calculated based on the T-Mobile share price).
+•
+Others: (a) + (b) + (c)
+a. Listed shares: the number of shares held by SBG multiplied by the share price of each share. Except for the value of Intel shares, which is presented net of the settlement amount of the prepaid forward contracts (collar contracts) backed by those shares, calculated 
+based on Intel’s share price. 
+b. Unlisted shares: calculated based on the fair value (or the carrying amount in SBG’s balance sheet for those not measured at fair value) of unlisted shares, etc., held by SBG.
+c.
+SB Northstar: SBG’s share of SB Northstar’s NAV. However, as SB Northstar net interest-bearing debt is included in SBG net interest-bearing debt, it is not included in the calculation of SB Northstar’s NAV.
+3. Net debt (after adjustment for asset-backed financing)
+•
+Net debt = SBG net interest-bearing debt
+•
+SBG net interest-bearing debt = Consolidated net interest-bearing debt - Net interest-bearing debt at self-financing entities, etc. - Other adjustments
+•
+Consolidated net interest-bearing debt: excludes bank deposits and cash position at the banking subsidiaries (PayPay Bank Corporation and LINE Bank Taiwan Limited)
+•
+Net interest-bearing debt at self-financing entities, etc.: the sum of gross interest-bearing debt - the sum of cash positions of self-financing and other entities, such as Arm, SVF1, SVF2, LatAm, and SoftBank Corp. (including its subsidiaries).
+•
+Other adjustments: the sum of adjustments of (d) to (j) below
+d. Among the hybrid bonds and hybrid loans with a redemption date, the entire amount is recorded as interest-bearing debt in consolidated accounting. Therefore, 50% is deducted from the interest-bearing debt (to be treated as equity).
+e. Among the hybrid bonds, perpetual bonds without a redemption date are fully recorded as equity under consolidated accounting. Therefore, 50% of these bonds are included in the interest-bearing debt.
+f.
+Deduction of the amount equivalent to the outstanding balance of the borrowings made through margin loans backed by Arm shares.
+g. Deduction of the equivalent amount of outstanding liabilities for margin loans backed by SoftBank Corp. shares.
+h. Deduction of financial liabilities related to prepaid forward contracts (collar contracts) backed by T-Mobile shares.
+i.
+Deduction of financial liabilities related to prepaid forward contracts (collar contracts) backed by Intel shares.
+j.
+Inclusion of the outstanding balance of the loan using OpenAI shares held by SVF2 and guaranteed by SBG.
+4. LTV (Loan to Value)
+•
+LTV = Net debt / Equity value of holdings
+5. Other assumptions
+•
+Share prices: closing prices as of Sep 30, 2026
+•
+FX rate: USD1 = JPY 157.35
+
+SBG = SoftBank Group Corp., Arm = Arm Holdings plc, SVF1 = SoftBank Vision Fund 1, SVF2 = SoftBank Vision Fund 2, LatAm = SoftBank Latin America Funds, T-Mobile = T-Mobile US, Inc., Intel = Intel Corporation
+
+Before considering tax unless otherwise stated
+
+The information herein is based on assumptions made by the Company and is not indicative of the price of SBG's common shares or any securities held by the Company and should not form the basis of any investment decisions.
+
+PDF PAGE 83
+83
+Definition and Calculation Method of NAV and LTV (Q2 FY2026 Pro forma)
+1. NAV (Net Asset Value)
+•
+NAV = Equity value of holdings - Net debt
+2. Equity value of holdings (after adjustment for asset-backed financing)
+•
+Arm: the number of Arm ADSs equivalent to the number of shares held by SBG x Arm ADS price - the equivalent amount of outstanding liabilities for margin loans backed by Arm shares. 
+•
+SVF1: SBG’s share of SVF1’s NAV + accrued performance fees, etc.
+•
+SVF2: SBG’s share of SVF2’s NAV, etc.
+•
+LatAm: SBG’s share of LatAm’s NAV + accrued performance fees, etc.
+•
+SoftBank Corp.: the number of shares held by SBG x SoftBank Corp. share price - the equivalent amount of outstanding liabilities for margin loans backed by SoftBank Corp. shares.
+•
+T-Mobile: the number of T-Mobile shares held by SBG x T-Mobile share price - the maturity settlement amount of the prepaid forward contracts (collar contracts) backed by T-Mobile shares (calculated based on the T-Mobile share price).
+•
+Others: (a) + (b) + (c)
+a. Listed shares: the number of shares held by SBG multiplied by the share price of each share. Except for the value of Intel shares, which is presented net of the settlement amount of the prepaid forward contracts (collar contracts) backed by those shares, calculated 
+based on Intel’s share price. 
+b. Unlisted shares: calculated based on the fair value (or the carrying amount in SBG’s balance sheet for those not measured at fair value) of unlisted shares, etc., held by SBG.
+c.
+SB Northstar: SBG’s share of SB Northstar’s NAV. However, as SB Northstar net interest-bearing debt is included in SBG net interest-bearing debt, it is not included in the calculation of SB Northstar’s NAV.
+3. Net debt (after adjustment for asset-backed financing)
+•
+Net debt = SBG net interest-bearing debt
+•
+SBG net interest-bearing debt = Consolidated net interest-bearing debt - Net interest-bearing debt at self-financing entities, etc. - Other adjustments
+•
+Consolidated net interest-bearing debt: excludes bank deposits and cash position at the banking subsidiaries (PayPay Bank Corporation and LINE Bank Taiwan Limited)
+•
+Net interest-bearing debt at self-financing entities, etc.: the sum of gross interest-bearing debt - the sum of cash positions of self-financing and other entities, such as Arm, SVF1, SVF2, LatAm, and SoftBank Corp. (including its subsidiaries).
+•
+Other adjustments: the sum of adjustments of (d) to (j) below
+d. Among the hybrid bonds and hybrid loans with a redemption date, the entire amount is recorded as interest-bearing debt in consolidated accounting. Therefore, 50% is deducted from the interest-bearing debt (to be treated as equity).
+e. Among the hybrid bonds, perpetual bonds without a redemption date are fully recorded as equity under consolidated accounting. Therefore, 50% of these bonds are included in the interest-bearing debt.
+f.
+Deduction of the amount equivalent to the outstanding balance of the borrowings made through margin loans backed by Arm shares.
+g. Deduction of the equivalent amount of outstanding liabilities for margin loans backed by SoftBank Corp. shares.
+h. Deduction of financial liabilities related to prepaid forward contracts (collar contracts) backed by T-Mobile shares.
+i.
+Deduction of financial liabilities related to prepaid forward contracts (collar contracts) backed by Intel shares.
+j.
+Inclusion of the outstanding balance of the loan using OpenAI shares held by SVF2 and guaranteed by SBG.
+4. LTV (Loan to Value)
+•
+LTV = Net debt / Equity value of holdings
+5. Other assumptions
+•
+Share prices: calculated using closing prices on Nov 9, 2026 for Arm, SoftBank Corp., and Intel, and on Sep 30, 2026 for other listed shares.
+•
+FX rate: USD1 = JPY 158.34 (Nov 9, 2026)
+
+SBG = SoftBank Group Corp., Arm = Arm Holdings plc, SVF1 = SoftBank Vision Fund 1, SVF2 = SoftBank Vision Fund 2, LatAm = SoftBank Latin America Funds, T-Mobile = T-Mobile US, Inc., Intel = Intel Corporation
+
+Before considering tax unless otherwise stated
+
+The information herein is based on assumptions made by the Company and is not indicative of the price of SBG's common shares or any securities held by the Company and should not form the basis of any investment decisions.
+
+PDF PAGE 84
+84
+Definition and Calculation Method of NAV and LTV (As of Jun 30, 2026)
+1. NAV (Net Asset Value)
+•
+NAV = Equity value of holdings - Net debt
+2. Equity value of holdings (after adjustment for asset-backed financing)
+•
+Arm: the number of Arm ADSs equivalent to the number of shares held by SBG x Arm ADS price - the equivalent amount of outstanding liabilities for margin loans using Arm shares. 
+•
+SVF1: SBG’s share of SVF1’s NAV + accrued performance fees, etc.
+•
+SVF2: SBG’s share of SVF2’s NAV, etc.
+•
+LatAm: SBG’s share of LatAm’s NAV + accrued performance fees, etc.
+•
+SoftBank Corp.: the number of shares held by SBG x SoftBank Corp. share price - the equivalent amount of outstanding liabilities for margin loans using SoftBank Corp. shares.
+•
+T-Mobile: the number of T-Mobile shares held by SBG x T-Mobile share price - the maturity settlement amount of the prepaid forward contracts (collar contracts) using T-Mobile shares (calculated based on the T-Mobile share price).
+•
+Others: (a) + (b) + (c)
+a. Listed shares: the number of shares held by SBG multiplied by the share price of each share.
+b. Unlisted shares: calculated based on the fair value (or the carrying amount in SBG’s balance sheet for those not measured at fair value) of unlisted shares, etc., held by SBG.
+c.
+SB Northstar: SBG’s share of SB Northstar’s NAV. However, as SB Northstar net interest-bearing debt is included in SBG net interest-bearing debt, it is not included in the calculation of SB Northstar’s NAV.
+3. Net debt (after adjustment for asset-backed financing)
+•
+Net debt = SBG net interest-bearing debt
+•
+SBG net interest-bearing debt = Consolidated net interest-bearing debt - Net interest-bearing debt at self-financing entities, etc. - Other adjustments
+•
+Consolidated net interest-bearing debt: excludes bank deposits and cash position at the banking subsidiaries (PayPay Bank Corporation and LINE Bank Taiwan Limited)
+•
+Net interest-bearing debt at self-financing entities, etc.: the sum of gross interest-bearing debt - the sum of cash positions of self-financing and other entities, such as Arm, SVF1, SVF2, LatAm, and SoftBank Corp. (including its subsidiaries).
+•
+Other adjustments: the sum of adjustments of (d) to (h) below
+d. Among the hybrid bonds and hybrid loans with a redemption date, the entire amount is recorded as interest-bearing debt in consolidated accounting. Therefore, 50% is deducted from the interest-bearing debt (to be treated as equity).
+e. Among the hybrid bonds, perpetual bonds without a redemption date are fully recorded as equity under consolidated accounting. Therefore, 50% of these bonds are included in the interest-bearing debt.
+f.
+Deduction of the amount equivalent to the outstanding balance of the borrowings made through margin loans using Arm shares.
+g. Deduction of the equivalent amount of outstanding liabilities for margin loans using SoftBank Corp. shares.
+h. Deduction of financial liabilities related to prepaid forward contracts (collar contracts) using T-Mobile shares.
+4. LTV (Loan to Value)
+•
+LTV = Net debt / Equity value of holdings
+5. Other assumptions
+•
+Share prices: closing prices as of Jun 30, 2026
+•
+FX rate: USD1 = JPY 162.39
+
+SBG = SoftBank Group Corp., Arm = Arm Holdings plc, SVF1 = SoftBank Vision Fund 1, SVF2 = SoftBank Vision Fund 2, LatAm = SoftBank Latin America Funds, T-Mobile = T-Mobile US, Inc.
+
+Before considering tax unless otherwise stated
+
+The information herein is based on assumptions made by the Company and is not indicative of the price of SBG's common shares or any securities held by the Company and should not form the basis of any investment decisions.
+
+PDF PAGE 85
+85
+Definition and Calculation Method of NAV and LTV (As of Mar 31, 2026)
+1. NAV (Net Asset Value)
+•
+NAV = Equity value of holdings - Net debt
+2. Equity value of holdings (after adjustment for asset-backed financing)
+•
+Arm: the number of Arm ADSs equivalent to the number of shares held by SBG x Arm ADS price - the equivalent amount of outstanding liabilities for margin loans using Arm shares. 
+•
+SVF1: SBG’s share of SVF1’s NAV + accrued performance fees, etc.
+•
+SVF2: SBG’s share of SVF2’s NAV, etc.
+•
+LatAm: SBG’s share of LatAm’s NAV + accrued performance fees, etc.
+•
+SoftBank Corp.: the number of shares held by SBG x SoftBank Corp. share price - the equivalent amount of outstanding liabilities for margin loans using SoftBank Corp. shares.
+•
+T-Mobile: the number of T-Mobile shares held by SBG x T-Mobile share price - the maturity settlement amount of the prepaid forward contracts (collar contracts) using T-Mobile shares (calculated based on the T-Mobile share price).
+•
+Others: (a) + (b) + (c)
+a. Listed shares: the number of shares held by SBG multiplied by the share price of each share.
+b. Unlisted shares: calculated based on the fair value (or the carrying amount in SBG’s balance sheet for those not measured at fair value) of unlisted shares, etc., held by SBG.
+c.
+SB Northstar: SBG’s share of SB Northstar’s NAV. However, as SB Northstar net interest-bearing debt is included in SBG net interest-bearing debt, it is not included in the calculation of SB Northstar’s NAV.
+3. Net debt (after adjustment for asset-backed financing)
+•
+Net debt = SBG net interest-bearing debt
+•
+SBG net interest-bearing debt = Consolidated net interest-bearing debt - Net interest-bearing debt at self-financing entities, etc. - Other adjustments
+•
+Consolidated net interest-bearing debt: excludes bank deposits and cash position at the banking subsidiaries (PayPay Bank Corporation and LINE Bank Taiwan Limited)
+•
+Net interest-bearing debt at self-financing entities, etc.: the sum of gross interest-bearing debt - the sum of cash positions of self-financing and other entities, such as Arm, SVF1, SVF2, LatAm, and SoftBank Corp. (including its subsidiaries).
+•
+Other adjustments: the sum of adjustments of (d) to (h) below
+d. Among the hybrid bonds and hybrid loans with a redemption date, the entire amount is recorded as interest-bearing debt in consolidated accounting. Therefore, 50% is deducted from the interest-bearing debt (to be treated as equity).
+e. Among the hybrid bonds, perpetual bonds without a redemption date are fully recorded as equity under consolidated accounting. Therefore, 50% of these bonds are included in the interest-bearing debt.
+f.
+Deduction of the amount equivalent to the outstanding balance of the borrowings made through margin loans using Arm shares.
+g. Deduction of the equivalent amount of outstanding liabilities for margin loans using SoftBank Corp. shares.
+h. Deduction of financial liabilities related to prepaid forward contracts (collar contracts) using T-Mobile shares.
+4. LTV (Loan to Value)
+•
+LTV = Net debt / Equity value of holdings
+5. Other assumptions
+•
+Share prices: closing prices as of Mar 31, 2026
+•
+FX rate: USD1 = JPY 159.88
+
+SBG = SoftBank Group Corp., Arm = Arm Holdings plc, SVF1 = SoftBank Vision Fund 1, SVF2 = SoftBank Vision Fund 2, LatAm = SoftBank Latin America Funds, T-Mobile = T-Mobile US, Inc.
+
+Before considering tax unless otherwise stated
+
+The information herein is based on assumptions made by the Company and is not indicative of the price of SBG's common shares or any securities held by the Company and should not form the basis of any investment decisions.
