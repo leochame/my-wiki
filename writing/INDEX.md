@@ -8,7 +8,7 @@ This area is for original writing that is meant to become publishable or at leas
 - [[writing/personal-reflections/INDEX|Personal reflections]] for essays outside pure software topics
 - [[writing/idea-garden/INDEX|Idea garden]] for raw writing ideas, outlines, and half-formed article seeds
 - [[writing/script/INDEX|Scripts]] for publishable scripts, including short-form video content
-- `novals/` for novel drafts and fiction writing
+- [[writing/novals/INDEX|Novels]] for novel drafts and fiction writing
 - [[writing/system-design/INDEX|System design]] for architecture deep-dives and walkthroughs
 
 ## Placement Rules

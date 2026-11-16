@@ -21,12 +21,14 @@ cssclasses:
 | --- | --- | --- |
 | 写作 | 技术文章、随笔、想法与脚本 | [[writing/INDEX|写作索引]] |
 | 阅读 | 待读清单、阅读主题与读后记录 | [[worth-reading/INDEX|阅读索引]] |
-| 理财 | 理财学习、财经人物与媒体信息源 | [[notes/理财/INDEX|理财索引]] |
+| 理财 | 理财资料、信息源与个人每日笔记 | [[notes/理财/INDEX|理财索引]] |
 | 任务 | 有截止时间的任务与长期待办 | [[task/TASKS|任务系统]] |
 | 记忆 | 工具、资源与个人片段 | [[memory/INDEX|记忆索引]] |
 
 ## 常用入口
 
+- [[notes/理财/每日笔记/INDEX|理财每日笔记]]
+- [[writing/novals/INDEX|小说]]
 - [[writing/technical/INDEX|技术写作]]
 - [[writing/idea-garden/INDEX|想法花园]]
 - [[worth-reading/by-topic/INDEX|阅读主题]]
@@ -36,5 +38,5 @@ cssclasses:
 - 有明确行动和截止时间的事项放入 `task/`。
 - 准备形成完整表达的内容放入 `writing/`。
 - 尚未阅读的资料放入 `worth-reading/`。
-- 理财学习、财经信息源与市场研究笔记放入 `notes/理财/`。
+- 理财长期资料与信息源放入 `notes/理财/`；个人按日研究与计划放入 `notes/理财/每日笔记/`。
 - 暂时不属于以上类别的片段放入 `memory/`。

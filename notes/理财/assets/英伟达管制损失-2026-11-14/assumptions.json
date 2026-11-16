@@ -1,0 +1,82 @@
+{
+  "as_of": "2026-11-14",
+  "timezone": "Asia/Shanghai",
+  "horizon": "2026-11 mid-month to 2027-11 mid-month, approximately 12 months",
+  "currency_unit": "USD billion",
+  "comparison": "Additional restrictions/enforcement versus the same horizon with no further policy tightening; not a year-on-year decline or a deduction from already excluded China compute guidance.",
+  "reported_facts": {
+    "quarter_ended": "2026-07-26",
+    "global_revenue": "96.221",
+    "china_hq_revenue": "7.880",
+    "half_year_global_revenue": "177.837",
+    "half_year_china_hq_revenue": "12.430",
+    "data_center_revenue": "89.023",
+    "china_hopper_share_of_data_center_upper_bound_exclusive": "0.01",
+    "q3_guidance": "108.0",
+    "q3_guidance_china_data_center_compute_included": false
+  },
+  "assumption_notice": "Every scenario exposure, blocked fraction and replacement fraction below is an analyst judgment, not a disclosed NVIDIA customer breakdown. Exposure means NVIDIA supplier revenue from new equipment, not server resale value or cloud rental revenue. Categories are mutually exclusive.",
+  "categories": {
+    "licensed_china": "Potential licensed China H200/Hopper deliveries in the counterfactual; excludes physical diversion and is not incremental China compute already in Q3 guidance.",
+    "physical_diversion": "New NVIDIA equipment revenue through third-party channels for physical China end use, including B200/B300 and other controlled products; excludes the offshore-service category.",
+    "offshore_compute": "New NVIDIA equipment procurement attributable to China-controlled offshore capacity or China end-user rentals; excludes already owned GPUs and cloud rents. Ownership structures and legal eligibility must be assessed per applicable rules."
+  },
+  "scenarios": [
+    {
+      "id": "limited",
+      "label": "有限收紧",
+      "channels": [
+        {"category": "licensed_china", "exposure": "1", "blocked_fraction": "0.40", "replacement_fraction": "0.70"},
+        {"category": "physical_diversion", "exposure": "8", "blocked_fraction": "0.50", "replacement_fraction": "0.75"},
+        {"category": "offshore_compute", "exposure": "10", "blocked_fraction": "0.35", "replacement_fraction": "0.75"}
+      ]
+    },
+    {
+      "id": "base",
+      "label": "基准判断",
+      "channels": [
+        {"category": "licensed_china", "exposure": "2", "blocked_fraction": "0.80", "replacement_fraction": "0.50"},
+        {"category": "physical_diversion", "exposure": "12", "blocked_fraction": "0.80", "replacement_fraction": "0.50"},
+        {"category": "offshore_compute", "exposure": "14", "blocked_fraction": "0.60", "replacement_fraction": "0.50"}
+      ]
+    },
+    {
+      "id": "strict",
+      "label": "严厉执行",
+      "channels": [
+        {"category": "licensed_china", "exposure": "3", "blocked_fraction": "1.00", "replacement_fraction": "0.20"},
+        {"category": "physical_diversion", "exposure": "18", "blocked_fraction": "0.95", "replacement_fraction": "0.35"},
+        {"category": "offshore_compute", "exposure": "20", "blocked_fraction": "0.90", "replacement_fraction": "0.40"}
+      ]
+    },
+    {
+      "id": "stress",
+      "label": "极端压力",
+      "channels": [
+        {"category": "licensed_china", "exposure": "4", "blocked_fraction": "1.00", "replacement_fraction": "0.10"},
+        {"category": "physical_diversion", "exposure": "24", "blocked_fraction": "0.98", "replacement_fraction": "0.25"},
+        {"category": "offshore_compute", "exposure": "28", "blocked_fraction": "0.95", "replacement_fraction": "0.25"}
+      ]
+    }
+  ],
+  "interpretation": {
+    "blocked_fraction": "Fraction of counterfactual new supplier sales prevented or delayed beyond the 12-month horizon, including rule scope, licensing exceptions, actual enforcement and implementation timing.",
+    "replacement_fraction": "Share of blocked supplier revenue offset within the same horizon by independent final demand, product/supply reallocation or permitted substitutes. Re-routing to the same prohibited end user is not replacement. Existing cloud contracts are not counted again.",
+    "scenario_probabilities": "Not assigned; these are judgment scenarios, not calibrated probabilities or statistical confidence intervals.",
+    "working_net_loss_range": "USD 5-15 billion; a decision range, not an exhaustive bound.",
+    "rounding": "The base result USD 9.8 billion is communicated as approximately USD 10 billion (100亿美元)."
+  },
+  "profit_sensitivity_assumptions": {
+    "incremental_operating_margin_low": "0.65",
+    "incremental_operating_margin_high": "0.75",
+    "tax_rate": "0.17",
+    "diluted_shares_billion_approx": "24.3",
+    "excludes": "One-off fines, legal costs, inventory provisions, credit losses and investment marks."
+  },
+  "base_timing_illustration": [
+    {"period": "months 1-3", "net_loss": "0.8"},
+    {"period": "months 4-6", "net_loss": "2.0"},
+    {"period": "months 7-9", "net_loss": "3.0"},
+    {"period": "months 10-12", "net_loss": "4.0"}
+  ]
+}

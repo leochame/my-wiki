@@ -1,0 +1,29 @@
+services:
+  server:
+    build: .
+    ports:
+      - "127.0.0.1:8787:8787"
+    environment:
+      BRIDGE_API_TOKEN: ${BRIDGE_API_TOKEN:?Set BRIDGE_API_TOKEN in your shell}
+      MEITUAN_CONSUMER_SECRET: ${MEITUAN_CONSUMER_SECRET:-}
+      BRIDGE_CONFIG: /config/config.json
+      BRIDGE_DATA_DIR: /data
+    volumes:
+      - ${BRIDGE_CONFIG_FILE:-./examples/config.json}:/config/config.json:ro
+      - bridge-data:/data
+    restart: unless-stopped
+  mock-worker:
+    build: .
+    profiles: [mock]
+    entrypoint: ["order-bridge", "worker"]
+    command: ["--url", "http://127.0.0.1:8787"]
+    network_mode: "service:server"
+    environment:
+      BRIDGE_API_TOKEN: ${BRIDGE_API_TOKEN:?Set BRIDGE_API_TOKEN in your shell}
+    depends_on:
+      server:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  bridge-data:

@@ -1,0 +1,52 @@
+{
+  "as_of": "2026-11-14",
+  "quarter_ended": "2026-07-26",
+  "basis": "Direct customer headquarters; not shipment destination, billing location, routing or final end user",
+  "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+  "global_revenue_usd_bn": "96.221",
+  "regions": [
+    {
+      "label": "美国",
+      "revenue_usd_bn": "60.074",
+      "pct": "62.43335654378981719167333534"
+    },
+    {
+      "label": "台湾",
+      "revenue_usd_bn": "26.985",
+      "pct": "28.04481350225002858003970027"
+    },
+    {
+      "label": "中国大陆及香港",
+      "revenue_usd_bn": "7.880",
+      "pct": "8.189480466841957576828343085"
+    },
+    {
+      "label": "其他地区",
+      "revenue_usd_bn": "1.282",
+      "pct": "1.332349487118196651458621299"
+    }
+  ],
+  "hong_kong_standalone_disclosed": false,
+  "southeast_asia_standalone_disclosed": false,
+  "sea_hq_share_upper_bound_pct": "1.332349487118196651458621299",
+  "upper_bound_scope": "Only direct customers headquartered in Southeast Asia, not the value of products shipped via or deployed there.",
+  "base_net_loss_pct_of_policy_sensitive_exposure": "35",
+  "loss_ranges_pct_of_current_annualized_revenue": {
+    "working": [
+      "1.299092713648787686679622951",
+      "3.897278140946363060038868854"
+    ],
+    "rounded_base": [
+      "2.598185427297575373359245903",
+      "2.598185427297575373359245903"
+    ],
+    "strict": [
+      "5.196370854595150746718491805",
+      "6.495463568243938433398114757"
+    ],
+    "stress": [
+      "9.093648995541513806757360659",
+      "11.69183442283908918011660656"
+    ]
+  }
+}

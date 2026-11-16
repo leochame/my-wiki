@@ -1,0 +1,139 @@
+{
+  "as_of": "2026-11-14",
+  "horizon": "Next approximately 12 months, compared with the same horizon under no further restrictions or voluntary Chinese withdrawal",
+  "unit": "USD billion",
+  "scope": "All new NVIDIA AI demand from Chinese end users is zero, including licensed deliveries, permitted workstation/AI products, physical diversion, and offshore equipment procured for Chinese demand. Existing equipment revenue is not reversed. Consumer-only gaming/auto and supply-chain shutdowns are outside this AI-demand scenario.",
+  "assumption_notice": "All channel exposures are analyst assumptions, not disclosed NVIDIA end-customer revenue. Every channel is mutually exclusive. Only independent non-Chinese final demand can offset sales in this full-cutoff scenario; Chinese purchases of permitted alternatives cannot count as offsets.",
+  "channels": [
+    {
+      "channel": "潜在H200许可供货",
+      "exposure_usd_bn": "2",
+      "cutoff_fraction": "1",
+      "base_non_china_replacement_fraction": "0.5",
+      "base_net_loss_usd_bn": "1.0"
+    },
+    {
+      "channel": "第三方实物转运，含B200/B300",
+      "exposure_usd_bn": "12",
+      "cutoff_fraction": "1",
+      "base_non_china_replacement_fraction": "0.5",
+      "base_net_loss_usd_bn": "6.0"
+    },
+    {
+      "channel": "中国相关海外新增算力设备",
+      "exposure_usd_bn": "14",
+      "cutoff_fraction": "1",
+      "base_non_china_replacement_fraction": "0.5",
+      "base_net_loss_usd_bn": "7.0"
+    },
+    {
+      "channel": "其他合规AI用卡及配套，排除H200",
+      "exposure_usd_bn": "12",
+      "cutoff_fraction": "1",
+      "base_non_china_replacement_fraction": "0.5",
+      "base_net_loss_usd_bn": "6.0"
+    }
+  ],
+  "gross_revenue_at_risk": "40",
+  "gross_judgment_range": [
+    "30",
+    "50"
+  ],
+  "base_non_china_replacement_fraction": "0.5",
+  "base_net_loss": "20.0",
+  "net_working_judgment_range": [
+    "10",
+    "30"
+  ],
+  "current_annualized_reference_revenue": "384.884",
+  "reference_is_future_revenue_forecast": false,
+  "gross_pct_of_reference": "10.39274170919030149343698361",
+  "base_net_loss_pct_of_reference": "5.196370854595150746718491805",
+  "sensitivity": [
+    {
+      "exposure_usd_bn": "30",
+      "non_china_replacement_fraction": "0",
+      "net_loss_usd_bn": "30",
+      "loss_pct_of_current_annualized_revenue": "7.794556281892726120077737708"
+    },
+    {
+      "exposure_usd_bn": "30",
+      "non_china_replacement_fraction": "0.25",
+      "net_loss_usd_bn": "22.50",
+      "loss_pct_of_current_annualized_revenue": "5.845917211419544590058303281"
+    },
+    {
+      "exposure_usd_bn": "30",
+      "non_china_replacement_fraction": "0.50",
+      "net_loss_usd_bn": "15.00",
+      "loss_pct_of_current_annualized_revenue": "3.897278140946363060038868854"
+    },
+    {
+      "exposure_usd_bn": "30",
+      "non_china_replacement_fraction": "0.75",
+      "net_loss_usd_bn": "7.50",
+      "loss_pct_of_current_annualized_revenue": "1.948639070473181530019434427"
+    },
+    {
+      "exposure_usd_bn": "40",
+      "non_china_replacement_fraction": "0",
+      "net_loss_usd_bn": "40",
+      "loss_pct_of_current_annualized_revenue": "10.39274170919030149343698361"
+    },
+    {
+      "exposure_usd_bn": "40",
+      "non_china_replacement_fraction": "0.25",
+      "net_loss_usd_bn": "30.00",
+      "loss_pct_of_current_annualized_revenue": "7.794556281892726120077737708"
+    },
+    {
+      "exposure_usd_bn": "40",
+      "non_china_replacement_fraction": "0.50",
+      "net_loss_usd_bn": "20.00",
+      "loss_pct_of_current_annualized_revenue": "5.196370854595150746718491805"
+    },
+    {
+      "exposure_usd_bn": "40",
+      "non_china_replacement_fraction": "0.75",
+      "net_loss_usd_bn": "10.00",
+      "loss_pct_of_current_annualized_revenue": "2.598185427297575373359245903"
+    },
+    {
+      "exposure_usd_bn": "50",
+      "non_china_replacement_fraction": "0",
+      "net_loss_usd_bn": "50",
+      "loss_pct_of_current_annualized_revenue": "12.99092713648787686679622951"
+    },
+    {
+      "exposure_usd_bn": "50",
+      "non_china_replacement_fraction": "0.25",
+      "net_loss_usd_bn": "37.50",
+      "loss_pct_of_current_annualized_revenue": "9.743195352365907650097172135"
+    },
+    {
+      "exposure_usd_bn": "50",
+      "non_china_replacement_fraction": "0.50",
+      "net_loss_usd_bn": "25.00",
+      "loss_pct_of_current_annualized_revenue": "6.495463568243938433398114757"
+    },
+    {
+      "exposure_usd_bn": "50",
+      "non_china_replacement_fraction": "0.75",
+      "net_loss_usd_bn": "12.50",
+      "loss_pct_of_current_annualized_revenue": "3.247731784121969216699057378"
+    }
+  ],
+  "reconciliation_to_previous_model": {
+    "previous_sensitive_pool": "28",
+    "previous_blocked_sales": "19.6",
+    "previous_net_loss": "9.8",
+    "full_block_old_pool_net_at_50pct_replacement": "14",
+    "additional_permitted_ai_pool": "12",
+    "additional_net_loss_at_50pct_replacement": "6"
+  },
+  "sources": [
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+    "https://www.investing.com/news/stock-market-news/exclusivebytedance-alibaba-tencent-place-over-35-billion-worth-nvidia-chip-orders-4959231",
+    "https://rhg.com/research/examining-chinas-ai-financing/"
+  ]
+}

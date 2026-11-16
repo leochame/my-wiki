@@ -1,0 +1,13 @@
+{
+  "routes": {
+    "demo-store": {
+      "group_name": "订单通知测试群"
+    }
+  },
+  "meituan_app_id": "",
+  "callback_base_url": "",
+  "meituan_decode_passes": 2,
+  "meituan_max_age_seconds": 86400,
+  "lease_seconds": 180,
+  "max_attempts": 5
+}

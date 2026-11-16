@@ -1,0 +1,25 @@
+{
+  "as_of": "2026-11-14",
+  "money_unit": "USD billion",
+  "current_quarter_annualized_revenue": "384.884",
+  "annualized_reference_is_forecast": false,
+  "china_hq_quarter_revenue_pct": "8.189480466841957576828343085",
+  "china_hq_half_year_revenue_pct": "6.989546607286447702109234861",
+  "china_hopper_annualized_exclusive_upper_bound": "3.56092",
+  "base": {
+    "scenario": "base",
+    "label": "基准判断",
+    "exposure_usd_bn": "28",
+    "blocked_sales_usd_bn": "19.60",
+    "replacement_sales_usd_bn": "9.8000",
+    "net_loss_usd_bn": "9.8000",
+    "net_loss_usd_100m": "98.0000",
+    "loss_pct_of_current_annualized_revenue": "2.546221718751623865892060985"
+  },
+  "base_profit_loss_low": "5.28710000",
+  "base_profit_loss_high": "6.10050000",
+  "base_eps_reduction_low": "0.2175761316872427983539094650",
+  "base_eps_reduction_high": "0.2510493827160493827160493827",
+  "timing_illustration_total": "9.8",
+  "timing_illustration_first_six_months": "2.8"
+}

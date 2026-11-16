@@ -1,0 +1,45 @@
+{
+  "as_of": "2026-11-14, Asia/Shanghai",
+  "money_unit": "USD billion",
+  "status": "Subjective valuation and execution rules; no calibrated probabilities, company guidance or future price guarantee.",
+  "expected_pricing_us_eastern": "2026-11-18",
+  "expected_first_trade_us_eastern": "2026-11-19",
+  "schedule_condition": "Subject to regulatory clearance and completion of the offering; first trade need not occur at 09:30 ET.",
+  "indicative_ipo_price_range": [70, 78],
+  "diluted_share_components_billion_at_74": {
+    "class_A": 7.430143944,
+    "class_N": 7.804580273,
+    "options_treasury_method": 1.704567865,
+    "RSUs": 1.073701297
+  },
+  "capitalization_warning": "Frozen 74-dollar IPO/placement capitalization from November 10 prospectus printed page 24 for approximate comparison. Actual pricing, placement shares, treasury method, greenshoe, conversions, awards and donations may change the denominator and cash bridge. Excludes wholly ungranted future incentive reserves. Economic dilution is broader than currently issued basic shares.",
+  "post_ipo_cash_bridge": 200,
+  "base": {
+    "source_vault_path": "notes/理财/assets/Anthropic估值-2026-11-11/assumptions.json",
+    "years": [2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+    "revenue": [120, 170, 225, 280, 330, 370, 405, 435, 460, 480],
+    "fcff_margin": [-0.05, 0.02, 0.08, 0.14, 0.18, 0.21, 0.23, 0.24, 0.25, 0.25],
+    "discount_rate": 0.13,
+    "terminal_growth": 0.03
+  },
+  "roadshow_sensitivity": {
+    "revenue_2027": 136,
+    "revenue_2028": 275,
+    "source_status": "Reuters November 13 attributes 2027 revenue of 135-137 and 2028 revenue of 270-280 to bank projections. Not realized revenue or verified company guidance.",
+    "method": "Use midpoint 136 for 2027; multiply original 2028-2036 revenue path by 275/170. Keep original FCFF margins, discount rate, terminal growth and cash bridge. Persistence beyond 2028 is this analysis's strong assumption, not Reuters's forecast. Requires a larger long-term market or greater market share than the original base.",
+    "is_new_base_case": false
+  },
+  "decision_rules": {
+    "long_term_accumulation_consideration_price_range": [45, 55],
+    "conditional_higher_growth_entry_range": [55, 65],
+    "do_not_chase_at_or_above": 70,
+    "ipo_allocation_trade_only_if_actual_cost_in_range": [70, 78],
+    "trade_horizon_trading_days": [1, 20],
+    "sell_half_of_initial_trade_shares_range": [80, 85],
+    "sell_remaining_trade_shares_range": [90, 100],
+    "trade_review_loss_from_actual_cost": 0.10,
+    "time_exit": "If targets are not reached within 20 trading days and there is no documented new thesis, exit the short-term position. Do not automatically convert it to a long-term holding.",
+    "max_trial_position_fraction_of_stock_account": [0.01, 0.02],
+    "warning": "Judgmental rules rather than optimized support/resistance or predicted highs. Account eligibility, IPO flipping policies and execution/slippage apply; no stop guarantees an execution price. Prices are invalidated by changed share counts, offering terms or material fundamental news."
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "as_of": "2026-11-14, Asia/Shanghai",
+  "purpose": "Audit prior conservatism and precision, not raise estimates to match market prices.",
+  "sensitivity": {
+    "original_growth": [
+      {
+        "discount_rate": 0.14,
+        "post_ipo_equity_usd_bn": 743.6128450161402,
+        "price_at_constant_capitalization": 41.2820251121095,
+        "terminal_fraction_of_enterprise_value": 0.5575548039749426
+      },
+      {
+        "discount_rate": 0.13,
+        "post_ipo_equity_usd_bn": 820.039695462921,
+        "price_at_constant_capitalization": 45.52489851125709,
+        "terminal_fraction_of_enterprise_value": 0.5872385283526824
+      },
+      {
+        "discount_rate": 0.12,
+        "post_ipo_equity_usd_bn": 914.7333207304694,
+        "price_at_constant_capitalization": 50.78186070933043,
+        "terminal_fraction_of_enterprise_value": 0.6186595271636568
+      },
+      {
+        "discount_rate": 0.11,
+        "post_ipo_equity_usd_bn": 1034.6423248313426,
+        "price_at_constant_capitalization": 57.43866680357272,
+        "terminal_fraction_of_enterprise_value": 0.6519259849618859
+      }
+    ],
+    "persistent_roadshow_growth": [
+      {
+        "discount_rate": 0.14,
+        "post_ipo_equity_usd_bn": 1081.9227394868938,
+        "price_at_constant_capitalization": 60.06346178688026,
+        "terminal_fraction_of_enterprise_value": 0.5559433043909698
+      },
+      {
+        "discount_rate": 0.13,
+        "post_ipo_equity_usd_bn": 1205.5769670229188,
+        "price_at_constant_capitalization": 66.92818576330632,
+        "terminal_fraction_of_enterprise_value": 0.5857367743141862
+      },
+      {
+        "discount_rate": 0.12,
+        "post_ipo_equity_usd_bn": 1358.780791937944,
+        "price_at_constant_capitalization": 75.43336986522434,
+        "terminal_fraction_of_enterprise_value": 0.6172743337352866
+      },
+      {
+        "discount_rate": 0.11,
+        "post_ipo_equity_usd_bn": 1552.7746139627313,
+        "price_at_constant_capitalization": 86.20303029550851,
+        "terminal_fraction_of_enterprise_value": 0.6506643669060213
+      }
+    ]
+  },
+  "stronger_revenue_path": [
+    136,
+    275.0,
+    363.97058823529414,
+    452.94117647058823,
+    533.8235294117648,
+    598.5294117647059,
+    655.1470588235294,
+    703.6764705882354,
+    744.1176470588235,
+    776.4705882352941
+  ],
+  "constant_diluted_economic_shares_billion": 18.012993379,
+  "warnings": [
+    "Discount rates are subjective required returns, not observed market-implied parameters.",
+    "Persistence of bank-reported 2028 growth beyond 2028 is an analyst assumption.",
+    "Price equivalents freeze 74-dollar offering capitalization and 200bn cash bridge.",
+    "No result is a calibrated forecast, fair-value ceiling, or support/resistance level."
+  ],
+  "google_reference": {
+    "regular_session_date_us_eastern": "2026-11-13",
+    "googl_close": 295.77,
+    "goog_close": 292.52,
+    "googl_after_hours_19_59_et": 294.05,
+    "goog_after_hours_19_59_et": 290.78,
+    "prior_298_70_date_us_eastern": "2026-11-12",
+    "price_source": "S&P Global Market Intelligence price history published by Stock Analysis; GOOGL regular close cross-checked with Yahoo history.",
+    "googl_premium_to_goog": 0.011110351428962106,
+    "return_since_2026_11_05": 0.04671408854443149,
+    "previous_buy_rule_returns_from_latest_close": {
+      "245": -0.17165364979544917,
+      "250": -0.1547486222402542,
+      "255": -0.13784359468505925,
+      "260": -0.1209385671298644,
+      "265": -0.10403353957466943,
+      "270": -0.08712851201947458,
+      "275": -0.07022348446427962,
+      "280": -0.053318456909084655,
+      "285": -0.036413429353889804
+    },
+    "previous_exit_rule_returns_from_latest_close": {
+      "330": 0.11573181864286441,
+      "350": 0.18335192886364404,
+      "375": 0.26787706663961863,
+      "390": 0.3185921493052035
+    },
+    "independent_google_dcf_completed_here": false
+  },
+  "input_sha256": "9f98737290ce389d80469a72b9d47eeafd7368b4bcf8b041435daed3aee862ea",
+  "sources": [
+    "https://stockanalysis.com/stocks/googl/history/",
+    "https://stockanalysis.com/stocks/goog/history/",
+    "https://s206.q4cdn.com/479360582/files/doc_news/2026/Oct/28/attachments/2026q3-alphabet-earnings-release.pdf",
+    "https://www.aol.com/articles/exclusive-investors-flock-anthropic-ipo-220347000.html",
+    "https://kraneshares.com/weekly-private-markets-wrap-anthropic-sets-an-ipo-price-range-as-ai-valuations-diverge/"
+  ]
+}
