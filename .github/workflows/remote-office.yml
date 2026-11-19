@@ -1,0 +1,41 @@
+name: Rust Remote Office
+
+on:
+  push:
+    paths: ['rust-remote-office/**', '.github/workflows/remote-office.yml']
+  pull_request:
+    paths: ['rust-remote-office/**', '.github/workflows/remote-office.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: rust-remote-office
+
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '14.0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust-remote-office
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked --no-default-features
+      - run: cargo check --locked --all-targets
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - if: runner.os == 'macOS'
+        run: bash scripts/package-macos.sh
+      - if: runner.os == 'Windows'
+        run: cargo build --release --locked

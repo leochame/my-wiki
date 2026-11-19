@@ -1,0 +1,204 @@
+October 2026 Ramp AI Index: Cracks in the AI thesis, part 3
+Back to Ramp Economics Lab
+Don't miss key shifts in business spend from Ramp Economics Lab.
+Subscribe on Substack
+Subscribe
+October 14, 2026
+Cracks in the AI Thesis Part 3
+Ara Kharazian
+Lead Economist, Ramp
+Dear Colleagues
+: Today’s letter includes my monthly update of
+Ramp AI Index
+, our flagship research using spend data from Ramp to track how American businesses are using AI. And in this series, I walk through cracks in the AI thesis — things I think the market should be paying more attention to (
+Part 1
+,
+Part 2
+).
+Extras from Ramp data:
+Twitter debate:
+This
+is a good back-and-forth between me and Gavin Baker on how declining spend on AI models could affect AI infrastructure bets. I think you’ll learn a lot no matter what side of the debate you fall on. I spoke to
+WSJ
+about price wars in AI.
+Model switching:
+We published
+this
+great post last week on how it’s getting easier and easier for companies to switch between models. (
+Ryan Stevens
+)
+Derek Thompson
+shared 3 of our charts in his post:
+The 26 Most Important Facts About AI and the Economy
+.
+Model adoption: have we hit the top of the S-curve?
+In September, OpenAI narrowed Anthropic’s lead in business AI adoption. Among Ramp businesses,
+43.8% paid Anthropic
+, up 0.25 percentage points from last month. OpenAI adoption rose
+1.12 percentage points to 40.6%
+, outpacing overall AI adoption. Overall adoption reached
+55.9%
+, increasing
+0.62
+percentage points, slightly faster than August’s
+0.40
+point gain.
+I sometimes question the value of this metric. It mattered when AI was new and OpenAI dominated the market, but today, more than half of businesses pay for AI. Many of them pay for multiple models.
+And today, the growth in new AI customers has slowed down significantly. It feels like we’re at the top of the S-curve, where the growth in the market will have to come from more intense adoption rather than more customers.
+Individual modem companies can still win share. We see outsized growth for xAI, a small player but up 0.6 percentage points on the popularity of Grok Bot. Mistral AI lags the market at less than 1% adoption by U.S. firms, which indicates low demand for the French AI company, even amongst multinational firms with a European presence.
+Add this chart to your website.
+Copy embed code
+Per employee AI spend stutters, rising, but still below its highs in July
+We
+previously
+shared that 80% of spend on OpenAI and Anthropic is driven by 1% of firms. On a per-employee basis, spend is stuttering for the top 1% of firms. Although per-employee spend rose
+11.7%
+from last month, the top 1% of firms spent
+$9,568 per employee per month
+in September,
+down
+3.1%
+from its July high of
+$9,873
+.
+Add this chart to your website.
+Copy embed code
+Methodological note
+: Because the top 1% represents a small group of firms, its spending estimate is more volatile than our median and top 10% estimates. We also revised up spending for the top 1% across cohorts in all periods after adding new AI vendors to our estimates. These results are subject to change.
+It’s clear this effect is not seasonal. Token volumes, for example, rose over the same period. It’s token spend that led to these declines. And this slowdown has been unusually stubborn.
+Because of August and September, we’ve recorded two straight months of virtually no growth in token spend.
+Add this chart to your website.
+Copy embed code
+On the bright side, AI spend rose at the beginning of October to a new peak. Now 1.5% above the previous peak in August. Despite the rise, we still see a significant slowdown in growth.
+Add this chart to your website.
+Copy embed code
+In my view, the main driver is price declines at the frontier, in addition to efficiency and quality improvements for models across intelligence levels, that are driving the blended price per million tokens down.
+Add this chart to your website.
+Copy embed code
+What about contracts?
+A few of you have written me to ask if OpenAI and Anthropic are asking customers to sign contracts to lock-in enterprise spend. Based on what I’ve heard from businesses who have signed or seen those deals, the customer is in the favorable negotiating position. I have heard that the contracts are 1) rarely signed in a manner that assumes a higher-than-normal AI spend on the part of the customer, and 2) to the extent they are, the labs are willing to provide concessions in the form of discounts on models from the sticker price. In other words, the contracts are not particularly restrictive. These contracts could contribute to price cuts without driving additional volume.
+Don't miss key shifts in business spend from Ramp Economics Lab.
+Subscribe on Substack
+Subscribe
+Ara Kharazian
+•
+Lead Economist, Ramp
+Ara Kharazian is the lead economist at Ramp and writes the weekly newsletter
+Econ Lab on Substack
+. His writing and analysis of AI, business spend, and the economy has been covered in the New York Times, Wall Street Journal, Financial Times, NBC News, ABC News, NPR's Planet Money, Bloomberg, the Guardian and more. Ara previously led economic research at Square and was an economic consultant at Cornerstone Research.
+Ramp is dedicated to helping businesses of all sizes make informed decisions. We adhere to strict
+editorial guidelines
+to ensure that our content meets and maintains our high standards.
+Don't miss these
+Cracks in the AI Thesis
+Ramp’s lead economist Ara Kharazian publishes the latest Ramp data on AI adoption in the monthly Ramp AI Index update.
+Ramp AI Index
+Monthly measurement of AI adoption by American businesses.
+AI companies are using influencers to market like consumer brands
+Ramp’s lead economist Ara Kharazian publishes data that shows a 3.75x increase in spend on creator / influencer marketing since 2023, led by AI companies.
+Sign in
+Sign in
+Corporate cards
+Expense management
+Spend management
+Budgets
+Banking
+Travel
+Reimbursements
+Procurement
+Accounts payable
+Vendor management
+Approvals
+Security
+Trust
+Mobile app
+Ramp Sheets
+Accounting firms
+Private equity
+Venture capital
+System integrators
+Technology partners
+Spend and payroll partners
+Reseller partners
+Franchise partners
+Corporate cards
+Expense management
+Spend management
+Budgets
+Banking
+Travel
+Reimbursements
+Procurement
+Accounts payable
+Vendor management
+Approvals
+Security
+Trust
+Mobile app
+Ramp Sheets
+Startups
+Small business
+Mid market
+Enterprise
+Platform overview
+Accounting automation
+Intelligence
+Reporting
+Savings
+Integrations
+Multi-entity
+Global
+AI Spend Management
+Router
+Accounting firms
+Private equity
+Venture capital
+System integrators
+Technology partners
+Spend and payroll partners
+Reseller partners
+Franchise partners
+Platform overview
+Accounting automation
+Intelligence
+Reporting
+Savings
+Integrations
+Multi-entity
+Global
+AI Spend Management
+Router
+Perks and rewards
+Find an accountant
+Find a services partner
+Savings calculator
+Mission statement generator
+Charge finder
+Per diem calculator
+Mileage reimbursement calculator
+Card comparison tool
+Investor database
+Expense categorization
+Expense policy builder
+Vendor directory
+Virtual cards
+Answers Hub
+Startups
+Small business
+Mid market
+Enterprise
+Perks and rewards
+Find an accountant
+Find a services partner
+Savings calculator
+Mission statement generator
+Charge finder
+Per diem calculator
+Mileage reimbursement calculator
+Card comparison tool
+Investor database
+Expense categorization
+Expense policy builder
+Vendor directory
+Virtual cards
+Answers Hub

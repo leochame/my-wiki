@@ -1,0 +1,8 @@
+{
+  "order_id": "demo-order-10001",
+  "store_id": "demo-store",
+  "store_name": "示例门店",
+  "status": "cancelled",
+  "day_seq": "32",
+  "remark": "示例：订单已取消，请停止备餐"
+}

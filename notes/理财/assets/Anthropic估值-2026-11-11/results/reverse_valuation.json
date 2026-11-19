@@ -1,0 +1,14 @@
+{
+  "diluted_economic_shares_billion_at_74": 18.012993379,
+  "equity_at_74_basic": 968.413771882,
+  "equity_at_74_diluted": 1332.961510046,
+  "equity_to_runrate_multiple_at_74_diluted": 16.45631493883951,
+  "base_EV": 620.039695462921,
+  "base_post_ipo_equity": 820.039695462921,
+  "base_post_ipo_equity_if_revenue_path_scaled_100_over_81": 965.481105509779,
+  "required_scale_to_justify_74_all_else_fixed": 1.8272402853177523,
+  "required_2030_A_revenue_at_74_all_else_fixed": 511.62727988897063,
+  "required_2030_lab_market_at_35pct_share": 1461.792228254202,
+  "equivalent_price_for_base_at_constant_74_capitalization": 45.52489851125709,
+  "warning": "Reverse case assumes proportional revenue and FCFF at fixed margins, not an independent forecast. Constant capitalization is only a comparison; IPO-price-dependent share counts change."
+}

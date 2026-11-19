@@ -1,0 +1,152 @@
+{
+  "as_of": "2026-11-14, Asia/Shanghai",
+  "money_unit": "USD billion",
+  "diluted_economic_shares_billion": 18.012993379,
+  "capitalization_warning": "Frozen 74-dollar IPO/placement capitalization from November 10 prospectus printed page 24 for approximate comparison. Actual pricing, placement shares, treasury method, greenshoe, conversions, awards and donations may change the denominator and cash bridge. Excludes wholly ungranted future incentive reserves. Economic dilution is broader than currently issued basic shares.",
+  "original_base": {
+    "revenue_path": [
+      120,
+      170,
+      225,
+      280,
+      330,
+      370,
+      405,
+      435,
+      460,
+      480
+    ],
+    "enterprise_value": 620.039695462921,
+    "post_ipo_equity_value": 820.039695462921,
+    "terminal_fraction_of_enterprise_value": 0.5872385283526824,
+    "equivalent_price_at_constant_capitalization": 45.52489851125709
+  },
+  "persistent_roadshow_growth_sensitivity": {
+    "revenue_path": [
+      136,
+      275.0,
+      363.97058823529414,
+      452.94117647058823,
+      533.8235294117648,
+      598.5294117647059,
+      655.1470588235294,
+      703.6764705882354,
+      744.1176470588235,
+      776.4705882352941
+    ],
+    "enterprise_value": 1005.5769670229189,
+    "post_ipo_equity_value": 1205.5769670229188,
+    "terminal_fraction_of_enterprise_value": 0.5857367743141862,
+    "equivalent_price_at_constant_capitalization": 66.92818576330632
+  },
+  "price_equity_comparisons": [
+    {
+      "price": 40,
+      "diluted_equity_value": 720.51973516,
+      "premium_to_original_base": -0.1213599303223254,
+      "premium_to_roadshow_sensitivity": -0.402344474995015
+    },
+    {
+      "price": 45,
+      "diluted_equity_value": 810.5847020550001,
+      "premium_to_original_base": -0.011529921612615901,
+      "premium_to_roadshow_sensitivity": -0.3276375343693918
+    },
+    {
+      "price": 50,
+      "diluted_equity_value": 900.6496689500001,
+      "premium_to_original_base": 0.09830008709709337,
+      "premium_to_roadshow_sensitivity": -0.2529305937437687
+    },
+    {
+      "price": 55,
+      "diluted_equity_value": 990.7146358450001,
+      "premium_to_original_base": 0.20813009580680264,
+      "premium_to_roadshow_sensitivity": -0.1782236531181456
+    },
+    {
+      "price": 60,
+      "diluted_equity_value": 1080.77960274,
+      "premium_to_original_base": 0.3179601045165119,
+      "premium_to_roadshow_sensitivity": -0.10351671249252259
+    },
+    {
+      "price": 65,
+      "diluted_equity_value": 1170.844569635,
+      "premium_to_original_base": 0.4277901132262212,
+      "premium_to_roadshow_sensitivity": -0.02880977186689937
+    },
+    {
+      "price": 70,
+      "diluted_equity_value": 1260.90953653,
+      "premium_to_original_base": 0.5376201219359305,
+      "premium_to_roadshow_sensitivity": 0.04589716875872374
+    },
+    {
+      "price": 74,
+      "diluted_equity_value": 1332.961510046,
+      "premium_to_original_base": 0.6254841289036981,
+      "premium_to_roadshow_sensitivity": 0.10566272125922227
+    },
+    {
+      "price": 78,
+      "diluted_equity_value": 1405.0134835620001,
+      "premium_to_original_base": 0.7133481358714657,
+      "premium_to_roadshow_sensitivity": 0.1654282737597208
+    },
+    {
+      "price": 80,
+      "diluted_equity_value": 1441.03947032,
+      "premium_to_original_base": 0.7572801393553492,
+      "premium_to_roadshow_sensitivity": 0.19531105000996996
+    },
+    {
+      "price": 85,
+      "diluted_equity_value": 1531.1044372150002,
+      "premium_to_original_base": 0.8671101480650587,
+      "premium_to_roadshow_sensitivity": 0.2700179906355933
+    },
+    {
+      "price": 90,
+      "diluted_equity_value": 1621.1694041100002,
+      "premium_to_original_base": 0.9769401567747682,
+      "premium_to_roadshow_sensitivity": 0.3447249312612164
+    },
+    {
+      "price": 100,
+      "diluted_equity_value": 1801.2993379000002,
+      "premium_to_original_base": 1.1966001741941867,
+      "premium_to_roadshow_sensitivity": 0.4941388125124626
+    },
+    {
+      "price": 110,
+      "diluted_equity_value": 1981.4292716900002,
+      "premium_to_original_base": 1.4162601916136053,
+      "premium_to_roadshow_sensitivity": 0.6435526937637088
+    }
+  ],
+  "ipo_cost_74_exit_examples_before_fees_and_tax": [
+    {
+      "exit": 66.6,
+      "return_pct": -10.000000000000009
+    },
+    {
+      "exit": 80,
+      "return_pct": 8.108108108108114
+    },
+    {
+      "exit": 85,
+      "return_pct": 14.864864864864868
+    },
+    {
+      "exit": 90,
+      "return_pct": 21.62162162162162
+    },
+    {
+      "exit": 100,
+      "return_pct": 35.13513513513513
+    }
+  ],
+  "judgment_not_calibrated_probabilities": true,
+  "input_sha256": "9f98737290ce389d80469a72b9d47eeafd7368b4bcf8b041435daed3aee862ea"
+}

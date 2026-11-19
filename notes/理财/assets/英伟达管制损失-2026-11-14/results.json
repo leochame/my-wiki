@@ -1,0 +1,244 @@
+{
+  "money_unit": "USD billion",
+  "channels": [
+    {
+      "scenario": "limited",
+      "category": "licensed_china",
+      "exposure_usd_bn": "1",
+      "blocked_fraction": "0.40",
+      "replacement_fraction": "0.70",
+      "blocked_sales_usd_bn": "0.40",
+      "replacement_sales_usd_bn": "0.2800",
+      "net_loss_usd_bn": "0.1200",
+      "net_loss_usd_100m": "1.2000"
+    },
+    {
+      "scenario": "limited",
+      "category": "physical_diversion",
+      "exposure_usd_bn": "8",
+      "blocked_fraction": "0.50",
+      "replacement_fraction": "0.75",
+      "blocked_sales_usd_bn": "4.00",
+      "replacement_sales_usd_bn": "3.0000",
+      "net_loss_usd_bn": "1.0000",
+      "net_loss_usd_100m": "10.0000"
+    },
+    {
+      "scenario": "limited",
+      "category": "offshore_compute",
+      "exposure_usd_bn": "10",
+      "blocked_fraction": "0.35",
+      "replacement_fraction": "0.75",
+      "blocked_sales_usd_bn": "3.50",
+      "replacement_sales_usd_bn": "2.6250",
+      "net_loss_usd_bn": "0.8750",
+      "net_loss_usd_100m": "8.7500"
+    },
+    {
+      "scenario": "base",
+      "category": "licensed_china",
+      "exposure_usd_bn": "2",
+      "blocked_fraction": "0.80",
+      "replacement_fraction": "0.50",
+      "blocked_sales_usd_bn": "1.60",
+      "replacement_sales_usd_bn": "0.8000",
+      "net_loss_usd_bn": "0.8000",
+      "net_loss_usd_100m": "8.0000"
+    },
+    {
+      "scenario": "base",
+      "category": "physical_diversion",
+      "exposure_usd_bn": "12",
+      "blocked_fraction": "0.80",
+      "replacement_fraction": "0.50",
+      "blocked_sales_usd_bn": "9.60",
+      "replacement_sales_usd_bn": "4.8000",
+      "net_loss_usd_bn": "4.8000",
+      "net_loss_usd_100m": "48.0000"
+    },
+    {
+      "scenario": "base",
+      "category": "offshore_compute",
+      "exposure_usd_bn": "14",
+      "blocked_fraction": "0.60",
+      "replacement_fraction": "0.50",
+      "blocked_sales_usd_bn": "8.40",
+      "replacement_sales_usd_bn": "4.2000",
+      "net_loss_usd_bn": "4.2000",
+      "net_loss_usd_100m": "42.0000"
+    },
+    {
+      "scenario": "strict",
+      "category": "licensed_china",
+      "exposure_usd_bn": "3",
+      "blocked_fraction": "1.00",
+      "replacement_fraction": "0.20",
+      "blocked_sales_usd_bn": "3.00",
+      "replacement_sales_usd_bn": "0.6000",
+      "net_loss_usd_bn": "2.4000",
+      "net_loss_usd_100m": "24.0000"
+    },
+    {
+      "scenario": "strict",
+      "category": "physical_diversion",
+      "exposure_usd_bn": "18",
+      "blocked_fraction": "0.95",
+      "replacement_fraction": "0.35",
+      "blocked_sales_usd_bn": "17.10",
+      "replacement_sales_usd_bn": "5.9850",
+      "net_loss_usd_bn": "11.1150",
+      "net_loss_usd_100m": "111.1500"
+    },
+    {
+      "scenario": "strict",
+      "category": "offshore_compute",
+      "exposure_usd_bn": "20",
+      "blocked_fraction": "0.90",
+      "replacement_fraction": "0.40",
+      "blocked_sales_usd_bn": "18.00",
+      "replacement_sales_usd_bn": "7.2000",
+      "net_loss_usd_bn": "10.8000",
+      "net_loss_usd_100m": "108.0000"
+    },
+    {
+      "scenario": "stress",
+      "category": "licensed_china",
+      "exposure_usd_bn": "4",
+      "blocked_fraction": "1.00",
+      "replacement_fraction": "0.10",
+      "blocked_sales_usd_bn": "4.00",
+      "replacement_sales_usd_bn": "0.4000",
+      "net_loss_usd_bn": "3.6000",
+      "net_loss_usd_100m": "36.0000"
+    },
+    {
+      "scenario": "stress",
+      "category": "physical_diversion",
+      "exposure_usd_bn": "24",
+      "blocked_fraction": "0.98",
+      "replacement_fraction": "0.25",
+      "blocked_sales_usd_bn": "23.52",
+      "replacement_sales_usd_bn": "5.8800",
+      "net_loss_usd_bn": "17.6400",
+      "net_loss_usd_100m": "176.4000"
+    },
+    {
+      "scenario": "stress",
+      "category": "offshore_compute",
+      "exposure_usd_bn": "28",
+      "blocked_fraction": "0.95",
+      "replacement_fraction": "0.25",
+      "blocked_sales_usd_bn": "26.60",
+      "replacement_sales_usd_bn": "6.6500",
+      "net_loss_usd_bn": "19.9500",
+      "net_loss_usd_100m": "199.5000"
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "limited",
+      "label": "有限收紧",
+      "exposure_usd_bn": "19",
+      "blocked_sales_usd_bn": "7.90",
+      "replacement_sales_usd_bn": "5.9050",
+      "net_loss_usd_bn": "1.9950",
+      "net_loss_usd_100m": "19.9500",
+      "loss_pct_of_current_annualized_revenue": "0.5183379927458662869851695576"
+    },
+    {
+      "scenario": "base",
+      "label": "基准判断",
+      "exposure_usd_bn": "28",
+      "blocked_sales_usd_bn": "19.60",
+      "replacement_sales_usd_bn": "9.8000",
+      "net_loss_usd_bn": "9.8000",
+      "net_loss_usd_100m": "98.0000",
+      "loss_pct_of_current_annualized_revenue": "2.546221718751623865892060985"
+    },
+    {
+      "scenario": "strict",
+      "label": "严厉执行",
+      "exposure_usd_bn": "41",
+      "blocked_sales_usd_bn": "38.10",
+      "replacement_sales_usd_bn": "13.7850",
+      "net_loss_usd_bn": "24.3150",
+      "net_loss_usd_100m": "243.1500",
+      "loss_pct_of_current_annualized_revenue": "6.317487866474054520323006412"
+    },
+    {
+      "scenario": "stress",
+      "label": "极端压力",
+      "exposure_usd_bn": "56",
+      "blocked_sales_usd_bn": "54.12",
+      "replacement_sales_usd_bn": "12.9300",
+      "net_loss_usd_bn": "41.1900",
+      "net_loss_usd_100m": "411.9000",
+      "loss_pct_of_current_annualized_revenue": "10.70192577503871296286673387"
+    }
+  ],
+  "sensitivity": [
+    {
+      "exposure_scale": "0.75",
+      "uniform_replacement_fraction": "0.25",
+      "net_loss_usd_bn": "11.025000",
+      "net_loss_usd_100m": "110.250000",
+      "loss_pct_of_current_annualized_revenue": "2.864499433595576849128568608"
+    },
+    {
+      "exposure_scale": "0.75",
+      "uniform_replacement_fraction": "0.50",
+      "net_loss_usd_bn": "7.350000",
+      "net_loss_usd_100m": "73.500000",
+      "loss_pct_of_current_annualized_revenue": "1.909666289063717899419045738"
+    },
+    {
+      "exposure_scale": "0.75",
+      "uniform_replacement_fraction": "0.75",
+      "net_loss_usd_bn": "3.675000",
+      "net_loss_usd_100m": "36.750000",
+      "loss_pct_of_current_annualized_revenue": "0.9548331445318589497095228692"
+    },
+    {
+      "exposure_scale": "1.00",
+      "uniform_replacement_fraction": "0.25",
+      "net_loss_usd_bn": "14.700000",
+      "net_loss_usd_100m": "147.000000",
+      "loss_pct_of_current_annualized_revenue": "3.819332578127435798838091477"
+    },
+    {
+      "exposure_scale": "1.00",
+      "uniform_replacement_fraction": "0.50",
+      "net_loss_usd_bn": "9.800000",
+      "net_loss_usd_100m": "98.000000",
+      "loss_pct_of_current_annualized_revenue": "2.546221718751623865892060985"
+    },
+    {
+      "exposure_scale": "1.00",
+      "uniform_replacement_fraction": "0.75",
+      "net_loss_usd_bn": "4.900000",
+      "net_loss_usd_100m": "49.000000",
+      "loss_pct_of_current_annualized_revenue": "1.273110859375811932946030492"
+    },
+    {
+      "exposure_scale": "1.25",
+      "uniform_replacement_fraction": "0.25",
+      "net_loss_usd_bn": "18.375000",
+      "net_loss_usd_100m": "183.750000",
+      "loss_pct_of_current_annualized_revenue": "4.774165722659294748547614346"
+    },
+    {
+      "exposure_scale": "1.25",
+      "uniform_replacement_fraction": "0.50",
+      "net_loss_usd_bn": "12.250000",
+      "net_loss_usd_100m": "122.500000",
+      "loss_pct_of_current_annualized_revenue": "3.182777148439529832365076231"
+    },
+    {
+      "exposure_scale": "1.25",
+      "uniform_replacement_fraction": "0.75",
+      "net_loss_usd_bn": "6.125000",
+      "net_loss_usd_100m": "61.250000",
+      "loss_pct_of_current_annualized_revenue": "1.591388574219764916182538115"
+    }
+  ]
+}

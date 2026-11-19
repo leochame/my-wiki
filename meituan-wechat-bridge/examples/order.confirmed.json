@@ -1,0 +1,14 @@
+{
+  "order_id": "demo-order-10001",
+  "store_id": "demo-store",
+  "store_name": "示例门店",
+  "status": "confirmed",
+  "day_seq": "32",
+  "items": [
+    {"name": "鸡腿饭", "quantity": 2, "spec": "微辣"},
+    {"name": "酸梅汤", "quantity": 1}
+  ],
+  "remark": "不要香菜，餐具两份",
+  "delivery_time": "立即配送",
+  "amount_fen": 4200
+}

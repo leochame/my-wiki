@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "order-bridge": {
+      "command": "/absolute/path/to/meituan-wechat-bridge/.venv/bin/order-bridge",
+      "args": ["mcp"],
+      "env": {
+        "BRIDGE_URL": "http://127.0.0.1:8787"
+      }
+    }
+  }
+}

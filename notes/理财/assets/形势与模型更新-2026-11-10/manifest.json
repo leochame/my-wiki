@@ -1,0 +1,142 @@
+{
+  "retrieved_at_utc": "2026-11-10T08:28:31.537818+00:00",
+  "as_of": "2026-11-09",
+  "target": "2027-02-05",
+  "remaining_sessions": 60,
+  "mode": "Append only; keep previous subjective terminal scenarios unchanged; reuse model with no new backtest or tuning.",
+  "data": [
+    {
+      "symbol": "^GSPC",
+      "name": "GSPC",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 7549.93994140625,
+      "raw_sha256": "ac0fa67e4492a3c655111f92efe87a925ad76e5fc2418e5bd56802b90ad3d335"
+    },
+    {
+      "symbol": "^NDX",
+      "name": "NDX",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 27907.630859375,
+      "raw_sha256": "f1475e5ce0eff334b0373d32696f471a98aa75904d8826bb080d9ba741e970ed"
+    },
+    {
+      "symbol": "^IXIC",
+      "name": "IXIC",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 25253.140625,
+      "raw_sha256": "a3691cb2a9fc1c9224835d1f947a33f40f71e7201aaa795496430d0acb99addf"
+    },
+    {
+      "symbol": "KO",
+      "name": "KO",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/KO",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 96.02999877929688,
+      "raw_sha256": "51ffff90bdd2421f227ed8c7a3a9ee9b531ae6f476edafa48c5a748b5e2cb57f"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "GOOGL",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/GOOGL",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 288.1499938964844,
+      "raw_sha256": "1ff2eba443d3fac7fc9102c2dcd3de56d8257920ad98ec202d0a3eb91f722bdd"
+    },
+    {
+      "symbol": "^VIX",
+      "name": "VIX",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 19.920000076293945,
+      "raw_sha256": "2269568a9604246e254971d09f583ee1efa19e1bf532bc9aefd3a75fb94e429e"
+    },
+    {
+      "symbol": "^TNX",
+      "name": "TNX",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 4.863999843597412,
+      "raw_sha256": "4c412bb71e992465cad7a50ac80361222efd2eb7d029382d1f56f963858099ac"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVDA",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/NVDA",
+      "params": {
+        "period1": 1790812800,
+        "period2": 1794268800,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "first_date": "2026-10-01",
+      "last_date": "2026-11-09",
+      "last_close": 178.6699981689453,
+      "raw_sha256": "10c76e0f00d093b7f9ad19b4600a3818a3ea4558af89ed5ab0b4baf10c9967c2"
+    }
+  ],
+  "previous_data_and_model_sha256": {
+    "三个月走势模型-2026-11-06/GSPC.csv": "229f5ec1b591208f84c72234a168a60ebd1eb697628072f426e48a753bf8892b",
+    "三个月走势模型-2026-11-06/NDX.csv": "e90dbe97c87343f6d481460d5bf45632a58bf511378dc62c306d90f73012390d",
+    "三个月走势模型-2026-11-06/KO.csv": "f00208837765783b4881d99aa4b03525cd15cb9afbadfc7825daeeccc4f5b65f",
+    "三个月走势模型-2026-11-06/GOOGL.csv": "ce9b1caf05415501b912ae9a3b77757ceaf47a068e53838ef8f4c5d9569d9d55",
+    "三个月走势模型-2026-11-06/IXIC.csv": "8c4750e64a809234589680509a9dde584e89a7059958b5adaf69fa28d7a5f711",
+    "三个月走势模型-2026-11-06/VIX.csv": "5f375253a14443903b2681e472288e0b1b09ba84a07fdec37bf9c31399a0e16b",
+    "三个月走势模型-2026-11-06/TNX.csv": "08f37f606ae6737064576d991b5677d94cd7f89fd26b8d494eb687046775dfe4",
+    "三个月走势模型-2026-11-06/model.py": "fa5041a1a6d91e99b9bf521f0e615c4b6ecc263359ed660b8567ae8f7a37909f"
+  },
+  "VIX_previous": 28.1800003052,
+  "VIX_current": 19.920000076293945,
+  "notes": "Stock/index closes only through 11-09; no CPI or US 11-10 close. Old vendor observations retained; overlaps checked separately. USD price returns exclude dividends, taxes and FX."
+}

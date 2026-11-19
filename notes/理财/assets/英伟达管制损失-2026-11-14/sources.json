@@ -1,0 +1,119 @@
+{
+  "accessed_date_beijing": "2026-11-14",
+  "sources": [
+    {
+      "id": "nvidia_q2",
+      "type": "issuer_disclosure",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "use": "FY2027 Q2 actual revenue, headquarters geography, licensed Hopper shipments, supply constraints and remote-access risk. Geography does not identify ultimate China demand."
+    },
+    {
+      "id": "nvidia_release",
+      "type": "issuer_disclosure",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+      "use": "Q3 guidance excludes China data-center compute; full-year tax-rate guidance 16%-18%."
+    },
+    {
+      "id": "nvidia_transition",
+      "type": "issuer_disclosure",
+      "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/default.aspx",
+      "use": "CEO transition announced November 12; Q3 earnings scheduled November 17 US Pacific time. Does not establish an individual sanctions order."
+    },
+    {
+      "id": "bis_rule",
+      "type": "government_rule",
+      "url": "https://www.federalregister.gov/documents/2026/01/15/2026-00789/revision-to-license-review-policy-for-advanced-computing-commodities",
+      "use": "Conditional case-by-case H200 review; parent-company and end-user controls. Not evidence that a newly proposed comprehensive remote-access ban has taken effect."
+    },
+    {
+      "id": "doj_case",
+      "type": "official_allegations",
+      "url": "https://www.justice.gov/usao-sdny/pr/three-charged-conspiring-unlawfully-divert-us-artificial-intelligence-technology-china",
+      "use": "March 19 unsealed prosecution; approximately $2.5bn server purchases over 2024-2025, not annual NVIDIA component revenue."
+    },
+    {
+      "id": "indictment",
+      "type": "court_document_copy",
+      "url": "https://www.is-law.com/wp-content/uploads/2026/04/USSDNY-Indictment_Case-126-cr-00100-ER_Wally-Liaw-etal.pdf",
+      "use": "Paragraph 21 alleges approximately $510m of B200/H200 servers diverted in late April to mid-May 2025. Court pleading, not a final finding for all defendants."
+    },
+    {
+      "id": "b300_case",
+      "type": "media_reporting_of_prosecutors",
+      "url": "https://apnews.com/article/taiwan-china-us-nvidia-ai-server-chip-illegal-export-511e9ae69d517c49f19512d45b1a8b0c",
+      "use": "August 24 report on 74 B300 servers alleged to have reached mainland China; demonstrates channel existence, not global scale."
+    },
+    {
+      "id": "bloomberg_trade",
+      "type": "original_media_trade_analysis_syndicated",
+      "url": "https://newsdig.tbs.co.jp/articles/withbloomberg/3073555?display=1",
+      "use": "November report cites Malaysian November 2025 GB300 imports. Imports into Malaysia are not proof every item reached China; trade value is not necessarily NVIDIA net supplier revenue."
+    },
+    {
+      "id": "bennet_letter",
+      "type": "congressional_letter_allegations",
+      "url": "https://www.bennet.senate.gov/wp-content/uploads/2026/11/Bennet-Letter-re-Megaspeed-11.10.pdf",
+      "use": "November 10 oversight letter summarizing physical diversion, offshore access and opaque ownership concerns. The allegations do not independently verify all transactions."
+    },
+    {
+      "id": "reuters_sea",
+      "type": "news_reporting",
+      "url": "https://www.investing.com/news/economy-news/nvidia-fallout-throws-spotlight-on-southeast-asias-ai-boom-5025437",
+      "use": "November 13 updated reporting on Southeast Asian licensing and end-user scrutiny. Policy proposals are distinct from effective rules."
+    },
+    {
+      "id": "reuters_rasa",
+      "type": "news_reporting",
+      "url": "https://www.investing.com/news/stock-market-news/explainertougher-curbs-on-ai-chip-sales-to-china-likely-after-nvidia-ceo-resigns-5022981",
+      "use": "November 12 descriptions of proposed bills, including remote-access regulation."
+    },
+    {
+      "id": "reuters_projects",
+      "type": "original_procurement_review",
+      "url": "https://live.euronext.com/en/financial-news/huang-exit-and-us-scrutiny-imperil-3-billion-chinese-ai-projects-reliant-nvidia",
+      "use": "$3.2bn project aggregate includes buildings, power and planned investments; cannot add the full amount as NVIDIA chip revenue."
+    },
+    {
+      "id": "reuters_workstations",
+      "type": "news_reporting_unnamed_sources",
+      "url": "https://www.investing.com/news/stock-market-news/exclusivebytedance-alibaba-tencent-place-over-35-billion-worth-of-nvidia-chip-orders-4959231",
+      "use": "October 20 RTX PRO 5500 orders at sticker prices, supply limits and export-compliant alternative. Orders and intentions are not completed supplier revenue."
+    },
+    {
+      "id": "rhodium",
+      "type": "original_research_forecast",
+      "url": "https://rhg.com/research/examining-chinas-ai-financing/",
+      "use": "2026 and 2027 AI-capex estimates provide a scale check, not direct measurements of NVIDIA revenue."
+    },
+    {
+      "id": "new_street_index",
+      "type": "research_publisher_index",
+      "url": "https://www.newstreetresearch.com/company/nvidia/",
+      "use": "Confirms November 9 research exists. Full report requires login and was not read."
+    },
+    {
+      "id": "sbs_new_street",
+      "type": "secondary_reporting",
+      "url": "https://news.sbs.co.kr/english/endPagePrintPopup.do?news_id=N1008845758",
+      "use": "November 14 attribution of approximately $15bn/4% indirect China-linked sales to New Street. Cross-check only; article notes AI translation, and the primary research was inaccessible."
+    },
+    {
+      "id": "culper",
+      "type": "short_seller_research",
+      "url": "https://culperresearch.com/wp-content/uploads/2026/05/Culper_NVDA_5-13-2026.pdf",
+      "use": "Anonymous employee 20%-40% China-link claims are not an audited customer ledger. Not used as baseline exposure."
+    },
+    {
+      "id": "semianalysis",
+      "type": "industry_analysis_public_excerpt",
+      "url": "https://newsletter.semianalysis.com/p/nvidia-and-the-world-without-jensen",
+      "use": "Public portion describes diversion prosecutions. Did not independently read the underlying model claimed to imply 1.5GW, so no GW-to-revenue conversion is used."
+    },
+    {
+      "id": "historical_geography_basis",
+      "type": "historical_issuer_disclosure",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm",
+      "use": "October 26, 2025 quarter: geography changed from billing to headquarters; 86% of Taiwan-headquartered data-center revenue estimated attributable to US/European end customers. Historical example, not a current-quarter ratio."
+    }
+  ]
+}

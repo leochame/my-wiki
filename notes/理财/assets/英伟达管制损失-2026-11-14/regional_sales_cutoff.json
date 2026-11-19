@@ -1,0 +1,42 @@
+{
+  "as_of": "2026-11-16",
+  "basis": "NVIDIA FY2027 Q2 quarter ended 2026-07-26; direct customer headquarters geography",
+  "warning": "This is revenue by direct-customer headquarters, not chip units, shipment destination, final user, billing route or data-center location.",
+  "quarter_revenue_usd_bn": 96.221,
+  "annualized_reference_revenue_usd_bn": 384.884,
+  "reported_direct_customer_headquarters": {
+    "United States": {"revenue_usd_bn": 60.074, "share_pct": 62.4333565438},
+    "Taiwan": {"revenue_usd_bn": 26.985, "share_pct": 28.0448135023},
+    "China_and_Hong_Kong": {"revenue_usd_bn": 7.88, "share_pct": 8.1894804668},
+    "Other_all_regions_including_Southeast_Asia_and_Europe": {"revenue_usd_bn": 1.282, "share_pct": 1.3323494871}
+  },
+  "literal_no_direct_sales_to_Taiwan_Hong_Kong_Southeast_Asia": {
+    "formula": "Taiwan + Hong_Kong_component_of_China_and_Hong_Kong + Southeast_Asia_component_of_Other",
+    "known_floor_pct_of_quarter_revenue": 28.0448135023,
+    "known_floor_quarter_revenue_usd_bn": 26.985,
+    "known_floor_annualized_revenue_usd_bn": 107.94,
+    "known_floor_pct_of_annualized_reference": 28.0448135023,
+    "mechanical_upper_bound_pct_of_revenue": 37.5666434562,
+    "mechanical_upper_bound_quarter_revenue_usd_bn": 36.147,
+    "mechanical_upper_bound_annualized_revenue_usd_bn": 144.588,
+    "upper_bound_logic": "Assign all China_and_Hong_Kong revenue to Hong Kong and all Other revenue to Southeast Asia. This is a mathematical ceiling, not an estimate.",
+    "realistic_data_limit": "Hong Kong, Southeast Asia and Europe are not separately disclosed; no exact regional loss can be calculated from the filing."
+  },
+  "policy_end_use_scenario": {
+    "description": "Controls target China-linked final use and offshore compute/transshipment, while legitimate Taiwan/SEA/EU/US final demand remains eligible.",
+    "base_net_loss_usd_bn": 9.8,
+    "base_net_loss_pct_of_annualized_reference": 2.5462217188,
+    "strict_net_loss_range_usd_bn": [20, 25],
+    "strict_net_loss_range_pct_of_annualized_reference": [5.1963708546, 6.4954635682],
+    "stress_net_loss_range_usd_bn": [35, 45],
+    "stress_net_loss_range_pct_of_annualized_reference": [9.0936489955, 11.6918344228],
+    "model_status": "Subjective scenario from the existing research model; not an NVIDIA customer disclosure."
+  },
+  "chip_unit_warning": "NVIDIA does not disclose chip units by region. Product mix, ASP, complete servers, networking and memory make revenue shares an invalid unit-share calculation.",
+  "sources": [
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm",
+    "https://www.inquirer.com/news/nation-world/howard-lutnick-commerce-secretary-rules-data-centers-nvidia-chips-china-southeast-asia-cantor-fitzgerald-20261115.html",
+    "https://ir.bitdeer.com/news-releases/news-release-details/bitdeer-ai-secures-651mw-a202-facility-its-existing-johor"
+  ]
+}

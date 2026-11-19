@@ -1,0 +1,119 @@
+{
+  "as_of": "2026-11-05 US regular close",
+  "retrieved_utc": "2026-11-06T02:59:33.580178+00:00",
+  "notes": "Price-only close is used for every return model. Stock closes are split-adjusted; ordinary dividends excluded. Adjusted close is retained for audit only. Index daily timestamp commonly denotes session open, not time of close.",
+  "data": [
+    {
+      "symbol": "^GSPC",
+      "name": "GSPC",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC",
+      "params": {
+        "period1": 946684800,
+        "period2": 1793923200,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6752,
+      "first_date": "2000-01-03",
+      "last_date": "2026-11-05",
+      "last_close": 7353.72998046875,
+      "sha256": "1c97bbe463d79fee5efccdc3dcb4fb1fd2b5a95b66ae3a93e78e3bb7398d299f"
+    },
+    {
+      "symbol": "^NDX",
+      "name": "NDX",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX",
+      "params": {
+        "period1": 946684800,
+        "period2": 1793923200,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6752,
+      "first_date": "2000-01-03",
+      "last_date": "2026-11-05",
+      "last_close": 26629.80859375,
+      "sha256": "891c0d286a901bd9689db5dbc792c75d130e3dd3ad0ebbfe42f648f7d74a49ea"
+    },
+    {
+      "symbol": "^IXIC",
+      "name": "IXIC",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC",
+      "params": {
+        "period1": 946684800,
+        "period2": 1793923200,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6752,
+      "first_date": "2000-01-03",
+      "last_date": "2026-11-05",
+      "last_close": 24314.998046875,
+      "sha256": "abaacf0f641b90d050acb58dbf061571bd693f79216fa77820a90470a3e79883"
+    },
+    {
+      "symbol": "KO",
+      "name": "KO",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/KO",
+      "params": {
+        "period1": 946684800,
+        "period2": 1793923200,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6752,
+      "first_date": "2000-01-03",
+      "last_date": "2026-11-05",
+      "last_close": 95.7300033569336,
+      "sha256": "e7bfc91cd323c055a16f42b71e9279ccb9c7b84a472a61ad3561375476c163dc"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "GOOGL",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/GOOGL",
+      "params": {
+        "period1": 946684800,
+        "period2": 1793923200,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 5590,
+      "first_date": "2004-08-19",
+      "last_date": "2026-11-05",
+      "last_close": 282.57000732421875,
+      "sha256": "b1e2a6c94c9084705f7477281d8586c2466c33712ea574f2cd9fc400bf61c130"
+    },
+    {
+      "symbol": "^VIX",
+      "name": "VIX",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX",
+      "params": {
+        "period1": 946684800,
+        "period2": 1793923200,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6754,
+      "first_date": "2000-01-03",
+      "last_date": "2026-11-05",
+      "last_close": 28.18000030517578,
+      "sha256": "efa909666fbc2020a624312e610edc130c18ec90c91cbf61eed9fe46438bdec3"
+    },
+    {
+      "symbol": "^TNX",
+      "name": "TNX",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX",
+      "params": {
+        "period1": 946684800,
+        "period2": 1793923200,
+        "interval": "1d",
+        "events": "div,splits"
+      },
+      "rows": 6746,
+      "first_date": "2000-01-03",
+      "last_date": "2026-11-05",
+      "last_close": 4.836999893188477,
+      "sha256": "3a3248699aaa8aa742e2b8afcd7d962c966476afb695d07bbe5db2b8b0bc4158"
+    }
+  ]
+}
