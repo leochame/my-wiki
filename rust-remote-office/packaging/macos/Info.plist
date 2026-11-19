@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key><string>Rust Remote Office</string>
+    <key>CFBundleDisplayName</key><string>Rust Remote Office</string>
+    <key>CFBundleExecutable</key><string>rust-remote-office</string>
+    <key>CFBundleIdentifier</key><string>dev.remoteoffice.desktop</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>1.0.0</string>
+    <key>CFBundleVersion</key><string>1</string>
+    <key>LSMinimumSystemVersion</key><string>14.0</string>
+    <key>NSHighResolutionCapable</key><true/>
+    <key>NSScreenCaptureUsageDescription</key>
+    <string>Share your selected display with a person you explicitly approve.</string>
+</dict>
+</plist>

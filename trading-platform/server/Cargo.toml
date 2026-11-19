@@ -1,0 +1,21 @@
+[package]
+name = "northstar-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.8"
+chrono = { version = "0.4", features = ["serde", "clock"] }
+http = "1"
+http-body-util = "0.1"
+longbridge = "5.4.0"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+rust_decimal = "1"
+rusqlite = { version = "0.38", features = ["bundled"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "net"] }
+tower-http = { version = "0.6", features = ["cors", "fs", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+uuid = { version = "1", features = ["v4"] }
