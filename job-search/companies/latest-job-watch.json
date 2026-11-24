@@ -1,0 +1,363 @@
+{
+  "generated_at": "2026-11-22T17:19:16",
+  "keyword": "",
+  "location": "China",
+  "limit": 6,
+  "total_jobs": 33,
+  "total_new": 0,
+  "companies": [
+    {
+      "company": "booking",
+      "source_url": "https://jobs.booking.com/booking/jobs?location=China",
+      "warning": null,
+      "new_count": 0,
+      "jobs": [
+        {
+          "title": "Site Reliability Engineering - IC - F",
+          "url": "https://jobs.booking.com/booking/jobs/30288",
+          "location": "Shanghai, China",
+          "posted_at": "2026-09-21",
+          "team": "Engineering",
+          "job_id": "30288",
+          "is_new": false
+        }
+      ]
+    },
+    {
+      "company": "amazon",
+      "source_url": "https://www.amazon.jobs/en/search.json?offset=0&result_limit=50&sort=recent&category%5B%5D=software-development&loc_query=China&normalized_country_code%5B%5D=CHN",
+      "warning": null,
+      "new_count": 0,
+      "jobs": [
+        {
+          "title": "Sr. Silicon & Systems Engineer",
+          "url": "https://www.amazon.jobs/en/jobs/d5c58419-c536-43bf-bb03-7bddac71e980",
+          "location": "Shanghai, 31, CHN",
+          "posted_at": "October 27, 2026",
+          "team": "alexa-and-amazon-devices",
+          "job_id": "d5c58419-c536-43bf-bb03-7bddac71e980",
+          "is_new": false
+        },
+        {
+          "title": "Sr. Silicon & Systems Engineer",
+          "url": "https://www.amazon.jobs/en/jobs/7ba8ce24-4e2c-46c5-8803-1a63a2d7c47a",
+          "location": "Shanghai, 31, CHN",
+          "posted_at": "October 30, 2026",
+          "team": "alexa-and-amazon-devices",
+          "job_id": "7ba8ce24-4e2c-46c5-8803-1a63a2d7c47a",
+          "is_new": false
+        },
+        {
+          "title": "Data Engineer - AI/ML Products, AOP (Analytics Operations and Programs)",
+          "url": "https://www.amazon.jobs/en/jobs/45d8b94d-1c82-4fdc-a82b-bcbf4937b35c",
+          "location": "Beijing, 13, CHN",
+          "posted_at": "October 8, 2026",
+          "team": "international-stores",
+          "job_id": "45d8b94d-1c82-4fdc-a82b-bcbf4937b35c",
+          "is_new": false
+        },
+        {
+          "title": "软件开发工程师, 上海, (New graduate or Entry-level Engineer, 0-2 Years)",
+          "url": "https://www.amazon.jobs/en/jobs/6296296d-b164-42f4-996b-dd45f9e468e3",
+          "location": "Shanghai, 31, CHN",
+          "posted_at": "August 21, 2026",
+          "team": "studentprograms",
+          "job_id": "6296296d-b164-42f4-996b-dd45f9e468e3",
+          "is_new": false
+        },
+        {
+          "title": "Software Development Engineer, Early Career - 2027, Shanghai",
+          "url": "https://www.amazon.jobs/en/jobs/1c6d45cc-e749-4e6e-8638-d6c44afe8c03",
+          "location": "Shanghai, 31, CHN",
+          "posted_at": "August 10, 2026",
+          "team": "studentprograms",
+          "job_id": "1c6d45cc-e749-4e6e-8638-d6c44afe8c03",
+          "is_new": false
+        },
+        {
+          "title": "Software Development Engineer, Early Career - 2027, Beijing",
+          "url": "https://www.amazon.jobs/en/jobs/34c4ea50-6a58-48aa-a498-5754697ef919",
+          "location": "Beijing, 11, CHN",
+          "posted_at": "August 6, 2026",
+          "team": "studentprograms",
+          "job_id": "34c4ea50-6a58-48aa-a498-5754697ef919",
+          "is_new": false
+        }
+      ]
+    },
+    {
+      "company": "nvidia",
+      "source_url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite",
+      "warning": null,
+      "new_count": 0,
+      "jobs": [
+        {
+          "title": "Technical Marketing Engineer, Robotics - China",
+          "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/China-Shanghai/Technical-Marketing-Engineer--Robotics--China_JR2023457",
+          "location": "China, Shanghai",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "JR2023457",
+          "is_new": false
+        },
+        {
+          "title": "NVIDIA 2027 New College Graduate: Software Engineering - China",
+          "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/China-Shanghai/NVIDIA-2027-New-College-Graduate--Software-Engineering---China_JR2024111",
+          "location": "3 Locations",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "JR2024111",
+          "is_new": false
+        },
+        {
+          "title": "NVIDIA 2027 New College Graduate: GPU Architecture Engineering - China",
+          "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/China-Shanghai/NVIDIA-2027-New-College-Graduate--GPU-Architecture-Engineering---China_JR2024108",
+          "location": "3 Locations",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "JR2024108",
+          "is_new": false
+        },
+        {
+          "title": "NVIDIA 2027 New College Graduate: Hardware ASIC Engineering - China",
+          "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/China-Shanghai/NVIDIA-2027-New-College-Graduate--Hardware-ASIC-Engineering---China_JR2024110",
+          "location": "China, Shanghai",
+          "posted_at": "Posted 12 Days Ago",
+          "team": null,
+          "job_id": "JR2024110",
+          "is_new": false
+        },
+        {
+          "title": "NVIDIA 2027 New College Graduate: Autonomous Vehicles and Robotics - China",
+          "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/China-Shanghai/NVIDIA-2027-New-College-Graduate--Autonomous-Vehicles-and-Robotics---China_JR2024109",
+          "location": "3 Locations",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "JR2024109",
+          "is_new": false
+        },
+        {
+          "title": "NVIDIA 2027 New College Graduate: Deep Learning and High-Performance Computing Engineering - China",
+          "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/China-Shanghai/NVIDIA-2027-New-College-Graduate--Deep-Learning-and-High-Performance-Computing-Engineering---China_JR2024107",
+          "location": "3 Locations",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "JR2024107",
+          "is_new": false
+        }
+      ]
+    },
+    {
+      "company": "coupang",
+      "source_url": "https://job-boards.greenhouse.io/coupang",
+      "warning": null,
+      "new_count": 0,
+      "jobs": [
+        {
+          "title": "Staff Back-end Engineer [L6-1] (NCA Services)",
+          "url": "https://www.coupang.jobs/en/jobs/?gh_jid=8302512",
+          "location": "Shanghai, China",
+          "posted_at": "2026-11-21",
+          "team": null,
+          "job_id": "8302512",
+          "is_new": false
+        },
+        {
+          "title": "[RGCB] Principal, Account Management",
+          "url": "https://www.coupang.jobs/en/jobs/?gh_jid=8236125",
+          "location": "Hangzhou, China",
+          "posted_at": "2026-11-21",
+          "team": null,
+          "job_id": "8236125",
+          "is_new": false
+        },
+        {
+          "title": "Selection Planning Strategy Specialist",
+          "url": "https://www.coupang.jobs/en/jobs/?gh_jid=8209979",
+          "location": "Yanji, China",
+          "posted_at": "2026-11-16",
+          "team": null,
+          "job_id": "8209979",
+          "is_new": false
+        },
+        {
+          "title": "[Pricing&Retail] Staff Data Analyst",
+          "url": "https://www.coupang.jobs/en/jobs/?gh_jid=8154969",
+          "location": "Shanghai, China",
+          "posted_at": "2026-11-13",
+          "team": null,
+          "job_id": "8154969",
+          "is_new": false
+        },
+        {
+          "title": "Director, Data Analytics – Pricing",
+          "url": "https://www.coupang.jobs/en/jobs/?gh_jid=8179229",
+          "location": "Shanghai, China",
+          "posted_at": "2026-11-11",
+          "team": null,
+          "job_id": "8179229",
+          "is_new": false
+        },
+        {
+          "title": "Staff Front-end Engineer[L6-1] (Instant Commerce Web Engineering)",
+          "url": "https://www.coupang.jobs/en/jobs/?gh_jid=8370373",
+          "location": "Shanghai, China",
+          "posted_at": "2026-11-09",
+          "team": null,
+          "job_id": "8370373",
+          "is_new": false
+        }
+      ]
+    },
+    {
+      "company": "airbnb",
+      "source_url": "https://job-boards.greenhouse.io/airbnb",
+      "warning": null,
+      "new_count": 0,
+      "jobs": [
+        {
+          "title": "Senior Machine Learning Engineer, Assistance Engineering",
+          "url": "https://careers.airbnb.com/positions/7975743?gh_jid=7975743",
+          "location": "China",
+          "posted_at": "2026-11-19",
+          "team": null,
+          "job_id": "7975743",
+          "is_new": false
+        },
+        {
+          "title": "Machine Learning Engineer, Assistance Engineering",
+          "url": "https://careers.airbnb.com/positions/7716341?gh_jid=7716341",
+          "location": "China",
+          "posted_at": "2026-11-19",
+          "team": null,
+          "job_id": "7716341",
+          "is_new": false
+        },
+        {
+          "title": "Office Manager, China (Executive Administration and Workplace)",
+          "url": "https://careers.airbnb.com/positions/8299386?gh_jid=8299386",
+          "location": "Beijing, China",
+          "posted_at": "2026-11-10",
+          "team": null,
+          "job_id": "8299386",
+          "is_new": false
+        }
+      ]
+    },
+    {
+      "company": "ebay",
+      "source_url": "https://ebay.wd5.myworkdayjobs.com/en-US/apply",
+      "warning": null,
+      "new_count": 0,
+      "jobs": [
+        {
+          "title": "Greater China Investigations Lead",
+          "url": "https://ebay.wd5.myworkdayjobs.com/en-US/apply/job/Shanghai/Greater-China-Investigations-Lead_R0075889",
+          "location": "Shanghai",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "R0075889",
+          "is_new": false
+        },
+        {
+          "title": "Account Management 1",
+          "url": "https://ebay.wd5.myworkdayjobs.com/en-US/apply/job/Shenzhen/Account-Management-1_R0077239",
+          "location": "Shenzhen",
+          "posted_at": "Posted 26 Days Ago",
+          "team": null,
+          "job_id": "R0077239",
+          "is_new": false
+        },
+        {
+          "title": "iCBT Ads Seller Engagement Sr Manager",
+          "url": "https://ebay.wd5.myworkdayjobs.com/en-US/apply/job/Shenzhen/iCBT-Ads-Seller-Engagement-Sr-Manager_R0077329",
+          "location": "Shenzhen",
+          "posted_at": "Posted 19 Days Ago",
+          "team": null,
+          "job_id": "R0077329",
+          "is_new": false
+        },
+        {
+          "title": "CBT Ads Seller Engagement Specialist",
+          "url": "https://ebay.wd5.myworkdayjobs.com/en-US/apply/job/Shenzhen/CBT-Ads-Seller-Engagement-Specialist_R0077324-1",
+          "location": "Shenzhen",
+          "posted_at": "Posted 19 Days Ago",
+          "team": null,
+          "job_id": "R0077324",
+          "is_new": false
+        },
+        {
+          "title": "CBT Ads Seller Engagement Specialist",
+          "url": "https://ebay.wd5.myworkdayjobs.com/en-US/apply/job/Shanghai/CBT-Ads-Seller-Engagement-Specialist_R0077328",
+          "location": "Shanghai",
+          "posted_at": "Posted 18 Days Ago",
+          "team": null,
+          "job_id": "R0077328",
+          "is_new": false
+        }
+      ]
+    },
+    {
+      "company": "intel",
+      "source_url": "https://intel.wd1.myworkdayjobs.com/en-US/External",
+      "warning": null,
+      "new_count": 0,
+      "jobs": [
+        {
+          "title": "Substrates Material Engineer",
+          "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/Virtual-China/Substrates-Material-Engineer_JR0288962",
+          "location": "Virtual China",
+          "posted_at": "Posted 6 Days Ago",
+          "team": null,
+          "job_id": "JR0288962",
+          "is_new": false
+        },
+        {
+          "title": "Robotics Solution Manager (Humanoid Robotics)",
+          "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/PRC-Shanghai/Robotics-Solution-Manager--Humanoid-Robotics-_JR0288984",
+          "location": "3 Locations",
+          "posted_at": "Posted 13 Days Ago",
+          "team": null,
+          "job_id": "JR0288984",
+          "is_new": false
+        },
+        {
+          "title": "Robotics Solution Manager (Stationary Robots and AMR)",
+          "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/PRC-Shanghai/Robotics-Solution-Manager--Stationary-Robots-and-AMR-_JR0288986",
+          "location": "3 Locations",
+          "posted_at": "Posted 13 Days Ago",
+          "team": null,
+          "job_id": "JR0288986",
+          "is_new": false
+        },
+        {
+          "title": "Ecosystem Technical Enabling Engineer(SZ/SH)",
+          "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/PRC-Shenzhen/Ecosystem-Technical-Enabling-Engineer-SZ-SH-_JR0287325",
+          "location": "2 Locations",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "JR0287325",
+          "is_new": false
+        },
+        {
+          "title": "Substrate Capacity Manager",
+          "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/PRC-Shanghai/Substrate-Capacity-Manager_JR0287757",
+          "location": "3 Locations",
+          "posted_at": "Posted 30+ Days Ago",
+          "team": null,
+          "job_id": "JR0287757",
+          "is_new": false
+        },
+        {
+          "title": "AR Collection Analyst",
+          "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/PRC-Shanghai/AR-Collection-Analyst_JR0288613",
+          "location": "PRC, Shanghai",
+          "posted_at": "Posted 26 Days Ago",
+          "team": null,
+          "job_id": "JR0288613",
+          "is_new": false
+        }
+      ]
+    }
+  ]
+}

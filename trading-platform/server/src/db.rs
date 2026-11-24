@@ -1,28 +1,46 @@
-use std::{path::PathBuf, sync::Arc};
+use std::{path::PathBuf, str::FromStr, sync::Arc};
 
 use axum::http::StatusCode;
 use chrono::Utc;
 use rusqlite::{params, Connection, OptionalExtension, TransactionBehavior};
-use uuid::Uuid;
+use rust_decimal::Decimal;
+use serde::{Deserialize, Serialize};
 
-use crate::{ApiError, OrderEntry, OrderRequest, OrderResult};
+use crate::{
+    media::{default_media_sources, MediaSource},
+    ApiError,
+};
 
 #[derive(Clone)]
 pub struct Database {
     path: Arc<PathBuf>,
 }
 
-pub enum Submission {
-    Existing(OrderEntry),
-    New(OrderEntry),
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct StoredPosition {
+    pub symbol: String,
+    pub quantity: String,
+    pub avg_cost: String,
+    pub notes: String,
+    pub updated_at: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct EquitySnapshot {
+    pub id: i64,
+    pub recorded_at: String,
+    pub total_equity: String,
+    pub cash_balance: String,
+    pub market_value: String,
+    pub cost_basis: String,
+    pub day_pnl: Option<String>,
+    pub unrealized_pnl: Option<String>,
+    pub unrealized_pnl_pct: Option<String>,
 }
 
 fn storage_error(error: impl std::fmt::Display) -> ApiError {
-    tracing::error!("SQLite operation failed: {error}");
-    ApiError(
-        StatusCode::INTERNAL_SERVER_ERROR,
-        "数据库操作失败，请检查服务日志".into(),
-    )
+    tracing::error!("SQLite error: {error}");
+    ApiError(StatusCode::INTERNAL_SERVER_ERROR, "数据库操作失败".into())
 }
 
 pub fn default_path() -> PathBuf {
@@ -40,14 +58,6 @@ pub fn default_path() -> PathBuf {
     root.join("northstar/terminal.sqlite3")
 }
 
-pub fn canonical_order(order: &OrderRequest) -> String {
-    serde_json::json!({
-        "symbol": order.symbol, "side": order.side, "quantity": order.quantity,
-        "order_type": order.order_type, "limit_price": order.limit_price,
-    })
-    .to_string()
-}
-
 impl Database {
     pub async fn open(path: PathBuf) -> Result<Self, ApiError> {
         let db = Self {
@@ -55,10 +65,7 @@ impl Database {
         };
         let path = db.path.clone();
         tokio::task::spawn_blocking(move || {
-            if let Some(parent) = path
-                .parent()
-                .filter(|parent| !parent.as_os_str().is_empty())
-            {
+            if let Some(parent) = path.parent().filter(|p| !p.as_os_str().is_empty()) {
                 std::fs::create_dir_all(parent).map_err(storage_error)?;
             }
             let conn = Connection::open(path.as_ref()).map_err(storage_error)?;
@@ -71,24 +78,80 @@ impl Database {
                     symbol TEXT PRIMARY KEY NOT NULL,
                     added_at TEXT NOT NULL
                 );
-                CREATE TABLE IF NOT EXISTS order_previews (
-                    preview_id TEXT PRIMARY KEY NOT NULL,
-                    request_json TEXT NOT NULL,
-                    mode TEXT NOT NULL CHECK (mode IN ('paper', 'live')),
-                    created_at TEXT NOT NULL,
-                    expires_at INTEGER NOT NULL
+                CREATE TABLE IF NOT EXISTS positions (
+                    symbol TEXT PRIMARY KEY NOT NULL,
+                    quantity TEXT NOT NULL,
+                    avg_cost TEXT NOT NULL,
+                    notes TEXT NOT NULL DEFAULT '',
+                    updated_at TEXT NOT NULL
                 );
-                CREATE TABLE IF NOT EXISTS orders (
-                    preview_id TEXT PRIMARY KEY NOT NULL REFERENCES order_previews(preview_id),
-                    mode TEXT NOT NULL CHECK (mode IN ('paper', 'live')),
-                    status TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    entry_json TEXT NOT NULL
+                CREATE TABLE IF NOT EXISTS account_settings (
+                    key TEXT PRIMARY KEY NOT NULL,
+                    value TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
                 );
-                CREATE INDEX IF NOT EXISTS orders_created_at ON orders(created_at DESC);
-                PRAGMA user_version=1;",
+                CREATE TABLE IF NOT EXISTS media_sources (
+                    id TEXT PRIMARY KEY NOT NULL,
+                    name TEXT NOT NULL,
+                    outlet TEXT NOT NULL,
+                    category TEXT NOT NULL,
+                    language TEXT NOT NULL,
+                    feed_url TEXT NOT NULL,
+                    site_url TEXT NOT NULL,
+                    enabled INTEGER NOT NULL DEFAULT 1,
+                    added_at TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS equity_snapshots (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    recorded_at TEXT NOT NULL,
+                    total_equity TEXT NOT NULL,
+                    cash_balance TEXT NOT NULL,
+                    market_value TEXT NOT NULL,
+                    cost_basis TEXT NOT NULL,
+                    day_pnl TEXT,
+                    unrealized_pnl TEXT,
+                    unrealized_pnl_pct TEXT
+                );
+                CREATE INDEX IF NOT EXISTS equity_snapshots_recorded_at
+                    ON equity_snapshots(recorded_at DESC);
+                PRAGMA user_version=5;",
             )
             .map_err(storage_error)?;
+
+            let seeded: bool = conn
+                .query_row(
+                    "SELECT EXISTS(SELECT 1 FROM account_settings WHERE key='media_seeded_v1')",
+                    [],
+                    |r| r.get(0),
+                )
+                .map_err(storage_error)?;
+            if !seeded {
+                for src in default_media_sources() {
+                    conn.execute(
+                        "INSERT OR IGNORE INTO media_sources
+                         (id, name, outlet, category, language, feed_url, site_url, enabled, added_at)
+                         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                        params![
+                            src.id,
+                            src.name,
+                            src.outlet,
+                            src.category,
+                            src.language,
+                            src.feed_url,
+                            src.site_url,
+                            if src.enabled { 1 } else { 0 },
+                            src.added_at,
+                        ],
+                    )
+                    .map_err(storage_error)?;
+                }
+                conn.execute(
+                    "INSERT OR REPLACE INTO account_settings(key, value, updated_at)
+                     VALUES ('media_seeded_v1', '1', ?1)",
+                    [Utc::now().to_rfc3339()],
+                )
+                .map_err(storage_error)?;
+            }
             Ok::<_, ApiError>(())
         })
         .await
@@ -116,10 +179,10 @@ impl Database {
 
     pub async fn watchlist(&self) -> Result<Vec<String>, ApiError> {
         self.run(|conn| {
-            let mut query = conn
+            let mut stmt = conn
                 .prepare("SELECT symbol FROM watchlist ORDER BY added_at, symbol")
                 .map_err(storage_error)?;
-            let rows = query
+            let rows = stmt
                 .query_map([], |row| row.get(0))
                 .map_err(storage_error)?;
             rows.collect::<rusqlite::Result<Vec<String>>>()
@@ -134,25 +197,25 @@ impl Database {
                 .transaction_with_behavior(TransactionBehavior::Immediate)
                 .map_err(storage_error)?;
             let count: i64 = tx
-                .query_row("SELECT COUNT(*) FROM watchlist", [], |row| row.get(0))
+                .query_row("SELECT COUNT(*) FROM watchlist", [], |r| r.get(0))
                 .map_err(storage_error)?;
             if count >= 50 {
                 let exists: bool = tx
                     .query_row(
                         "SELECT EXISTS(SELECT 1 FROM watchlist WHERE symbol=?1)",
                         [&symbol],
-                        |row| row.get(0),
+                        |r| r.get(0),
                     )
                     .map_err(storage_error)?;
                 if !exists {
                     return Err(ApiError(
                         StatusCode::BAD_REQUEST,
-                        "自选列表最多保存 50 个标的".into(),
+                        "自选最多 50 个标的".into(),
                     ));
                 }
             }
             tx.execute(
-                "INSERT OR IGNORE INTO watchlist(symbol,added_at) VALUES (?1,?2)",
+                "INSERT OR IGNORE INTO watchlist(symbol, added_at) VALUES (?1, ?2)",
                 params![symbol, Utc::now().to_rfc3339()],
             )
             .map_err(storage_error)?;
@@ -170,79 +233,147 @@ impl Database {
         .await
     }
 
-    pub async fn save_preview(
-        &self,
-        order: &OrderRequest,
-        mode: String,
-    ) -> Result<String, ApiError> {
-        let id = Uuid::new_v4().to_string();
-        let request = canonical_order(order);
-        let saved_id = id.clone();
-        self.run(move |conn| {
-            conn.execute("INSERT INTO order_previews(preview_id, request_json, mode, created_at, expires_at) VALUES (?1,?2,?3,?4,?5)",
-                params![saved_id, request, mode, Utc::now().to_rfc3339(), Utc::now().timestamp() + 600]).map_err(storage_error)?;
-            Ok(())
-        }).await?;
-        Ok(id)
+    pub async fn positions(&self) -> Result<Vec<StoredPosition>, ApiError> {
+        self.run(|conn| {
+            let mut stmt = conn
+                .prepare("SELECT symbol, quantity, avg_cost, notes, updated_at FROM positions ORDER BY symbol")
+                .map_err(storage_error)?;
+            let rows = stmt
+                .query_map([], |row| {
+                    Ok(StoredPosition {
+                        symbol: row.get(0)?,
+                        quantity: row.get(1)?,
+                        avg_cost: row.get(2)?,
+                        notes: row.get(3)?,
+                        updated_at: row.get(4)?,
+                    })
+                })
+                .map_err(storage_error)?;
+            rows.collect::<rusqlite::Result<Vec<_>>>()
+                .map_err(storage_error)
+        })
+        .await
     }
 
-    pub async fn prepare_submission(
+    pub async fn upsert_position(
         &self,
-        order: &OrderRequest,
-        mode: String,
-    ) -> Result<Submission, ApiError> {
-        let id = order
-            .preview_id
-            .clone()
-            .ok_or_else(|| ApiError(StatusCode::CONFLICT, "请先预览订单，再确认提交".into()))?;
-        let request = canonical_order(order);
-        let order = order.clone();
-        self.run(move |conn| {
-            let tx = conn.transaction_with_behavior(TransactionBehavior::Immediate).map_err(storage_error)?;
-            let saved = tx.query_row("SELECT request_json, mode, expires_at FROM order_previews WHERE preview_id=?1", [&id], |row| Ok((row.get::<_, String>(0)?, row.get::<_, String>(1)?, row.get::<_, i64>(2)?))).optional().map_err(storage_error)?;
-            let (saved_request, saved_mode, expires_at) = saved.ok_or_else(|| ApiError(StatusCode::CONFLICT, "预览不存在，请重新预览订单".into()))?;
-            if saved_request != request || saved_mode != mode {
-                return Err(ApiError(StatusCode::CONFLICT, "订单参数或交易模式已改变，请重新预览".into()));
-            }
-            let existing: Option<String> = tx.query_row("SELECT entry_json FROM orders WHERE preview_id=?1", [&id], |row| row.get(0)).optional().map_err(storage_error)?;
-            if let Some(value) = existing {
-                let entry = serde_json::from_str(&value).map_err(storage_error)?;
-                return Ok(Submission::Existing(entry));
-            }
-            if expires_at < Utc::now().timestamp() {
-                return Err(ApiError(StatusCode::CONFLICT, "预览已过期，请重新预览订单".into()));
-            }
-            let paper = mode == "paper";
-            let entry = OrderEntry {
-                result: OrderResult {
-                    order_id: format!("{}-{}", if paper { "paper" } else { "pending" }, id),
-                    status: if paper { "accepted" } else { "submitting" }.into(), mode: mode.clone(),
-                    provider: if paper { "paper" } else { "schwab" }.into(),
-                    message: if paper { "纸上订单已接受，未向券商发送，未模拟成交" } else { "委托正在提交，不能重复发送" }.into(),
-                },
-                symbol: order.symbol, side: order.side, quantity: order.quantity,
-                order_type: order.order_type, limit_price: order.limit_price,
-                created_at: Utc::now().to_rfc3339(),
-            };
-            tx.execute("INSERT INTO orders(preview_id, mode, status, created_at, entry_json) VALUES (?1,?2,?3,?4,?5)",
-                params![id, mode, entry.result.status, entry.created_at, serde_json::to_string(&entry).map_err(storage_error)?]).map_err(storage_error)?;
-            tx.commit().map_err(storage_error)?;
-            Ok(Submission::New(entry))
-        }).await
-    }
-
-    pub async fn finish_submission(
-        &self,
-        preview_id: String,
-        entry: OrderEntry,
-    ) -> Result<(), ApiError> {
+        symbol: String,
+        quantity: String,
+        avg_cost: String,
+        notes: String,
+    ) -> Result<Vec<StoredPosition>, ApiError> {
         self.run(move |conn| {
             conn.execute(
-                "UPDATE orders SET status=?1,entry_json=?2 WHERE preview_id=?3",
+                "INSERT INTO positions(symbol, quantity, avg_cost, notes, updated_at)
+                 VALUES (?1, ?2, ?3, ?4, ?5)
+                 ON CONFLICT(symbol) DO UPDATE SET
+                   quantity=excluded.quantity,
+                   avg_cost=excluded.avg_cost,
+                   notes=excluded.notes,
+                   updated_at=excluded.updated_at",
+                params![symbol, quantity, avg_cost, notes, Utc::now().to_rfc3339()],
+            )
+            .map_err(storage_error)?;
+            Ok(())
+        })
+        .await?;
+        self.positions().await
+    }
+
+    pub async fn delete_position(&self, symbol: String) -> Result<Vec<StoredPosition>, ApiError> {
+        self.run(move |conn| {
+            conn.execute("DELETE FROM positions WHERE symbol=?1", [symbol])
+                .map_err(storage_error)?;
+            Ok(())
+        })
+        .await?;
+        self.positions().await
+    }
+
+    pub async fn cash_balance(&self) -> Result<Decimal, ApiError> {
+        self.run(|conn| {
+            let raw: Option<String> = conn
+                .query_row(
+                    "SELECT value FROM account_settings WHERE key='cash_balance'",
+                    [],
+                    |r| r.get(0),
+                )
+                .optional()
+                .map_err(storage_error)?;
+            Ok(raw
+                .and_then(|v| Decimal::from_str(&v).ok())
+                .unwrap_or(Decimal::ZERO))
+        })
+        .await
+    }
+
+    pub async fn set_cash_balance(&self, amount: Decimal) -> Result<Decimal, ApiError> {
+        let formatted = amount.normalize().to_string();
+        self.run(move |conn| {
+            conn.execute(
+                "INSERT INTO account_settings(key, value, updated_at) VALUES ('cash_balance', ?1, ?2)
+                 ON CONFLICT(key) DO UPDATE SET value=excluded.value, updated_at=excluded.updated_at",
+                params![formatted, Utc::now().to_rfc3339()],
+            )
+            .map_err(storage_error)?;
+            Ok(amount)
+        })
+        .await
+    }
+
+    pub async fn media_sources(&self) -> Result<Vec<MediaSource>, ApiError> {
+        self.run(|conn| {
+            let mut stmt = conn
+                .prepare(
+                    "SELECT id, name, outlet, category, language, feed_url, site_url, enabled, added_at
+                     FROM media_sources ORDER BY added_at ASC, rowid ASC",
+                )
+                .map_err(storage_error)?;
+            let rows = stmt
+                .query_map([], |r| {
+                    Ok(MediaSource {
+                        id: r.get(0)?,
+                        name: r.get(1)?,
+                        outlet: r.get(2)?,
+                        category: r.get(3)?,
+                        language: r.get(4)?,
+                        feed_url: r.get(5)?,
+                        site_url: r.get(6)?,
+                        enabled: r.get::<_, i64>(7)? != 0,
+                        added_at: r.get(8)?,
+                    })
+                })
+                .map_err(storage_error)?;
+            rows.collect::<rusqlite::Result<Vec<_>>>()
+                .map_err(storage_error)
+        })
+        .await
+    }
+
+    pub async fn upsert_media_source(&self, src: MediaSource) -> Result<(), ApiError> {
+        self.run(move |conn| {
+            conn.execute(
+                "INSERT INTO media_sources
+                 (id, name, outlet, category, language, feed_url, site_url, enabled, added_at)
+                 VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
+                 ON CONFLICT(id) DO UPDATE SET
+                   name=excluded.name,
+                   outlet=excluded.outlet,
+                   category=excluded.category,
+                   language=excluded.language,
+                   feed_url=excluded.feed_url,
+                   site_url=excluded.site_url,
+                   enabled=excluded.enabled",
                 params![
-                    entry.result.status,
-                    serde_json::to_string(&entry).map_err(storage_error)?,
-                    preview_id
+                    src.id,
+                    src.name,
+                    src.outlet,
+                    src.category,
+                    src.language,
+                    src.feed_url,
+                    src.site_url,
+                    if src.enabled { 1 } else { 0 },
+                    src.added_at,
                 ],
             )
             .map_err(storage_error)?;
@@ -251,26 +382,150 @@ impl Database {
         .await
     }
 
-    pub async fn orders(&self) -> Result<Vec<OrderEntry>, ApiError> {
-        self.run(|conn| {
-            let mut query = conn
-                .prepare("SELECT entry_json FROM orders ORDER BY created_at ASC LIMIT 1000")
+    pub async fn set_media_source_enabled(&self, id: String, enabled: bool) -> Result<(), ApiError> {
+        self.run(move |conn| {
+            let changed = conn
+                .execute(
+                    "UPDATE media_sources SET enabled=?1 WHERE id=?2",
+                    params![if enabled { 1 } else { 0 }, id],
+                )
                 .map_err(storage_error)?;
-            let rows = query
-                .query_map([], |row| row.get::<_, String>(0))
+            if changed == 0 {
+                return Err(ApiError(StatusCode::NOT_FOUND, "未找到该媒体源".into()));
+            }
+            Ok(())
+        })
+        .await
+    }
+
+    pub async fn delete_media_source(&self, id: String) -> Result<(), ApiError> {
+        self.run(move |conn| {
+            conn.execute("DELETE FROM media_sources WHERE id=?1", [id])
                 .map_err(storage_error)?;
-            rows.map(|row| {
-                serde_json::from_str(&row.map_err(storage_error)?).map_err(storage_error)
-            })
-            .collect()
+            Ok(())
+        })
+        .await
+    }
+
+    pub async fn record_equity_snapshot(
+        &self,
+        snap: EquitySnapshot,
+        min_interval_secs: i64,
+    ) -> Result<bool, ApiError> {
+        self.run(move |conn| {
+            let last: Option<(String, String, String, Option<String>)> = conn
+                .query_row(
+                    "SELECT recorded_at, total_equity, cash_balance, unrealized_pnl
+                     FROM equity_snapshots ORDER BY id DESC LIMIT 1",
+                    [],
+                    |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)),
+                )
+                .optional()
+                .map_err(storage_error)?;
+
+            if let Some((last_at, last_eq, last_cash, last_pnl)) = last {
+                let unchanged = last_eq == snap.total_equity
+                    && last_cash == snap.cash_balance
+                    && last_pnl == snap.unrealized_pnl;
+                if min_interval_secs > 0 && unchanged {
+                    if let (Ok(prev_dt), Ok(cur_dt)) = (
+                        chrono::DateTime::parse_from_rfc3339(&last_at),
+                        chrono::DateTime::parse_from_rfc3339(&snap.recorded_at),
+                    ) {
+                        if (cur_dt - prev_dt).num_seconds() < min_interval_secs {
+                            return Ok(false);
+                        }
+                    }
+                }
+            }
+
+            conn.execute(
+                "INSERT INTO equity_snapshots
+                 (recorded_at, total_equity, cash_balance, market_value, cost_basis,
+                  day_pnl, unrealized_pnl, unrealized_pnl_pct)
+                 VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                params![
+                    snap.recorded_at,
+                    snap.total_equity,
+                    snap.cash_balance,
+                    snap.market_value,
+                    snap.cost_basis,
+                    snap.day_pnl,
+                    snap.unrealized_pnl,
+                    snap.unrealized_pnl_pct,
+                ],
+            )
+            .map_err(storage_error)?;
+            Ok(true)
+        })
+        .await
+    }
+
+    pub async fn equity_history(
+        &self,
+        since_rfc3339: Option<String>,
+        limit: usize,
+    ) -> Result<Vec<EquitySnapshot>, ApiError> {
+        let cap = limit.clamp(1, 2000) as i64;
+        self.run(move |conn| {
+            let mut rows_out = Vec::new();
+            if let Some(since) = since_rfc3339 {
+                let mut stmt = conn
+                    .prepare(
+                        "SELECT id, recorded_at, total_equity, cash_balance, market_value,
+                                cost_basis, day_pnl, unrealized_pnl, unrealized_pnl_pct
+                         FROM equity_snapshots
+                         WHERE recorded_at >= ?1
+                         ORDER BY recorded_at DESC, id DESC LIMIT ?2",
+                    )
+                    .map_err(storage_error)?;
+                let iter = stmt
+                    .query_map(params![since, cap], row_to_equity_snapshot)
+                    .map_err(storage_error)?;
+                for r in iter {
+                    rows_out.push(r.map_err(storage_error)?);
+                }
+            } else {
+                let mut stmt = conn
+                    .prepare(
+                        "SELECT id, recorded_at, total_equity, cash_balance, market_value,
+                                cost_basis, day_pnl, unrealized_pnl, unrealized_pnl_pct
+                         FROM equity_snapshots
+                         ORDER BY recorded_at DESC, id DESC LIMIT ?1",
+                    )
+                    .map_err(storage_error)?;
+                let iter = stmt
+                    .query_map(params![cap], row_to_equity_snapshot)
+                    .map_err(storage_error)?;
+                for r in iter {
+                    rows_out.push(r.map_err(storage_error)?);
+                }
+            }
+            rows_out.reverse();
+            Ok(rows_out)
         })
         .await
     }
 }
 
+fn row_to_equity_snapshot(r: &rusqlite::Row<'_>) -> rusqlite::Result<EquitySnapshot> {
+    Ok(EquitySnapshot {
+        id: r.get(0)?,
+        recorded_at: r.get(1)?,
+        total_equity: r.get(2)?,
+        cash_balance: r.get(3)?,
+        market_value: r.get(4)?,
+        cost_basis: r.get(5)?,
+        day_pnl: r.get(6)?,
+        unrealized_pnl: r.get(7)?,
+        unrealized_pnl_pct: r.get(8)?,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    use uuid::Uuid;
 
     async fn database() -> Database {
         Database::open(
@@ -280,97 +535,73 @@ mod tests {
         .expect("test database")
     }
 
-    fn order() -> OrderRequest {
-        OrderRequest {
-            symbol: "AAPL.US".into(),
-            side: "buy".into(),
-            quantity: "2".into(),
-            order_type: "limit".into(),
-            limit_price: Some("100.25".into()),
-            confirmation: Some("never-store-this-secret".into()),
-            preview_id: None,
-        }
-    }
-
     #[tokio::test]
-    async fn watchlist_and_paper_orders_survive_reopening() {
+    async fn watchlist_positions_and_cash_survive_reopening() {
         let db = database().await;
-        assert!(db.watchlist().await.unwrap().is_empty());
-        assert!(db.orders().await.unwrap().is_empty());
         db.add_symbol("AAPL.US".into()).await.unwrap();
-        db.add_symbol("AAPL.US".into()).await.unwrap();
-        let mut order = order();
-        order.preview_id = Some(db.save_preview(&order, "paper".into()).await.unwrap());
-        assert!(matches!(
-            db.prepare_submission(&order, "paper".into()).await.unwrap(),
-            Submission::New(_)
-        ));
-        let reopened = Database::open(db.path.as_ref().clone()).await.unwrap();
-        assert_eq!(reopened.watchlist().await.unwrap(), vec!["AAPL.US"]);
-        let entries = reopened.orders().await.unwrap();
-        assert_eq!(entries.len(), 1);
-        assert_eq!(entries[0].result.mode, "paper");
-        assert_eq!(entries[0].quantity, "2");
-        let stored = reopened
-            .run(|conn| {
-                let request: String = conn
-                    .query_row("SELECT request_json FROM order_previews", [], |row| {
-                        row.get(0)
-                    })
-                    .map_err(storage_error)?;
-                Ok(request)
-            })
+        db.set_cash_balance(Decimal::from(892)).await.unwrap();
+        db.upsert_position("ANT.US".into(), "19".into(), "105".into(), "hold".into())
             .await
             .unwrap();
-        assert!(!stored.contains("never-store-this-secret"));
-        assert!(!stored.contains("confirmation"));
+
+        let reopened = Database::open(db.path.as_ref().clone()).await.unwrap();
+        assert_eq!(reopened.watchlist().await.unwrap(), vec!["AAPL.US"]);
+        assert_eq!(reopened.cash_balance().await.unwrap(), Decimal::from(892));
+        let pos = reopened.positions().await.unwrap();
+        assert_eq!(pos.len(), 1);
+        assert_eq!(pos[0].symbol, "ANT.US");
+        assert_eq!(pos[0].quantity, "19");
     }
 
     #[tokio::test]
-    async fn repeated_concurrent_submission_creates_one_order() {
+    async fn media_sources_seed_once_and_respect_user_changes() {
         let db = database().await;
-        let mut order = order();
-        order.preview_id = Some(db.save_preview(&order, "paper".into()).await.unwrap());
-        let (first, second) = tokio::join!(
-            db.prepare_submission(&order, "paper".into()),
-            db.prepare_submission(&order, "paper".into())
-        );
-        let results = [first.unwrap(), second.unwrap()];
-        assert_eq!(
-            results
-                .iter()
-                .filter(|value| matches!(value, Submission::New(_)))
-                .count(),
-            1
-        );
-        assert_eq!(
-            results
-                .iter()
-                .filter(|value| matches!(value, Submission::Existing(_)))
-                .count(),
-            1
-        );
-        assert_eq!(db.orders().await.unwrap().len(), 1);
+        let seeded = db.media_sources().await.unwrap();
+        assert!(seeded.len() >= 15);
+        let first_id = seeded[0].id.clone();
+
+        db.set_media_source_enabled(first_id.clone(), false)
+            .await
+            .unwrap();
+        db.delete_media_source(seeded[1].id.clone()).await.unwrap();
+
+        let reopened = Database::open(db.path.as_ref().clone()).await.unwrap();
+        let after = reopened.media_sources().await.unwrap();
+        assert_eq!(after.len(), seeded.len() - 1);
+        assert!(!after.iter().find(|s| s.id == first_id).unwrap().enabled);
     }
 
     #[tokio::test]
-    async fn changed_missing_expired_or_different_mode_previews_cannot_submit() {
+    async fn equity_snapshots_record_deduplicate_and_query_chronologically() {
         let db = database().await;
-        let mut order = order();
-        assert!(db.prepare_submission(&order, "paper".into()).await.is_err());
-        order.preview_id = Some(db.save_preview(&order, "paper".into()).await.unwrap());
-        assert!(db.prepare_submission(&order, "live".into()).await.is_err());
-        order.quantity = "3".into();
-        assert!(db.prepare_submission(&order, "paper".into()).await.is_err());
-        order.quantity = "2".into();
-        db.run(|conn| {
-            conn.execute("UPDATE order_previews SET expires_at=0", [])
-                .map_err(storage_error)?;
-            Ok(())
-        })
-        .await
-        .unwrap();
-        assert!(db.prepare_submission(&order, "paper".into()).await.is_err());
-        assert!(db.orders().await.unwrap().is_empty());
+        let base = EquitySnapshot {
+            id: 0,
+            recorded_at: "2026-11-20T15:00:00+00:00".into(),
+            total_equity: "3514.02".into(),
+            cash_balance: "892.06".into(),
+            market_value: "2621.96".into(),
+            cost_basis: "3025.03".into(),
+            day_pnl: Some("-200.74".into()),
+            unrealized_pnl: Some("-403.07".into()),
+            unrealized_pnl_pct: Some("-13.32".into()),
+        };
+        assert!(db.record_equity_snapshot(base.clone(), 300).await.unwrap());
+        let dup = EquitySnapshot {
+            recorded_at: "2026-11-20T15:02:00+00:00".into(),
+            ..base.clone()
+        };
+        assert!(!db.record_equity_snapshot(dup, 300).await.unwrap());
+        let moved = EquitySnapshot {
+            recorded_at: "2026-11-20T15:03:00+00:00".into(),
+            total_equity: "3520.50".into(),
+            unrealized_pnl: Some("-396.59".into()),
+            ..base
+        };
+        assert!(db.record_equity_snapshot(moved, 300).await.unwrap());
+
+        let hist = db.equity_history(None, 50).await.unwrap();
+        assert_eq!(hist.len(), 2);
+        assert_eq!(hist[0].total_equity, "3514.02");
+        assert_eq!(hist[1].total_equity, "3520.50");
     }
 }

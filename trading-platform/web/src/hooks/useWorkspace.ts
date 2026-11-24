@@ -1,300 +1,219 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  addWatchSymbol,
-  getCandles,
-  getHealth,
-  getOrders,
-  getQuote,
-  getWatchlist,
-  removeWatchSymbol,
-  requestPreview,
-  submitOrder,
-} from "../lib/api";
+import { useCallback, useEffect, useState } from "react";
+import * as api from "@/lib/api";
+import { errorMessage } from "@/lib/format";
 import type {
+  AccountOverview,
   Candle,
+  CandlePeriod,
+  ChartMode,
   Health,
-  OrderEntry,
-  OrderPayload,
-  OrderType,
-  Preview,
   Quote,
-  Side,
-} from "../types";
+  WatchlistSnapshot,
+} from "@/types";
 
-export const RANGES = { "1W": 5, "1M": 21, "3M": 63, "1Y": 252 };
-export const errorMessage = (error: unknown) =>
-  error instanceof Error ? error.message : "请求未能完成，请重试";
-export const money = (value: number, currency = "USD") =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(value);
-export const displayTime = (value: string) =>
-  new Date(value).toLocaleString("zh-CN", {
-    timeZone: "Asia/Shanghai",
-    hour12: false,
-  });
+export const PERIODS: Array<{ id: CandlePeriod; label: string; count: number; intraday: boolean }> = [
+  { id: "1m", label: "1m", count: 90, intraday: true },
+  { id: "5m", label: "5m", count: 96, intraday: true },
+  { id: "15m", label: "15m", count: 96, intraday: true },
+  { id: "30m", label: "30m", count: 90, intraday: true },
+  { id: "60m", label: "60m", count: 80, intraday: true },
+  { id: "day", label: "日K", count: 90, intraday: false },
+  { id: "week", label: "周K", count: 78, intraday: false },
+  { id: "month", label: "月K", count: 60, intraday: false },
+];
 
 export function useWorkspace() {
   const [watchlist, setWatchlist] = useState<string[]>([]);
+  const [snapshots, setSnapshots] = useState<Record<string, WatchlistSnapshot>>({});
   const [symbol, setSymbol] = useState("");
-  const [range, setRange] = useState<keyof typeof RANGES>("3M");
+  const [period, setPeriod] = useState<CandlePeriod>("5m");
+  const [chartMode, setChartMode] = useState<ChartMode>("candle");
+  const [showMA, setShowMA] = useState(true);
+  const [autoRefresh, setAutoRefresh] = useState(
+    () => localStorage.getItem("northstar.autoRefresh") !== "off",
+  );
+
   const [quote, setQuote] = useState<Quote | null>(null);
   const [candles, setCandles] = useState<Candle[]>([]);
   const [health, setHealth] = useState<Health | null>(null);
-  const [connection, setConnection] = useState<
-    "checking" | "online" | "offline"
-  >("checking");
+  const [account, setAccount] = useState<AccountOverview | null>(null);
+
+  const [online, setOnline] = useState<boolean | null>(null);
   const [refreshing, setRefreshing] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loadingChart, setLoadingChart] = useState(false);
   const [marketError, setMarketError] = useState("");
-  const [side, setSide] = useState<Side>("buy");
-  const [orderType, setOrderType] = useState<OrderType>("limit");
-  const [quantity, setQuantity] = useState("");
-  const [limitPrice, setLimitPrice] = useState("");
-  const [confirmation, setConfirmation] = useState("");
-  const [pending, setPending] = useState<{
-    preview: Preview;
-    payload: OrderPayload;
-  } | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [orders, setOrders] = useState<OrderEntry[]>([]);
-  const [orderError, setOrderError] = useState("");
-  const [notice, setNotice] = useState<{
-    message: string;
-    tone: "success" | "error";
-  } | null>(null);
-  const [reload, setReload] = useState(0);
-  const submitting = useRef(false);
-  const refreshInFlight = useRef(false);
-  const payload = useMemo<OrderPayload>(
-    () => ({
-      symbol,
-      side,
-      quantity,
-      order_type: orderType,
-      ...(orderType === "limit" ? { limit_price: limitPrice } : {}),
-    }),
-    [symbol, side, quantity, orderType, limitPrice],
-  );
-  const currentPayload = useRef(payload);
-  currentPayload.current = payload;
-  const notify = useCallback(
-    (message: string, tone: "success" | "error" = "success") =>
-      setNotice({ message, tone }),
-    [],
-  );
+  const [reloadTick, setReloadTick] = useState(0);
+
+  const [notice, setNotice] = useState<{ text: string; tone: "ok" | "err" } | null>(null);
+  const notify = useCallback((text: string, tone: "ok" | "err" = "ok") => setNotice({ text, tone }), []);
+
+  useEffect(() => {
+    localStorage.setItem("northstar.autoRefresh", autoRefresh ? "on" : "off");
+  }, [autoRefresh]);
+
+  useEffect(() => {
+    if (!notice) return;
+    const t = window.setTimeout(() => setNotice(null), 4000);
+    return () => window.clearTimeout(t);
+  }, [notice]);
+
+  const loadSnapshots = useCallback(async (ready: boolean) => {
+    if (!ready) return setSnapshots({});
+    const list = await api.getWatchlistSnapshots().catch(() => []);
+    setSnapshots(Object.fromEntries(list.map((item) => [item.symbol, item])));
+  }, []);
 
   const refresh = useCallback(async () => {
-    if (refreshInFlight.current) return;
-    refreshInFlight.current = true;
     setRefreshing(true);
     try {
-      const [nextHealth, nextOrders, nextWatchlist] = await Promise.all([
-        getHealth(),
-        getOrders(),
-        getWatchlist(),
+      const [h, w, a] = await Promise.all([
+        api.getHealth(),
+        api.getWatchlist(),
+        api.getAccount().catch(() => null),
       ]);
-      setHealth(nextHealth);
-      setOrders(nextOrders);
-      setWatchlist(nextWatchlist);
-      setConnection("online");
-      setSymbol((current) =>
-        nextWatchlist.includes(current) ? current : (nextWatchlist[0] ?? ""),
-      );
-      setReload((current) => current + 1);
-    } catch (error) {
-      setConnection("offline");
-      notify(errorMessage(error), "error");
+      setHealth(h);
+      setWatchlist(w);
+      setAccount(a);
+      setOnline(true);
+      setSymbol((cur) => (w.includes(cur) ? cur : (w[0] ?? "")));
+      setReloadTick((n) => n + 1);
+      await loadSnapshots(h.longbridge_ready);
+    } catch (e) {
+      setOnline(false);
+      notify(errorMessage(e), "err");
     } finally {
       setRefreshing(false);
-      refreshInFlight.current = false;
     }
-  }, [notify]);
+  }, [loadSnapshots, notify]);
 
   useEffect(() => {
     void refresh();
   }, [refresh]);
-  useEffect(() => {
-    if (!notice) return;
-    const timer = window.setTimeout(() => setNotice(null), 6000);
-    return () => window.clearTimeout(timer);
-  }, [notice]);
+
   useEffect(() => {
     let active = true;
-    setQuote(null);
-    setCandles([]);
     setMarketError("");
-    setLoading(false);
-    if (
-      !symbol ||
-      connection !== "online" ||
-      health?.market_data_provider !== "longbridge"
-    )
+    if (!symbol || !online || !health?.longbridge_ready) {
+      setQuote(null);
+      setCandles([]);
       return;
-    setLoading(true);
-    void Promise.all([getQuote(symbol), getCandles(symbol, RANGES[range])])
-      .then(([nextQuote, nextCandles]) => {
-        if (active) {
-          setQuote(nextQuote);
-          setCandles(nextCandles);
-        }
+    }
+    const cfg = PERIODS.find((p) => p.id === period) ?? PERIODS[5];
+    setLoadingChart(true);
+    void Promise.all([api.getQuote(symbol), api.getCandles(symbol, cfg.id, cfg.count)])
+      .then(([q, c]) => {
+        if (!active) return;
+        setQuote(q);
+        setCandles(c);
       })
-      .catch((error) => {
-        if (active) setMarketError(errorMessage(error));
+      .catch((e) => {
+        if (active) setMarketError(errorMessage(e));
       })
       .finally(() => {
-        if (active) setLoading(false);
+        if (active) setLoadingChart(false);
       });
     return () => {
       active = false;
     };
-  }, [symbol, range, reload, connection, health?.market_data_provider]);
-  useEffect(() => {
-    setPending(null);
-    setOrderError("");
-    setConfirmation("");
-  }, [payload]);
-  useEffect(() => {
-    setLimitPrice("");
-  }, [symbol]);
-  useEffect(() => {
-    setPending(null);
-  }, [health?.trading_mode]);
+  }, [symbol, period, reloadTick, online, health?.longbridge_ready]);
 
-  const live = health?.trading_mode === "live";
-  const quoteConfigured =
-    connection === "online" && health?.market_data_provider === "longbridge";
-  const validOrder =
-    connection === "online" &&
-    !!symbol &&
-    Number.isFinite(Number(quantity)) &&
-    Number(quantity) > 0 &&
-    (orderType === "market" ||
-      (Number.isFinite(Number(limitPrice)) && Number(limitPrice) > 0));
+  // Silent 15s live market & portfolio valuation poll when tab is visible
+  useEffect(() => {
+    if (!autoRefresh || !online || !health?.longbridge_ready) return;
+    const timer = window.setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+      void loadSnapshots(true);
+      if (symbol) {
+        const cfg = PERIODS.find((p) => p.id === period) ?? PERIODS[5];
+        void api.getQuote(symbol).then(setQuote).catch(() => {});
+        if (cfg.intraday) {
+          void api.getCandles(symbol, cfg.id, cfg.count).then(setCandles).catch(() => {});
+        }
+      }
+      void api.getAccount().then(setAccount).catch(() => {});
+    }, 15000);
+    return () => window.clearInterval(timer);
+  }, [autoRefresh, online, health?.longbridge_ready, symbol, period, loadSnapshots]);
+
+  const quoteReady = !!online && !!health?.longbridge_ready;
+  const isIndex = symbol.startsWith(".");
   const currency = symbol.endsWith(".HK") ? "HKD" : "USD";
-  const last = quote ? Number(quote.last) : null;
-  const estimatedPrice = orderType === "limit" ? Number(limitPrice) : last;
-  const estimate =
-    validOrder && estimatedPrice && estimatedPrice > 0
-      ? money(Number(quantity) * estimatedPrice, currency)
-      : "—";
+  const lastPrice = quote
+    ? Number(quote.last)
+    : snapshots[symbol]?.last
+      ? Number(snapshots[symbol].last)
+      : null;
 
-  const previewOrder = async () => {
-    if (!validOrder || submitting.current) return;
-    submitting.current = true;
-    setBusy(true);
-    setPending(null);
-    setOrderError("");
-    const snapshot = JSON.stringify(payload);
-    try {
-      const preview = await requestPreview(payload);
-      if (JSON.stringify(currentPayload.current) === snapshot)
-        setPending({
-          preview,
-          payload: { ...payload, preview_id: preview.preview_id },
-        });
-    } catch (error) {
-      setOrderError(errorMessage(error));
-    } finally {
-      submitting.current = false;
-      setBusy(false);
-    }
-  };
-  const confirmOrder = async () => {
-    if (!pending || busy || submitting.current) return;
-    const { preview_id: _previewId, ...previewedPayload } = pending.payload;
-    if (
-      JSON.stringify(currentPayload.current) !==
-      JSON.stringify(previewedPayload)
-    )
-      return;
-    submitting.current = true;
-    setBusy(true);
-    setOrderError("");
-    try {
-      const result = await submitOrder({
-        ...pending.payload,
-        ...(live ? { confirmation } : {}),
-      });
-      setPending(null);
-      setConfirmation("");
-      notify(
-        result.mode === "live"
-          ? "委托已提交至嘉信，请核查成交状态。"
-          : "纸上订单已保存，未向券商发送。 ",
-      );
-      await refresh();
-    } catch (error) {
-      setOrderError(errorMessage(error));
-    } finally {
-      submitting.current = false;
-      setBusy(false);
-    }
-  };
-  const addSymbol = async (input: string) => {
-    const value = input.trim().toUpperCase();
-    if (!/^[A-Z0-9][A-Z0-9.-]*\.(US|HK)$/.test(value) || value.length > 30)
-      throw new Error("请输入带市场后缀的证券代码，如 AAPL.US 或 700.HK");
-    const next = await addWatchSymbol(value);
+  const addSymbol = async (raw: string) => {
+    const value = raw.trim().toUpperCase();
+    const next = await api.addWatchSymbol(value);
     setWatchlist(next);
     setSymbol(value);
-    notify(`${value} 已加入自选`);
+    void loadSnapshots(quoteReady);
+    notify(`已关注 ${value}`);
   };
+
   const removeSymbol = async (value: string) => {
-    try {
-      const next = await removeWatchSymbol(value);
-      setWatchlist(next);
-      if (symbol === value) setSymbol(next[0] ?? "");
-      notify(`${value} 已从自选移除`);
-    } catch (error) {
-      notify(errorMessage(error), "error");
-    }
+    const next = await api.removeWatchSymbol(value);
+    setWatchlist(next);
+    if (symbol === value) setSymbol(next[0] ?? "");
+    notify(`已移除 ${value}`);
+  };
+
+  const saveCash = async (cash: string) => {
+    setAccount(await api.setCashBalance(cash));
+    notify("可用现金已更新");
+  };
+
+  const savePosition = async (pos: {
+    symbol: string;
+    quantity: string;
+    avg_cost: string;
+    notes?: string;
+  }) => {
+    setAccount(await api.upsertPosition(pos));
+    notify(`已保存持仓 ${pos.symbol.toUpperCase()}`);
+  };
+
+  const removePosition = async (sym: string) => {
+    setAccount(await api.deletePosition(sym));
+    notify(`已删除持仓 ${sym}`);
   };
 
   return {
     watchlist,
+    snapshots,
     symbol,
     setSymbol,
-    range,
-    setRange,
+    period,
+    setPeriod,
+    chartMode,
+    setChartMode,
+    showMA,
+    setShowMA,
+    autoRefresh,
+    setAutoRefresh,
     quote,
     candles,
     health,
-    connection,
+    account,
+    online,
     refreshing,
-    refresh,
-    loading,
+    loadingChart,
     marketError,
-    side,
-    setSide,
-    orderType,
-    setOrderType,
-    quantity,
-    setQuantity,
-    limitPrice,
-    setLimitPrice,
-    confirmation,
-    setConfirmation,
-    pending,
-    cancelPreview: () => setPending(null),
-    busy,
-    orders,
-    orderError,
+    refresh,
     notice,
-    setNotice,
-    notify,
-    live,
-    quoteConfigured,
-    validOrder,
+    clearNotice: () => setNotice(null),
+    quoteReady,
+    isIndex,
     currency,
-    estimate,
-    previewOrder,
-    confirmOrder,
+    lastPrice,
     addSymbol,
     removeSymbol,
+    saveCash,
+    savePosition,
+    removePosition,
   };
 }
+
 export type Workspace = ReturnType<typeof useWorkspace>;

@@ -1,83 +1,126 @@
 mod db;
+mod envfile;
+mod lb_cli;
+mod media;
 
-use std::{convert::Infallible, env, net::SocketAddr, path::PathBuf, sync::Arc};
+use std::{
+    collections::HashMap, convert::Infallible, env, net::SocketAddr, path::PathBuf, str::FromStr,
+    sync::Arc,
+};
 
 use axum::{
     extract::{Path, Query, State},
     http::StatusCode,
     response::{IntoResponse, Response},
-    routing::{get, post},
+    routing::{delete, get, patch, post, put},
     Json, Router,
 };
-use chrono::Utc;
-use db::{Database, Submission};
+use chrono::{Duration, Utc};
+use db::{Database, EquitySnapshot};
+use lb_cli::{AgentChatRequest, AgentStatus, LongbridgeCli};
+use media::{AddMediaSourceRequest, MediaFeedResponse, MediaHub, ToggleMediaSourceRequest};
 use reqwest::Client;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
-use std::str::FromStr;
+use serde_json::Value;
+use tokio::sync::RwLock;
 use tower_http::{cors::CorsLayer, services::ServeDir, trace::TraceLayer};
 use tracing::info;
 
+#[derive(Clone, Debug, Default)]
+struct SecurityMeta {
+    name_en: Option<String>,
+    name_cn: Option<String>,
+    exchange: Option<String>,
+}
+
 #[derive(Clone)]
 struct AppState {
-    settings: Arc<Settings>,
-    http: Client,
+    env_report: Arc<envfile::EnvLoadReport>,
     longbridge: Option<Arc<longbridge::QuoteContext>>,
+    longbridge_missing: Vec<&'static str>,
+    meta_cache: Arc<RwLock<HashMap<String, SecurityMeta>>>,
+    lb_cli: LongbridgeCli,
+    media: MediaHub,
     db: Database,
 }
 
 #[derive(Clone)]
 struct Settings {
-    mode: String,
     port: u16,
     static_dir: PathBuf,
-    schwab_base_url: String,
-    schwab_access_token: Option<String>,
-    schwab_account_hash: Option<String>,
-    live_confirmation: Option<String>,
 }
 
 impl Settings {
     fn from_env() -> Self {
         let default_static_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../web/dist");
         Self {
-            mode: env::var("TRADING_MODE").unwrap_or_else(|_| "paper".into()),
-            port: env::var("PORT")
-                .ok()
-                .and_then(|value| value.parse().ok())
-                .unwrap_or(8787),
+            port: env::var("PORT").ok().and_then(|v| v.parse().ok()).unwrap_or(8787),
             static_dir: env::var("STATIC_DIR")
                 .map(PathBuf::from)
                 .unwrap_or(default_static_dir),
-            schwab_base_url: env::var("SCHWAB_API_BASE_URL")
-                .unwrap_or_else(|_| "https://api.schwabapi.com".into()),
-            schwab_access_token: env::var("SCHWAB_ACCESS_TOKEN").ok(),
-            schwab_account_hash: env::var("SCHWAB_ACCOUNT_HASH").ok(),
-            live_confirmation: env::var("LIVE_ORDER_CONFIRMATION").ok(),
         }
     }
+}
 
-    fn is_live(&self) -> bool {
-        self.mode.eq_ignore_ascii_case("live")
-    }
+fn longbridge_missing_vars() -> Vec<&'static str> {
+    ["LONGBRIDGE_APP_KEY", "LONGBRIDGE_APP_SECRET", "LONGBRIDGE_ACCESS_TOKEN"]
+        .into_iter()
+        .filter(|key| env::var(key).ok().is_none_or(|v| v.trim().is_empty()))
+        .collect()
 }
 
 #[derive(Serialize)]
 struct Health {
-    status: &'static str,
-    environment: String,
-    trading_mode: String,
-    market_data_provider: &'static str,
-    execution_provider: &'static str,
-    account_data_connected: bool,
-    runtime: &'static str,
-    storage: &'static str,
+    longbridge_ready: bool,
+    longbridge_missing: Vec<&'static str>,
+    env_file_loaded: bool,
+    env_file_path: String,
+}
+
+#[derive(Serialize, Clone)]
+struct PositionItem {
+    symbol: String,
+    name_en: Option<String>,
+    name_cn: Option<String>,
+    asset_type: String,
+    quantity: String,
+    average_price: String,
+    current_price: Option<String>,
+    market_value: String,
+    cost_basis: String,
+    day_pnl: Option<String>,
+    day_pnl_pct: Option<String>,
+    unrealized_pnl: Option<String>,
+    unrealized_pnl_pct: Option<String>,
+    weight_pct: Option<String>,
+    notes: String,
+}
+
+#[derive(Serialize, Clone)]
+struct AccountOverview {
+    account_label: String,
+    account_type: String,
+    currency: String,
+    total_equity: String,
+    cash_balance: String,
+    buying_power: String,
+    day_pnl: Option<String>,
+    day_pnl_pct: Option<String>,
+    unrealized_pnl: Option<String>,
+    unrealized_pnl_pct: Option<String>,
+    positions_count: usize,
+    positions: Vec<PositionItem>,
+    updated_at: String,
+    source: &'static str,
 }
 
 #[derive(Serialize, Clone)]
 struct Quote {
     symbol: String,
+    name_en: Option<String>,
+    name_cn: Option<String>,
+    exchange: Option<String>,
     last: String,
     previous_close: Option<String>,
     open: Option<String>,
@@ -85,7 +128,17 @@ struct Quote {
     low: Option<String>,
     volume: Option<u64>,
     timestamp: String,
-    source: &'static str,
+}
+
+#[derive(Serialize, Clone)]
+struct WatchlistSnapshot {
+    symbol: String,
+    name_en: Option<String>,
+    name_cn: Option<String>,
+    exchange: Option<String>,
+    last: Option<String>,
+    previous_close: Option<String>,
+    timestamp: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -99,65 +152,394 @@ struct Candle {
 }
 
 #[derive(Deserialize)]
-struct CountQuery {
+struct CandleQuery {
+    period: Option<String>,
     count: Option<usize>,
-}
-
-#[derive(Deserialize, Serialize, Clone)]
-struct OrderRequest {
-    symbol: String,
-    side: String,
-    quantity: String,
-    #[serde(rename = "order_type")]
-    order_type: String,
-    limit_price: Option<String>,
-    #[serde(skip_serializing)]
-    confirmation: Option<String>,
-    preview_id: Option<String>,
-}
-
-#[derive(Serialize)]
-struct Preview {
-    preview_id: String,
-    expires_in_seconds: u64,
-    symbol: String,
-    side: String,
-    quantity: String,
-    order_type: String,
-    limit_price: Option<String>,
-    mode: String,
-    executable: bool,
-    warnings: Vec<String>,
-}
-
-#[derive(Serialize, Deserialize, Clone)]
-struct OrderResult {
-    order_id: String,
-    status: String,
-    mode: String,
-    provider: String,
-    message: String,
-}
-
-#[derive(Serialize, Deserialize, Clone)]
-struct OrderEntry {
-    #[serde(flatten)]
-    result: OrderResult,
-    symbol: String,
-    side: String,
-    quantity: String,
-    order_type: String,
-    limit_price: Option<String>,
-    created_at: String,
-}
-
-async fn list_orders(State(state): State<AppState>) -> Result<Json<Vec<OrderEntry>>, ApiError> {
-    Ok(Json(state.db.orders().await?))
 }
 
 #[derive(Deserialize)]
 struct SymbolRequest {
     symbol: String,
+}
+
+#[derive(Deserialize)]
+struct CashRequest {
+    cash_balance: String,
+}
+
+#[derive(Deserialize)]
+struct PositionRequest {
+    symbol: String,
+    quantity: String,
+    avg_cost: String,
+    #[serde(default)]
+    notes: String,
+}
+
+#[derive(Serialize)]
+struct ErrorBody {
+    detail: String,
+}
+
+#[derive(Debug)]
+pub struct ApiError(pub StatusCode, pub String);
+
+impl IntoResponse for ApiError {
+    fn into_response(self) -> Response {
+        (self.0, Json(ErrorBody { detail: self.1 })).into_response()
+    }
+}
+
+fn non_empty_string(value: &str) -> Option<String> {
+    let trimmed = value.trim();
+    (!trimmed.is_empty()).then(|| trimmed.to_string())
+}
+
+fn validate_market_symbol(raw: &str, allow_index: bool) -> Result<String, ApiError> {
+    let symbol = raw.trim().to_uppercase();
+    let valid = symbol
+        .strip_suffix(".US")
+        .or_else(|| symbol.strip_suffix(".HK"))
+        .is_some_and(|ticker| {
+            !ticker.is_empty()
+                && (allow_index || !ticker.starts_with('.'))
+                && ticker
+                    .chars()
+                    .all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '-')
+        });
+    if !valid || symbol.len() > 30 {
+        return Err(ApiError(
+            StatusCode::BAD_REQUEST,
+            if allow_index {
+                "代码格式需带 .US 或 .HK 后缀（如 AAPL.US、.VIX.US）".into()
+            } else {
+                "交易标的需带 .US 或 .HK 后缀且不可为指数".into()
+            },
+        ));
+    }
+    Ok(symbol)
+}
+
+fn parse_candle_period(
+    raw: Option<&str>,
+) -> Result<(longbridge::quote::Period, longbridge::quote::TradeSessions), ApiError> {
+    use longbridge::quote::{Period, TradeSessions};
+    match raw.unwrap_or("day").trim().to_lowercase().as_str() {
+        "1m" => Ok((Period::OneMinute, TradeSessions::All)),
+        "5m" => Ok((Period::FiveMinute, TradeSessions::All)),
+        "15m" => Ok((Period::FifteenMinute, TradeSessions::All)),
+        "30m" => Ok((Period::ThirtyMinute, TradeSessions::All)),
+        "60m" | "1h" => Ok((Period::SixtyMinute, TradeSessions::All)),
+        "day" | "1d" => Ok((Period::Day, TradeSessions::Intraday)),
+        "week" | "1w" => Ok((Period::Week, TradeSessions::Intraday)),
+        "month" | "1mo" => Ok((Period::Month, TradeSessions::Intraday)),
+        other => Err(ApiError(
+            StatusCode::BAD_REQUEST,
+            format!("不支持的 K 线周期: {other}"),
+        )),
+    }
+}
+
+async fn fetch_static_meta(state: &AppState, symbols: &[String]) -> HashMap<String, SecurityMeta> {
+    let mut result = HashMap::new();
+    let mut missing = Vec::new();
+    {
+        let cache = state.meta_cache.read().await;
+        for symbol in symbols {
+            if let Some(meta) = cache.get(symbol) {
+                result.insert(symbol.clone(), meta.clone());
+            } else {
+                missing.push(symbol.clone());
+            }
+        }
+    }
+    if missing.is_empty() {
+        return result;
+    }
+    let Some(context) = &state.longbridge else {
+        return result;
+    };
+    if let Ok(infos) = context.static_info(missing).await {
+        let mut cache = state.meta_cache.write().await;
+        for info in infos {
+            let sym = info.symbol.to_uppercase();
+            let meta = SecurityMeta {
+                name_en: non_empty_string(&info.name_en),
+                name_cn: non_empty_string(&info.name_cn)
+                    .or_else(|| non_empty_string(&info.name_hk)),
+                exchange: non_empty_string(&info.exchange),
+            };
+            cache.insert(sym.clone(), meta.clone());
+            result.insert(sym, meta);
+        }
+    }
+    result
+}
+
+async fn health(State(state): State<AppState>) -> Json<Health> {
+    Json(Health {
+        longbridge_ready: state.longbridge.is_some(),
+        longbridge_missing: state.longbridge_missing.clone(),
+        env_file_loaded: state.env_report.loaded,
+        env_file_path: state.env_report.path.display().to_string(),
+    })
+}
+
+async fn build_manual_account(state: &AppState) -> Result<AccountOverview, ApiError> {
+    let (stored_positions, cash) = tokio::try_join!(state.db.positions(), state.db.cash_balance())?;
+    let symbols: Vec<String> = stored_positions.iter().map(|p| p.symbol.clone()).collect();
+
+    let (meta_map, quote_map) = if !symbols.is_empty() {
+        let quotes = if let Some(ctx) = &state.longbridge {
+            ctx.quote(symbols.clone()).await.unwrap_or_default()
+        } else {
+            Vec::new()
+        };
+        let mut by_sym = HashMap::new();
+        for q in quotes {
+            by_sym.insert(q.symbol.to_uppercase(), q);
+        }
+        (fetch_static_meta(state, &symbols).await, by_sym)
+    } else {
+        (HashMap::new(), HashMap::new())
+    };
+
+    let mut total_market_value = Decimal::ZERO;
+    let mut total_cost_basis = Decimal::ZERO;
+    let mut total_day_pnl = Decimal::ZERO;
+    let mut has_day_pnl = false;
+    let mut total_unrealized = Decimal::ZERO;
+    let mut has_unrealized = false;
+
+    let mut raw_items = Vec::with_capacity(stored_positions.len());
+    for pos in stored_positions {
+        let qty = Decimal::from_str(&pos.quantity).unwrap_or(Decimal::ZERO);
+        let avg_cost = Decimal::from_str(&pos.avg_cost).unwrap_or(Decimal::ZERO);
+        let cost_basis = qty * avg_cost;
+        total_cost_basis += cost_basis;
+
+        let live = quote_map.get(&pos.symbol);
+        let cur_price = live.map(|q| q.last_done).filter(|p| *p > Decimal::ZERO);
+        let prev_close = live.map(|q| q.prev_close).filter(|p| *p > Decimal::ZERO);
+        let mark_price = cur_price.unwrap_or(avg_cost);
+        let market_value = qty * mark_price;
+        total_market_value += market_value;
+
+        let day_pnl = match (cur_price, prev_close) {
+            (Some(last), Some(prev)) => {
+                let pnl = (last - prev) * qty;
+                total_day_pnl += pnl;
+                has_day_pnl = true;
+                Some(pnl)
+            }
+            _ => None,
+        };
+        let day_pnl_pct = match (cur_price, prev_close) {
+            (Some(last), Some(prev)) if prev > Decimal::ZERO => {
+                Some(((last - prev) / prev * Decimal::from(100)).round_dp(2))
+            }
+            _ => None,
+        };
+        let unrealized = cur_price.map(|_| {
+            let pnl = market_value - cost_basis;
+            total_unrealized += pnl;
+            has_unrealized = true;
+            pnl
+        });
+        let unrealized_pct = unrealized.and_then(|pnl| {
+            (!cost_basis.is_zero()).then(|| ((pnl / cost_basis.abs()) * Decimal::from(100)).round_dp(2))
+        });
+
+        raw_items.push((
+            pos,
+            cost_basis,
+            cur_price,
+            market_value,
+            day_pnl,
+            day_pnl_pct,
+            unrealized,
+            unrealized_pct,
+        ));
+    }
+
+    let total_equity = cash + total_market_value;
+    let positions: Vec<PositionItem> = raw_items
+        .into_iter()
+        .map(
+            |(pos, cost_basis, cur_price, market_value, day_pnl, day_pnl_pct, unrealized, unrealized_pct)| {
+                let meta = meta_map.get(&pos.symbol);
+                let weight_pct = (total_equity > Decimal::ZERO)
+                    .then(|| ((market_value / total_equity) * Decimal::from(100)).round_dp(1));
+                PositionItem {
+                    symbol: pos.symbol,
+                    name_en: meta.and_then(|m| m.name_en.clone()),
+                    name_cn: meta.and_then(|m| m.name_cn.clone()),
+                    asset_type: "EQUITY".into(),
+                    quantity: pos.quantity,
+                    average_price: pos.avg_cost,
+                    current_price: cur_price.map(|v| v.normalize().to_string()),
+                    market_value: market_value.round_dp(2).normalize().to_string(),
+                    cost_basis: cost_basis.round_dp(2).normalize().to_string(),
+                    day_pnl: day_pnl.map(|v| v.round_dp(2).normalize().to_string()),
+                    day_pnl_pct: day_pnl_pct.map(|v| v.normalize().to_string()),
+                    unrealized_pnl: unrealized.map(|v| v.round_dp(2).normalize().to_string()),
+                    unrealized_pnl_pct: unrealized_pct.map(|v| v.normalize().to_string()),
+                    weight_pct: weight_pct.map(|v| v.normalize().to_string()),
+                    notes: pos.notes,
+                }
+            },
+        )
+        .collect();
+
+    let day_pnl_pct = if has_day_pnl {
+        let base = total_equity - total_day_pnl;
+        (base > Decimal::ZERO)
+            .then(|| ((total_day_pnl / base) * Decimal::from(100)).round_dp(2).normalize().to_string())
+    } else {
+        None
+    };
+    let unrealized_pnl_pct = if has_unrealized && total_cost_basis > Decimal::ZERO {
+        Some(
+            ((total_unrealized / total_cost_basis) * Decimal::from(100))
+                .round_dp(2)
+                .normalize()
+                .to_string(),
+        )
+    } else {
+        None
+    };
+
+    Ok(AccountOverview {
+        account_label: "嘉信国际 · 本地账本".into(),
+        account_type: "INTERNATIONAL".into(),
+        currency: "USD".into(),
+        total_equity: total_equity.round_dp(2).normalize().to_string(),
+        cash_balance: cash.round_dp(2).normalize().to_string(),
+        buying_power: cash.round_dp(2).normalize().to_string(),
+        day_pnl: has_day_pnl.then(|| total_day_pnl.round_dp(2).normalize().to_string()),
+        day_pnl_pct,
+        unrealized_pnl: has_unrealized.then(|| total_unrealized.round_dp(2).normalize().to_string()),
+        unrealized_pnl_pct,
+        positions_count: positions.len(),
+        positions,
+        updated_at: Utc::now().to_rfc3339(),
+        source: "local_ledger",
+    })
+}
+
+fn snapshot_from_overview(overview: &AccountOverview) -> Option<EquitySnapshot> {
+    let total_eq = Decimal::from_str(&overview.total_equity).unwrap_or(Decimal::ZERO);
+    let cash = Decimal::from_str(&overview.cash_balance).unwrap_or(Decimal::ZERO);
+    if overview.positions_count == 0 && cash <= Decimal::ZERO {
+        return None;
+    }
+    if overview.positions_count > 0 && overview.unrealized_pnl.is_none() {
+        return None;
+    }
+    let market_value = (total_eq - cash).round_dp(2);
+    let cost_basis: Decimal = overview
+        .positions
+        .iter()
+        .filter_map(|p| Decimal::from_str(&p.cost_basis).ok())
+        .sum();
+    Some(EquitySnapshot {
+        id: 0,
+        recorded_at: Utc::now().to_rfc3339(),
+        total_equity: total_eq.round_dp(2).normalize().to_string(),
+        cash_balance: cash.round_dp(2).normalize().to_string(),
+        market_value: market_value.normalize().to_string(),
+        cost_basis: cost_basis.round_dp(2).normalize().to_string(),
+        day_pnl: overview.day_pnl.clone(),
+        unrealized_pnl: overview.unrealized_pnl.clone(),
+        unrealized_pnl_pct: overview.unrealized_pnl_pct.clone(),
+    })
+}
+
+async fn maybe_record_equity_snapshot(
+    state: &AppState,
+    overview: &AccountOverview,
+    min_interval_secs: i64,
+) {
+    if let Some(snap) = snapshot_from_overview(overview) {
+        let _ = state.db.record_equity_snapshot(snap, min_interval_secs).await;
+    }
+}
+
+async fn account_overview(State(state): State<AppState>) -> Result<Json<AccountOverview>, ApiError> {
+    Ok(Json(build_manual_account(&state).await?))
+}
+
+#[derive(Deserialize)]
+struct HistoryQuery {
+    range: Option<String>,
+    limit: Option<usize>,
+}
+
+async fn portfolio_history(
+    State(state): State<AppState>,
+    Query(q): Query<HistoryQuery>,
+) -> Result<Json<Vec<EquitySnapshot>>, ApiError> {
+    let since = match q.range.as_deref().unwrap_or("1w") {
+        "1d" => Some((Utc::now() - Duration::hours(24)).to_rfc3339()),
+        "1w" => Some((Utc::now() - Duration::days(7)).to_rfc3339()),
+        "1m" => Some((Utc::now() - Duration::days(30)).to_rfc3339()),
+        _ => None,
+    };
+    let rows = state
+        .db
+        .equity_history(since, q.limit.unwrap_or(500))
+        .await?;
+    Ok(Json(rows))
+}
+
+async fn record_portfolio_snapshot(
+    State(state): State<AppState>,
+) -> Result<Json<Vec<EquitySnapshot>>, ApiError> {
+    let overview = build_manual_account(&state).await?;
+    maybe_record_equity_snapshot(&state, &overview, 0).await;
+    let rows = state.db.equity_history(None, 500).await?;
+    Ok(Json(rows))
+}
+
+async fn set_cash(
+    State(state): State<AppState>,
+    Json(req): Json<CashRequest>,
+) -> Result<Json<AccountOverview>, ApiError> {
+    let amount = Decimal::from_str(req.cash_balance.trim())
+        .map_err(|_| ApiError(StatusCode::BAD_REQUEST, "现金余额必须为有效数字".into()))?;
+    if amount < Decimal::ZERO {
+        return Err(ApiError(StatusCode::BAD_REQUEST, "现金余额不能为负数".into()));
+    }
+    state.db.set_cash_balance(amount).await?;
+    let overview = build_manual_account(&state).await?;
+    maybe_record_equity_snapshot(&state, &overview, 0).await;
+    Ok(Json(overview))
+}
+
+async fn upsert_position(
+    State(state): State<AppState>,
+    Json(req): Json<PositionRequest>,
+) -> Result<Json<AccountOverview>, ApiError> {
+    let symbol = validate_market_symbol(&req.symbol, false)?;
+    let quantity = positive_decimal(&req.quantity, "quantity")?.normalize().to_string();
+    let avg_cost = positive_decimal(&req.avg_cost, "avg_cost")?.normalize().to_string();
+    state
+        .db
+        .upsert_position(symbol, quantity, avg_cost, req.notes.trim().to_string())
+        .await?;
+    let overview = build_manual_account(&state).await?;
+    maybe_record_equity_snapshot(&state, &overview, 0).await;
+    Ok(Json(overview))
+}
+
+async fn delete_position(
+    State(state): State<AppState>,
+    Path(symbol): Path<String>,
+) -> Result<Json<AccountOverview>, ApiError> {
+    state.db.delete_position(symbol.trim().to_uppercase()).await?;
+    let overview = build_manual_account(&state).await?;
+    maybe_record_equity_snapshot(&state, &overview, 0).await;
+    Ok(Json(overview))
 }
 
 async fn watchlist(State(state): State<AppState>) -> Result<Json<Vec<String>>, ApiError> {
@@ -168,22 +550,7 @@ async fn add_symbol(
     State(state): State<AppState>,
     Json(request): Json<SymbolRequest>,
 ) -> Result<Json<Vec<String>>, ApiError> {
-    let symbol = request.symbol.trim().to_uppercase();
-    let valid = symbol
-        .strip_suffix(".US")
-        .or_else(|| symbol.strip_suffix(".HK"))
-        .is_some_and(|ticker| {
-            !ticker.is_empty()
-                && ticker
-                    .chars()
-                    .all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '-')
-        });
-    if !valid || symbol.len() > 30 {
-        return Err(ApiError(
-            StatusCode::BAD_REQUEST,
-            "请输入带 .US 或 .HK 后缀的证券代码".into(),
-        ));
-    }
+    let symbol = validate_market_symbol(&request.symbol, true)?;
     state.db.add_symbol(symbol).await?;
     Ok(Json(state.db.watchlist().await?))
 }
@@ -196,44 +563,46 @@ async fn remove_symbol(
     Ok(Json(state.db.watchlist().await?))
 }
 
-#[derive(Serialize)]
-struct ErrorBody {
-    detail: String,
-}
-
-#[derive(Debug)]
-struct ApiError(StatusCode, String);
-
-impl IntoResponse for ApiError {
-    fn into_response(self) -> Response {
-        (self.0, Json(ErrorBody { detail: self.1 })).into_response()
+async fn watchlist_snapshots(
+    State(state): State<AppState>,
+) -> Result<Json<Vec<WatchlistSnapshot>>, ApiError> {
+    let symbols = state.db.watchlist().await?;
+    let Some(context) = &state.longbridge else {
+        return Ok(Json(Vec::new()));
+    };
+    if symbols.is_empty() {
+        return Ok(Json(Vec::new()));
     }
-}
-
-async fn health(State(state): State<AppState>) -> Json<Health> {
-    Json(Health {
-        status: "ok",
-        environment: "development".into(),
-        trading_mode: if state.settings.is_live() {
-            "live"
-        } else {
-            "paper"
+    let (meta_map, quote_rows) = tokio::join!(
+        fetch_static_meta(&state, &symbols),
+        context.quote(symbols.clone()),
+    );
+    let mut quotes_by_symbol = HashMap::new();
+    if let Ok(rows) = quote_rows {
+        for row in rows {
+            quotes_by_symbol.insert(row.symbol.to_uppercase(), row);
         }
-        .into(),
-        market_data_provider: if state.longbridge.is_some() {
-            "longbridge"
-        } else {
-            "unconfigured"
-        },
-        execution_provider: if state.settings.is_live() {
-            "schwab"
-        } else {
-            "paper"
-        },
-        account_data_connected: false,
-        runtime: "rust-axum",
-        storage: "sqlite",
-    })
+    }
+    let snapshots = symbols
+        .into_iter()
+        .map(|symbol| {
+            let meta = meta_map.get(&symbol);
+            let quote = quotes_by_symbol.get(&symbol);
+            WatchlistSnapshot {
+                symbol,
+                name_en: meta.and_then(|m| m.name_en.clone()),
+                name_cn: meta.and_then(|m| m.name_cn.clone()),
+                exchange: meta.and_then(|m| m.exchange.clone()),
+                last: quote.map(|row| row.last_done.to_string()),
+                previous_close: quote.map(|row| row.prev_close.to_string()),
+                timestamp: quote.and_then(|row| {
+                    chrono::DateTime::<Utc>::from_timestamp(row.timestamp.unix_timestamp(), 0)
+                        .map(|v| v.to_rfc3339())
+                }),
+            }
+        })
+        .collect();
+    Ok(Json(snapshots))
 }
 
 async fn quote(
@@ -241,388 +610,276 @@ async fn quote(
     Path(symbol): Path<String>,
 ) -> Result<Json<Quote>, ApiError> {
     let symbol = symbol.to_uppercase();
-    if let Some(context) = &state.longbridge {
-        let rows = context.quote([symbol.clone()]).await.map_err(|error| {
-            ApiError(
-                StatusCode::BAD_GATEWAY,
-                format!("Longbridge quote failed: {error}"),
-            )
-        })?;
-        let row = rows
-            .first()
-            .ok_or_else(|| ApiError(StatusCode::NOT_FOUND, format!("no quote for {symbol}")))?;
-        return Ok(Json(Quote {
-            symbol: row.symbol.clone(),
-            last: row.last_done.to_string(),
-            previous_close: Some(row.prev_close.to_string()),
-            open: Some(row.open.to_string()),
-            high: Some(row.high.to_string()),
-            low: Some(row.low.to_string()),
-            volume: Some(row.volume as u64),
-            timestamp: chrono::DateTime::<Utc>::from_timestamp(row.timestamp.unix_timestamp(), 0)
-                .map(|value| value.to_rfc3339())
-                .unwrap_or_default(),
-            source: "longbridge",
-        }));
-    }
-    Err(ApiError(
-        StatusCode::SERVICE_UNAVAILABLE,
-        "长桥行情未配置，无法获取真实报价".into(),
-    ))
+    let Some(context) = &state.longbridge else {
+        return Err(ApiError(
+            StatusCode::SERVICE_UNAVAILABLE,
+            "长桥行情未配置".into(),
+        ));
+    };
+    let lookup = [symbol.clone()];
+    let (rows_res, meta_map) = tokio::join!(
+        context.quote([symbol.clone()]),
+        fetch_static_meta(&state, &lookup),
+    );
+    let rows = rows_res
+        .map_err(|e| ApiError(StatusCode::BAD_GATEWAY, format!("Longbridge quote failed: {e}")))?;
+    let row = rows
+        .first()
+        .ok_or_else(|| ApiError(StatusCode::NOT_FOUND, format!("no quote for {symbol}")))?;
+    let meta = meta_map.get(&symbol);
+    Ok(Json(Quote {
+        symbol: row.symbol.clone(),
+        name_en: meta.and_then(|m| m.name_en.clone()),
+        name_cn: meta.and_then(|m| m.name_cn.clone()),
+        exchange: meta.and_then(|m| m.exchange.clone()),
+        last: row.last_done.to_string(),
+        previous_close: Some(row.prev_close.to_string()),
+        open: Some(row.open.to_string()),
+        high: Some(row.high.to_string()),
+        low: Some(row.low.to_string()),
+        volume: Some(row.volume as u64),
+        timestamp: chrono::DateTime::<Utc>::from_timestamp(row.timestamp.unix_timestamp(), 0)
+            .map(|v| v.to_rfc3339())
+            .unwrap_or_default(),
+    }))
 }
 
 async fn candles(
     State(state): State<AppState>,
     Path(symbol): Path<String>,
-    Query(query): Query<CountQuery>,
+    Query(query): Query<CandleQuery>,
 ) -> Result<Json<Vec<Candle>>, ApiError> {
-    let count = query.count.unwrap_or(60).clamp(1, 1000);
+    let count = query.count.unwrap_or(90).clamp(1, 500);
+    let (period, sessions) = parse_candle_period(query.period.as_deref())?;
     let symbol = symbol.to_uppercase();
-    if let Some(context) = &state.longbridge {
-        use longbridge::quote::{AdjustType, Period, TradeSessions};
-        let rows = context
-            .candlesticks(
-                symbol.clone(),
-                Period::Day,
-                count,
-                AdjustType::NoAdjust,
-                TradeSessions::Intraday,
-            )
-            .await
-            .map_err(|error| {
-                ApiError(
-                    StatusCode::BAD_GATEWAY,
-                    format!("Longbridge candlesticks failed: {error}"),
-                )
-            })?;
-        let candles = rows
-            .into_iter()
+    let Some(context) = &state.longbridge else {
+        return Err(ApiError(
+            StatusCode::SERVICE_UNAVAILABLE,
+            "长桥行情未配置".into(),
+        ));
+    };
+    let rows = context
+        .candlesticks(
+            symbol,
+            period,
+            count,
+            longbridge::quote::AdjustType::NoAdjust,
+            sessions,
+        )
+        .await
+        .map_err(|e| ApiError(StatusCode::BAD_GATEWAY, format!("Longbridge candles failed: {e}")))?;
+    Ok(Json(
+        rows.into_iter()
             .map(|row| Candle {
-                timestamp: chrono::DateTime::<Utc>::from_timestamp(
-                    row.timestamp.unix_timestamp(),
-                    0,
-                )
-                .map(|value| value.to_rfc3339())
-                .unwrap_or_default(),
+                timestamp: chrono::DateTime::<Utc>::from_timestamp(row.timestamp.unix_timestamp(), 0)
+                    .map(|v| v.to_rfc3339())
+                    .unwrap_or_default(),
                 open: row.open.to_string(),
                 high: row.high.to_string(),
                 low: row.low.to_string(),
                 close: row.close.to_string(),
                 volume: Some(row.volume as u64),
             })
-            .collect();
-        return Ok(Json(candles));
-    }
-    Err(ApiError(
-        StatusCode::SERVICE_UNAVAILABLE,
-        "长桥行情未配置，无法获取真实 K 线".into(),
+            .collect(),
     ))
 }
 
-async fn preview_order(
-    State(state): State<AppState>,
-    Json(order): Json<OrderRequest>,
-) -> Result<Json<Preview>, ApiError> {
-    let order = validate_order(order)?;
-    let mut warnings = Vec::new();
-    if order.order_type.eq_ignore_ascii_case("market") {
-        warnings.push("市价单会按市场可得价格成交，建议实盘前先使用限价单".into());
-    }
-    if state.settings.is_live() {
-        warnings.push("当前为实盘模式，提交后可能真实成交".into());
-    }
-    let preview_id = state
-        .db
-        .save_preview(
-            &order,
-            if state.settings.is_live() {
-                "live"
-            } else {
-                "paper"
-            }
-            .into(),
-        )
-        .await?;
-    Ok(Json(Preview {
-        preview_id,
-        expires_in_seconds: 600,
-        symbol: order.symbol.to_uppercase(),
-        side: order.side,
-        quantity: order.quantity,
-        order_type: order.order_type,
-        limit_price: order.limit_price,
-        mode: if state.settings.is_live() {
-            "live"
-        } else {
-            "paper"
-        }
-        .into(),
-        executable: true,
-        warnings,
-    }))
-}
-
-async fn submit_order(
-    State(state): State<AppState>,
-    Json(order): Json<OrderRequest>,
-) -> Result<Json<OrderResult>, ApiError> {
-    let order = validate_order(order)?;
-    let live = state.settings.is_live();
-    let payload = if live {
-        let expected = state
-            .settings
-            .live_confirmation
-            .as_deref()
-            .filter(|value| !value.is_empty())
-            .ok_or_else(|| {
-                ApiError(StatusCode::SERVICE_UNAVAILABLE, "实盘确认码尚未配置".into())
-            })?;
-        if order.confirmation.as_deref() != Some(expected) {
-            return Err(ApiError(StatusCode::CONFLICT, "实盘确认码不匹配".into()));
-        }
-        if state
-            .settings
-            .schwab_access_token
-            .as_deref()
-            .filter(|value| !value.is_empty())
-            .is_none()
-            || state
-                .settings
-                .schwab_account_hash
-                .as_deref()
-                .filter(|value| !value.is_empty())
-                .is_none()
-        {
-            return Err(ApiError(
-                StatusCode::SERVICE_UNAVAILABLE,
-                "嘉信账户凭证尚未配置".into(),
-            ));
-        }
-        Some(schwab_payload(&order)?)
-    } else {
-        None
-    };
-    let mut entry = match state
-        .db
-        .prepare_submission(&order, if live { "live" } else { "paper" }.into())
-        .await?
-    {
-        Submission::Existing(entry) => {
-            if matches!(entry.result.status.as_str(), "accepted" | "submitted") {
-                return Ok(Json(entry.result));
-            }
-            return Err(ApiError(
-                StatusCode::CONFLICT,
-                format!(
-                    "该委托已有记录（{}），请核查券商状态，不会重复发送",
-                    entry.result.status
-                ),
-            ));
-        }
-        Submission::New(entry) => entry,
-    };
-    if !live {
-        return Ok(Json(entry.result));
-    }
-    let preview_id = order.preview_id.clone().expect("validated preview");
-    let endpoint = format!(
-        "{}/trader/v1/accounts/{}/orders",
-        state.settings.schwab_base_url.trim_end_matches('/'),
-        state
-            .settings
-            .schwab_account_hash
-            .as_deref()
-            .unwrap_or_default()
-    );
-    let response = state
-        .http
-        .post(endpoint)
-        .bearer_auth(
-            state
-                .settings
-                .schwab_access_token
-                .as_deref()
-                .unwrap_or_default(),
-        )
-        .json(&payload)
-        .send()
-        .await;
-    let response = match response {
-        Ok(response) => response,
-        Err(_) => {
-            entry.result.status = "unknown".into();
-            entry.result.message = "嘉信委托结果未知，请核查券商订单，系统不会自动重发".into();
-            state.db.finish_submission(preview_id, entry).await?;
-            return Err(ApiError(
-                StatusCode::BAD_GATEWAY,
-                "嘉信委托结果未知，请在券商端核查后处理".into(),
-            ));
-        }
-    };
-    if !response.status().is_success() {
-        let rejected = response.status().is_client_error();
-        entry.result.status = if rejected { "rejected" } else { "unknown" }.into();
-        entry.result.message = format!("嘉信响应 {}，请核查券商状态", response.status());
-        let detail = entry.result.message.clone();
-        state.db.finish_submission(preview_id, entry).await?;
-        return Err(ApiError(StatusCode::BAD_GATEWAY, detail));
-    }
-    entry.result.order_id = response
-        .headers()
-        .get("location")
-        .and_then(|value| value.to_str().ok())
-        .and_then(|value| value.trim_end_matches('/').rsplit('/').next())
-        .unwrap_or("submitted")
-        .to_string();
-    entry.result.status = "submitted".into();
-    entry.result.message = "订单已提交到嘉信，尚未确认成交".into();
-    state
-        .db
-        .finish_submission(preview_id, entry.clone())
-        .await?;
-    Ok(Json(entry.result))
-}
-
 fn positive_decimal(value: &str, field: &str) -> Result<Decimal, ApiError> {
-    let value = Decimal::from_str(value).map_err(|_| {
-        ApiError(
-            StatusCode::BAD_REQUEST,
-            format!("{field} must be a finite positive decimal"),
-        )
-    })?;
+    let value = Decimal::from_str(value.trim())
+        .map_err(|_| ApiError(StatusCode::BAD_REQUEST, format!("{field} 必须为正数")))?;
     if value <= Decimal::ZERO {
-        return Err(ApiError(
-            StatusCode::BAD_REQUEST,
-            format!("{field} must be positive"),
-        ));
+        return Err(ApiError(StatusCode::BAD_REQUEST, format!("{field} 必须大于 0")));
     }
     Ok(value)
 }
 
-fn validate_order(mut order: OrderRequest) -> Result<OrderRequest, ApiError> {
-    order.symbol = order.symbol.trim().to_uppercase();
-    if order.symbol.is_empty()
-        || order.symbol.len() > 30
-        || !order
-            .symbol
-            .chars()
-            .all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '-')
-    {
-        return Err(ApiError(
-            StatusCode::BAD_REQUEST,
-            "invalid security symbol".into(),
-        ));
-    }
-    if !matches!(order.side.as_str(), "buy" | "sell") {
-        return Err(ApiError(
-            StatusCode::BAD_REQUEST,
-            "side must be buy or sell".into(),
-        ));
-    }
-    if !matches!(order.order_type.as_str(), "market" | "limit") {
-        return Err(ApiError(
-            StatusCode::BAD_REQUEST,
-            "order_type must be market or limit".into(),
-        ));
-    }
-    order.quantity = positive_decimal(&order.quantity, "quantity")?
-        .normalize()
-        .to_string();
-    if order.order_type == "limit" {
-        let price = order.limit_price.as_deref().ok_or_else(|| {
-            ApiError(
-                StatusCode::BAD_REQUEST,
-                "limit orders require limit_price".into(),
-            )
-        })?;
-        order.limit_price = Some(
-            positive_decimal(price, "limit_price")?
-                .normalize()
-                .to_string(),
-        );
-    } else {
-        order.limit_price = None;
-    }
-    Ok(order)
+#[derive(Deserialize)]
+struct AgentLoginRequest {
+    auth_code: String,
 }
 
-fn schwab_payload(order: &OrderRequest) -> Result<Value, ApiError> {
-    if order.symbol.ends_with(".HK") {
-        return Err(ApiError(
-            StatusCode::BAD_REQUEST,
-            "Schwab execution supports US equities in this application".into(),
-        ));
-    }
-    let symbol = order.symbol.strip_suffix(".US").unwrap_or(&order.symbol);
-    let quantity = positive_decimal(&order.quantity, "quantity")?
-        .normalize()
-        .to_string()
-        .parse::<serde_json::Number>()
-        .map_err(|_| ApiError(StatusCode::BAD_REQUEST, "invalid quantity".into()))?;
-    let mut payload = json!({
-        "orderType": if order.order_type == "market" { "MARKET" } else { "LIMIT" },
-        "session": "NORMAL", "duration": "DAY", "orderStrategyType": "SINGLE",
-        "orderLegCollection": [{
-            "instruction": if order.side == "buy" { "BUY" } else { "SELL" },
-            "quantity": quantity,
-            "instrument": { "symbol": symbol, "assetType": "EQUITY" }
-        }]
-    });
-    if order.order_type == "limit" {
-        payload["price"] = Value::String(order.limit_price.clone().unwrap_or_default());
-    }
-    Ok(payload)
+async fn agent_status(State(state): State<AppState>) -> Json<AgentStatus> {
+    Json(state.lb_cli.auth_status().await)
+}
+
+async fn agent_login(
+    State(state): State<AppState>,
+    Json(req): Json<AgentLoginRequest>,
+) -> Result<Json<AgentStatus>, ApiError> {
+    Ok(Json(state.lb_cli.login_with_code(&req.auth_code).await?))
+}
+
+async fn agent_list(State(state): State<AppState>) -> Result<Json<Value>, ApiError> {
+    Ok(Json(state.lb_cli.list_agents().await?))
+}
+
+async fn agent_chat(
+    State(state): State<AppState>,
+    Json(req): Json<AgentChatRequest>,
+) -> Result<Json<Value>, ApiError> {
+    Ok(Json(state.lb_cli.chat(req).await?))
+}
+
+async fn agent_intel(
+    State(state): State<AppState>,
+    Path(symbol): Path<String>,
+) -> Result<Json<Value>, ApiError> {
+    Ok(Json(state.lb_cli.symbol_intel(&symbol).await?))
+}
+
+#[derive(Deserialize)]
+struct MediaQuery {
+    outlet: Option<String>,
+    category: Option<String>,
+    lang: Option<String>,
+    q: Option<String>,
+    limit: Option<usize>,
+}
+
+async fn media_feed(
+    State(state): State<AppState>,
+    Query(query): Query<MediaQuery>,
+) -> Result<Json<MediaFeedResponse>, ApiError> {
+    Ok(Json(
+        state
+            .media
+            .snapshot(
+                query.outlet.as_deref(),
+                query.category.as_deref(),
+                query.lang.as_deref(),
+                query.q.as_deref(),
+                query.limit.unwrap_or(150),
+            )
+            .await?,
+    ))
+}
+
+async fn media_refresh(State(state): State<AppState>) -> Result<Json<MediaFeedResponse>, ApiError> {
+    Ok(Json(state.media.refresh_now(false).await?))
+}
+
+async fn media_add_source(
+    State(state): State<AppState>,
+    Json(req): Json<AddMediaSourceRequest>,
+) -> Result<Json<MediaFeedResponse>, ApiError> {
+    Ok(Json(state.media.add_source(req).await?))
+}
+
+async fn media_toggle_source(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+    Json(req): Json<ToggleMediaSourceRequest>,
+) -> Result<Json<MediaFeedResponse>, ApiError> {
+    state.db.set_media_source_enabled(id, req.enabled).await?;
+    Ok(Json(state.media.refresh_now(true).await?))
+}
+
+async fn media_delete_source(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+) -> Result<Json<MediaFeedResponse>, ApiError> {
+    state.db.delete_media_source(id).await?;
+    Ok(Json(state.media.snapshot(None, None, None, None, 150).await?))
+}
+
+fn build_router(state: AppState, static_dir: PathBuf) -> Router {
+    let api = Router::new()
+        .route("/health", get(health))
+        .route("/account", get(account_overview))
+        .route("/portfolio/cash", put(set_cash))
+        .route("/portfolio/positions", post(upsert_position))
+        .route("/portfolio/positions/{symbol}", delete(delete_position))
+        .route("/portfolio/history", get(portfolio_history))
+        .route("/portfolio/snapshot", post(record_portfolio_snapshot))
+        .route("/agent/status", get(agent_status))
+        .route("/agent/login", post(agent_login))
+        .route("/agent/list", get(agent_list))
+        .route("/agent/chat", post(agent_chat))
+        .route("/agent/intel/{symbol}", get(agent_intel))
+        .route("/media/feed", get(media_feed))
+        .route("/media/refresh", post(media_refresh))
+        .route("/media/sources", post(media_add_source))
+        .route(
+            "/media/sources/{id}",
+            patch(media_toggle_source).delete(media_delete_source),
+        )
+        .route("/watchlist", get(watchlist).post(add_symbol))
+        .route("/watchlist/snapshots", get(watchlist_snapshots))
+        .route("/watchlist/{symbol}", delete(remove_symbol))
+        .route("/quotes/{symbol}", get(quote))
+        .route("/candles/{symbol}", get(candles));
+
+    Router::new()
+        .nest("/api", api)
+        .fallback_service(ServeDir::new(static_dir).append_index_html_on_directories(true))
+        .layer(CorsLayer::permissive())
+        .layer(TraceLayer::new_for_http())
+        .with_state(state)
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Infallible> {
+    let env_report = envfile::load_external_env(&envfile::default_env_path());
     tracing_subscriber::fmt()
         .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
         .init();
+
+    if env_report.loaded {
+        info!(
+            "Loaded {} env key(s) from {}",
+            env_report.applied_keys,
+            env_report.path.display()
+        );
+    }
+
     let settings = Settings::from_env();
     let port = settings.port;
     let static_dir = settings.static_dir.clone();
+    let longbridge_missing = longbridge_missing_vars();
     let longbridge = match longbridge::Config::from_apikey_env() {
         Ok(config) => {
             let (context, _receiver) = longbridge::QuoteContext::new(Arc::new(config));
             Some(Arc::new(context))
         }
         Err(error) => {
-            info!("Longbridge not configured; quote requests will return 503: {error}");
+            info!("Longbridge not configured: {error}");
             None
         }
     };
+    let http = Client::builder()
+        .timeout(std::time::Duration::from_secs(15))
+        .build()
+        .expect("HTTP client");
     let db = Database::open(db::default_path())
         .await
         .expect("initialize SQLite database");
+    let media = MediaHub::new(db.clone(), http.clone());
+    media.spawn_background_sync();
     let state = AppState {
-        settings: Arc::new(settings),
-        http: Client::builder()
-            .timeout(std::time::Duration::from_secs(15))
-            .build()
-            .expect("HTTP client"),
+        env_report: Arc::new(env_report),
         longbridge,
+        longbridge_missing,
+        meta_cache: Arc::new(RwLock::new(HashMap::new())),
+        lb_cli: LongbridgeCli::new(),
+        media,
         db,
     };
-    let api = Router::new()
-        .route("/health", get(health))
-        .route("/watchlist", get(watchlist).post(add_symbol))
-        .route("/watchlist/{symbol}", axum::routing::delete(remove_symbol))
-        .route("/quotes/{symbol}", get(quote))
-        .route("/candles/{symbol}", get(candles))
-        .route("/orders/preview", post(preview_order))
-        .route("/orders", get(list_orders).post(submit_order));
-    let app = Router::new()
-        .nest("/api", api)
-        .fallback_service(ServeDir::new(static_dir).append_index_html_on_directories(true))
-        .layer(CorsLayer::permissive())
-        .layer(TraceLayer::new_for_http())
-        .with_state(state);
+    {
+        let bg = state.clone();
+        tokio::spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_secs(3)).await;
+            loop {
+                if let Ok(overview) = build_manual_account(&bg).await {
+                    maybe_record_equity_snapshot(&bg, &overview, 300).await;
+                }
+                tokio::time::sleep(std::time::Duration::from_secs(300)).await;
+            }
+        });
+    }
+    let app = build_router(state, static_dir);
     let address = SocketAddr::from(([127, 0, 0, 1], port));
     info!("northstar server listening on http://{}", address);
-    let listener = tokio::net::TcpListener::bind(address)
-        .await
-        .expect("bind server port");
+    let listener = tokio::net::TcpListener::bind(address).await.expect("bind port");
     axum::serve(listener, app).await.expect("serve HTTP");
     Ok(())
 }
@@ -631,71 +888,24 @@ async fn main() -> Result<(), Infallible> {
 mod tests {
     use super::*;
 
-    fn order() -> OrderRequest {
-        OrderRequest {
-            symbol: " aapl.us ".into(),
-            side: "buy".into(),
-            quantity: "2".into(),
-            order_type: "limit".into(),
-            limit_price: Some("100.25".into()),
-            confirmation: None,
-            preview_id: None,
+    #[test]
+    fn validates_symbols_and_positive_decimals() {
+        assert_eq!(validate_market_symbol(" aapl.us ", false).unwrap(), "AAPL.US");
+        assert_eq!(validate_market_symbol(".vix.us", true).unwrap(), ".VIX.US");
+        assert!(validate_market_symbol(".VIX.US", false).is_err());
+        assert!(validate_market_symbol("AAPL", true).is_err());
+
+        for bad in ["0", "-1", "NaN", "inf", ""] {
+            assert!(positive_decimal(bad, "qty").is_err());
         }
+        assert_eq!(positive_decimal("2.4358", "qty").unwrap().to_string(), "2.4358");
     }
 
     #[test]
-    fn non_positive_or_non_finite_numbers_are_rejected() {
-        for value in ["0", "-1", "NaN", "inf", "Infinity", "", "1e9999"] {
-            let mut request = order();
-            request.quantity = value.into();
-            assert!(
-                validate_order(request).is_err(),
-                "accepted quantity: {value}"
-            );
+    fn parses_intraday_and_daily_candle_periods() {
+        for p in ["1m", "5m", "15m", "30m", "60m", "day", "week", "month"] {
+            assert!(parse_candle_period(Some(p)).is_ok(), "period failed: {p}");
         }
-    }
-
-    #[test]
-    fn limit_order_requires_positive_price() {
-        for value in [None, Some("0"), Some("-0.01"), Some("NaN")] {
-            let mut request = order();
-            request.limit_price = value.map(str::to_owned);
-            assert!(validate_order(request).is_err());
-        }
-    }
-
-    #[test]
-    fn unexpected_side_or_order_type_is_rejected() {
-        let mut request = order();
-        request.side = "short".into();
-        assert!(validate_order(request).is_err());
-        let mut request = order();
-        request.order_type = "typo".into();
-        assert!(validate_order(request).is_err());
-    }
-
-    #[test]
-    fn schwab_symbol_is_converted_and_decimal_is_preserved() {
-        let mut request = order();
-        request.quantity = "2.123456789123456789".into();
-        let validated = validate_order(request).ok().expect("valid order");
-        let payload = schwab_payload(&validated).ok().expect("valid payload");
-        assert_eq!(
-            payload["orderLegCollection"][0]["instrument"]["symbol"],
-            "AAPL"
-        );
-        assert_eq!(
-            payload["orderLegCollection"][0]["quantity"].to_string(),
-            "2.123456789123456789"
-        );
-        assert_eq!(payload["price"], "100.25");
-    }
-
-    #[test]
-    fn hk_equities_are_never_routed_to_schwab() {
-        let mut request = order();
-        request.symbol = "700.HK".into();
-        let validated = validate_order(request).ok().expect("valid order");
-        assert!(schwab_payload(&validated).is_err());
+        assert!(parse_candle_period(Some("2m")).is_err());
     }
 }

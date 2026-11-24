@@ -1,12 +1,15 @@
 {
-  "updated_at": "2026-07-28T22:53:45.058Z",
+  "path": "papers/k3-tech-report",
   "id": "k3-tech-report",
   "type": "pdf",
   "title": "k3 tech report",
   "authors": [],
   "tags": [],
+  "body_source": "ocr",
+  "body_quality": "low",
   "meta_source": "local",
   "status": "completed",
   "is_read": false,
-  "added_at": "2026-07-28T22:53:45.058Z"
+  "added_at": "2026-07-28T22:53:45.058Z",
+  "updated_at": "2026-08-17T11:58:08.195Z"
 }

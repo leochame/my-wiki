@@ -1,0 +1,580 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Geist Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("@fontsource-variable/geist/files/geist-latin-wght-normal.woff2")
+    format("woff2-variations");
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", "PingFang SC", "SF Pro Text", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-up: var(--up);
+  --color-up-solid: var(--up-solid);
+  --color-up-soft: var(--up-soft);
+  --color-down: var(--down);
+  --color-down-solid: var(--down-solid);
+  --color-down-soft: var(--down-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+}
+
+/* tweakcn OKLCH Theme Presets */
+:root,
+:root[data-preset="obsidian"] {
+  --radius: 0.625rem;
+  --background: oklch(0.142 0.005 260);
+  --foreground: oklch(0.955 0.004 260);
+  --card: oklch(0.178 0.006 260);
+  --card-foreground: oklch(0.955 0.004 260);
+  --popover: oklch(0.195 0.007 260);
+  --popover-foreground: oklch(0.955 0.004 260);
+  --primary: oklch(0.93 0.012 160);
+  --primary-foreground: oklch(0.16 0.01 160);
+  --secondary: oklch(0.225 0.007 260);
+  --secondary-foreground: oklch(0.89 0.005 260);
+  --muted: oklch(0.215 0.006 260);
+  --muted-foreground: oklch(0.65 0.008 260);
+  --accent: oklch(0.245 0.01 260);
+  --accent-foreground: oklch(0.96 0.004 260);
+  --destructive: oklch(0.63 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.26 0.007 260);
+  --input: oklch(0.29 0.008 260);
+  --ring: oklch(0.72 0.13 162);
+  --spotlight: oklch(0.76 0.11 162 / 0.09);
+  --chart-1: oklch(0.72 0.14 162);
+  --chart-2: oklch(0.71 0.14 245);
+  --chart-3: oklch(0.76 0.14 75);
+  --chart-4: oklch(0.69 0.16 305);
+  --chart-5: oklch(0.70 0.15 20);
+  --chart-ma5: oklch(0.79 0.14 82);
+  --chart-ma10: oklch(0.72 0.14 240);
+  --chart-ma20: oklch(0.72 0.16 305);
+  --warn: oklch(0.81 0.13 82);
+  --warn-soft: oklch(0.27 0.05 82);
+  --green: oklch(0.74 0.155 158);
+  --green-soft: oklch(0.24 0.055 158);
+  --red: oklch(0.70 0.18 24);
+  --red-soft: oklch(0.25 0.06 24);
+}
+
+:root[data-preset="clay"] {
+  --radius: 0.625rem;
+  --background: oklch(0.972 0.006 85);
+  --foreground: oklch(0.21 0.008 85);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.008 85);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.008 85);
+  --primary: oklch(0.25 0.018 148);
+  --primary-foreground: oklch(0.985 0.004 85);
+  --secondary: oklch(0.945 0.007 85);
+  --secondary-foreground: oklch(0.27 0.01 85);
+  --muted: oklch(0.945 0.007 85);
+  --muted-foreground: oklch(0.50 0.01 85);
+  --accent: oklch(0.925 0.012 140);
+  --accent-foreground: oklch(0.22 0.012 140);
+  --destructive: oklch(0.54 0.19 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.895 0.008 85);
+  --input: oklch(0.855 0.01 85);
+  --ring: oklch(0.50 0.09 148);
+  --spotlight: oklch(0.52 0.09 148 / 0.06);
+  --chart-1: oklch(0.50 0.11 154);
+  --chart-2: oklch(0.54 0.14 248);
+  --chart-3: oklch(0.65 0.15 70);
+  --chart-4: oklch(0.56 0.16 300);
+  --chart-5: oklch(0.58 0.17 22);
+  --chart-ma5: oklch(0.64 0.15 68);
+  --chart-ma10: oklch(0.53 0.15 245);
+  --chart-ma20: oklch(0.55 0.16 302);
+  --warn: oklch(0.54 0.13 72);
+  --warn-soft: oklch(0.95 0.04 82);
+  --green: oklch(0.49 0.13 156);
+  --green-soft: oklch(0.94 0.035 156);
+  --red: oklch(0.54 0.185 24);
+  --red-soft: oklch(0.95 0.03 24);
+}
+
+:root[data-preset="amber"] {
+  --radius: 0.5rem;
+  --background: oklch(0.128 0.006 55);
+  --foreground: oklch(0.94 0.01 75);
+  --card: oklch(0.168 0.007 55);
+  --card-foreground: oklch(0.94 0.01 75);
+  --popover: oklch(0.19 0.008 55);
+  --popover-foreground: oklch(0.94 0.01 75);
+  --primary: oklch(0.79 0.15 74);
+  --primary-foreground: oklch(0.16 0.02 60);
+  --secondary: oklch(0.22 0.009 55);
+  --secondary-foreground: oklch(0.89 0.01 75);
+  --muted: oklch(0.21 0.008 55);
+  --muted-foreground: oklch(0.64 0.014 68);
+  --accent: oklch(0.25 0.018 68);
+  --accent-foreground: oklch(0.95 0.012 75);
+  --destructive: oklch(0.63 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.255 0.01 58);
+  --input: oklch(0.29 0.012 58);
+  --ring: oklch(0.79 0.15 74);
+  --spotlight: oklch(0.79 0.15 74 / 0.09);
+  --chart-1: oklch(0.79 0.15 74);
+  --chart-2: oklch(0.72 0.14 162);
+  --chart-3: oklch(0.71 0.14 240);
+  --chart-4: oklch(0.71 0.16 305);
+  --chart-5: oklch(0.70 0.18 24);
+  --chart-ma5: oklch(0.82 0.15 78);
+  --chart-ma10: oklch(0.73 0.14 220);
+  --chart-ma20: oklch(0.72 0.16 310);
+  --warn: oklch(0.82 0.15 78);
+  --warn-soft: oklch(0.28 0.06 72);
+  --green: oklch(0.74 0.155 156);
+  --green-soft: oklch(0.24 0.055 156);
+  --red: oklch(0.70 0.185 24);
+  --red-soft: oklch(0.25 0.06 24);
+}
+
+:root[data-preset="nordic"] {
+  --radius: 0.625rem;
+  --background: oklch(0.976 0.004 248);
+  --foreground: oklch(0.20 0.014 252);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.014 252);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0.014 252);
+  --primary: oklch(0.49 0.15 256);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.945 0.007 248);
+  --secondary-foreground: oklch(0.26 0.015 252);
+  --muted: oklch(0.948 0.006 248);
+  --muted-foreground: oklch(0.49 0.015 250);
+  --accent: oklch(0.935 0.016 250);
+  --accent-foreground: oklch(0.22 0.02 252);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.895 0.009 248);
+  --input: oklch(0.855 0.011 248);
+  --ring: oklch(0.52 0.15 256);
+  --spotlight: oklch(0.52 0.15 256 / 0.06);
+  --chart-1: oklch(0.52 0.15 256);
+  --chart-2: oklch(0.51 0.13 158);
+  --chart-3: oklch(0.65 0.15 70);
+  --chart-4: oklch(0.56 0.16 300);
+  --chart-5: oklch(0.56 0.19 24);
+  --chart-ma5: oklch(0.64 0.15 68);
+  --chart-ma10: oklch(0.52 0.15 256);
+  --chart-ma20: oklch(0.56 0.16 302);
+  --warn: oklch(0.55 0.14 72);
+  --warn-soft: oklch(0.95 0.04 82);
+  --green: oklch(0.48 0.14 156);
+  --green-soft: oklch(0.94 0.035 156);
+  --red: oklch(0.54 0.19 24);
+  --red-soft: oklch(0.95 0.03 24);
+}
+
+/* Trading Up/Down Color Convention */
+:root,
+:root[data-colors="us"] {
+  --up: var(--green);
+  --up-solid: oklch(0.49 0.135 157);
+  --up-soft: var(--green-soft);
+  --down: var(--red);
+  --down-solid: oklch(0.53 0.19 25);
+  --down-soft: var(--red-soft);
+}
+
+:root[data-colors="cn"] {
+  --up: var(--red);
+  --up-solid: oklch(0.53 0.19 25);
+  --up-soft: var(--red-soft);
+  --down: var(--green);
+  --down-solid: oklch(0.49 0.135 157);
+  --down-soft: var(--green-soft);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/15;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-variant-numeric: tabular-nums;
+    min-width: 320px;
+  }
+}
+
+/* React Bits: StarBorder shimmer */
+@keyframes star-border-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rb-star-border {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  padding: 1px;
+}
+
+.rb-star-border::before {
+  content: "";
+  position: absolute;
+  inset: -120%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 70%,
+    var(--star-color, var(--up)) 88%,
+    transparent 100%
+  );
+  animation: star-border-spin 3.2s linear infinite;
+}
+
+.rb-star-border > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* React Bits: Price Flash Pulse */
+@keyframes flash-up {
+  0% {
+    background-color: color-mix(in oklab, var(--up) 26%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes flash-down {
+  0% {
+    background-color: color-mix(in oklab, var(--down) 26%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.rb-flash-up {
+  animation: flash-up 0.7s ease-out;
+}
+.rb-flash-down {
+  animation: flash-down 0.7s ease-out;
+}
+
+/* React Bits: Subtle Entrance */
+@keyframes rb-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rb-enter {
+  animation: rb-enter 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle custom scrollbars for watchlist & tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--muted-foreground) 25%, transparent);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--muted-foreground) 45%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rb-star-border::before,
+  .rb-enter,
+  .rb-flash-up,
+  .rb-flash-down {
+    animation: none !important;
+  }
+}
+
+/* Reader Mode clean prose typography */
+.reader-prose {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: color-mix(in oklab, var(--foreground) 92%, transparent);
+}
+.reader-prose h1,
+.reader-prose h2,
+.reader-prose h3,
+.reader-prose h4 {
+  color: var(--foreground);
+  font-weight: 600;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+  line-height: 1.35;
+}
+.reader-prose h1 { font-size: 1.25rem; }
+.reader-prose h2 { font-size: 1.08rem; }
+.reader-prose h3 { font-size: 0.96rem; }
+.reader-prose p { margin: 0.75em 0; }
+.reader-prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.reader-prose ul,
+.reader-prose ol {
+  margin: 0.75em 0;
+  padding-left: 1.35em;
+}
+.reader-prose ul { list-style: disc; }
+.reader-prose ol { list-style: decimal; }
+.reader-prose li { margin: 0.3em 0; }
+.reader-prose blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 0.9rem;
+  margin: 0.9em 0;
+  color: var(--muted-foreground);
+}
+.reader-prose pre {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.9rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  margin: 0.9em 0;
+}
+.reader-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  background: var(--muted);
+  padding: 0.12em 0.32em;
+  border-radius: 4px;
+}
+.reader-prose pre code {
+  background: transparent;
+  padding: 0;
+}
+.reader-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: 1rem 0;
+}
+.reader-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.82rem;
+}
+.reader-prose th,
+.reader-prose td {
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+}
+.reader-prose th {
+  background: var(--muted);
+  font-weight: 600;
+}
+
+/* Unified WYSIWYG Markdown Editor (TipTap ProseMirror) */
+.wiki-prose .ProseMirror {
+  outline: none;
+  min-height: 100%;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+
+.wiki-prose .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--muted-foreground);
+  pointer-events: none;
+  height: 0;
+}
+
+.wiki-prose .ProseMirror h1 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0.4rem 0 0.85rem;
+}
+
+.wiki-prose .ProseMirror h2 {
+  font-size: 1.2rem;
+  font-weight: 650;
+  line-height: 1.35;
+  margin: 1.45rem 0 0.6rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+}
+
+.wiki-prose .ProseMirror h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin: 1.15rem 0 0.45rem;
+}
+
+.wiki-prose .ProseMirror p {
+  margin: 0.55rem 0;
+}
+
+.wiki-prose .ProseMirror ul {
+  list-style-type: disc;
+  padding-left: 1.35rem;
+  margin: 0.5rem 0;
+}
+
+.wiki-prose .ProseMirror ol {
+  list-style-type: decimal;
+  padding-left: 1.35rem;
+  margin: 0.5rem 0;
+}
+
+.wiki-prose .ProseMirror li {
+  margin: 0.2rem 0;
+}
+
+.wiki-prose .ProseMirror ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0.15rem;
+}
+
+.wiki-prose .ProseMirror ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.wiki-prose .ProseMirror ul[data-type="taskList"] li > label {
+  margin-top: 0.28rem;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.wiki-prose .ProseMirror ul[data-type="taskList"] li > label input[type="checkbox"] {
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.wiki-prose .ProseMirror ul[data-type="taskList"] li[data-checked="true"] > div {
+  text-decoration: line-through;
+  color: var(--muted-foreground);
+}
+
+.wiki-prose .ProseMirror blockquote {
+  border-left: 3px solid color-mix(in oklab, var(--primary) 60%, transparent);
+  background: color-mix(in oklab, var(--muted) 45%, transparent);
+  border-radius: 0 0.4rem 0.4rem 0;
+  padding: 0.45rem 0.85rem;
+  margin: 0.75rem 0;
+  color: var(--muted-foreground);
+}
+
+.wiki-prose .ProseMirror code {
+  background: var(--muted);
+  border-radius: 0.3rem;
+  padding: 0.12rem 0.35rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.84em;
+}
+
+.wiki-prose .ProseMirror pre {
+  background: color-mix(in oklab, var(--muted) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  margin: 0.85rem 0;
+}
+
+.wiki-prose .ProseMirror pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.wiki-prose .ProseMirror hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
+}
+
+.wiki-prose .ProseMirror a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.wiki-prose .ProseMirror table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.9rem 0;
+  font-size: 0.83rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.wiki-prose .ProseMirror th,
+.wiki-prose .ProseMirror td {
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.wiki-prose .ProseMirror th {
+  background: color-mix(in oklab, var(--muted) 65%, transparent);
+  font-weight: 600;
+}
+
+/* Slim, quiet workstation scrollbars & vertical rail labels */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--border) 85%, transparent) transparent;
+}
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}

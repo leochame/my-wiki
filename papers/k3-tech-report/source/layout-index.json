@@ -1,0 +1,799 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "mode": "sidebar",
+    "from": "layout.json",
+    "generatedAt": "2026-10-08T03:28:56.323Z",
+    "minScore": 0.3
+  },
+  "items": [
+    {
+      "id": "figure-1",
+      "stableKey": "p1:figure:Figure 1: Kimi K3 main results.",
+      "kind": "chart",
+      "section": "figure",
+      "page": 1,
+      "pageIndex": 0,
+      "bbox": {
+        "x": 0.1506671905517578,
+        "y": 0.6890941581340752,
+        "w": 0.6338269476797066,
+        "h": 0.16815732705472697
+      },
+      "score": 0.7086843252182007,
+      "title": "Figure 1: Kimi K3 main results.",
+      "layoutRegionId": "944ee26a-9b9f-4b79-bbc2-7b88c6f22052"
+    },
+    {
+      "id": "figure-2",
+      "stableKey": "p3:figure:Figure 2: The Kimi K3 architecture, organized around token, channel, and layer m",
+      "kind": "image",
+      "section": "figure",
+      "page": 3,
+      "pageIndex": 2,
+      "bbox": {
+        "x": 0.11495641321917764,
+        "y": 0.07413679180723248,
+        "w": 0.7733059677423215,
+        "h": 0.5496371490786773
+      },
+      "score": 0.9588011503219604,
+      "title": "Figure 2: The Kimi K3 architecture, organized around token, channel, and layer mixing, with a native vision pathway at the input. Each block contains three Kimi Delta Attention (KDA) layers followed by one Gated MLA layer, with each attention layer paired with a Stable LatentMoE feed-forward network. Attention Residuals (AttnRes) use learned pseudo-queries ( ) to derive attention w Top left weights ( ) over the embedding and preceding block outputs, enabling selective information flow across depth. : the Stable α Bottom left Bottom right LatentMoE module with shared and routed experts. : the KDA module. : the native vision pathway.",
+      "layoutRegionId": "634156ed-4eec-4ced-b151-97d1a7e4777b"
+    },
+    {
+      "id": "figure-3",
+      "stableKey": "p5:figure:Figure 3: Lower-bounded decay and its effect on chunkwise KDA computation. (a) K",
+      "kind": "image",
+      "section": "figure",
+      "page": 5,
+      "pageIndex": 4,
+      "bbox": {
+        "x": 0.11418432347914752,
+        "y": 0.08841993351175327,
+        "w": 0.7718388052547679,
+        "h": 0.25092100856280086
+      },
+      "score": 0.9092379808425903,
+      "title": "Figure 3: Lower-bounded decay and its effect on chunkwise KDA computation. (a) Kimi Linear uses an unbounded negative-Softplus mapping, whereas Kimi K3 bounds the log-decay with a scaled sigmoid; the curves show and . (b) Kimi Linear − A = 0 g = 5 min evaluates each diagonal tile with an explicit position-pair computation, while the bounded range in Kimi K3 allows all causal tiles to use dense Tensor Core matrix multiplications.",
+      "layoutRegionId": "b3d019b3-48f6-4470-9b91-8dc06ac8631a"
+    },
+    {
+      "id": "figure-5",
+      "stableKey": "p8:figure:Figure 5: Illustration of Quantile Balancing with tokens, routed experts, and se",
+      "kind": "image",
+      "section": "figure",
+      "page": 8,
+      "pageIndex": 7,
+      "bbox": {
+        "x": 0.11406296374751072,
+        "y": 0.08338048723008898,
+        "w": 0.7736229740716274,
+        "h": 0.28763966608529135
+      },
+      "score": 0.9151178598403931,
+      "title": "Figure 5: Illustration of Quantile Balancing with tokens, routed experts, and selected expert per token. (a) m = 8 n = 4 k = 1 Token-wise Top- routing (tokens on the left, experts on the right) produces loads ; darker circles indicate overheated k (4 , 3 , 1 , 0) experts, whereas faded and dashed circles indicate underutilized and dying experts, respectively. (b) Each gray bar is the margin of ( t ) ( t ) the currently biased score, , so the row-wise maxima reproduce the routing in (a). The dashed red line in each s + b − α i,j j i b column is the bias adjustment ( t ) ( t +1) , placed at the -th largest margin so that exactly margins exceed it. The b − b ( q +1) q = 2 j j marker ⋆ denotes the row-wise Top- choice after subtracting the column adjustments, i.e., the routing in (c). (c) The retained k choices yield the balanced load ; red edges denote assignments changed by QB. (2 , 2 , 2 , 2)",
+      "layoutRegionId": "30929271-e83e-44de-919a-555aad2d9b0b"
+    },
+    {
+      "id": "figure-6",
+      "stableKey": "p9:figure:Figure 6: Vision-tower gradient norms in our pre-training ablations. Compared wi",
+      "kind": "chart",
+      "section": "figure",
+      "page": 9,
+      "pageIndex": 8,
+      "bbox": {
+        "x": 0.11516433915281607,
+        "y": 0.6400305622755879,
+        "w": 0.769724652658101,
+        "h": 0.24257987436622086
+      },
+      "score": 0.8746718764305115,
+      "title": "Figure 6: Vision-tower gradient norms in our pre-training ablations. Compared with the SigLIP-initialized MoonViT-3D, the from-scratch MoonViT-V2 maintains lower gradient norms with fewer spikes, indicating more stable optimization.",
+      "layoutRegionId": "0f51b177-1ff2-45a1-bd05-a473846f526b"
+    },
+    {
+      "id": "figure-7",
+      "stableKey": "p11:figure:Figure 7: Fitted scaling-law curves for Kimi K2 and Kimi K3. Kimi K3 achieves ga",
+      "kind": "chart",
+      "section": "figure",
+      "page": 11,
+      "pageIndex": 10,
+      "bbox": {
+        "x": 0.12035262662600847,
+        "y": 0.07983829035903468,
+        "w": 0.7556361030129826,
+        "h": 0.2817191788644502
+      },
+      "score": 0.8466523885726929,
+      "title": "Figure 7: Fitted scaling-law curves for Kimi K2 and Kimi K3. Kimi K3 achieves gain in scaling efficiency over Kimi K2. 2 . 5 ×",
+      "layoutRegionId": "69eaa881-ded4-446f-ae8c-f710c46584e4"
+    },
+    {
+      "id": "figure-8",
+      "stableKey": "p13:figure:Figure 8: Scores and the average assistant steps across a variety of public and ",
+      "kind": "chart",
+      "section": "figure",
+      "page": 13,
+      "pageIndex": 12,
+      "bbox": {
+        "x": 0.11412742714476741,
+        "y": 0.07463288548016789,
+        "w": 0.7712448593837763,
+        "h": 0.23909326996466124
+      },
+      "score": 0.8985333442687988,
+      "title": "Figure 8: Scores and the average assistant steps across a variety of public and in-house evaluations during RL. By scaling RL FLOPs, tool-call steps scale up consistently, accompanied by a comprehensive improvement in the model’s overall capability.",
+      "layoutRegionId": "bbfbb716-6405-4ebb-964d-f3f672e60c60"
+    },
+    {
+      "id": "figure-9",
+      "stableKey": "p15:figure:Figure 9: Overview of knowledge-graph-guided task synthesis. The hierarchically ",
+      "kind": "image",
+      "section": "figure",
+      "page": 15,
+      "pageIndex": 14,
+      "bbox": {
+        "x": 0.11426955578373928,
+        "y": 0.2466592499704072,
+        "w": 0.7721054226744408,
+        "h": 0.3676249571520872
+      },
+      "score": 0.9498323202133179,
+      "title": "Figure 9: Overview of knowledge-graph-guided task synthesis. The hierarchically organized knowledge graph represents concepts at multiple levels, ranging from broad domains to fine-grained concepts. Related nodes are sampled to form a keyword set that guides the retrieval of publicly available source materials. For each synthesis instance, the system selects a task type and uses the retrieved materials to synthesize a corresponding task.",
+      "layoutRegionId": "60a5daa8-6fa5-4e2d-90ca-d3df526de756"
+    },
+    {
+      "id": "figure-10",
+      "stableKey": "p17:figure:Figure 10: Completion curves on Camera Repair Management System, a black-box sys",
+      "kind": "chart",
+      "section": "figure",
+      "page": 17,
+      "pageIndex": 16,
+      "bbox": {
+        "x": 0.11455527162240221,
+        "y": 0.09158919555972321,
+        "w": 0.7702500461752898,
+        "h": 0.2972039020422733
+      },
+      "score": 0.9360492825508118,
+      "title": "Figure 10: Completion curves on Camera Repair Management System, a black-box system replication task in which the agent reconstructs a hidden 3D-camera repair system as a web application through oracle queries. Completion denotes verifier-assessed task progress.",
+      "layoutRegionId": "41fe6c82-0e8a-4e39-a130-9a23ffeea182"
+    },
+    {
+      "id": "figure-11",
+      "stableKey": "p19:figure:Figure 11: Computation, communication and offloading overlapped in different PP ",
+      "kind": "image",
+      "section": "figure",
+      "page": 19,
+      "pageIndex": 18,
+      "bbox": {
+        "x": 0.14042344436146856,
+        "y": 0.07432271495009914,
+        "w": 0.7280309340533089,
+        "h": 0.17799810448078196
+      },
+      "score": 0.9397444128990173,
+      "title": "Figure 11: Computation, communication and offloading overlapped in different PP phases.",
+      "layoutRegionId": "f4ffa122-5248-45d4-893f-e0e65a580f01"
+    },
+    {
+      "id": "figure-13",
+      "stableKey": "p32:figure:Figure 13: Score vs. per-task inference cost on Kimi Code Bench 2.0, BrowseComp,",
+      "kind": "chart",
+      "section": "figure",
+      "page": 32,
+      "pageIndex": 31,
+      "bbox": {
+        "x": 0.11400741377687143,
+        "y": 0.4055783820874763,
+        "w": 0.773985694436466,
+        "h": 0.44802787087180396
+      },
+      "score": 0.9027314186096191,
+      "title": "Figure 13: Score vs. per-task inference cost on Kimi Code Bench 2.0, BrowseComp, GDPval-AA v2, and AA-Briefcase. Kimi K3 is marked with a star.",
+      "layoutRegionId": "c98d7d94-9c73-428a-ae45-4219ba2d4c9e"
+    },
+    {
+      "id": "figure-14",
+      "stableKey": "p33:figure:Figure 14: Case study: GPU kernel optimization on AttnRes.",
+      "kind": "chart",
+      "section": "figure",
+      "page": 33,
+      "pageIndex": 32,
+      "bbox": {
+        "x": 0.14629843967412812,
+        "y": 0.07236251445731731,
+        "w": 0.7297770556281594,
+        "h": 0.2599376909660571
+      },
+      "score": 0.9514140486717224,
+      "title": "Figure 14: Case study: GPU kernel optimization on AttnRes.",
+      "layoutRegionId": "2797d5c3-49e2-4623-8f89-d8ca5481e01b"
+    },
+    {
+      "id": "figure-15",
+      "stableKey": "p34:figure:Figure 15: Case study: GPU compiler development with MiniTriton. (a) CUDA-core a",
+      "kind": "chart",
+      "section": "figure",
+      "page": 34,
+      "pageIndex": 33,
+      "bbox": {
+        "x": 0.11478025149675755,
+        "y": 0.09304937690195411,
+        "w": 0.772962333330142,
+        "h": 0.4375518163045248
+      },
+      "score": 0.9325889945030212,
+      "title": "Figure 15: Case study: GPU compiler development with MiniTriton. (a) CUDA-core and (b) tensor-core rooflines of MiniTriton kernels on an NVIDIA L20 (sm_89) against torch eager, torch.compile, Triton, and cuBLAS baselines (losing points included); (c) training-loss curves of the character-level GPT trained with MiniTriton versus torch eager; (d) two-GPU data-parallel training built on MiniTriton’s own distributed primitives (NCCL) versus single-GPU training.",
+      "layoutRegionId": "cddfab5f-7b1a-4b83-9e9a-826aaea100e3"
+    },
+    {
+      "id": "figure-16",
+      "stableKey": "p46:figure:Figure 16: Structure of the Kimi K3 chat template. (a) Context layout: global op",
+      "kind": "image",
+      "section": "figure",
+      "page": 46,
+      "pageIndex": 45,
+      "bbox": {
+        "x": 0.11507743635987924,
+        "y": 0.07499361038208008,
+        "w": 0.7725776846891914,
+        "h": 0.3059924202735978
+      },
+      "score": 0.9142876863479614,
+      "title": "Figure 16: Structure of the Kimi K3 chat template. (a) Context layout: global option messages precede the input messages, while one-shot option messages follow them, so that per-request options leave the history KV cache intact; dynamically loaded tools are (b) injected mid-session as input option messages (dashed). Anatomy of an assistant message: the body is organized into think , (c) response , and tools channels. Expansion of the tools channel: parallel tool calls are indexed so that tool results can be matched to their calls, and arguments are typed.",
+      "layoutRegionId": "78aa8ae1-98c0-4113-b35c-6c1f53bfc5ce"
+    },
+    {
+      "id": "table-p1-0151_0543_0690_0123",
+      "stableKey": "p1:table:0.151_0.543_0.690_0.123",
+      "kind": "table",
+      "section": "table",
+      "page": 1,
+      "pageIndex": 0,
+      "bbox": {
+        "x": 0.15117332358765445,
+        "y": 0.5430282438644255,
+        "w": 0.6897880080478643,
+        "h": 0.12340568773674243
+      },
+      "score": 0.35877883434295654,
+      "layoutRegionId": "9c5c5dc4-ab10-46c9-b7c2-bfdc259ac760"
+    },
+    {
+      "id": "table-p1-0151_0689_0634_0125",
+      "stableKey": "p1:table:0.151_0.689_0.634_0.125",
+      "kind": "table",
+      "section": "table",
+      "page": 1,
+      "pageIndex": 0,
+      "bbox": {
+        "x": 0.1506671905517578,
+        "y": 0.6890941581340752,
+        "w": 0.6338269476797066,
+        "h": 0.12464349920099432
+      },
+      "score": 0.3040841817855835,
+      "layoutRegionId": "5ff98271-b841-4c58-b054-9bc946990d39"
+    },
+    {
+      "id": "table-p7-0112_0032_0767_0197",
+      "stableKey": "p7:table:Kimi K3: Open Frontier Intelligence",
+      "kind": "table",
+      "section": "table",
+      "page": 7,
+      "pageIndex": 6,
+      "bbox": {
+        "x": 0.11156821406744664,
+        "y": 0.03206066892604635,
+        "w": 0.7673548904119754,
+        "h": 0.19677845396176735
+      },
+      "score": 0.9320366978645325,
+      "title": "Kimi K3: Open Frontier Intelligence",
+      "layoutRegionId": "14dace34-c831-4648-8cb2-7fe377bbf3f5"
+    },
+    {
+      "id": "table-1",
+      "stableKey": "p11:table:Table 1: Architectural comparison between Kimi K2 and Kimi K3.",
+      "kind": "table",
+      "section": "table",
+      "page": 11,
+      "pageIndex": 10,
+      "bbox": {
+        "x": 0.1448702220044105,
+        "y": 0.3877772321604719,
+        "w": 0.7170165940827015,
+        "h": 0.3431802614770755
+      },
+      "score": 0.9547728300094604,
+      "title": "Table 1: Architectural comparison between Kimi K2 and Kimi K3.",
+      "layoutRegionId": "b55e869f-055c-46e7-b108-76a6f9a5a022"
+    },
+    {
+      "id": "table-2",
+      "stableKey": "p27:table:Table 2: Performance comparison of Kimi K3 against proprietary and open-source m",
+      "kind": "table",
+      "section": "table",
+      "page": 27,
+      "pageIndex": 26,
+      "bbox": {
+        "x": 0.1142736322739545,
+        "y": 0.10415354642001065,
+        "w": 0.771389269361309,
+        "h": 0.7624213671443439
+      },
+      "score": 0.9588685035705566,
+      "title": "Table 2: Performance comparison of Kimi K3 against proprietary and open-source models. Bold denotes the best result for each benchmark and underline the second-best. Unless otherwise noted, Kimi K3 results are obtained with reasoning effort set to and max temperature equal to . For HLE-Full, MMMU-Pro, CharXiv (RQ), Math-Vision, and ZeroBench, each cell reports the scores 1 . 0 without and with tool augmentation (general tools for HLE-Full, Python for the vision benchmarks), in that order. † On the official Agents’ Last Exam leaderboard, the Claude Fable 5 entry runs at xhigh effort with 40% of tasks annotated as downgraded.",
+      "layoutRegionId": "3c1b79b7-ee69-4398-938b-e1a156b603b5"
+    },
+    {
+      "id": "table-3",
+      "stableKey": "p29:table:Table 3: Results on our in-house benchmarks. Bold denotes the best reported resu",
+      "kind": "table",
+      "section": "table",
+      "page": 29,
+      "pageIndex": 28,
+      "bbox": {
+        "x": 0.11442810258055044,
+        "y": 0.08039547698666351,
+        "w": 0.7713916753631791,
+        "h": 0.4422584687820589
+      },
+      "score": 0.9714187383651733,
+      "title": "Table 3: Results on our in-house benchmarks. Bold denotes the best reported result per benchmark; “-” denotes scores not yet included in this report. Unless otherwise noted, models are evaluated at maximum reasoning effort (GPT-5.5 at xhigh); harness assignments are shown in the Harness column. a 13 fallbacks and 1 refusal out of 80 tasks. b 10 refusals out of 80 tasks. c 3 refusals out of 80 tasks. d Includes 2 tasks that Claude Fable 5 refused to answer. e Includes 14 tasks that Claude Fable 5 refused to answer. f 6 refusals out of 95 tasks. g Reported metric is 1 hallucination rate; higher is better. −",
+      "layoutRegionId": "0abba77e-1d5e-41e8-9907-da526f77b6e2"
+    },
+    {
+      "id": "table-p29-0300_0598_0399_0080",
+      "stableKey": "p29:table:0.300_0.598_0.399_0.080",
+      "kind": "table",
+      "section": "table",
+      "page": 29,
+      "pageIndex": 28,
+      "bbox": {
+        "x": 0.30017780478483713,
+        "y": 0.598170771743312,
+        "w": 0.3991224251541437,
+        "h": 0.07980250348948469
+      },
+      "score": 0.9538092017173767,
+      "layoutRegionId": "1733c91a-93df-4a63-982c-12c295e0a89f"
+    },
+    {
+      "id": "table-5",
+      "stableKey": "p32:table:Table 5: Headline independent third-party evaluations of Kimi K3 (as of July 23,",
+      "kind": "table",
+      "section": "table",
+      "page": 32,
+      "pageIndex": 31,
+      "bbox": {
+        "x": 0.11473330329446231,
+        "y": 0.08021494836518259,
+        "w": 0.7789361741807725,
+        "h": 0.22590520165183328
+      },
+      "score": 0.9658504724502563,
+      "title": "Table 5: Headline independent third-party evaluations of Kimi K3 (as of July 23, 2026). Bold denotes the best result per benchmark and underline the second best. Baseline scores are as reported by each source under its own evaluation setup a Text Arena entry is the xhigh variant listed on the leaderboard. b Text Arena entry is the high variant listed on the leaderboard. Numbers in parentheses are Kimi K3’s rank on that leaderboard. Elo-style scores drift as additional matches accumulate.",
+      "layoutRegionId": "84be1e8e-5a68-482a-af2f-6889470228d5"
+    },
+    {
+      "id": "table-p41-0110_0130_0688_0767",
+      "stableKey": "p41:table:0.110_0.130_0.688_0.767",
+      "kind": "table",
+      "section": "table",
+      "page": 41,
+      "pageIndex": 40,
+      "bbox": {
+        "x": 0.11016082763671875,
+        "y": 0.12967371699785946,
+        "w": 0.6883441700654871,
+        "h": 0.7665989615700461
+      },
+      "score": 0.9201351404190063,
+      "layoutRegionId": "09fef5f4-0562-48f1-b1e2-9cf4021009ca"
+    },
+    {
+      "id": "table-p42-0110_0032_0713_0683",
+      "stableKey": "p42:table:Kimi K3: Open Frontier Intelligence",
+      "kind": "table",
+      "section": "table",
+      "page": 42,
+      "pageIndex": 41,
+      "bbox": {
+        "x": 0.11030349232792075,
+        "y": 0.03188122884191648,
+        "w": 0.7129914028192659,
+        "h": 0.6831806910158408
+      },
+      "score": 0.9234786629676819,
+      "title": "Kimi K3: Open Frontier Intelligence",
+      "layoutRegionId": "b743ab9d-6c67-494a-925f-97632e99d5ce"
+    },
+    {
+      "id": "formula-p4-0285_0258_0600_0017",
+      "stableKey": "p4:formula:0.285_0.258_0.600_0.017",
+      "kind": "formula",
+      "section": "formula",
+      "page": 4,
+      "pageIndex": 3,
+      "bbox": {
+        "x": 0.2846283507502936,
+        "y": 0.25766998830467763,
+        "w": 0.5997403462727865,
+        "h": 0.016943575155855428
+      },
+      "score": 0.8501564860343933,
+      "layoutRegionId": "b195d45d-546b-4e95-a78a-e34da9c4bce7"
+    },
+    {
+      "id": "formula-p4-0375_0555_0509_0028",
+      "stableKey": "p4:formula:0.375_0.555_0.509_0.028",
+      "kind": "formula",
+      "section": "formula",
+      "page": 4,
+      "pageIndex": 3,
+      "bbox": {
+        "x": 0.3752552855248545,
+        "y": 0.5548085684728141,
+        "w": 0.5087390226476334,
+        "h": 0.028162098894215615
+      },
+      "score": 0.8766710758209229,
+      "layoutRegionId": "b9364b47-0be2-450a-8802-765612e2a39b"
+    },
+    {
+      "id": "formula-p5-0351_0418_0534_0042",
+      "stableKey": "p5:formula:0.351_0.418_0.534_0.042",
+      "kind": "formula",
+      "section": "formula",
+      "page": 5,
+      "pageIndex": 4,
+      "bbox": {
+        "x": 0.35108112509733713,
+        "y": 0.4184722900390625,
+        "w": 0.5335026909323299,
+        "h": 0.041553844105113646
+      },
+      "score": 0.8977717757225037,
+      "layoutRegionId": "c6d4dcf7-0186-4be4-950d-f2685bee850f"
+    },
+    {
+      "id": "formula-p5-0337_0636_0547_0018",
+      "stableKey": "p5:formula:0.337_0.636_0.547_0.018",
+      "kind": "formula",
+      "section": "formula",
+      "page": 5,
+      "pageIndex": 4,
+      "bbox": {
+        "x": 0.3371366862378089,
+        "y": 0.6356825395063921,
+        "w": 0.5469788944019991,
+        "h": 0.017765160762902465
+      },
+      "score": 0.874050498008728,
+      "layoutRegionId": "694131da-ec09-469e-b985-de1ea52a505f"
+    },
+    {
+      "id": "formula-p5-0382_0880_0503_0017",
+      "stableKey": "p5:formula:0.382_0.880_0.503_0.017",
+      "kind": "formula",
+      "section": "formula",
+      "page": 5,
+      "pageIndex": 4,
+      "bbox": {
+        "x": 0.382247451084112,
+        "y": 0.8797702981968119,
+        "w": 0.5026075325760186,
+        "h": 0.016873138119475994
+      },
+      "score": 0.8339002132415771,
+      "layoutRegionId": "4769cee6-4486-440b-b9d1-acae93870303"
+    },
+    {
+      "id": "formula-p6-0376_0318_0508_0033",
+      "stableKey": "p6:formula:0.376_0.318_0.508_0.033",
+      "kind": "formula",
+      "section": "formula",
+      "page": 6,
+      "pageIndex": 5,
+      "bbox": {
+        "x": 0.37597207462086396,
+        "y": 0.3176434064152265,
+        "w": 0.5076792598549837,
+        "h": 0.032992546004478374
+      },
+      "score": 0.9248456954956055,
+      "layoutRegionId": "fadd498c-59e6-40ca-a8e0-f0aa0376ed54"
+    },
+    {
+      "id": "formula-p6-0328_0407_0556_0041",
+      "stableKey": "p6:formula:0.328_0.407_0.556_0.041",
+      "kind": "formula",
+      "section": "formula",
+      "page": 6,
+      "pageIndex": 5,
+      "bbox": {
+        "x": 0.3282654955496196,
+        "y": 0.40721045600043404,
+        "w": 0.5556951036640242,
+        "h": 0.04099362305920534
+      },
+      "score": 0.9323287010192871,
+      "layoutRegionId": "2809f842-64a4-4f26-9e6d-460f8518b76d"
+    },
+    {
+      "id": "formula-p6-0281_0577_0603_0035",
+      "stableKey": "p6:formula:0.281_0.577_0.603_0.035",
+      "kind": "formula",
+      "section": "formula",
+      "page": 6,
+      "pageIndex": 5,
+      "bbox": {
+        "x": 0.28051655588586344,
+        "y": 0.576711943655303,
+        "w": 0.60328497294507,
+        "h": 0.03499626390861743
+      },
+      "score": 0.9244427680969238,
+      "layoutRegionId": "92a7c584-6338-40bc-9ce8-b471b68390b2"
+    },
+    {
+      "id": "formula-p7-0221_0865_0662_0035",
+      "stableKey": "p7:formula:0.221_0.865_0.662_0.035",
+      "kind": "formula",
+      "section": "formula",
+      "page": 7,
+      "pageIndex": 6,
+      "bbox": {
+        "x": 0.22147164936938318,
+        "y": 0.8654807504981455,
+        "w": 0.6620644962086397,
+        "h": 0.034595605098839965
+      },
+      "score": 0.8931919932365417,
+      "layoutRegionId": "c9865d7d-a80d-4e35-bb38-768a4ff65394"
+    },
+    {
+      "id": "formula-p8-0307_0571_0577_0029",
+      "stableKey": "p8:formula:0.307_0.571_0.577_0.029",
+      "kind": "formula",
+      "section": "formula",
+      "page": 8,
+      "pageIndex": 7,
+      "bbox": {
+        "x": 0.30692243887708076,
+        "y": 0.5705256606593276,
+        "w": 0.5771503573149637,
+        "h": 0.029080130837180418
+      },
+      "score": 0.8852501511573792,
+      "layoutRegionId": "8822aaa9-9e55-40db-8c72-1ac89b8e93f5"
+    },
+    {
+      "id": "formula-p9-0357_0100_0528_0051",
+      "stableKey": "p9:formula:0.357_0.100_0.528_0.051",
+      "kind": "formula",
+      "section": "formula",
+      "page": 9,
+      "pageIndex": 8,
+      "bbox": {
+        "x": 0.3572045868518306,
+        "y": 0.09956119999741063,
+        "w": 0.5275300219168071,
+        "h": 0.0505719522033075
+      },
+      "score": 0.9288556575775146,
+      "layoutRegionId": "d563a81d-6387-41c1-8205-5ab62dc1008f"
+    },
+    {
+      "id": "formula-p14-0241_0100_0644_0039",
+      "stableKey": "p14:formula:0.241_0.100_0.644_0.039",
+      "kind": "formula",
+      "section": "formula",
+      "page": 14,
+      "pageIndex": 13,
+      "bbox": {
+        "x": 0.24060282987706802,
+        "y": 0.09961722595523102,
+        "w": 0.6437292659983915,
+        "h": 0.03918996483388572
+      },
+      "score": 0.9142894744873047,
+      "layoutRegionId": "21012bb7-ede9-4763-95c7-a04d93680936"
+    },
+    {
+      "id": "formula-p14-0379_0609_0505_0032",
+      "stableKey": "p14:formula:0.379_0.609_0.505_0.032",
+      "kind": "formula",
+      "section": "formula",
+      "page": 14,
+      "pageIndex": 13,
+      "bbox": {
+        "x": 0.37887485977870966,
+        "y": 0.6090122955014007,
+        "w": 0.5054941364363128,
+        "h": 0.031527393996113484
+      },
+      "score": 0.9090882539749146,
+      "layoutRegionId": "6204910e-2b5d-4b95-9dc8-fdf7552dd985"
+    },
+    {
+      "id": "formula-p43-0397_0265_0487_0033",
+      "stableKey": "p43:formula:0.397_0.265_0.487_0.033",
+      "kind": "formula",
+      "section": "formula",
+      "page": 43,
+      "pageIndex": 42,
+      "bbox": {
+        "x": 0.39717209261227276,
+        "y": 0.2648635825725517,
+        "w": 0.48652541715335224,
+        "h": 0.033489285093365295
+      },
+      "score": 0.8923952579498291,
+      "layoutRegionId": "b3827992-0b3e-46f1-af84-3d65a2dccec2"
+    },
+    {
+      "id": "formula-p43-0381_0379_0503_0017",
+      "stableKey": "p43:formula:0.381_0.379_0.503_0.017",
+      "kind": "formula",
+      "section": "formula",
+      "page": 43,
+      "pageIndex": 42,
+      "bbox": {
+        "x": 0.38123049767188777,
+        "y": 0.3787191757048019,
+        "w": 0.5025833977593316,
+        "h": 0.016992742365056823
+      },
+      "score": 0.8528296947479248,
+      "layoutRegionId": "ab7902a2-6abb-489a-b3db-d04bc33e655a"
+    },
+    {
+      "id": "formula-p43-0271_0572_0613_0036",
+      "stableKey": "p43:formula:0.271_0.572_0.613_0.036",
+      "kind": "formula",
+      "section": "formula",
+      "page": 43,
+      "pageIndex": 42,
+      "bbox": {
+        "x": 0.27128663405873416,
+        "y": 0.5717237067945076,
+        "w": 0.6126767576130387,
+        "h": 0.035824053215258056
+      },
+      "score": 0.9137009382247925,
+      "layoutRegionId": "190d3cd0-0c2d-4160-b8cf-288b8b894608"
+    },
+    {
+      "id": "formula-p43-0239_0691_0644_0035",
+      "stableKey": "p43:formula:0.239_0.691_0.644_0.035",
+      "kind": "formula",
+      "section": "formula",
+      "page": 43,
+      "pageIndex": 42,
+      "bbox": {
+        "x": 0.23934948989768434,
+        "y": 0.6914427015516493,
+        "w": 0.6442998499652139,
+        "h": 0.03522923016788981
+      },
+      "score": 0.9036775827407837,
+      "layoutRegionId": "7913e56e-94dc-45aa-aa87-0c0d097c83f3"
+    },
+    {
+      "id": "formula-p43-0283_0776_0601_0035",
+      "stableKey": "p43:formula:0.283_0.776_0.601_0.035",
+      "kind": "formula",
+      "section": "formula",
+      "page": 43,
+      "pageIndex": 42,
+      "bbox": {
+        "x": 0.28289615406709556,
+        "y": 0.7762973669803503,
+        "w": 0.6009061726090177,
+        "h": 0.03463444565281726
+      },
+      "score": 0.9056094884872437,
+      "layoutRegionId": "330d7326-a260-4b43-a703-4ead0f90900f"
+    },
+    {
+      "id": "formula-p43-0258_0863_0627_0033",
+      "stableKey": "p43:formula:0.258_0.863_0.627_0.033",
+      "kind": "formula",
+      "section": "formula",
+      "page": 43,
+      "pageIndex": 42,
+      "bbox": {
+        "x": 0.2577474008198657,
+        "y": 0.8631362915039062,
+        "w": 0.6265961640800526,
+        "h": 0.03307866568517204
+      },
+      "score": 0.8946130275726318,
+      "layoutRegionId": "58f5ef27-4f98-4d8e-8213-95d7bd9233f0"
+    },
+    {
+      "id": "formula-p44-0364_0284_0520_0022",
+      "stableKey": "p44:formula:0.364_0.284_0.520_0.022",
+      "kind": "formula",
+      "section": "formula",
+      "page": 44,
+      "pageIndex": 43,
+      "bbox": {
+        "x": 0.3641272401498034,
+        "y": 0.28390329534357245,
+        "w": 0.5199101516623901,
+        "h": 0.022328328604650005
+      },
+      "score": 0.8709419369697571,
+      "layoutRegionId": "d7e649e0-78f9-4f1b-98e8-888c14a11f42"
+    },
+    {
+      "id": "formula-p44-0614_0346_0270_0037",
+      "stableKey": "p44:formula:0.614_0.346_0.270_0.037",
+      "kind": "formula",
+      "section": "formula",
+      "page": 44,
+      "pageIndex": 43,
+      "bbox": {
+        "x": 0.6139582216350081,
+        "y": 0.3463635300145005,
+        "w": 0.27041286892361116,
+        "h": 0.03710043550741793
+      },
+      "score": 0.8096956014633179,
+      "layoutRegionId": "1baac3d9-d245-4379-93fd-ad188b3e8103"
+    },
+    {
+      "id": "formula-p44-0391_0429_0493_0018",
+      "stableKey": "p44:formula:0.391_0.429_0.493_0.018",
+      "kind": "formula",
+      "section": "formula",
+      "page": 44,
+      "pageIndex": 43,
+      "bbox": {
+        "x": 0.3908221924227048,
+        "y": 0.42907953743982796,
+        "w": 0.492985818900314,
+        "h": 0.018440940163352293
+      },
+      "score": 0.862716555595398,
+      "layoutRegionId": "3ed404d9-8f4c-4b28-8c16-11e2318c071a"
+    },
+    {
+      "id": "formula-p44-0358_0633_0526_0036",
+      "stableKey": "p44:formula:0.358_0.633_0.526_0.036",
+      "kind": "formula",
+      "section": "formula",
+      "page": 44,
+      "pageIndex": 43,
+      "bbox": {
+        "x": 0.3577725778218188,
+        "y": 0.6332857151224156,
+        "w": 0.5262451670528238,
+        "h": 0.035847557915581585
+      },
+      "score": 0.9186550974845886,
+      "layoutRegionId": "d9939d46-c5af-4dbc-b420-fdb7817ed4d6"
+    },
+    {
+      "id": "formula-p45-0317_0872_0567_0030",
+      "stableKey": "p45:formula:0.317_0.872_0.567_0.030",
+      "kind": "formula",
+      "section": "formula",
+      "page": 45,
+      "pageIndex": 44,
+      "bbox": {
+        "x": 0.31732534271439694,
+        "y": 0.8721772781526199,
+        "w": 0.5666297713136361,
+        "h": 0.02951427421184505
+      },
+      "score": 0.8326431512832642,
+      "layoutRegionId": "1fb9ebc8-6b84-4e4c-9334-0a0227acb6ee"
+    }
+  ]
+}

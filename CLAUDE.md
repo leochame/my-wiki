@@ -1,9 +1,12 @@
 # Workspace Index
 
-This workspace is organized into four main areas. Open the section index first before scanning deeper.
+This workspace is organized into six main areas. Open the section index first before scanning deeper.
 
 ## Top-Level Areas
 
+* `career-development/`
+  * Purpose: 职业发展 — 简历、面试八股文、关注的公司、求职笔记
+  * Index: `career-development/INDEX.md`
 * `writing/`
   * Purpose: 原创写作 — 技术文章、随笔、想法、脚本、小说
   * Index: `writing/INDEX.md`
@@ -16,3 +19,6 @@ This workspace is organized into four main areas. Open the section index first b
 * `memory/`
   * Purpose: 零碎记忆点 — 常用工具和资源、好书、个人片段记录。NOT for actionable tasks.
   * Index: `memory/INDEX.md`
+* `investment/`
+  * Purpose: 投资相关 — 香港银行开户、账户使用、资金与投资记录
+  * Index: `investment/INDEX.md`

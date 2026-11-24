@@ -1,7 +1,9 @@
 task/
+career-development/
 task/script/gmail_accounts.json
 task/script/gmail_credentials*.json
 task/script/gmail_token*.json
+task/script/google_calendar_*.json
 .claude/settings.local.json
 
 # Local development environments and generated artifacts
@@ -13,3 +15,10 @@ task/script/gmail_token*.json
 **/*.py[cod]
 **/*.so
 **/*.egg-info/
+**/node_modules/
+**/server/target/
+**/web/dist/
+longbridge.*.log
+texput.log
+.agentero/.trash/
+**/.DS_Store

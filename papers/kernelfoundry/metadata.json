@@ -1,0 +1,34 @@
+{
+  "id": "kernelfoundry",
+  "type": "arxiv",
+  "title": "KernelFoundry: Hardware-aware evolutionary GPU kernel optimization",
+  "authors": [
+    "Nina Wiedemann",
+    "Quentin Leboutet",
+    "Michael Paulitsch",
+    "Diana Wofk",
+    "Benjamin Ummenhofer"
+  ],
+  "creators": [],
+  "year": 2026,
+  "date": "2026-09-03",
+  "abstract": "Evolutionary framework for LLM-based GPU kernel optimization combining MAP-Elites quality-diversity search over kernel-specific behavioral dimensions, meta-prompt evolution, and template-based parameter optimization. Evaluated on KernelBench, robust-kbench and custom tasks with SYCL kernels; 2.3x average speedup on KernelBench.",
+  "tags": [
+    "gpu-kernel",
+    "llm-code-generation",
+    "quality-diversity",
+    "map-elites",
+    "prompt-evolution",
+    "sycl"
+  ],
+  "language": "en-US",
+  "source_url": "https://arxiv.org/abs/2603.12440",
+  "bibtex_key": "wiedemann2026kernelfoundry",
+  "zotero_item_type": "conferencePaper",
+  "venue": "ICML 2026",
+  "arxiv_id": "2603.12440v2",
+  "status": "completed",
+  "is_read": true,
+  "added_at": "2026-10-22T00:00:00.000Z",
+  "updated_at": "2026-10-22T00:00:00.000Z"
+}

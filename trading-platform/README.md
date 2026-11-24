@@ -1,90 +1,45 @@
-# Northstar Trading Terminal
+# Northstar Research & Portfolio Terminal
 
-React / TypeScript 前端 + Rust / Axum 后端。行情来自长桥，嘉信作为可配置的美股交易执行通道。当前默认纸上交易。
+React / TypeScript 前端 + Rust / Axum 后端。外部 API 仅接入**长桥 OpenAPI**（实时行情与多周期 K 线）与**长桥 Agent CLI**（AI 投研与个股情报）；持仓与实时盈亏基于**本地账本 + 长桥实时估值**，并内置**官方 RSS/Atom 财经媒体自动跟踪**。
 
-## 数据状态
+## 核心能力
 
-- **资产、今日盈亏、购买力、风险和持仓：尚未实现券商账户读取，界面显示空状态。**
-- **自选：默认空，由用户添加证券代码，保存在服务端 SQLite。没有自动选股或股票推荐。**
-- **行情：只读取长桥真实响应；未授权返回 503，界面明确显示未配置，不会生成演示报价或走势。**
-- **纸上订单：校验参数后接受并持久保存到 SQLite，未模拟撮合，不代表成交。重启后可恢复。**
-- **实盘：需单独配置嘉信 Token、账户哈希及确认码。本项目未完成实盘端到端联调，也未实现 OAuth 授权和自动刷新。**
-
-UI 使用自有 React 组件和 CSS 变量，参考 shadcn/ui、tweakcn、React Bits，以及 Manus / Linear / Vercel 的公开设计。默认暖白主题，可切换深色；侧栏和页面分别适配桌面、平板与手机。详情见 [设计说明](docs/DESIGN.md)。
-
-前端包含总览、市场与交易、自选、资产与持仓、订单记录、连接设置六个独立视图。支持 `⌘/Ctrl K` 搜索跳转、订单方向/代码筛选与 CSV 导出。字体在构建中本地打包。
+- **长桥实时行情与 K 线**：支持 `1m / 5m / 15m / 30m / 60m / 日K / 周K / 月K` 蜡烛图 + MA5/10/20 + 成交量 + 持仓成本参考线 + 折线切换；自选支持 `.US`、`.HK` 与前导 `.` 指数代码（如 `.VIX.US`），批量拉取中英文全称、交易所与实时涨跌幅。
+- **本地持仓账本与实时盈亏**：支持录入/编辑/删除持仓与可用现金（USD），由长桥实时报价每 15 秒刷新市值、仓位占比、今日盈亏与累计盈亏，后台每 5 分钟自动记账至 SQLite 并绘制总资产与累计盈亏曲线。
+- **长桥 AI 投研 & 财经媒体聚合**：接入本地 `longbridge` CLI（对话、市场温度、估值/资金流、财报 KPI、长桥个股资讯与 SEC 公告），并每 10 分钟自动拉取 Bloomberg / Reuters / WSJ / NYT / FT / AP / Fed / SEC / Morgan Stanley 等官方 RSS/Atom 订阅源。
 
 ## 运行
 
 ```bash
-# 终端一：Rust API，默认 http://127.0.0.1:8787
-cd trading-platform/server
-TRADING_MODE=paper RUST_LOG=info cargo run
+cd trading-platform
 
-# 终端二：前端 http://localhost:5173，/api 代理至 8787
-cd trading-platform/web
-npm ci
-npm run dev
+# 初始化 Vault 之外的本机配置文件（~/.config/northstar/runtime.env，权限 600）
+./scripts/start.sh --init-env
+
+# 构建并启动服务（默认 http://127.0.0.1:8787，自动加载 runtime.env）
+./scripts/start.sh
+
+# 完整构建与测试检查
+./scripts/start.sh --check
 ```
 
-8080 在当前主机上已被其他服务占用，因此这里使用 8787。
-
-生产页面由 Rust 提供：
-
-```bash
-cd trading-platform/web
-npm run build
-cd ../server
-TRADING_MODE=paper RUST_LOG=info cargo run
-```
-
-打开 <http://127.0.0.1:8787>。`PORT` 可覆盖后端端口，修改后同步调整 `web/vite.config.ts` 的代理。
-
-本次工作使用的隔离工具链位于 `/var/tmp/northstar-cargo` 和 `/var/tmp/northstar-rustup`，没有修改全局 PATH。当前会话可以通过以下方式调用：
-
-```bash
-RUSTUP_HOME=/var/tmp/northstar-rustup CARGO_HOME=/var/tmp/northstar-cargo /var/tmp/northstar-cargo/bin/cargo run
-```
-
-## 接口与检查
+## 接口清单
 
 | 接口 | 行为 |
 | --- | --- |
-| `GET /api/health` | 服务、SQLite、行情配置、执行模式、账户接入状态 |
-| `GET /api/quotes/{symbol}` | 长桥报价，使用 `AAPL.US` / `700.HK` 格式 |
-| `GET /api/candles/{symbol}?count=63` | 日 K 线，最多 1000 条 |
-| `POST /api/orders/preview` | 校验并保存预览，返回 10 分钟内有效的 `preview_id`，不会下单 |
-| `POST /api/orders` | 携带 `preview_id` 确认相同参数；同一预览重复请求不会重复下单 |
-| `GET /api/orders` | 已保存的订单及提交结果（纸上/实盘明确区分） |
+| `GET /api/health` | 长桥 OpenAPI 就绪状态、缺失项与 `runtime.env` 加载状态 |
+| `GET /api/account` | 本地持仓账本总览（长桥实时估值） |
+| `PUT /api/portfolio/cash` | 设置可用现金（USD） |
+| `POST /api/portfolio/positions` / `DELETE .../{symbol}` | 录入、更新或删除持仓 |
+| `GET /api/portfolio/history` / `POST /api/portfolio/snapshot` | 查询实时盈亏快照历史 / 立即记一笔快照 |
+| `GET /api/watchlist` / `POST` / `DELETE .../{symbol}` | 维护自选标的（支持 `.US` / `.HK` / 指数） |
+| `GET /api/watchlist/snapshots` | 批量获取自选标的中英文全称、交易所、最新价与昨收 |
+| `GET /api/quotes/{symbol}` | 长桥单标的实时报价与中英文全称 |
+| `GET /api/candles/{symbol}?period=5m&count=96` | 长桥多周期 K 线 |
+| `GET /api/agent/status` / `POST .../login` / `GET .../list` / `POST .../chat` / `GET .../intel/{symbol}` | 长桥 Agent CLI 状态、授权、对话与个股投研情报 |
+| `GET /api/media/feed` / `POST /api/media/refresh` / `POST / PATCH / DELETE /api/media/sources` | 官方财经媒体 RSS/Atom 聚合与订阅管理 |
 
-```bash
-cd web && npm run build
-cd ../server && cargo test
-curl http://127.0.0.1:8787/api/health
-```
+## 存储与凭证边界
 
-额外接口：`GET /api/watchlist`、`POST /api/watchlist`（`{"symbol":"用户选择的代码"}`）、`DELETE /api/watchlist/{symbol}`。
-
-## SQLite 存储
-
-默认数据库位于 `$XDG_DATA_HOME/northstar/terminal.sqlite3`，未设置 XDG 时使用 `~/.local/share/northstar/terminal.sqlite3`。用 `NORTHSTAR_DATABASE_PATH` 指定其他路径；实际数据库不放在本 Vault。
-
-- `watchlist`：用户添加的证券代码和添加时间。
-- `order_previews`：不含确认码的订单参数快照、模式、创建时间和过期时间。
-- `orders`：对应预览、纸上/实盘模式、状态、提交时间和券商返回结果。
-
-使用 SQLite WAL 和事务；同一预览只能建立一笔订单。实盘网络超时会记录为 `unknown`，不会自动重发。密钥、Token、确认码均不写入数据库。测试使用独立的临时库，不写入实际用户库。
-
-后端校验正数金额与数量、方向、订单类型；嘉信路由会将 `.US` 后缀转换为嘉信证券代码，并拒绝港股。前端编辑订单后使旧预览失效，防止重复点击提交。
-
-## 凭证配置
-
-真实凭证必须放在 Vault 之外，例如 `~/.config/northstar/runtime.env`，仅在服务端进程中加载。`.env.example` 只包含变量名称和空白占位，不要在本 Vault 中填入真实值。
-
-- 长桥：`LONGBRIDGE_APP_KEY`、`LONGBRIDGE_APP_SECRET`、`LONGBRIDGE_ACCESS_TOKEN`。
-- 嘉信：`SCHWAB_ACCESS_TOKEN`、`SCHWAB_ACCOUNT_HASH`。
-- 实盘开关：`TRADING_MODE=live`，并设置非空 `LIVE_ORDER_CONFIRMATION`；每笔实盘委托需提供相同确认码。
-
-## 当前边界
-
-尚未实现账户授权界面、资产/持仓读取、成交同步、订单成交/撤销查询、WebSocket 推送及完整风控。页面只显示已接入的实际数据，不会填入虚构资产或交易记录。旧 `app/` Python 原型保留供迁移参考，当前前后端使用 Rust 服务。
+- SQLite 默认位于 `~/.local/share/northstar/terminal.sqlite3`（可用 `NORTHSTAR_DATABASE_PATH` 覆盖）。
+- 长桥 OpenAPI 凭证读取自 `~/.config/northstar/runtime.env`（`chmod 600`），长桥 Agent OAuth 凭证由本地 `longbridge` CLI 管理。所有真实凭证均保存在本 Vault 之外，不写入仓库或 SQLite。

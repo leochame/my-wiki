@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#faf9f6" />
-    <meta name="description" content="行情与交易工作台" />
-    <title>Northstar · 个人交易工作台</title>
+    <title>Northstar</title>
     <script>
-      try {
-        document.documentElement.dataset.theme =
-          localStorage.getItem("northstar.theme") === "dark" ? "dark" : "light";
-      } catch {}
+      (() => {
+        const preset = localStorage.getItem("northstar.preset") || "obsidian";
+        const colorMode = localStorage.getItem("northstar.colors") || "us";
+        document.documentElement.dataset.preset = preset;
+        document.documentElement.dataset.colors = colorMode;
+        if (preset === "obsidian" || preset === "amber") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
     </script>
   </head>
   <body>
